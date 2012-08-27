@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline" xmlns:Framework="Microsoft.Xna.Framework" xmlns:Processors="Microsoft.Xna.Framework.Content.Pipeline.Processors">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>text\SpriteFont1.spritefont</Source>
+      <Name>text\SpriteFont1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\documents\visual studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\text\SpriteFont1.xnb</Output>
+      <Time>2012-08-14T17:31:00.4068839+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\ammo.x</Source>
+      <Name>Models\ammo</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\documents\visual studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ammo.xnb</Output>
+      <Time>2012-08-15T12:25:21.6716304+10:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\ammo_0.xml</Key>
+        <Value>2012-08-15T12:25:30.9771627+10:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\spaceship.x</Source>
+      <Name>Models\spaceship</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\documents\visual studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\spaceship.xnb</Output>
+      <Time>2012-08-15T12:25:28.133+10:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\spaceship_0.xml</Key>
+        <Value>2012-08-15T12:25:31.3921864+10:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\ammo.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\ammo_0.xml</Output>
+      <Time>2012-08-15T12:25:21.6716304+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\spaceship.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\spaceship_0.xml</Output>
+      <Time>2012-08-15T12:25:28.133+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\map.FBX</Source>
+      <Name>Models\map</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\map.xnb</Output>
+      <Time>2012-08-17T08:30:26.0269829+10:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\map_0.xml</Key>
+        <Value>2012-08-17T08:31:48.8177182+10:00</Value>
+      </Dependency>
+      <Request>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\dirt2-1\dirt 2-242837c0.bmp</Source>
+      <Name>Models\dirt2-1\dirt 2-242837c0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-242837c0.xnb</Output>
+      <Time>2012-08-17T08:30:43.6399903+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\dirt2-1\dirt 2-26c2d220.bmp</Source>
+      <Name>Models\dirt2-1\dirt 2-26c2d220</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-26c2d220.xnb</Output>
+      <Time>2012-08-17T08:30:43.6369901+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\dirt2-1\dirt 2-4be9a760.bmp</Source>
+      <Name>Models\dirt2-1\dirt 2-4be9a760</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760.xnb</Output>
+      <Time>2012-08-17T08:30:43.6339899+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\map.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\map_0.xml</Output>
+      <Time>2012-08-17T08:30:26.0269829+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\dirt2-1\dirt 2-4be9a760.bmp</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb</Output>
+      <Time>2012-08-17T08:30:43.6339899+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\tank.FBX</Source>
+      <Name>Models\tank</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\tank.xnb</Output>
+      <Time>2012-08-17T12:30:07.3780445+10:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\tank_0.xml</Key>
+        <Value>2012-08-17T12:35:23.3071146+10:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\tank.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\tank_0.xml</Output>
+      <Time>2012-08-17T12:30:07.3780445+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\bus.FBX</Source>
+      <Name>Models\bus</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\bus.xnb</Output>
+      <Time>2012-08-17T12:53:41.0999048+10:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\bus_0.xml</Key>
+        <Value>2012-08-17T12:53:54.1616519+10:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\bus.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\bus_0.xml</Output>
+      <Time>2012-08-17T12:53:41.0999048+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\effects.fx</Source>
+      <Name>Effects\effects</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Effects\effects.xnb</Output>
+      <Time>2012-08-17T13:05:36.5358254+10:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\floortexture.jpg</Source>
+      <Name>Textures\floortexture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\floortexture.xnb</Output>
+      <Time>2012-08-17T14:59:21.7232038+10:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+10:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+10:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+10:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+10:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+10:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+10:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-08-13T12:26:14.3598864+10:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
