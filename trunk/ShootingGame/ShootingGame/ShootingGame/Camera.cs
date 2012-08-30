@@ -47,16 +47,16 @@ namespace ShootingGame
         public Camera(Game game, Vector3 pos, Vector3 target, Vector3 up)
             : base(game)
         {
-            //构造摄像机的视图矩阵
+            
             cameraPostion = pos;
             cameraDirection = target - pos;
             cameraDirection.Normalize();
             cameraUp = up;
             CreateLookAt();
-            //构造摄像机的投影矩阵
+
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
                 (float)Game.Window.ClientBounds.Width /
-                (float)Game.Window.ClientBounds.Height, 1, 3000);
+                (float)Game.Window.ClientBounds.Height, 1, 10000);
         }
 
         /// <summary>

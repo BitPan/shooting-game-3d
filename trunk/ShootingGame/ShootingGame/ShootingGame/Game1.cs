@@ -88,8 +88,8 @@ namespace ShootingGame
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width *0.9f,
             graphics.GraphicsDevice.Viewport.Height * 0.9f);
             effect = new BasicEffect(GraphicsDevice);
-            modelManager.addPlayer(new Vector3(0, 0, 0), new Vector3());
-
+            //modelManager.addPlayer(new Vector3(0, 0, 0), new Vector3());
+            modelManager.addPlayer(camera.cameraPostion, new Vector3());
             device = graphics.GraphicsDevice;
             floorEffect = Content.Load<Effect>(@"Effects\effects");
             sceneryTexture = Content.Load<Texture2D>(@"Textures\floortexture");
