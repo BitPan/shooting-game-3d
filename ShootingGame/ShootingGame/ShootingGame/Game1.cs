@@ -34,7 +34,10 @@ namespace ShootingGame
         private int nextShootTime = 0;
         private static int CITY_WIDTH = 500;
         private static int CITY_LENGTH = 500;
-
+        Texture2D[] skyboxTextures;
+        Texture2D[] groundTextures;
+        Model skyboxModel;
+        Model ground;
         
         private int[,] groundPlan;
         GraphicsDevice device;
@@ -92,9 +95,13 @@ namespace ShootingGame
             sceneryTexture = Content.Load<Texture2D>(@"Textures\floortexture");
             setUpGround();
 
+            skyboxModel = modelManager.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
+            ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
+
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -209,6 +216,8 @@ namespace ShootingGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             DrawCity();
+            modelManager.DrawGround(device, camera, ground, groundTextures);
+            modelManager.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
             // TODO: Add your drawing code here
             effect.World = Matrix.Identity;
             effect.View = camera.view;

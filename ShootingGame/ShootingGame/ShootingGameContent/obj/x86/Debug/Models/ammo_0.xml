@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>Frame_World</Name>
     <Identity>
-      <SourceFilename>C:\Users\ste706\documents\visual studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\ammo.x</SourceFilename>
+      <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\ammo.x</SourceFilename>
       <SourceTool>XImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 -1 0 0 0 0 1</Transform>
@@ -43,7 +43,7 @@
   <Resources>
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Users\ste706\documents\visual studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\ammo.x</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\ammo.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
