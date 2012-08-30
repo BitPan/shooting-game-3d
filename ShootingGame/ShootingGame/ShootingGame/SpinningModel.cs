@@ -35,6 +35,10 @@ namespace ShootingGame
 
         public override void Update()
         {
+
+            originalPosition += Vector3.Forward * 1.65f;
+            originalPosition += Vector3.UnitY * -0.75f;
+            originalPosition += Vector3.UnitX * 0.45f;
             rotation *= Matrix.CreateFromYawPitchRoll(yawAngle ,pitchAngle ,rollAngle);
             world *= Matrix.CreateTranslation(direction);
         }
