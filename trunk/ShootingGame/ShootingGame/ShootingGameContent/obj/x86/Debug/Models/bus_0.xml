@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>hymer</Name>
     <Identity>
-      <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+      <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>
@@ -172,141 +172,141 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Vehicle_Body</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Vehicle_Interior_Geometry</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Name>vehicle_underside</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource4" Type="Graphics:BasicMaterialContent">
       <Name>Tires</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource5" Type="Graphics:BasicMaterialContent">
       <Name>Windows_Glass</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource6" Type="Graphics:BasicMaterialContent">
       <Name>Grey_Plastic_Body_Trim</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource7" Type="Graphics:BasicMaterialContent">
       <Name>chrome</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource8" Type="Graphics:BasicMaterialContent">
       <Name>Wheels</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource9" Type="Graphics:BasicMaterialContent">
       <Name>Black_Plastic_Body_Trim</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource10" Type="Graphics:BasicMaterialContent">
       <Name>Headlights</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource11" Type="Graphics:BasicMaterialContent">
       <Name>Mirror</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource12" Type="Graphics:BasicMaterialContent">
       <Name>break_lights</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource13" Type="Graphics:BasicMaterialContent">
       <Name>License_Plate_Front</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
     <Resource ID="#Resource14" Type="Graphics:BasicMaterialContent">
       <Name>License_Plate_Back</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Documents\Visual Studio 2010\Projects\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\bus.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
-        <Data Key="启用" Type="bool">false</Data>
+        <Data Key="ÆôÓÃ" Type="bool">false</Data>
       </OpaqueData>
     </Resource>
   </Resources>
