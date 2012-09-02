@@ -215,9 +215,10 @@ namespace ShootingGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            DrawCity();
-            modelManager.DrawGround(device, camera, ground, groundTextures);
+            //DrawCity();
             modelManager.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
+            modelManager.DrawGround(device, camera, ground, groundTextures);
+           
             // TODO: Add your drawing code here
             effect.World = Matrix.Identity;
             effect.View = camera.view;
@@ -233,21 +234,7 @@ namespace ShootingGame
             base.Draw(gameTime);
         }
 
-        private void DrawCity()
-        {
-            floorEffect.CurrentTechnique = floorEffect.Techniques["Textured"];
-            floorEffect.Parameters["xWorld"].SetValue(Matrix.Identity);
-            floorEffect.Parameters["xView"].SetValue(camera.view);
-            floorEffect.Parameters["xProjection"].SetValue(camera.projection);
-            floorEffect.Parameters["xTexture"].SetValue(sceneryTexture);
-
-            foreach (EffectPass pass in floorEffect.CurrentTechnique.Passes)
-            {
-                pass.Apply();
-                device.SetVertexBuffer(cityVertexBuffer);
-                device.DrawPrimitives(PrimitiveType.TriangleList, 0, cityVertexBuffer.VertexCount / 3);
-            }
-        }
+ 
 
         private void SetNextShootTime()
         {

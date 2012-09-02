@@ -47,6 +47,6 @@
     </Resource>
   </Resources>
   <ExternalReferences>
-    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\..\..\..\ground\sanddf.png</ExternalReference>
+    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\..\..\..\ground\19uq.png</ExternalReference>
   </ExternalReferences>
 </XnaContent>

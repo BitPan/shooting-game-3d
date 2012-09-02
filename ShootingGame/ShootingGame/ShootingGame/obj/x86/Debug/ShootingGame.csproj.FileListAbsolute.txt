@@ -43,7 +43,6 @@ C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\Sho
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf.xnb
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\TedO.xnb
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Effects\effects.xnb
-C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf_0.xnb
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\ShootingGame.exe
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\ShootingGame.pdb
@@ -59,3 +58,4 @@ C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\Sho
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left_0.xnb
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front_0.xnb
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back_0.xnb
+C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\19uq_0.xnb
