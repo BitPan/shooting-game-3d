@@ -61,7 +61,7 @@ namespace ShootingGame
 
         /// <summary>
         /// Allows the game component to perform any initialization it needs to before starting
-        /// to run.  This is where it can query for any required services and load content.
+        /// to run.  This is wheadare it can query for any required services and load content.
         /// </summary>
         public override void Initialize()
         {
