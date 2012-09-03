@@ -1,0 +1,26 @@
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\sanddf.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_back.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_front.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_left.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_right.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_top.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\engine_diff_tex.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\turret_alt_diff_tex.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Ground.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\skybox.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\tank.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\sanddf_0.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_top_0.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_right_0.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_left_0.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_front_0.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\Skybox Model\clear_back_0.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\engine_diff_tex_0.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\Models\turret_alt_diff_tex_0.xnb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Tutorial4.exe
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Tutorial4.pdb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\obj\x86\Release\Tutorial4.exe
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\obj\x86\Release\Tutorial4.pdb
+C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4\bin\x86\Release\Content\SpriteFont1.xnb
