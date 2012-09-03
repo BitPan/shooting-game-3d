@@ -19,7 +19,7 @@ namespace ShootingGame
     {
         private Game game;
         List<SpinningModel> shots;
-        List<Enimis> enemies;
+        List<SpinningModel> enemies;
         List<SpinningModel> enemyBullets;
         List<SpinningModel> player;
 
@@ -28,7 +28,7 @@ namespace ShootingGame
         private int timeSinceEnemyLastShoot = 0;
 
         private const int FLYING_OUT_ZONE = 500;
-        private const int PLAYER_BULLET_SPEED = 10;
+        private const int PLAYER_BULLET_SPEED = 20;
 
         private static int enemySpawnCd = 0;
         private static int enemyShootCd = 0;
@@ -36,6 +36,7 @@ namespace ShootingGame
         private static int enemyBulletSpeed = 0;
         private static int enemyMovingSpeed = 0;
         private static int enemyAttackDeviationFactor = 0;
+        private static int enemyTurnAroundFactor = 400;
         private static int deviationRange = 0;
         private static int enemyAttackChanceFactor = 0;
 
@@ -68,7 +69,7 @@ namespace ShootingGame
         {
             // TODO: Add your initialization code here
             shots = new List<SpinningModel>();
-            enemies = new List<Enimis>();
+            enemies = new List<SpinningModel>();
             enemyBullets = new List<SpinningModel>();
             player = new List<SpinningModel>(); 
             playerHealth = 100;
@@ -172,8 +173,11 @@ namespace ShootingGame
                         score += 10;
                         j--;
                     }
-                }
+                }                
+            }
 
+            for (int j = 0; j < shots.Count; j++)
+            {
                 for (int h = 0; h < enemyBullets.Count; h++)
                 {
                     if (shots[j].CollidesWith(enemyBullets[h].model, enemyBullets[h].GetWorld()))
@@ -199,10 +203,10 @@ namespace ShootingGame
         public void updateEnemies(GameTime gameTime)
         {
             for (int i = 0; i < enemies.Count(); i++)
-            {                
+            {
                 Vector3 enemyPosition = enemies[i].GetWorld().Translation;
                 Vector3 playerPosition = player[0].GetWorld().Translation;
-;
+                ;
 
                 enemies[i].Update();
 
@@ -216,33 +220,76 @@ namespace ShootingGame
                         case 0:
                             Vector3 attackDirection = getAttackDirection(playerPosition, enemyPosition);
                             enemyAttack(gameTime, enemyPosition, attackDirection);
-                            break;                        
+                            break;
                     }
                 }
 
                 if (isFlyingOutOfBoundry(enemies[i]))
                 {
+                    switch (((Game1)Game).rnd.Next(enemyTurnAroundFactor))
+                    {
+                        case 0:
+                            if (enemies[i].TurnAround() == false)
+                                enemies[i].ChangeDoTurnAround();
+                            break;
+                    }
+
+                }
+
+                if (enemies[i].TurnAround() == true)
+                {
+                    float enemyCurrentXSpeed = enemies[i].GetDirection().X;
                     float enemyCurrentZSpeed = enemies[i].GetDirection().Z;
-                    float speedToReduce = (enemies[i].GetOriginalSpeed())/10;
+                    float speedToReduce = (enemies[i].GetOriginalSpeed()) / 20;
 
+
+                    float speedX;
+
+                    if (enemies[i].AtMiddle() == false)
+                    {
+                        if (enemyCurrentXSpeed >= 4)
+                        {
+                            speedX = -speedToReduce;
+                            enemies[i].ChangeAtMiddle(true);
+                        }
+                        else
+                            speedX = speedToReduce;
+                    }
+                    else
+                    {
+                        if (enemyCurrentXSpeed <= 0)
+                        {
+                            speedX = 0;
+                            enemies[i].ChangeAtMiddle(false);
+                        }
+                        else
+                            speedX = -speedToReduce;
+                    }
+
+                    if (enemyCurrentZSpeed < -4)
+                    {
+                        enemyCurrentZSpeed = -4;
+                        speedToReduce = 0;
+                        speedX = 0;
+                        enemies[i].ChangeDoTurnAround();
+                    }
+                    //float speedX = (enemies[i].GetDirection().X < 4) ? (enemies[i].GetOriginalSpeed() - 0) / 10 : -(enemies[i].GetOriginalSpeed()) / 10;
+                    float enemySpeedAfterChange = enemyCurrentXSpeed + speedX;
                     float enemyZPositionAfterMoving = (enemyPosition.Z + enemyCurrentZSpeed - speedToReduce);
-
-                    float speedX = (enemies[i].GetDirection().X < 4) ? (enemies[i].GetOriginalSpeed() - 0) / 10 : -(enemies[i].GetOriginalSpeed()) / 10;
-                    float enemySpeedAfterChange = enemies[i].GetDirection().X + speedX;
 
                     float enemyXPositionAfterMoving = enemyPosition.X + enemySpeedAfterChange;
                     float xDifference = (float)(enemyXPositionAfterMoving - enemyPosition.X);
                     float zDifference = (float)(enemyZPositionAfterMoving - enemyPosition.Z);
-                    
+
                     Vector3 flyDirection = new Vector3(xDifference, 0, zDifference);
                     enemies[i].setDirection(flyDirection);
                 }
 
-                if (enemies[i].GetWorld().Translation.Z > 1500 || enemies[i].GetWorld().Translation.Z < - 1500)
+                if (enemies[i].GetWorld().Translation.Z > 1500 || enemies[i].GetWorld().Translation.Z < -1500)
                 {
                     enemies.RemoveAt(i);
                     i--;
-                }   
+                }
             }
         }
 
@@ -312,7 +359,7 @@ namespace ShootingGame
                 Vector3 position = new Vector3(horizontalPosition, verticalPosition, -1500);
                 Vector3 direction = new Vector3(0, 0, enemyMovingSpeed);
                 float rollRotation = (float)((Game1)Game).rnd.NextDouble() * maxRollAngle - (maxRollAngle / 2);
-                enemies.Add(new Enimis(20f,Game.Content.Load<Model>("junctioned"), position, direction, 0, 0, 0));
+                enemies.Add(new SpinningModel(20f,Game.Content.Load<Model>("junctioned"), position, direction, 0, 0, 0));
                 
                 //enemies[enemies.Count() - 1].setWorld(Matrix.CreateScale(10f));
                 timeSinceLastSpawn = 0;
