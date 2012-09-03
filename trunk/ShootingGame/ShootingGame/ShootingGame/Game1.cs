@@ -53,6 +53,11 @@ namespace ShootingGame
         Effect floorEffect;
         Texture2D sceneryTexture;
         VertexBuffer cityVertexBuffer;
+        Music music;
+        Song song;
+        SoundEffect soundeffect;
+        SoundEffectInstance se;
+        
 
 
         public Game1()
@@ -75,13 +80,15 @@ namespace ShootingGame
         {
             camera = new Camera(this, new Vector3(0, 30, 50), Vector3.Zero, Vector3.Up);
             modelManager = new ModelManager(this);
+            song = Content.Load<Song>("music/background");
+            soundeffect = Content.Load<SoundEffect>("music/Bomb");
             Components.Add(modelManager);
             Components.Add(camera);
             currentGameLevel = GameLevel.LEVEL1;
-            
+            music = new Music(this, song, soundeffect);
             SetNextShootTime();
 
-            
+            music.BackGroundPlay();
             base.Initialize();
             // TODO: Add your initialization logic here
             
@@ -97,7 +104,9 @@ namespace ShootingGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Font1 = Content.Load<SpriteFont>(@"text\SpriteFont1");
+            
 
+           
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width *0.9f,
             graphics.GraphicsDevice.Viewport.Height * 0.9f);
             effect = new BasicEffect(GraphicsDevice);
@@ -107,7 +116,7 @@ namespace ShootingGame
             floorEffect = Content.Load<Effect>(@"Effects\effects");
             sceneryTexture = Content.Load<Texture2D>(@"Textures\floortexture");
             //setUpGround();
-
+           
             skyboxModel = modelManager.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
             ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
             weapon = Content.Load<Model>(@"Models\weapon");
@@ -142,9 +151,11 @@ namespace ShootingGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-
+          
+              
             if (currentGameState == GameState.PLAY)
             {
+                
                 setGameLevel(modelManager.score);
                 modelManager.spawnEnemy(gameTime);
                 if (Mouse.GetState().LeftButton == ButtonState.Pressed)
