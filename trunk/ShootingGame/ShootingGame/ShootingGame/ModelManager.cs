@@ -19,7 +19,7 @@ namespace ShootingGame
     {
         private Game game;
         List<SpinningModel> shots;
-        List<SpinningModel> enemies;
+        List<Enimis> enemies;
         List<SpinningModel> enemyBullets;
         List<SpinningModel> player;
 
@@ -47,6 +47,8 @@ namespace ShootingGame
         private static int boundryFar = -1500;
 
         float maxRollAngle = MathHelper.Pi / 40;
+        private Matrix[] weaponTransforms;
+        private Matrix weaponWorldMatrix;
 
         public int score { get; set; }
         public int playerHealth { get; set; }
@@ -66,12 +68,14 @@ namespace ShootingGame
         {
             // TODO: Add your initialization code here
             shots = new List<SpinningModel>();
-            enemies = new List<SpinningModel>();
+            enemies = new List<Enimis>();
             enemyBullets = new List<SpinningModel>();
             player = new List<SpinningModel>(); 
             playerHealth = 100;
             score = 0;
             base.Initialize();
+            
+          
         }
 
         public Model LModel(Effect effect, string assetName, out Texture2D[] textures)
@@ -308,7 +312,9 @@ namespace ShootingGame
                 Vector3 position = new Vector3(horizontalPosition, verticalPosition, -1500);
                 Vector3 direction = new Vector3(0, 0, enemyMovingSpeed);
                 float rollRotation = (float)((Game1)Game).rnd.NextDouble() * maxRollAngle - (maxRollAngle / 2);
-                enemies.Add(new SpinningModel(Game.Content.Load<Model>("Models\\spaceship"), position, direction, 0, 0, rollRotation));
+                enemies.Add(new Enimis(20f,Game.Content.Load<Model>("junctioned"), position, direction, 0, 0, 0));
+                
+                //enemies[enemies.Count() - 1].setWorld(Matrix.CreateScale(10f));
                 timeSinceLastSpawn = 0;
             }
         }
@@ -378,6 +384,9 @@ namespace ShootingGame
             device.DepthStencilState = dss;
         }
 
+
+ 
+     
 
         public void DrawSkybox(GraphicsDevice device, Camera camera, Model skyboxModel, Texture2D[] skyboxTextures)
         {

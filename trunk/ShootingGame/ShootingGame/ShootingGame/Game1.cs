@@ -85,8 +85,7 @@ namespace ShootingGame
             base.Initialize();
             // TODO: Add your initialization logic here
             
-            weaponTransforms = new Matrix[weapon.Bones.Count];
-            weaponWorldMatrix = Matrix.Identity;
+       
         }
 
         /// <summary>
@@ -107,7 +106,7 @@ namespace ShootingGame
             device = graphics.GraphicsDevice;
             floorEffect = Content.Load<Effect>(@"Effects\effects");
             sceneryTexture = Content.Load<Texture2D>(@"Textures\floortexture");
-            setUpGround();
+            //setUpGround();
 
             skyboxModel = modelManager.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
             ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
@@ -130,40 +129,7 @@ namespace ShootingGame
         }
 
 
-        protected void setUpGround()
-        {
-            groundPlan = new int[CITY_WIDTH, CITY_LENGTH];
-            for (int i = 0; i < CITY_WIDTH; i++)
-            {
-                for (int j = 0; j < CITY_LENGTH; j++)
-                {
-                    groundPlan[i,j] = 0;
-                }
-            }
-            
-            List<VertexPositionNormalTexture> verticesList = new List<VertexPositionNormalTexture>();
-            for (int x = 0; x < CITY_WIDTH; x++)
-            {
-                for (int z = 0; z < CITY_LENGTH; z++)
-                {
-                    if (groundPlan[x, z] == 0)
-                    {
-                        verticesList.Add(new VertexPositionNormalTexture(new Vector3((x), 0, -(z)), new Vector3(0, 1, 0), new Vector2(1, 0)));
-                        verticesList.Add(new VertexPositionNormalTexture(new Vector3((x), 0, -(z) - 1), new Vector3(0, 1, 0), new Vector2(1, 1)));
-                        verticesList.Add(new VertexPositionNormalTexture(new Vector3((x) + 1, 0, -((z))), new Vector3(0, 1, 0), new Vector2(0, 0)));
-
-                        verticesList.Add(new VertexPositionNormalTexture(new Vector3((x), 0, -((z)) - 1), new Vector3(0, 1, 0), new Vector2(1, 1)));
-                        verticesList.Add(new VertexPositionNormalTexture(new Vector3((x) + 1, 0, -((z)) - 1), new Vector3(0, 1, 0), new Vector2(0, 1)));
-                        verticesList.Add(new VertexPositionNormalTexture(new Vector3((x) + 1, 0, -((z))), new Vector3(0, 1, 0), new Vector2(0, 1)));
-                    }
-                }
-            }
-
-            cityVertexBuffer = new VertexBuffer(device, VertexPositionNormalTexture.VertexDeclaration, verticesList.Count, BufferUsage.WriteOnly);
-
-            cityVertexBuffer.SetData<VertexPositionNormalTexture>(verticesList.ToArray());
-        }
-
+      
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -176,12 +142,6 @@ namespace ShootingGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
-            {
-                pass.Apply();
-                device.SetVertexBuffer(cityVertexBuffer);
-                device.DrawPrimitives(PrimitiveType.TriangleList, 0, cityVertexBuffer.VertexCount / 3);
-            }
 
             if (currentGameState == GameState.PLAY)
             {
@@ -197,7 +157,8 @@ namespace ShootingGame
                 }               
             }
 
-            UpdateWeapon();
+          
+            
             //scoreText = modelManager.textToDisplay1 + "\n" + modelManager.textToDisplay2 + "\n" + modelManager.textToDisplay3 + "\n";
             scoreText = "Health: " + modelManager.playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel;
             base.Update(gameTime);
@@ -249,31 +210,12 @@ namespace ShootingGame
 
             spriteBatch.End();
 
-            foreach (ModelMesh m in weapon.Meshes)
-            {
-                foreach (BasicEffect e in m.Effects)
-                {
-                    e.TextureEnabled = true;
-                    e.EnableDefaultLighting();
-                    e.World = weaponTransforms[m.ParentBone.Index] * weaponWorldMatrix;
-                    e.View = camera.view;
-                    e.Projection = camera.projection;
-                }
-
-                m.Draw();
-            }
+           
             base.Draw(gameTime);
         }
 
-        private void UpdateWeapon()
-        {
-            weapon.CopyAbsoluteBoneTransformsTo(weaponTransforms);
 
-            weaponWorldMatrix = camera.WeaponWorldMatrix(WEAPON_X_OFFSET,
-                WEAPON_Y_OFFSET, WEAPON_Z_OFFSET, WEAPON_SCALE);
-        }
-
- 
+    
 
         private void SetNextShootTime()
         {
