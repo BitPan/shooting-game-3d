@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>RootNode</Name>
     <Identity>
-      <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
+      <SourceFilename>C:\Users\ste706\Desktop\GamePrograming\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -81,7 +81,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>DiRT 2-26c2d220.rgb</Name>
       <Identity>
-        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\GamePrograming\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -90,7 +90,7 @@
         <Data Key="Alpha" Type="float">1</Data>
         <Data Key="SpecularColor" Type="Framework:Vector3">0 0 0</Data>
         <Data Key="SpecularPower" Type="float">60.943367</Data>
-        <Data Key="ÆôÓÃ" Type="bool">false</Data>
+        <Data Key="启用" Type="bool">false</Data>
       </OpaqueData>
       <Textures>
         <Texture Key="Texture">
@@ -104,7 +104,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>DiRT 2-242837c0.rgb</Name>
       <Identity>
-        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\GamePrograming\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -126,7 +126,7 @@
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Name>DiRT 2-4be9a760.rgb</Name>
       <Identity>
-        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\GamePrograming\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
