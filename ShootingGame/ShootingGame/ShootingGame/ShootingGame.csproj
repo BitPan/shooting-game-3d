@@ -107,7 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="enimis.cs" />
     <Compile Include="LevelData.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="BasicModel.cs" />

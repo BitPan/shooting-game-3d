@@ -3,6 +3,8 @@ Content\Models\ammo.xnb
 Content\Models\spaceship.xnb
 Content\ground\Ground.xnb
 Content\skybox\skybox.xnb
+Content\junctioned.xnb
+Content\viper test.xnb
 Content\Models\map.xnb
 Content\Models\tank.xnb
 Content\Models\bus.xnb
@@ -38,5 +40,3 @@ Content\skybox\clear_front_0.xnb
 Content\skybox\clear_back_0.xnb
 Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb
 Content\Models\hk_mp5n_0.xnb
-Content\viper test.xnb
-Content\junctioned.xnb
