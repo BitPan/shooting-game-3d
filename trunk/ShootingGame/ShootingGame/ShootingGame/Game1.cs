@@ -34,10 +34,19 @@ namespace ShootingGame
         private int nextShootTime = 0;
         private static int CITY_WIDTH = 500;
         private static int CITY_LENGTH = 500;
+
+        private const float WEAPON_SCALE = 0.007f;
+        private const float WEAPON_X_OFFSET = 0;
+        private const float WEAPON_Y_OFFSET = 0;
+        private const float WEAPON_Z_OFFSET = 80f;
         Texture2D[] skyboxTextures;
         Texture2D[] groundTextures;
         Model skyboxModel;
         Model ground;
+        Model weapon;
+
+        private Matrix[] weaponTransforms;
+        private Matrix weaponWorldMatrix;
         
         private int[,] groundPlan;
         GraphicsDevice device;
@@ -64,15 +73,20 @@ namespace ShootingGame
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             camera = new Camera(this, new Vector3(0, 30, 50), Vector3.Zero, Vector3.Up);
             modelManager = new ModelManager(this);
             Components.Add(modelManager);
             Components.Add(camera);
             currentGameLevel = GameLevel.LEVEL1;
+            
             SetNextShootTime();
 
+            
             base.Initialize();
+            // TODO: Add your initialization logic here
+            
+            weaponTransforms = new Matrix[weapon.Bones.Count];
+            weaponWorldMatrix = Matrix.Identity;
         }
 
         /// <summary>
@@ -97,6 +111,7 @@ namespace ShootingGame
 
             skyboxModel = modelManager.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
             ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
+            weapon = Content.Load<Model>(@"Models\weapon");
 
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
@@ -181,6 +196,8 @@ namespace ShootingGame
                     }
                 }               
             }
+
+            UpdateWeapon();
             //scoreText = modelManager.textToDisplay1 + "\n" + modelManager.textToDisplay2 + "\n" + modelManager.textToDisplay3 + "\n";
             scoreText = "Health: " + modelManager.playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel;
             base.Update(gameTime);
@@ -231,7 +248,29 @@ namespace ShootingGame
                 0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
 
             spriteBatch.End();
+
+            foreach (ModelMesh m in weapon.Meshes)
+            {
+                foreach (BasicEffect e in m.Effects)
+                {
+                    e.TextureEnabled = true;
+                    e.EnableDefaultLighting();
+                    e.World = weaponTransforms[m.ParentBone.Index] * weaponWorldMatrix;
+                    e.View = camera.view;
+                    e.Projection = camera.projection;
+                }
+
+                m.Draw();
+            }
             base.Draw(gameTime);
+        }
+
+        private void UpdateWeapon()
+        {
+            weapon.CopyAbsoluteBoneTransformsTo(weaponTransforms);
+
+            weaponWorldMatrix = camera.WeaponWorldMatrix(WEAPON_X_OFFSET,
+                WEAPON_Y_OFFSET, WEAPON_Z_OFFSET, WEAPON_SCALE);
         }
 
  

@@ -23,6 +23,8 @@ namespace ShootingGame
         public Vector3 cameraPostion { get; protected set; }
         public Vector3 cameraDirection;
         public Vector3 cameraUp;
+        float pitchAngle;
+        float yawAngle;
         private static int MOUSE_SENSITY_FACTOR = 2;
 
         MouseState prevMouseState;
@@ -101,7 +103,7 @@ namespace ShootingGame
             }            
 
             //YawÐý×ª
-            float yawAngle = (-MathHelper.PiOver4 / 150) * (Mouse.GetState().X - prevMouseState.X) * MOUSE_SENSITY_FACTOR;
+            yawAngle = (-MathHelper.PiOver4 / 150) * (Mouse.GetState().X - prevMouseState.X) * MOUSE_SENSITY_FACTOR;
             //if (Math.Abs(currentYaw + yawAngle) < totalYaw)
            // {
                 cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(cameraUp, yawAngle));
@@ -110,7 +112,7 @@ namespace ShootingGame
              
              
             //PitchÐý×ª
-            float pitchAngle = (MathHelper.PiOver4 / 150) *
+            pitchAngle = (MathHelper.PiOver4 / 150) *
                 (Mouse.GetState().Y - prevMouseState.Y) * MOUSE_SENSITY_FACTOR;
             if (Math.Abs(currentPitch + pitchAngle) < totalPitch)
             {
@@ -122,6 +124,19 @@ namespace ShootingGame
             prevMouseState = Mouse.GetState();
             CreateLookAt();
             base.Update(gameTime);
+        }
+
+        public Matrix WeaponWorldMatrix(float xOffset, float yOffset, float zOffset, float scale)
+        {
+            Vector3 weaponPos = cameraPostion;
+
+            weaponPos += cameraDirection * zOffset;
+            weaponPos += new Vector3(0,1,0) * yOffset;
+            weaponPos += new Vector3(1,0,0) * xOffset;
+
+            return Matrix.CreateRotationX(MathHelper.ToRadians(pitchAngle))
+                    * Matrix.CreateRotationY(MathHelper.ToRadians(yawAngle))
+                    * Matrix.CreateTranslation(weaponPos);
         }
     }
 }
