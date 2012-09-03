@@ -243,6 +243,20 @@
       <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="music\background.mp3">
+      <Name>background</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="music\Bomb_Exploding-Sound_Explorer-68256487.wav">
+      <Name>Bomb</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

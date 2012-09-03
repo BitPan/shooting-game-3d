@@ -201,3 +201,6 @@ C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\ShootingGame.exe
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\ShootingGame.pdb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\obj\x86\Debug\ShootingGame.pdb
+C:\Users\10820520\Desktop\sejj\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\Bomb.xnb
+C:\Users\10820520\Desktop\sejj\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.xnb
+C:\Users\10820520\Desktop\sejj\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.wma
