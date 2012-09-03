@@ -90,17 +90,9 @@ namespace ShootingGame
             if (keyState.IsKeyDown(Keys.S))
                 cameraPostion = cameraPostion - new Vector3(movingDistance, 0, movingDistance) * cameraDirection;
             if (keyState.IsKeyDown(Keys.A))
-            {
-                float yawAngleLeft = (-MathHelper.PiOver4 / 150) * (-movingDistance) * MOUSE_SENSITY_FACTOR/2;
-                cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(cameraUp, yawAngleLeft));
-                currentYaw += yawAngleLeft;
-            }
-            if (keyState.IsKeyDown(Keys.D))
-            {
-                float yawAngleRight = (-MathHelper.PiOver4 / 150) * (movingDistance) * MOUSE_SENSITY_FACTOR/2;
-                cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(cameraUp, yawAngleRight));
-                currentYaw += yawAngleRight;
-            }            
+                cameraPostion += Vector3.Cross(cameraUp, cameraDirection) * movingDistance;
+            if (keyState.IsKeyDown(Keys.D)) 
+                cameraPostion -= Vector3.Cross(cameraUp, cameraDirection) * movingDistance;
 
             //YawÐý×ª
             yawAngle = (-MathHelper.PiOver4 / 150) * (Mouse.GetState().X - prevMouseState.X) * MOUSE_SENSITY_FACTOR;

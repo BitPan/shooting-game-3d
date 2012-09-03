@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ShootingGame
 {
-    class SpinningModel : BasicModel
+    public class SpinningModel : BasicModel
     {
         Matrix rotation = Matrix.Identity;
         float yawAngle = 0;
@@ -45,6 +45,16 @@ namespace ShootingGame
             rotation *= Matrix.CreateFromYawPitchRoll((float)Math.PI / 2f, pitchAngle, rollAngle);
         }
 
+        public void DoTranslation(Vector3 translation)
+        {
+            world *= Matrix.CreateTranslation(translation);
+        }
+
+        public void yawRotate(float rawRotate)
+        {
+            rotation *= Matrix.CreateFromYawPitchRoll(rawRotate, pitchAngle, rollAngle);
+        }
+
         public void setDirection(Vector3 direction)
         {
             this.direction = direction;
@@ -52,10 +62,6 @@ namespace ShootingGame
 
         public override void Update()
         {
-
-            originalPosition += Vector3.Forward * 1.65f;
-            originalPosition += Vector3.UnitY * -0.75f;
-            originalPosition += Vector3.UnitX * 0.45f;
             rotation *= Matrix.CreateFromYawPitchRoll(yawAngle, pitchAngle, rollAngle);
             world *= Matrix.CreateTranslation(direction);
         }
@@ -101,5 +107,11 @@ namespace ShootingGame
             return originalSpeed;
         }
 
+        public void SetOriginalPosition(Vector3 position)
+        {
+            originalPosition = position;
+        }
+
+       
     }
 }

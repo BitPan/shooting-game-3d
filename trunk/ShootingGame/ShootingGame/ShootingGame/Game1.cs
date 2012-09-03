@@ -147,15 +147,16 @@ namespace ShootingGame
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            timeSinceLastShoot += gameTime.ElapsedGameTime.Milliseconds; 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            KeyboardState keyState = Keyboard.GetState();
+            timeSinceLastShoot += gameTime.ElapsedGameTime.Milliseconds;
+            float fps = (float)(1 / (gameTime.ElapsedGameTime.TotalMilliseconds / 1000));
+            float movingDistance = 100 / fps;
 
-          
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                this.Exit();          
               
             if (currentGameState == GameState.PLAY)
-            {
-                
+            {                
                 setGameLevel(modelManager.score);
                 modelManager.spawnEnemy(gameTime);
                 if (Mouse.GetState().LeftButton == ButtonState.Pressed)
@@ -167,6 +168,15 @@ namespace ShootingGame
                     }
                 }               
             }
+
+            if (keyState.IsKeyDown(Keys.W))
+                modelManager.GetPlayer().DoTranslation(new Vector3(movingDistance, 0, movingDistance) * camera.cameraDirection);
+            if (keyState.IsKeyDown(Keys.S))
+                modelManager.GetPlayer().DoTranslation(new Vector3(-movingDistance, 0, -movingDistance) * camera.cameraDirection);
+            if (keyState.IsKeyDown(Keys.A))
+                modelManager.GetPlayer().DoTranslation(Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance);
+            if (keyState.IsKeyDown(Keys.D))
+                modelManager.GetPlayer().DoTranslation(-Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance);
 
           
             

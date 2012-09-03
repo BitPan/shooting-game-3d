@@ -32,8 +32,8 @@ Content\skybox\clear_right.xnb
 Content\skybox\clear_top.xnb
 Content\Models\hk_mp5n.xnb
 Content\Effects\effects.xnb
+Content\music\background.xnb
 Content\music\Bomb.xnb
-Content\ground\19uq_0.xnb
 Content\skybox\clear_top_0.xnb
 Content\skybox\clear_right_0.xnb
 Content\skybox\clear_left_0.xnb
@@ -41,5 +41,5 @@ Content\skybox\clear_front_0.xnb
 Content\skybox\clear_back_0.xnb
 Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb
 Content\Models\hk_mp5n_0.xnb
-Content\music\background.xnb
+Content\ground\3SNe_0.xnb
 Content\music\background.wma

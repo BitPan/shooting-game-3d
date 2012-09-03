@@ -36,11 +36,9 @@ namespace ShootingGame
         private static int enemyBulletSpeed = 0;
         private static int enemyMovingSpeed = 0;
         private static int enemyAttackDeviationFactor = 0;
-        private static int enemyTurnAroundFactor = 400;
+        private static int enemyTurnAroundFactor = 100;
         private static int deviationRange = 0;
         private static int enemyAttackChanceFactor = 0;
-
-        private int[] levelData;
 
         private static int boundryLeft = -1000;
         private static int boundryRight = 1000;
@@ -48,8 +46,6 @@ namespace ShootingGame
         private static int boundryFar = -1500;
 
         float maxRollAngle = MathHelper.Pi / 40;
-        private Matrix[] weaponTransforms;
-        private Matrix weaponWorldMatrix;
 
         public int score { get; set; }
         public int playerHealth { get; set; }
@@ -152,7 +148,11 @@ namespace ShootingGame
             for (int i = 0; i < enemyBullets.Count(); i++)
             {
                 enemyBullets[i].Update();
-                if (enemyBullets[i].GetWorld().Translation.Z >= 1500 || enemyBullets[i].GetWorld().Translation.Z <= -1500)
+                if (enemyBullets[i].GetWorld().Translation.Z >= 1500 || 
+                    enemyBullets[i].GetWorld().Translation.Z <= -1500 || 
+                    enemyBullets[i].GetWorld().Translation.Y < 0 ||
+                    enemyBullets[i].GetWorld().Translation.X < -1500 ||
+                    enemyBullets[i].GetWorld().Translation.X > 1500)
                 {
                     enemyBullets.RemoveAt(i);
                     i--;
@@ -162,16 +162,15 @@ namespace ShootingGame
 
         private void detectCollision()
         {
-            for (int j = 0; j < shots.Count; j++)
+            for (int j = 0; j < enemies.Count; j++)
             {
-                for (int i = 0; i < enemies.Count; i++)
+                for (int i = 0; i < shots.Count; i++)
                 {
-                    if (shots[j].CollidesWith(enemies[i].model, enemies[i].GetWorld()))
+                    if (shots[i].CollidesWith(enemies[j].model, enemies[j].GetWorld()))
                     {
-                        shots.RemoveAt(j);
-                        enemies.RemoveAt(i);
-                        score += 10;
-                        j--;
+                        shots.RemoveAt(i);
+                        enemies.RemoveAt(j);
+                        score += 10;                        
                     }
                 }                
             }
@@ -241,37 +240,66 @@ namespace ShootingGame
                     float enemyCurrentXSpeed = enemies[i].GetDirection().X;
                     float enemyCurrentZSpeed = enemies[i].GetDirection().Z;
                     float speedToReduce = (enemies[i].GetOriginalSpeed()) / 20;
+                    
+                    float speedToReduceInX = (enemies[i].GetOriginalPosition().X - player[0].GetWorld().Translation.X>0) ? -speedToReduce : speedToReduce;
 
+                    float speedX = 0;
 
-                    float speedX;
-
-                    if (enemies[i].AtMiddle() == false)
+                    if (speedToReduceInX >= 0)
                     {
-                        if (enemyCurrentXSpeed >= 4)
+                        if (enemies[i].AtMiddle() == false)
                         {
-                            speedX = -speedToReduce;
-                            enemies[i].ChangeAtMiddle(true);
+                            if (enemyCurrentXSpeed >= 4)
+                            {
+                                speedX = -speedToReduceInX;
+                                enemies[i].ChangeAtMiddle(true);
+                            }
+                            else
+                                speedX = speedToReduceInX;
                         }
                         else
-                            speedX = speedToReduce;
-                    }
-                    else
-                    {
-                        if (enemyCurrentXSpeed <= 0)
                         {
-                            speedX = 0;
-                            enemies[i].ChangeAtMiddle(false);
+                            if (enemyCurrentXSpeed <= 0)
+                            {
+                                speedX = 0;
+                                enemies[i].ChangeAtMiddle(false);
+                            }
+                            else
+                                speedX = -speedToReduceInX;
+                        }
+                    }
+                    else if (speedToReduceInX < 0)
+                    {
+                        if (enemies[i].AtMiddle() == false)
+                        {
+                            if (enemyCurrentXSpeed <= -4)
+                            {
+                                speedX = -speedToReduceInX;
+                                enemies[i].ChangeAtMiddle(true);
+                            }
+                            else
+                                speedX = speedToReduceInX;
                         }
                         else
-                            speedX = -speedToReduce;
+                        {
+                            if (enemyCurrentXSpeed >= 0)
+                            {
+                                speedX = 0;
+                                enemies[i].ChangeAtMiddle(false);
+                            }
+                            else
+                                speedX = -speedToReduceInX;
+                        }
                     }
 
-                    if (enemyCurrentZSpeed < -4)
+                    if (enemyCurrentZSpeed < -enemies[i].GetOriginalSpeed())
                     {
-                        enemyCurrentZSpeed = -4;
+                        enemyCurrentZSpeed = -enemies[i].GetOriginalSpeed();
                         speedToReduce = 0;
                         speedX = 0;
                         enemies[i].ChangeDoTurnAround();
+                        enemies[i].yawRotate((float)Math.PI);
+                        enemies[i].SetOriginalPosition(enemies[i].GetWorld().Translation);
                     }
                     //float speedX = (enemies[i].GetDirection().X < 4) ? (enemies[i].GetOriginalSpeed() - 0) / 10 : -(enemies[i].GetOriginalSpeed()) / 10;
                     float enemySpeedAfterChange = enemyCurrentXSpeed + speedX;
@@ -375,6 +403,12 @@ namespace ShootingGame
         {
             player.Add(new SpinningModel(Game.Content.Load<Model>("Models\\spaceship"), position, direction, 0, 0, 0));
         }
+
+        public SpinningModel GetPlayer()
+        {
+            return player[0];
+        }
+
 
         public override void Draw(GameTime gameTime)
         {

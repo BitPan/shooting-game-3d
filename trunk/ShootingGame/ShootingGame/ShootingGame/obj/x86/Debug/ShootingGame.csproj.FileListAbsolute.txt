@@ -190,7 +190,6 @@ C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Effects\effects.xnb
-C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\19uq_0.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top_0.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right_0.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left_0.xnb
@@ -204,3 +203,7 @@ C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\obj\x
 C:\Users\10820520\Desktop\sejj\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\Bomb.xnb
 C:\Users\10820520\Desktop\sejj\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.xnb
 C:\Users\10820520\Desktop\sejj\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.wma
+C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.xnb
+C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\Bomb.xnb
+C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.wma
+C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe_0.xnb
