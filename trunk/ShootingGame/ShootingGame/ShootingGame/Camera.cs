@@ -23,6 +23,12 @@ namespace ShootingGame
         public Vector3 cameraPostion { get; protected set; }
         public Vector3 cameraDirection;
         public Vector3 cameraUp;
+
+        private const int boundryLeft = -800;
+        private const int boundryRight = 800;
+        private const int boundryNear = 1500;
+        private const int boundryFar = -1500;    
+
         float pitchAngle;
         float yawAngle;
         private static int MOUSE_SENSITY_FACTOR = 2;
@@ -86,13 +92,13 @@ namespace ShootingGame
             float movingDistance = 100 / fps;
 
             if (keyState.IsKeyDown(Keys.W))
-                cameraPostion = cameraPostion + new Vector3(movingDistance, 0, movingDistance) * cameraDirection;
+                cameraPostion = ProcessedTranslation(new Vector3(movingDistance, 0, movingDistance) * cameraDirection);
             if (keyState.IsKeyDown(Keys.S))
-                cameraPostion = cameraPostion - new Vector3(movingDistance, 0, movingDistance) * cameraDirection;
+                cameraPostion = ProcessedTranslation(-new Vector3(movingDistance, 0, movingDistance) * cameraDirection);
             if (keyState.IsKeyDown(Keys.A))
-                cameraPostion += Vector3.Cross(cameraUp, cameraDirection) * movingDistance;
-            if (keyState.IsKeyDown(Keys.D)) 
-                cameraPostion -= Vector3.Cross(cameraUp, cameraDirection) * movingDistance;
+                cameraPostion = ProcessedTranslation(Vector3.Cross(cameraUp, cameraDirection) * movingDistance);
+            if (keyState.IsKeyDown(Keys.D))
+                cameraPostion = ProcessedTranslation(-Vector3.Cross(cameraUp, cameraDirection) * movingDistance);
 
             //YawÐý×ª
             yawAngle = (-MathHelper.PiOver4 / 150) * (Mouse.GetState().X - prevMouseState.X) * MOUSE_SENSITY_FACTOR;
@@ -116,6 +122,17 @@ namespace ShootingGame
             prevMouseState = Mouse.GetState();
             CreateLookAt();
             base.Update(gameTime);
+        }
+
+        private Vector3 ProcessedTranslation(Vector3 translation)
+        {
+            Vector3 preocessedPostion =  cameraPostion + translation;
+            preocessedPostion.X = preocessedPostion.X >= boundryRight ? boundryRight : preocessedPostion.X;
+            preocessedPostion.X = preocessedPostion.X <= boundryLeft ? boundryLeft : preocessedPostion.X;
+            preocessedPostion.Z = preocessedPostion.Z >= boundryNear ? boundryNear : preocessedPostion.Z;
+            preocessedPostion.Z = preocessedPostion.Z <= boundryFar ? boundryFar : preocessedPostion.Z;
+
+            return preocessedPostion;
         }
 
         public Matrix WeaponWorldMatrix(float xOffset, float yOffset, float zOffset, float scale)

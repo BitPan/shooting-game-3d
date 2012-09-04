@@ -1,1 +1,2 @@
 C:\Users\KimiC\Desktop\10894095_lab05\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4Content\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\ste706\Desktop\GameAssign1\splashScreen sample\10894095_lab04\Tutorial4\Tutorial4\Tutorial4\Tutorial4Content\obj\x86\Release\ResolveAssemblyReference.cache
