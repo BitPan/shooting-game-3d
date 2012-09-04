@@ -49,6 +49,7 @@ namespace ShootingGame
         SoundEffect soundeffect;
         SoundEffectInstance se;
         int finalScore;
+        int playerHealth;
 
         private const int boundryLeft = -800;
         private const int boundryRight = 800;
@@ -112,8 +113,7 @@ namespace ShootingGame
             ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
             
             song = Content.Load<Song>("music/background");
-            soundeffect = Content.Load<SoundEffect>("music/Bomb");
-            
+            soundeffect = Content.Load<SoundEffect>("music/Bomb");            
 
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
@@ -136,7 +136,8 @@ namespace ShootingGame
             gameMenuList = new List<GameMenu>();
             modelManager = new ModelManager(this);
             Components.Add(modelManager);
-            SetNextShootTime();
+            playerHealth = 100;
+            SetNextShootTime(500);
             music = new Music(this, song, soundeffect);
             music.BackGroundPlay();
 
@@ -186,29 +187,33 @@ namespace ShootingGame
                 }
             }
 
-            if (modelManager.playerHealth == 0)
-            {
-                currentGameState = GameState.END;
-                InitializegameMenuList();
-                finalScore = modelManager.score;
-                music.BackgroundPause();
-                music.Dispose();
-                modelManager.Dispose();
-                this.IsMouseVisible = true;
-            }
+            
 
             if (currentGameState == GameState.PLAY)
-            {                
-                setGameLevel(modelManager.score);
-                modelManager.spawnEnemy(gameTime);
-                if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+            {
+                if (playerHealth == 0)
                 {
-                    if (timeSinceLastShoot >= nextShootTime)
+                    currentGameState = GameState.END;
+                    InitializegameMenuList();
+                    finalScore = modelManager.score;
+                    music.BackgroundPause();
+                    music.Dispose();
+                    modelManager.Dispose();
+                    this.IsMouseVisible = true;
+                }
+                else
+                {
+                    setGameLevel(modelManager.score);
+                    modelManager.spawnEnemy(gameTime);
+                    if (Mouse.GetState().LeftButton == ButtonState.Pressed)
                     {
-                        modelManager.addShot(camera.cameraPostion, camera.cameraDirection);
-                        timeSinceLastShoot = 0;
+                        if (timeSinceLastShoot >= nextShootTime)
+                        {
+                            modelManager.addShot(camera.cameraPostion, camera.cameraDirection);
+                            timeSinceLastShoot = 0;
+                        }
                     }
-                }               
+                }   
             }
 
             if (keyState.IsKeyDown(Keys.W))
@@ -220,7 +225,7 @@ namespace ShootingGame
             if (keyState.IsKeyDown(Keys.D))
                 modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, -Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
                                   
-            scoreText = "Health: " + modelManager.playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel;
+            scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel;
             prevmousestate = mousetate;
             base.Update(gameTime);
         }
@@ -314,12 +319,15 @@ namespace ShootingGame
             base.Draw(gameTime);
         }
 
-
-    
-
-        private void SetNextShootTime()
+        public void DeductPlayerHealth(int health)
         {
-            nextShootTime = 500;
+            playerHealth -= health;
+            camera.SetShake(0.2f, 0.4f);
+        }
+
+        private void SetNextShootTime(int shootCD)
+        {
+            nextShootTime = shootCD;
         }
     }
 }
