@@ -18,17 +18,14 @@ namespace ShootingGame
     public class ModelManager : DrawableGameComponent
     {
         private Game game;
-        List<SpinningModel> shots;
-        List<SpinningModel> enemies;
-        List<SpinningModel> enemyBullets;
-        List<SpinningModel> player;
+        List<SpinningModel> shots, enemies, enemyBullets, player;
 
-        Vector3 maxSpawnLocation = new Vector3(100, 100, -3000);
-        private int timeSinceLastSpawn = 0;
-        private int timeSinceEnemyLastShoot = 0;
+        private int timeSinceLastSpawn,timeSinceEnemyLastShoot;
 
         private const int FLYING_OUT_ZONE = 500;
         private const int PLAYER_BULLET_SPEED = 20;
+        private const float SPACE_SHIP_SACLE_FACTOR = 20;
+        float maxRollAngle = MathHelper.Pi / 40;
 
         private static int enemySpawnCd = 0;
         private static int enemyShootCd = 0;
@@ -40,12 +37,10 @@ namespace ShootingGame
         private static int deviationRange = 0;
         private static int enemyAttackChanceFactor = 0;
 
-        private static int boundryLeft = -1000;
-        private static int boundryRight = 1000;
-        private static int boundryNear = 1500;
-        private static int boundryFar = -1500;
-
-        float maxRollAngle = MathHelper.Pi / 40;
+        private const int boundryLeft = -1000;
+        private const int boundryRight = 1000;
+        private const int boundryNear = 2000;
+        private const int boundryFar = -2000;        
 
         public int score { get; set; }
         public int playerHealth { get; set; }
@@ -67,7 +62,9 @@ namespace ShootingGame
             shots = new List<SpinningModel>();
             enemies = new List<SpinningModel>();
             enemyBullets = new List<SpinningModel>();
-            player = new List<SpinningModel>(); 
+            player = new List<SpinningModel>();
+            timeSinceLastSpawn = 0;
+            timeSinceEnemyLastShoot = 0;
             playerHealth = 100;
             score = 0;
             base.Initialize();
@@ -127,7 +124,11 @@ namespace ShootingGame
             for (int i = 0; i < shots.Count(); i++)
             {
                 shots[i].Update();
-                if (shots[i].GetWorld().Translation.Z <= -1500 || shots[i].GetWorld().Translation.Z >= 1500)
+                if (shots[i].GetWorld().Translation.Z >= boundryNear ||
+                    shots[i].GetWorld().Translation.Z <= boundryFar ||
+                    shots[i].GetWorld().Translation.Y < 0 ||
+                    shots[i].GetWorld().Translation.X < boundryLeft ||
+                    shots[i].GetWorld().Translation.X > boundryRight)
                 {
                     shots.RemoveAt(i);
                     i--;
@@ -148,11 +149,11 @@ namespace ShootingGame
             for (int i = 0; i < enemyBullets.Count(); i++)
             {
                 enemyBullets[i].Update();
-                if (enemyBullets[i].GetWorld().Translation.Z >= 1500 || 
-                    enemyBullets[i].GetWorld().Translation.Z <= -1500 || 
+                if (enemyBullets[i].GetWorld().Translation.Z >= boundryNear ||
+                    enemyBullets[i].GetWorld().Translation.Z <= boundryFar || 
                     enemyBullets[i].GetWorld().Translation.Y < 0 ||
-                    enemyBullets[i].GetWorld().Translation.X < -1500 ||
-                    enemyBullets[i].GetWorld().Translation.X > 1500)
+                    enemyBullets[i].GetWorld().Translation.X < boundryLeft ||
+                    enemyBullets[i].GetWorld().Translation.X > boundryRight)
                 {
                     enemyBullets.RemoveAt(i);
                     i--;
@@ -170,7 +171,8 @@ namespace ShootingGame
                     {
                         shots.RemoveAt(i);
                         enemies.RemoveAt(j);
-                        score += 10;                        
+                        score += 10;
+                        j--;
                     }
                 }                
             }
@@ -313,7 +315,11 @@ namespace ShootingGame
                     enemies[i].setDirection(flyDirection);
                 }
 
-                if (enemies[i].GetWorld().Translation.Z > 1500 || enemies[i].GetWorld().Translation.Z < -1500)
+                if (enemyPosition.Z >= boundryNear ||
+                    enemyPosition.Z <= boundryFar ||
+                    enemyPosition.Y < 0 ||
+                    enemyPosition.X < boundryLeft ||
+                    enemyPosition.X > boundryRight)
                 {
                     enemies.RemoveAt(i);
                     i--;
@@ -383,11 +389,11 @@ namespace ShootingGame
             if (timeSinceLastSpawn >= enemySpawnCd)
             {
                 float verticalPosition = (float)((Game1)Game).rnd.NextDouble() * 100 + 100;
-                float horizontalPosition = (float)((Game1)Game).rnd.NextDouble() * 500 - 250;
-                Vector3 position = new Vector3(horizontalPosition, verticalPosition, -1500);
+                float horizontalPosition = (float)((Game1)Game).rnd.NextDouble() * 1000 - 250;
+                Vector3 position = new Vector3(horizontalPosition, verticalPosition, boundryFar+500);
                 Vector3 direction = new Vector3(0, 0, enemyMovingSpeed);
                 float rollRotation = (float)((Game1)Game).rnd.NextDouble() * maxRollAngle - (maxRollAngle / 2);
-                enemies.Add(new SpinningModel(20f,Game.Content.Load<Model>("junctioned"), position, direction, 0, 0, 0));
+                enemies.Add(new SpinningModel(SPACE_SHIP_SACLE_FACTOR, Game.Content.Load<Model>("junctioned"), position, direction, 0, 0, 0));
                 
                 //enemies[enemies.Count() - 1].setWorld(Matrix.CreateScale(10f));
                 timeSinceLastSpawn = 0;
@@ -500,6 +506,7 @@ namespace ShootingGame
             dss.DepthBufferEnable = true;
             device.DepthStencilState = dss;
         }
+        
     }
 
         

@@ -26,48 +26,49 @@ namespace ShootingGame
         public Random rnd { get; protected set; }
         public enum GameState { START, PLAY, END };
         public enum GameLevel { LEVEL1,LEVEL2,LEVEL3,LEVEL4,LEVEL5};
-        GameState currentGameState = GameState.PLAY;
+        GameState currentGameState;
+        List<GameMenu> gameMenuList;
         GameLevel currentGameLevel;
         LevelData gameLevel;
+        MouseState mousetate;
+        MouseState prevmousestate;
         public string scoreText;
-        private int timeSinceLastShoot = 0;
-        private int nextShootTime = 0;
-        private static int CITY_WIDTH = 500;
-        private static int CITY_LENGTH = 500;
-
-        private const float WEAPON_SCALE = 0.007f;
-        private const float WEAPON_X_OFFSET = 0;
-        private const float WEAPON_Y_OFFSET = 0;
-        private const float WEAPON_Z_OFFSET = 80f;
+        private int timeSinceLastShoot;
+        private int nextShootTime;
+        
         Texture2D[] skyboxTextures;
         Texture2D[] groundTextures;
         Model skyboxModel;
         Model ground;
-        Model weapon;
-
-        private Matrix[] weaponTransforms;
-        private Matrix weaponWorldMatrix;
         
-        private int[,] groundPlan;
         GraphicsDevice device;
         Effect floorEffect;
         Texture2D sceneryTexture;
-        VertexBuffer cityVertexBuffer;
         Music music;
         Song song;
         SoundEffect soundeffect;
         SoundEffectInstance se;
-        
+        int finalScore;
 
+        private const int boundryLeft = -800;
+        private const int boundryRight = 800;
+        private const int boundryNear = 1500;
+        private const int boundryFar = -1500;    
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            gameMenuList = new List<GameMenu>();
             graphics.PreferredBackBufferWidth = 900;
             graphics.PreferredBackBufferHeight = 500;
             gameLevel = new LevelData();
+            currentGameState = GameState.START;
+            this.IsMouseVisible = true;
+            timeSinceLastShoot = 0;
+            nextShootTime = 0;
             rnd = new Random();
+            finalScore = 0;
         }
 
         /// <summary>
@@ -80,19 +81,18 @@ namespace ShootingGame
         {
             camera = new Camera(this, new Vector3(0, 30, 50), Vector3.Zero, Vector3.Up);
             modelManager = new ModelManager(this);
-            song = Content.Load<Song>("music/background");
-            soundeffect = Content.Load<SoundEffect>("music/Bomb");
+            InitializegameMenuList();
             Components.Add(modelManager);
             Components.Add(camera);
-            currentGameLevel = GameLevel.LEVEL1;
-            music = new Music(this, song, soundeffect);
-            SetNextShootTime();
-
-            music.BackGroundPlay();
+            
             base.Initialize();
             // TODO: Add your initialization logic here
-            
-       
+        }
+
+        protected void InitializegameMenuList()
+        {
+            gameMenuList.Add(new GameMenu(new Rectangle((Window.ClientBounds.Width / 2) - 25, (Window.ClientBounds.Height / 2) - 100, 100, 14), "Play"));
+            gameMenuList.Add(new GameMenu(new Rectangle((Window.ClientBounds.Width / 2) - 25, (Window.ClientBounds.Height / 2) - 50, 100, 14), "Exit"));
         }
 
         /// <summary>
@@ -101,25 +101,19 @@ namespace ShootingGame
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
+            device = graphics.GraphicsDevice;
+
+            // Create a new SpriteBatch, which can be used to draw textures.     
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Font1 = Content.Load<SpriteFont>(@"text\SpriteFont1");
-            
-
-           
-            FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width *0.9f,
-            graphics.GraphicsDevice.Viewport.Height * 0.9f);
-            effect = new BasicEffect(GraphicsDevice);
-            //modelManager.addPlayer(new Vector3(0, 0, 0), new Vector3());
-            modelManager.addPlayer(camera.cameraPostion, new Vector3());
-            device = graphics.GraphicsDevice;
             floorEffect = Content.Load<Effect>(@"Effects\effects");
             sceneryTexture = Content.Load<Texture2D>(@"Textures\floortexture");
-            //setUpGround();
-           
             skyboxModel = modelManager.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
             ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
-            weapon = Content.Load<Model>(@"Models\weapon");
+            
+            song = Content.Load<Song>("music/background");
+            soundeffect = Content.Load<SoundEffect>("music/Bomb");
+            
 
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
@@ -137,6 +131,25 @@ namespace ShootingGame
             // TODO: Unload any non ContentManager content here
         }
 
+        private void InitializeGameComponents()
+        {
+            gameMenuList = new List<GameMenu>();
+            modelManager = new ModelManager(this);
+            Components.Add(modelManager);
+            SetNextShootTime();
+            music = new Music(this, song, soundeffect);
+            music.BackGroundPlay();
+
+            this.IsMouseVisible = false;
+            currentGameState = GameState.PLAY;
+            currentGameLevel = GameLevel.LEVEL1;
+            modelManager.LoadGameLevelData(gameLevel.loadLevelData(GameLevel.LEVEL1));
+            modelManager.addPlayer(camera.cameraPostion, new Vector3());
+            FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width * 0.9f,
+            graphics.GraphicsDevice.Viewport.Height * 0.9f);
+            effect = new BasicEffect(GraphicsDevice);          
+        }
+
 
       
         /// <summary>
@@ -148,13 +161,42 @@ namespace ShootingGame
         {
             // Allows the game to exit
             KeyboardState keyState = Keyboard.GetState();
+            mousetate = Mouse.GetState();
             timeSinceLastShoot += gameTime.ElapsedGameTime.Milliseconds;
             float fps = (float)(1 / (gameTime.ElapsedGameTime.TotalMilliseconds / 1000));
             float movingDistance = 100 / fps;
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();          
-              
+                this.Exit();
+
+            if (gameMenuList.Count > 0)
+            {
+                foreach (GameMenu m in gameMenuList)
+                {
+                    m.mouseOver(mousetate);
+                    if (m.isSelected == true &&
+                        mousetate.LeftButton == ButtonState.Pressed &&
+                        prevmousestate.LeftButton == ButtonState.Released)
+                    {
+                        if (m.text == "Play")
+                            InitializeGameComponents();
+                        else if (m.text == "Exit")
+                            this.Exit();
+                    }
+                }
+            }
+
+            if (modelManager.playerHealth == 0)
+            {
+                currentGameState = GameState.END;
+                InitializegameMenuList();
+                finalScore = modelManager.score;
+                music.BackgroundPause();
+                music.Dispose();
+                modelManager.Dispose();
+                this.IsMouseVisible = true;
+            }
+
             if (currentGameState == GameState.PLAY)
             {                
                 setGameLevel(modelManager.score);
@@ -170,19 +212,30 @@ namespace ShootingGame
             }
 
             if (keyState.IsKeyDown(Keys.W))
-                modelManager.GetPlayer().DoTranslation(new Vector3(movingDistance, 0, movingDistance) * camera.cameraDirection);
+                modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, new Vector3(movingDistance, 0, movingDistance) * camera.cameraDirection));
             if (keyState.IsKeyDown(Keys.S))
-                modelManager.GetPlayer().DoTranslation(new Vector3(-movingDistance, 0, -movingDistance) * camera.cameraDirection);
+                modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, new Vector3(-movingDistance, 0, -movingDistance) * camera.cameraDirection));
             if (keyState.IsKeyDown(Keys.A))
-                modelManager.GetPlayer().DoTranslation(Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance);
+                modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
             if (keyState.IsKeyDown(Keys.D))
-                modelManager.GetPlayer().DoTranslation(-Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance);
-
-          
-            
-            //scoreText = modelManager.textToDisplay1 + "\n" + modelManager.textToDisplay2 + "\n" + modelManager.textToDisplay3 + "\n";
+                modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, -Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
+                                  
             scoreText = "Health: " + modelManager.playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel;
+            prevmousestate = mousetate;
             base.Update(gameTime);
+        }
+
+        protected Vector3 CalculateTranslation(Vector3 playerPosition, Vector3 translation)
+        {
+            Vector3 preocessedPostion = playerPosition + translation;
+            
+            preocessedPostion.X = preocessedPostion.X >= boundryRight ? boundryRight : preocessedPostion.X;
+            preocessedPostion.X = preocessedPostion.X <= boundryLeft ? boundryLeft : preocessedPostion.X;
+            preocessedPostion.Z = preocessedPostion.Z >= boundryNear ? boundryNear : preocessedPostion.Z;
+            preocessedPostion.Z = preocessedPostion.Z <= boundryFar ? boundryFar : preocessedPostion.Z;
+
+            Vector3 newTranslation = preocessedPostion - playerPosition;
+            return newTranslation;
         }
 
         protected Boolean setGameLevel(int gameScore)
@@ -197,12 +250,14 @@ namespace ShootingGame
                 levelToChange = GameLevel.LEVEL3;
             else if (gameScore >= 600 && gameScore < 1000)
                 levelToChange = GameLevel.LEVEL4;
-            else if (gameScore >= 1000 && gameScore < 1500)
+            else if (gameScore >= 1000)
                 levelToChange = GameLevel.LEVEL5;
 
             if (levelToChange != currentGameLevel)
-                currentGameLevel = levelToChange; 
-            modelManager.LoadGameLevelData(gameLevel.loadLevelData(currentGameLevel));
+            {
+                currentGameLevel = levelToChange;
+                modelManager.LoadGameLevelData(gameLevel.loadLevelData(currentGameLevel));
+            }
             return true;
         }
 
@@ -215,21 +270,45 @@ namespace ShootingGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             //DrawCity();
-            modelManager.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
-            modelManager.DrawGround(device, camera, ground, groundTextures);
-           
-            // TODO: Add your drawing code here
-            effect.World = Matrix.Identity;
-            effect.View = camera.view;
-            effect.Projection = camera.projection;
-            spriteBatch.Begin();
-            // Find the center of the string
-            Vector2 FontOrigin = Font1.MeasureString(scoreText) / 2;
-            // Draw the string
-            spriteBatch.DrawString(Font1, scoreText, FontPos, Color.LightGreen,
-                0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+            
+            if (currentGameState == GameState.START || currentGameState == GameState.END)
+            {
+                spriteBatch.Begin();
+                device.Clear(Color.Black);
 
-            spriteBatch.End();
+                if (currentGameState == GameState.END)
+                {
+                    FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width * 0.45f,
+                    graphics.GraphicsDevice.Viewport.Height * 0.25f);
+                    Vector2 FontOrigin = Font1.MeasureString(scoreText) / 2;
+                    // Draw the string
+                    spriteBatch.DrawString(Font1, "Your Final Score is: " + finalScore, FontPos, Color.Beige,
+                        0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+                }
+                foreach (GameMenu menu in gameMenuList)
+                {
+                    menu.Draw(spriteBatch, Font1);
+                }
+                spriteBatch.End();
+            }
+            else if (currentGameState == GameState.PLAY)
+            {
+                modelManager.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
+                modelManager.DrawGround(device, camera, ground, groundTextures);
+
+                // TODO: Add your drawing code here
+                effect.World = Matrix.Identity;
+                effect.View = camera.view;
+                effect.Projection = camera.projection;
+                spriteBatch.Begin();
+                // Find the center of the string
+                Vector2 FontOrigin = Font1.MeasureString(scoreText) / 2;
+                // Draw the string
+                spriteBatch.DrawString(Font1, scoreText, FontPos, Color.LightGreen,
+                    0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+
+                spriteBatch.End();
+            }
 
            
             base.Draw(gameTime);
