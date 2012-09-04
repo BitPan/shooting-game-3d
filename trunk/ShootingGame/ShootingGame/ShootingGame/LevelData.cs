@@ -13,11 +13,11 @@ namespace ShootingGame
         {
             levelData = new List<int[]>();
 
-            levelData.Add(iniLevelData(2500, 1500, 6, 4, 8, 15, 100, 800));
-            levelData.Add(iniLevelData(2400, 1450, 6, 4, 8, 13, 100, 900));
-            levelData.Add(iniLevelData(2300, 1400, 6, 4, 8, 11, 100, 1000));
-            levelData.Add(iniLevelData(2200, 1350, 7, 4, 8, 8, 100, 1100));
-            levelData.Add(iniLevelData(2100, 1300, 7, 4, 8, 6, 100, 1200));
+            levelData.Add(iniLevelData(2500, 1500, 6, 4, 8, 15, 100, 800, 150));
+            levelData.Add(iniLevelData(2400, 1450, 6, 4, 8, 13, 100, 900, 120));
+            levelData.Add(iniLevelData(2300, 1400, 6, 4, 8, 11, 100, 1000, 110));
+            levelData.Add(iniLevelData(2200, 1350, 7, 4, 8, 8, 100, 1100, 100));
+            levelData.Add(iniLevelData(2100, 1300, 7, 4, 8, 6, 100, 1200, 90));
         }
 
         public int[] loadLevelData(Game1.GameLevel gameLevel )
@@ -45,9 +45,10 @@ namespace ShootingGame
             int enemyAttackDeviationFactor,
             int enemyAttackChanceFactor,
             int deviationRange,
-            int enemyAttackRange)
+            int enemyAttackRange,
+            int enemyTurnAroundFactor)
         {
-            int[] level = { enemySpawnCd, enemyShootCd, enemyBulletSpeed, enemyMovingSpeed, enemyAttackDeviationFactor, enemyAttackChanceFactor, deviationRange, enemyAttackRange };
+            int[] level = { enemySpawnCd, enemyShootCd, enemyBulletSpeed, enemyMovingSpeed, enemyAttackDeviationFactor, enemyAttackChanceFactor, deviationRange, enemyAttackRange, enemyTurnAroundFactor };
             return level;
         }
 

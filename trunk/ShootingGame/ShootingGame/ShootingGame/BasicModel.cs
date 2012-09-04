@@ -25,7 +25,6 @@ namespace ShootingGame
             return world;
         }
 
-        //添加方法检测碰撞
         public bool CollidesWith(Model otherModel, Matrix otherWorld)
         {
             foreach (ModelMesh myModelMeshes in model.Meshes)

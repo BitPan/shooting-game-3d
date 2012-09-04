@@ -31,15 +31,22 @@ namespace ShootingGame
 
         float pitchAngle;
         float yawAngle;
-        private static int MOUSE_SENSITY_FACTOR = 2;
-
-        MouseState prevMouseState;
-
         float totalYaw = MathHelper.PiOver4;
         float currentYaw = 0;
         float totalPitch = MathHelper.Pi;
         float currentPitch = 0;
 
+        private static int MOUSE_SENSITY_FACTOR = 2;
+        MouseState prevMouseState;
+        private static readonly Random random = new Random();
+
+
+
+        private bool shaking;
+        private float shakeMagnitude;
+        private float shakeDuration;
+        private float shakeTimer;
+        private Vector3 shakeOffset;
 
         public Vector3 getCameraDirection()
         {
@@ -100,13 +107,9 @@ namespace ShootingGame
             if (keyState.IsKeyDown(Keys.D))
                 cameraPostion = ProcessedTranslation(-Vector3.Cross(cameraUp, cameraDirection) * movingDistance);
 
-            //YawÐý×ª
             yawAngle = (-MathHelper.PiOver4 / 150) * (Mouse.GetState().X - prevMouseState.X) * MOUSE_SENSITY_FACTOR;
-            //if (Math.Abs(currentYaw + yawAngle) < totalYaw)
-           // {
-                cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(cameraUp, yawAngle));
-                currentYaw += yawAngle;
-            //}
+            cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(cameraUp, yawAngle));
+            currentYaw += yawAngle;
              
              
             //PitchÐý×ª
@@ -120,6 +123,9 @@ namespace ShootingGame
                 currentPitch += pitchAngle;
             }
             prevMouseState = Mouse.GetState();
+
+            if (shaking)
+                DoShake(gameTime);
             CreateLookAt();
             base.Update(gameTime);
         }
@@ -135,17 +141,43 @@ namespace ShootingGame
             return preocessedPostion;
         }
 
-        public Matrix WeaponWorldMatrix(float xOffset, float yOffset, float zOffset, float scale)
+        public void SetShake(float magnitude, float duration)
         {
-            Vector3 weaponPos = cameraPostion;
-
-            weaponPos += cameraDirection * zOffset;
-            weaponPos += new Vector3(0,1,0) * yOffset;
-            weaponPos += new Vector3(1,0,0) * xOffset;
-
-            return Matrix.CreateRotationX(MathHelper.ToRadians(pitchAngle))
-                    * Matrix.CreateRotationY(MathHelper.ToRadians(yawAngle))
-                    * Matrix.CreateTranslation(weaponPos);
+            shaking = true;
+            shakeMagnitude = magnitude;
+            shakeDuration = duration;
+            shakeTimer = 0f;
         }
+
+        /// <summary>
+        /// Updates the Camera.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        public void DoShake(GameTime gameTime)
+        {
+            shakeTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (shakeTimer >= shakeDuration)
+            {
+                shaking = false;
+                shakeTimer = shakeDuration;
+            }
+
+            float progress = shakeTimer / shakeDuration;
+            float magnitude = shakeMagnitude * (1f - (progress * progress));
+
+            shakeOffset = new Vector3(NextFloat(), NextFloat(), NextFloat()) * magnitude;
+
+            cameraDirection += shakeOffset;
+        }
+
+        /// <summary>
+        /// Helper to generate a random float in the range of [-1, 1].
+        /// </summary>
+        private float NextFloat()
+        {
+            return (float)random.NextDouble() * 2f - 1f;
+        }
+
     }
 }

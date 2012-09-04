@@ -33,7 +33,7 @@ namespace ShootingGame
         private static int enemyBulletSpeed = 0;
         private static int enemyMovingSpeed = 0;
         private static int enemyAttackDeviationFactor = 0;
-        private static int enemyTurnAroundFactor = 100;
+        private static int enemyTurnAroundFactor = 0;
         private static int deviationRange = 0;
         private static int enemyAttackChanceFactor = 0;
 
@@ -43,7 +43,6 @@ namespace ShootingGame
         private const int boundryFar = -2000;        
 
         public int score { get; set; }
-        public int playerHealth { get; set; }
 
         public ModelManager(Game game)
             : base(game)
@@ -65,7 +64,6 @@ namespace ShootingGame
             player = new List<SpinningModel>();
             timeSinceLastSpawn = 0;
             timeSinceEnemyLastShoot = 0;
-            playerHealth = 100;
             score = 0;
             base.Initialize();
             
@@ -98,7 +96,8 @@ namespace ShootingGame
             enemyAttackDeviationFactor = levelData[4];
             enemyAttackChanceFactor = levelData[5];
             deviationRange = levelData[6];
-            enemyAttackRange = levelData[7];            
+            enemyAttackRange = levelData[7];
+            enemyTurnAroundFactor = levelData[8];
         }
 
 
@@ -195,7 +194,8 @@ namespace ShootingGame
                 if (player[0].CollidesWith(enemyBullets[j].model, enemyBullets[j].GetWorld()))
                     {
                         enemyBullets.RemoveAt(j);
-                        playerHealth -= 10;
+                        //playerHealth -= 10;
+                        ((Game1)Game).DeductPlayerHealth(10);
                         j--;
                     }
             }
