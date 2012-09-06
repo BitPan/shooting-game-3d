@@ -18,7 +18,7 @@ namespace ShootingGame
     public class ModelManager : DrawableGameComponent
     {
         private Game game;
-        List<SpinningModel> shots, enemies, enemyBullets, player;
+        List<SpinningModel> shots, enemies, enemyBullets, player, trees;
 
         private int timeSinceLastSpawn,timeSinceEnemyLastShoot;
 
@@ -62,12 +62,11 @@ namespace ShootingGame
             enemies = new List<SpinningModel>();
             enemyBullets = new List<SpinningModel>();
             player = new List<SpinningModel>();
+            trees = new List<SpinningModel>();
             timeSinceLastSpawn = 0;
             timeSinceEnemyLastShoot = 0;
             score = 0;
-            base.Initialize();
-            
-          
+            base.Initialize();         
         }
 
         public Model LModel(Effect effect, string assetName, out Texture2D[] textures)
@@ -376,7 +375,7 @@ namespace ShootingGame
             timeSinceEnemyLastShoot += gameTime.ElapsedGameTime.Milliseconds;
             if (timeSinceEnemyLastShoot >= enemyShootCd)
             {
-                enemyBullets.Add(new SpinningModel(Game.Content.Load<Model>("Models\\ammo"), position, direction, 0, 0, 0));
+                enemyBullets.Add(new SpinningModel(Game.Content.Load<Model>("Models\\ammo"), 1, position, direction, 0, 0, 0));
                 timeSinceEnemyLastShoot = 0;
             }
         }
@@ -391,7 +390,7 @@ namespace ShootingGame
                 Vector3 position = new Vector3(horizontalPosition, verticalPosition, boundryFar+500);
                 Vector3 direction = new Vector3(0, 0, enemyMovingSpeed);
                 float rollRotation = (float)((Game1)Game).rnd.NextDouble() * maxRollAngle - (maxRollAngle / 2);
-                enemies.Add(new SpinningModel(SPACE_SHIP_SACLE_FACTOR, Game.Content.Load<Model>("junctioned"), position, direction, 0, 0, 0));
+                enemies.Add(new SpinningModel(Game.Content.Load<Model>("junctioned"), SPACE_SHIP_SACLE_FACTOR, position, direction, 0, 0, 0));
                 
                 //enemies[enemies.Count() - 1].setWorld(Matrix.CreateScale(10f));
                 timeSinceLastSpawn = 0;
@@ -400,12 +399,17 @@ namespace ShootingGame
                 
         public void addShot(Vector3 position, Vector3 direction)
         {
-            shots.Add(new SpinningModel(Game.Content.Load<Model>("Models\\ammo"), position, direction * PLAYER_BULLET_SPEED, 0, 0, 0));
+            shots.Add(new SpinningModel(Game.Content.Load<Model>("Models\\ammo"), 1, position, direction * PLAYER_BULLET_SPEED, 0, 0, 0));
         }
 
         public void addPlayer(Vector3 position, Vector3 direction)
         {
-            player.Add(new SpinningModel(Game.Content.Load<Model>("Models\\spaceship"), position, direction, 0, 0, 0));
+            player.Add(new SpinningModel(Game.Content.Load<Model>("Models\\spaceship"), 0.3f, position, direction, 0, 0, 0));
+        }
+
+        public void addTree(Vector3 position)
+        {
+            trees.Add(new SpinningModel(Game.Content.Load<Model>("Models\\spaceship"), 1f, position, Vector3.Zero, 0, 0, 0));
         }
 
         public SpinningModel GetPlayer()
@@ -424,6 +428,10 @@ namespace ShootingGame
             foreach (BasicModel eb in enemyBullets)
             {
                 eb.Draw(((Game1)Game).camera);
+            }
+            foreach (BasicModel t in trees)
+            {
+                t.Draw(((Game1)Game).camera);
             }
             foreach (BasicModel p in player)
             {

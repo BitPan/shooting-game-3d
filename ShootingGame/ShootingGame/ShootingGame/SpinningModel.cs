@@ -18,24 +18,10 @@ namespace ShootingGame
         bool doTurnAround;
         bool turnToMiddle;
 
-        public SpinningModel(Model m, Vector3 Position, Vector3 Direction, float yaw, float pitch, float roll)
+        public SpinningModel(Model m, float scale, Vector3 Position, Vector3 Direction, float yaw, float pitch, float roll)
             : base(m)
         {
-            world = Matrix.CreateTranslation(Position);
-            yawAngle = yaw;
-            pitchAngle = pitch;
-            rollAngle = roll;
-            direction = Direction;
-            originalPosition = Position;
-            originalSpeed = Direction.Z;
-            doTurnAround = false;
-            turnToMiddle = false;
-        }
-
-        public SpinningModel(float a, Model m, Vector3 Position, Vector3 Direction, float yaw, float pitch, float roll)
-            : base(m)
-        {
-            world = Matrix.CreateScale(a) * Matrix.CreateTranslation(Position);
+            world = Matrix.CreateScale(scale) * Matrix.CreateTranslation(Position);
             yawAngle = yaw;
             pitchAngle = pitch;
             rollAngle = roll;

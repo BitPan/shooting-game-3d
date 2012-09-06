@@ -33,7 +33,7 @@ namespace ShootingGame
         float yawAngle;
         float totalYaw = MathHelper.PiOver4;
         float currentYaw = 0;
-        float totalPitch = MathHelper.Pi;
+        float totalPitch = MathHelper.Pi/4;
         float currentPitch = 0;
 
         private static int MOUSE_SENSITY_FACTOR = 2;
@@ -113,7 +113,7 @@ namespace ShootingGame
             currentYaw += yawAngle;
              
              
-            //PitchÐý×ª
+            //Pitch Rotation
             pitchAngle = (MathHelper.PiOver4 / 150) *
                 (Mouse.GetState().Y - prevMouseState.Y) * MOUSE_SENSITY_FACTOR;
             if (Math.Abs(currentPitch + pitchAngle) < totalPitch)
@@ -167,7 +167,7 @@ namespace ShootingGame
             }
 
             float progress = shakeTimer / shakeDuration;
-            float magnitude = shakeMagnitude * (1f - (progress * progress));
+            float magnitude = shakeMagnitude * (1f - (progress * progress)) * 0.5f;
 
             shakeOffset = new Vector3(NextFloat(), NextFloat(), NextFloat()) * magnitude;
 
