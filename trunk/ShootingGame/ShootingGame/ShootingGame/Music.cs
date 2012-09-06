@@ -45,7 +45,7 @@ namespace ShootingGame
             this.se.Play();
         
         }
-        public void effectstopplay() {
+        public void EffectStopPlay() {
 
             this.se.Stop();
         }

@@ -113,8 +113,8 @@ namespace ShootingGame
             ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
             
             song = Content.Load<Song>("music/background");
-            soundeffect = Content.Load<SoundEffect>("music/Bomb");            
-
+            soundeffect = Content.Load<SoundEffect>("music/Bomb");
+            music = new Music(this, song, soundeffect);
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
@@ -138,7 +138,7 @@ namespace ShootingGame
             Components.Add(modelManager);
             playerHealth = 100;
             SetNextShootTime(500);
-            music = new Music(this, song, soundeffect);
+           
             music.BackGroundPlay();
 
             this.IsMouseVisible = false;
@@ -224,8 +224,8 @@ namespace ShootingGame
                 modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
             if (keyState.IsKeyDown(Keys.D))
                 modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, -Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
-                                  
-            scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel;
+
+            scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel + "\nFPS:" + movingDistance;
             prevmousestate = mousetate;
             base.Update(gameTime);
         }
@@ -321,8 +321,12 @@ namespace ShootingGame
 
         public void DeductPlayerHealth(int health)
         {
+            music.BackgroundPause();
+            this.music.EffectPlay();
             playerHealth -= health;
             camera.SetShake(0.2f, 0.4f);
+            //music.BackGroundResume();
+
         }
 
         private void SetNextShootTime(int shootCD)
