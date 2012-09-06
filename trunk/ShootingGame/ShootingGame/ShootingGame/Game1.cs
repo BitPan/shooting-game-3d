@@ -40,6 +40,7 @@ namespace ShootingGame
         Texture2D[] groundTextures;
         Model skyboxModel;
         Model ground;
+        Model tree;
         
         GraphicsDevice device;
         Effect floorEffect;
@@ -111,7 +112,8 @@ namespace ShootingGame
             sceneryTexture = Content.Load<Texture2D>(@"Textures\floortexture");
             skyboxModel = modelManager.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
             ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
-            
+            //tree = Content.Load<Model>(@"Models\tree\tree");
+    
             song = Content.Load<Song>("music/background");
             soundeffect = Content.Load<SoundEffect>("music/Bomb");
             music = new Music(this, song, soundeffect);
@@ -313,6 +315,19 @@ namespace ShootingGame
                     0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
 
                 spriteBatch.End();
+
+                /*
+                foreach (ModelMesh mesh in tree.Meshes)
+                {
+                    foreach (Effect currentEffect in mesh.Effects)
+                    {
+                        currentEffect.CurrentTechnique = currentEffect.Techniques["Colored"];
+                        currentEffect.Parameters["xWorld"].SetValue(Matrix.Identity);
+                        currentEffect.Parameters["xView"].SetValue(camera.view);
+                        currentEffect.Parameters["xProjection"].SetValue(camera.projection);
+                    }
+                    mesh.Draw();
+                }*/
             }
 
            
