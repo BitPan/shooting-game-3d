@@ -47,6 +47,7 @@ namespace ShootingGame
         private float shakeDuration;
         private float shakeTimer;
         private Vector3 shakeOffset;
+        private Vector3 originalDirection;
 
         public Vector3 getCameraDirection()
         {
@@ -147,6 +148,7 @@ namespace ShootingGame
             shakeMagnitude = magnitude;
             shakeDuration = duration;
             shakeTimer = 0f;
+            originalDirection = cameraDirection;
         }
 
         /// <summary>
@@ -161,6 +163,7 @@ namespace ShootingGame
             {
                 shaking = false;
                 shakeTimer = shakeDuration;
+                cameraDirection = originalDirection;
             }
 
             float progress = shakeTimer / shakeDuration;
