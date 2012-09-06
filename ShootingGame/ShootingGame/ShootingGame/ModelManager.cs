@@ -40,8 +40,8 @@ namespace ShootingGame
         private const int boundryLeft = -1000;
         private const int boundryRight = 1000;
         private const int boundryNear = 2000;
-        private const int boundryFar = -2000;        
-
+        private const int boundryFar = -2000;
+        
         public int score { get; set; }
 
         public ModelManager(Game game)
@@ -168,8 +168,8 @@ namespace ShootingGame
                 {
                     if (shots[i].CollidesWith(enemies[j].model, enemies[j].GetWorld()))
                     {
-                        shots.RemoveAt(i);
                         enemies.RemoveAt(j);
+                        shots.RemoveAt(i);                        
                         score += 10;
                         j--;
                     }
@@ -194,7 +194,6 @@ namespace ShootingGame
                 if (player[0].CollidesWith(enemyBullets[j].model, enemyBullets[j].GetWorld()))
                     {
                         enemyBullets.RemoveAt(j);
-                        //playerHealth -= 10;
                         ((Game1)Game).DeductPlayerHealth(10);
                         j--;
                     }
@@ -207,8 +206,7 @@ namespace ShootingGame
             {
                 Vector3 enemyPosition = enemies[i].GetWorld().Translation;
                 Vector3 playerPosition = player[0].GetWorld().Translation;
-                ;
-
+                
                 enemies[i].Update();
 
                 if (enemyPosition.Z - playerPosition.Z <= enemyAttackRange ||
@@ -244,7 +242,7 @@ namespace ShootingGame
                     float speedToReduce = (enemies[i].GetOriginalSpeed()) / 20;
                     
                     float speedToReduceInX = (enemies[i].GetOriginalPosition().X - player[0].GetWorld().Translation.X>0) ? -speedToReduce : speedToReduce;
-
+                    
                     float speedX = 0;
 
                     if (speedToReduceInX >= 0)
