@@ -165,7 +165,6 @@ C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\viper test.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\map.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\tank.xnb
-C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\bus.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\weapon.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-242837c0.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-26c2d220.xnb
@@ -207,3 +206,8 @@ C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\Bomb.xnb
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.wma
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe_0.xnb
+C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\player.xnb
+C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex.xnb
+C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex.xnb
+C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex_0.xnb
+C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex_0.xnb

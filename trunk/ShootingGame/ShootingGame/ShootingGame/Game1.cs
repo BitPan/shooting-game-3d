@@ -40,7 +40,7 @@ namespace ShootingGame
         Texture2D[] groundTextures;
         Model skyboxModel;
         Model ground;
-        Model tree;
+        Tank tank;
         
         GraphicsDevice device;
         Effect floorEffect;
@@ -48,9 +48,11 @@ namespace ShootingGame
         Music music;
         Song song;
         SoundEffect soundeffect;
-        SoundEffectInstance se;
         int finalScore;
         int playerHealth;
+
+        Vector3 tankPosition;
+        Matrix rotation;
 
         private const int boundryLeft = -800;
         private const int boundryRight = 800;
@@ -66,6 +68,7 @@ namespace ShootingGame
             graphics.PreferredBackBufferHeight = 500;
             gameLevel = new LevelData();
             currentGameState = GameState.START;
+            tank = new Tank();
             this.IsMouseVisible = true;
             timeSinceLastShoot = 0;
             nextShootTime = 0;
@@ -81,7 +84,7 @@ namespace ShootingGame
         /// </summary>
         protected override void Initialize()
         {
-            camera = new Camera(this, new Vector3(0, 30, 50), Vector3.Zero, Vector3.Up);
+            camera = new Camera(this, new Vector3(0, 30, 50), new Vector3(0, 30, -1), Vector3.Up);
             modelManager = new ModelManager(this);
             InitializegameMenuList();
             Components.Add(modelManager);
@@ -112,10 +115,10 @@ namespace ShootingGame
             sceneryTexture = Content.Load<Texture2D>(@"Textures\floortexture");
             skyboxModel = modelManager.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
             ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
-            //tree = Content.Load<Model>(@"Models\tree\tree");
     
             song = Content.Load<Song>("music/background");
             soundeffect = Content.Load<SoundEffect>("music/Bomb");
+            tank.Load(Content);
             music = new Music(this, song, soundeffect);
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
@@ -193,6 +196,8 @@ namespace ShootingGame
 
             if (currentGameState == GameState.PLAY)
             {
+                UpdateTank(gameTime);
+
                 if (playerHealth == 0)
                 {
                     currentGameState = GameState.END;
@@ -207,6 +212,9 @@ namespace ShootingGame
                 {
                     setGameLevel(modelManager.score);
                     modelManager.spawnEnemy(gameTime);
+                    tank.Draw(rotation, camera.view, camera.projection, tankPosition);
+                    
+
                     if (Mouse.GetState().LeftButton == ButtonState.Pressed)
                     {
                         if (timeSinceLastShoot >= nextShootTime)
@@ -227,7 +235,9 @@ namespace ShootingGame
             if (keyState.IsKeyDown(Keys.D))
                 modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, -Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
 
-            scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel + "\nFPS:" + movingDistance;
+
+
+            scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel + "\n: " + (int)camera.cameraPostion.X + "," + (int)camera.cameraPostion.Y + "," + (int)camera.cameraPostion.Z;
             prevmousestate = mousetate;
             base.Update(gameTime);
         }
@@ -302,6 +312,7 @@ namespace ShootingGame
             {
                 modelManager.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
                 modelManager.DrawGround(device, camera, ground, groundTextures);
+                tank.Draw(rotation, camera.view, camera.projection, tankPosition);
 
                 // TODO: Add your drawing code here
                 effect.World = Matrix.Identity;
@@ -314,20 +325,7 @@ namespace ShootingGame
                 spriteBatch.DrawString(Font1, scoreText, FontPos, Color.LightGreen,
                     0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
 
-                spriteBatch.End();
-
-                /*
-                foreach (ModelMesh mesh in tree.Meshes)
-                {
-                    foreach (Effect currentEffect in mesh.Effects)
-                    {
-                        currentEffect.CurrentTechnique = currentEffect.Techniques["Colored"];
-                        currentEffect.Parameters["xWorld"].SetValue(Matrix.Identity);
-                        currentEffect.Parameters["xView"].SetValue(camera.view);
-                        currentEffect.Parameters["xProjection"].SetValue(camera.projection);
-                    }
-                    mesh.Draw();
-                }*/
+                spriteBatch.End();                
             }
 
            
@@ -342,6 +340,13 @@ namespace ShootingGame
             camera.SetShake(0.2f, 0.4f);
             //music.BackGroundResume();
 
+        }
+
+        private void UpdateTank(GameTime gameTime)
+        {
+            tankPosition = new Vector3(500, 0, 300);
+            float time = (float)gameTime.TotalGameTime.TotalSeconds;
+            rotation = rotation = Matrix.CreateScale(0.1f) * Matrix.CreateRotationY(time * 0.1f);
         }
 
         private void SetNextShootTime(int shootCD)
