@@ -50,6 +50,8 @@ namespace ShootingGame
         SoundEffect soundeffect;
         int finalScore;
         int playerHealth;
+        string levelUpText = "";
+        int levelUpTextTimer;
 
         Vector3 tankPosition;
         Matrix rotation;
@@ -191,7 +193,6 @@ namespace ShootingGame
                     }
                 }
             }
-
             
 
             if (currentGameState == GameState.PLAY)
@@ -223,19 +224,18 @@ namespace ShootingGame
                             timeSinceLastShoot = 0;
                         }
                     }
+
+                    if (keyState.IsKeyDown(Keys.W))
+                        modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, new Vector3(movingDistance, 0, movingDistance) * camera.cameraDirection));
+                    if (keyState.IsKeyDown(Keys.S))
+                        modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, new Vector3(-movingDistance, 0, -movingDistance) * camera.cameraDirection));
+                    if (keyState.IsKeyDown(Keys.A))
+                        modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
+                    if (keyState.IsKeyDown(Keys.D))
+                        modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, -Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
+
                 }   
             }
-
-            if (keyState.IsKeyDown(Keys.W))
-                modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, new Vector3(movingDistance, 0, movingDistance) * camera.cameraDirection));
-            if (keyState.IsKeyDown(Keys.S))
-                modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, new Vector3(-movingDistance, 0, -movingDistance) * camera.cameraDirection));
-            if (keyState.IsKeyDown(Keys.A))
-                modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
-            if (keyState.IsKeyDown(Keys.D))
-                modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, -Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
-
-
 
             scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel + "\n: " + (int)camera.cameraPostion.X + "," + (int)camera.cameraPostion.Y + "," + (int)camera.cameraPostion.Z;
             prevmousestate = mousetate;
@@ -259,19 +259,21 @@ namespace ShootingGame
         {
             GameLevel levelToChange = GameLevel.LEVEL1;
 
-            if (gameScore < 100)
+            if (gameScore < 50)
                 levelToChange = GameLevel.LEVEL1;
-            else if (gameScore >= 100 && gameScore < 300)
+            else if (gameScore >= 50 && gameScore < 100)
                 levelToChange = GameLevel.LEVEL2;
-            else if (gameScore >= 300 && gameScore < 600)
+            else if (gameScore >= 100 && gameScore < 200)
                 levelToChange = GameLevel.LEVEL3;
-            else if (gameScore >= 600 && gameScore < 1000)
+            else if (gameScore >= 200 && gameScore < 300)
                 levelToChange = GameLevel.LEVEL4;
-            else if (gameScore >= 1000)
+            else if (gameScore >= 300)
                 levelToChange = GameLevel.LEVEL5;
 
             if (levelToChange != currentGameLevel)
             {
+                levelUpText = "Level Up, Be Ready!";
+                levelUpTextTimer = 2000;
                 currentGameLevel = levelToChange;
                 modelManager.LoadGameLevelData(gameLevel.loadLevelData(currentGameLevel));
             }
@@ -325,6 +327,14 @@ namespace ShootingGame
                 spriteBatch.DrawString(Font1, scoreText, FontPos, Color.LightGreen,
                     0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
 
+                if (levelUpTextTimer > 0)                    
+                {
+                    levelUpTextTimer -= gameTime.ElapsedGameTime.Milliseconds;
+                    Vector2 textSize = Font1.MeasureString(levelUpText);
+                    spriteBatch.DrawString(Font1, levelUpText,
+                        new Vector2((Window.ClientBounds.Width / 2) - (textSize.X / 2),
+                            (Window.ClientBounds.Height / 5) - (textSize.Y / 2)), Color.Goldenrod);
+                }
                 spriteBatch.End();                
             }
 
