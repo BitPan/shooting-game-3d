@@ -167,10 +167,13 @@ namespace ShootingGame
                 {
                     if (shots[i].CollidesWith(enemies[j].model, enemies[j].GetWorld()))
                     {
+                        ((Game1)Game).BackGroundPause();
+                        ((Game1)Game).PlaySoundEffect();
                         enemies.RemoveAt(j);
                         shots.RemoveAt(i);                        
                         score += 10;
                         j--;
+                        ((Game1)Game).BackGroudResumePlay();
                     }
                 }                
             }
@@ -444,75 +447,12 @@ namespace ShootingGame
             base.Draw(gameTime);
         }
 
-        public void DrawGround(GraphicsDevice device, Camera camera, Model ground, Texture2D[] groundTextures)
-        {
-            SamplerState ss = new SamplerState();
-            ss.AddressU = TextureAddressMode.Clamp;
-            ss.AddressV = TextureAddressMode.Clamp;
-            device.SamplerStates[0] = ss;
-
-            DepthStencilState dss = new DepthStencilState();
-            dss.DepthBufferEnable = false;
-            device.DepthStencilState = dss;
-
-            Matrix[] groundTransforms = new Matrix[ground.Bones.Count];
-            ground.CopyAbsoluteBoneTransformsTo(groundTransforms);
-            int i = 0;
-            foreach (ModelMesh mesh in ground.Meshes)
-            {
-                foreach (Effect currentEffect in mesh.Effects)
-                {
-                    Matrix worldMatrix = groundTransforms[mesh.ParentBone.Index] * Matrix.CreateTranslation(new Vector3(0, 0, 0));
-                    currentEffect.CurrentTechnique = currentEffect.Techniques["Textured"];
-                    currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
-                    currentEffect.Parameters["xView"].SetValue(camera.view);
-                    currentEffect.Parameters["xProjection"].SetValue(camera.projection);
-                    currentEffect.Parameters["xTexture"].SetValue(groundTextures[i++]);
-                }
-                mesh.Draw();
-            }
-
-            dss = new DepthStencilState();
-            dss.DepthBufferEnable = true;
-            device.DepthStencilState = dss;
-        }
-
+      
 
  
      
 
-        public void DrawSkybox(GraphicsDevice device, Camera camera, Model skyboxModel, Texture2D[] skyboxTextures)
-        {
-            SamplerState ss = new SamplerState();
-            ss.AddressU = TextureAddressMode.Clamp;
-            ss.AddressV = TextureAddressMode.Clamp;
-            device.SamplerStates[0] = ss;
 
-            DepthStencilState dss = new DepthStencilState();
-            dss.DepthBufferEnable = false;
-            device.DepthStencilState = dss;
-            Matrix[] skyboxTransforms = new Matrix[skyboxModel.Bones.Count];
-            skyboxModel.CopyAbsoluteBoneTransformsTo(skyboxTransforms);
-            int i = 0;
-            foreach (ModelMesh mesh in skyboxModel.Meshes)
-            {
-                foreach (Effect currentEffect in mesh.Effects)
-                {
-                    Matrix worldMatrix = Matrix.CreateScale(200) * skyboxTransforms[mesh.ParentBone.Index] * Matrix.CreateTranslation(camera.cameraPostion - (new Vector3(0, 50, 0)));
-                    currentEffect.CurrentTechnique = currentEffect.Techniques["Textured"];
-                    currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
-                    currentEffect.Parameters["xView"].SetValue(camera.view);
-                    currentEffect.Parameters["xProjection"].SetValue(camera.projection);
-                    currentEffect.Parameters["xTexture"].SetValue(skyboxTextures[i++]);
-                }
-                mesh.Draw();
-            }
-
-            dss = new DepthStencilState();
-            dss.DepthBufferEnable = true;
-            device.DepthStencilState = dss;
-        }
-        
     }
 
         
