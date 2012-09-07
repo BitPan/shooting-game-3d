@@ -46,8 +46,7 @@ namespace ShootingGame
         Effect floorEffect;
         Texture2D sceneryTexture;
         Music music;
-        Song song;
-        SoundEffect soundeffect;
+      
         int finalScore;
         int playerHealth;
         string levelUpText = "";
@@ -55,6 +54,7 @@ namespace ShootingGame
 
         Vector3 tankPosition;
         Matrix rotation;
+        BackGround background;
 
         private const int boundryLeft = -800;
         private const int boundryRight = 800;
@@ -89,6 +89,7 @@ namespace ShootingGame
             camera = new Camera(this, new Vector3(0, 30, 50), new Vector3(0, 30, -1), Vector3.Up);
             modelManager = new ModelManager(this);
             InitializegameMenuList();
+            background = new BackGround(this);
             Components.Add(modelManager);
             Components.Add(camera);
             
@@ -115,13 +116,10 @@ namespace ShootingGame
             Font1 = Content.Load<SpriteFont>(@"text\SpriteFont1");
             floorEffect = Content.Load<Effect>(@"Effects\effects");
             sceneryTexture = Content.Load<Texture2D>(@"Textures\floortexture");
-            skyboxModel = modelManager.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
-            ground = modelManager.LModel(floorEffect, "ground\\Ground", out groundTextures);
-    
-            song = Content.Load<Song>("music/background");
-            soundeffect = Content.Load<SoundEffect>("music/Bomb");
+            skyboxModel = background.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
+            ground = background.LModel(floorEffect, "ground\\Ground", out groundTextures);
             tank.Load(Content);
-            music = new Music(this, song, soundeffect);
+            music = new Music(this);
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
@@ -218,9 +216,12 @@ namespace ShootingGame
 
                     if (Mouse.GetState().LeftButton == ButtonState.Pressed)
                     {
+                       
                         if (timeSinceLastShoot >= nextShootTime)
                         {
+                            music.PlayShootingEffect();
                             modelManager.addShot(camera.cameraPostion, camera.cameraDirection);
+                           
                             timeSinceLastShoot = 0;
                         }
                     }
@@ -312,8 +313,9 @@ namespace ShootingGame
             }
             else if (currentGameState == GameState.PLAY)
             {
-                modelManager.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
-                modelManager.DrawGround(device, camera, ground, groundTextures);
+            
+                background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
+                background.DrawGround(device, camera, ground, groundTextures);
                 tank.Draw(rotation, camera.view, camera.projection, tankPosition);
 
                 // TODO: Add your drawing code here
@@ -344,11 +346,10 @@ namespace ShootingGame
 
         public void DeductPlayerHealth(int health)
         {
-            music.BackgroundPause();
-            this.music.EffectPlay();
+            music.hitSoundPlay();
             playerHealth -= health;
             camera.SetShake(0.2f, 0.4f);
-            //music.BackGroundResume();
+        
 
         }
 
@@ -359,6 +360,24 @@ namespace ShootingGame
             rotation = rotation = Matrix.CreateScale(0.1f) * Matrix.CreateRotationY(time * 0.1f);
         }
 
+        public void PlayBackGroundMusic() {
+
+            this.music.BackGroundPlay();
+        
+        }
+        public void PlaySoundEffect() {
+            this.music.EffectPlay();
+        
+        }
+
+        public void BackGroundPause() {
+            this.music.BackgroundPause();
+        }
+
+        public void BackGroudResumePlay() {
+            this.music.BackGroundResume();
+        
+        }
         private void SetNextShootTime(int shootCD)
         {
             nextShootTime = shootCD;

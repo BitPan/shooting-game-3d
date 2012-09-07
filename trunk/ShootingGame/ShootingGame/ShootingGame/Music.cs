@@ -21,12 +21,18 @@ namespace ShootingGame
         private Song song;
         private SoundEffect seffect;
         private SoundEffectInstance se;
-        public Music(Game game, Song song, SoundEffect seffect)
+        SoundEffect shootingEffect;
+        SoundEffectInstance shootingEffectInstance;
+        SoundEffectInstance hitSound;
+        public Music(Game game)
             : base(game)
         {
-            this.se = seffect.CreateInstance();
-            this.song = song;
+            this.se = this.Game.Content.Load<SoundEffect>("music/Bomb").CreateInstance();
+            this.song = this.Game.Content.Load<Song>("music/background");
+            this.shootingEffect = this.Game.Content.Load<SoundEffect>("music/laser");
 
+            this.shootingEffectInstance = shootingEffect.CreateInstance();
+            this.hitSound = this.Game.Content.Load<SoundEffect>("music/hit").CreateInstance();
             // TODO: Construct any child components here
         }
 
@@ -36,13 +42,21 @@ namespace ShootingGame
         /// </summary>
         public override void Initialize()
         {
+    
             // TODO: Add your initialization code here
 
             base.Initialize();
         }
 
         public void EffectPlay(){
+            this.se.Volume = 1f;
             this.se.Play();
+        
+        }
+
+        public void hitSoundPlay() {
+            this.hitSound.Volume = 1f;
+            this.hitSound.Play();
         
         }
         public void EffectStopPlay() {
@@ -50,6 +64,11 @@ namespace ShootingGame
             this.se.Stop();
         }
 
+        public void PlayShootingEffect() { 
+        this.shootingEffectInstance.Volume=1f;
+        this.shootingEffectInstance.Play();
+        
+        }
         public void BackgroundPause() {
 
             MediaPlayer.Pause();

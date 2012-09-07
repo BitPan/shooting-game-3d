@@ -14,7 +14,13 @@ using Microsoft.Xna.Framework.Graphics;
 #endregion
 
 namespace ShootingGame
-{
+{/*
+  Reference: Model and class download from
+  * http://xbox.create.msdn.com/en-US/education/catalog/sample/simple_animation
+  
+
+  
+  */
     /// <summary>
     /// Helper class for drawing a tank model with animated wheels and turret.
     /// </summary>
