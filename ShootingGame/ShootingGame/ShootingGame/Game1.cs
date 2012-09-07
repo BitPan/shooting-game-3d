@@ -72,7 +72,6 @@ namespace ShootingGame
             graphics.PreferredBackBufferHeight = 500;
             gameLevel = new LevelData();
             currentGameState = GameState.START;
-            tank = new Tank();
             this.IsMouseVisible = true;
             timeSinceLastShoot = 0;
             nextShootTime = 0;
@@ -120,11 +119,10 @@ namespace ShootingGame
             sceneryTexture = Content.Load<Texture2D>(@"Textures\floortexture");
             skyboxModel = background.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
             ground = background.LModel(floorEffect, "ground\\Ground", out groundTextures);
-            tank.Load(Content);
+           // tank.Load(Content);
             music = new Music(this);
             myModel = Content.Load<Model>("house/house");
-
-            Vector3 modelPosition = Vector3.Zero;
+           // Vector3 modelPosition = new Vector3(50,0,0);
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
@@ -216,7 +214,7 @@ namespace ShootingGame
                 {
                     setGameLevel(modelManager.score);
                     modelManager.spawnEnemy(gameTime);
-                    tank.Draw(rotation, camera.view, camera.projection, tankPosition);
+                   // tank.Draw(rotation, camera.view, camera.projection, tankPosition);
                     
 
                     if (Mouse.GetState().LeftButton == ButtonState.Pressed)
@@ -321,11 +319,13 @@ namespace ShootingGame
             
                 background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
                 background.DrawGround(device, camera, ground, groundTextures);
-                //tank.Draw(rotation, camera.view, camera.projection, tankPosition);
+       
                 house = new House(this);
-                house.Draw(myModel, camera.view, camera.projection);
+                house.Draw(myModel, camera.view*2f, Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
+ (float)Window.ClientBounds.Width /
+                (float)Window.ClientBounds.Height, 1, 10000));
 
-
+               
                 // TODO: Add your drawing code here
                 
                 spriteBatch.Begin();

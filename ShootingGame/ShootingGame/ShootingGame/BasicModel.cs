@@ -11,7 +11,7 @@ namespace ShootingGame
     {
 
         public Model model { get; protected set; }
-        public Matrix world = Matrix.Identity;//控制model的绘制位置，旋转缩放等
+        public Matrix world = Matrix.Identity;
         public Vector3 direction {get; protected set;}
 
 
