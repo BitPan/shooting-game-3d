@@ -8,6 +8,11 @@ Content\viper test.xnb
 Content\Models\map.xnb
 Content\Models\tank.xnb
 Content\Models\weapon.xnb
+Content\Models\player.xnb
+Content\house\crateA_fbx.xnb
+Content\house\house.xnb
+Content\house\sacks_fbx.xnb
+Content\house\swingA_fbx.xnb
 Content\Models\dirt2-1\dirt 2-242837c0.xnb
 Content\Models\dirt2-1\dirt 2-26c2d220.xnb
 Content\Models\dirt2-1\dirt 2-4be9a760.xnb
@@ -30,20 +35,33 @@ Content\skybox\clear_left.xnb
 Content\skybox\clear_right.xnb
 Content\skybox\clear_top.xnb
 Content\Models\hk_mp5n.xnb
+Content\Models\engine_diff_tex.xnb
+Content\Models\turret_alt_diff_tex.xnb
+Content\house\crateA.xnb
+Content\house\crateANM.xnb
+Content\house\houseA.xnb
+Content\house\houseANM.xnb
+Content\house\sackNM.xnb
+Content\house\sackTex.xnb
+Content\house\swingNML.xnb
+Content\house\swingTexL.xnb
 Content\Effects\effects.xnb
 Content\music\background.xnb
 Content\music\background.wma
 Content\music\Bomb.xnb
+Content\music\laser.xnb
+Content\music\hit.xnb
+Content\ground\3SNe_0.xnb
 Content\skybox\clear_top_0.xnb
 Content\skybox\clear_right_0.xnb
 Content\skybox\clear_left_0.xnb
 Content\skybox\clear_front_0.xnb
 Content\skybox\clear_back_0.xnb
 Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb
-Content\Models\hk_mp5n_0.xnb
-Content\ground\3SNe_0.xnb
-Content\Models\player.xnb
-Content\Models\engine_diff_tex.xnb
-Content\Models\turret_alt_diff_tex.xnb
 Content\Models\engine_diff_tex_0.xnb
 Content\Models\turret_alt_diff_tex_0.xnb
+Content\Models\hk_mp5n_0.xnb
+Content\house\crateA_0.xnb
+Content\house\houseA_0.xnb
+Content\house\sackTex_0.xnb
+Content\house\swingTexL_0.xnb

@@ -56,6 +56,7 @@ namespace ShootingGame
         Matrix rotation;
         BackGround background;
         Model myModel;
+        House house;
 
         private const int boundryLeft = -800;
         private const int boundryRight = 800;
@@ -321,22 +322,8 @@ namespace ShootingGame
                 background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
                 background.DrawGround(device, camera, ground, groundTextures);
                 //tank.Draw(rotation, camera.view, camera.projection, tankPosition);
-                Matrix[] transforms = new Matrix[myModel.Bones.Count];
-                myModel.CopyAbsoluteBoneTransformsTo(transforms);
-                foreach (ModelMesh mesh in myModel.Meshes)
-                {
-                    // This is where the mesh orientation is set, as well 
-                    // as our camera and projection.
-                    foreach (BasicEffect effect in mesh.Effects)
-                    {
-                        effect.EnableDefaultLighting();
-                        effect.World = transforms[mesh.ParentBone.Index];
-                        effect.View = camera.view;
-                        effect.Projection = camera.projection;
-                    }
-                    // Draw the mesh, using the effects set above.
-                    mesh.Draw();
-                }
+                house = new House(this);
+                house.Draw(myModel, camera.view, camera.projection);
 
 
                 // TODO: Add your drawing code here

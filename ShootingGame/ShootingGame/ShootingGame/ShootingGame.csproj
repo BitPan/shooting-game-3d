@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="BackGround.cs" />
     <Compile Include="GameMenu.cs" />
+    <Compile Include="House.cs" />
     <Compile Include="LevelData.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="BasicModel.cs" />
