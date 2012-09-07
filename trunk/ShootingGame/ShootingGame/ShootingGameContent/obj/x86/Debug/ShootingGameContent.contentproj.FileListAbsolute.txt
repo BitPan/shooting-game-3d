@@ -3,3 +3,4 @@ C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\Sho
 C:\Users\ste706\Desktop\GamePrograming\ShootingGame\ShootingGame\ShootingGameContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\10820520\Desktop\sejj\ShootingGame\ShootingGame\ShootingGameContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\ste706\Desktop\GameAssign1\ShootingGame\ShootingGame\ShootingGameContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGameContent\obj\x86\Debug\ResolveAssemblyReference.cache
