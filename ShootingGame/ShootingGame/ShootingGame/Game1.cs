@@ -55,6 +55,7 @@ namespace ShootingGame
         Vector3 tankPosition;
         Matrix rotation;
         BackGround background;
+        Model myModel;
 
         private const int boundryLeft = -800;
         private const int boundryRight = 800;
@@ -120,6 +121,9 @@ namespace ShootingGame
             ground = background.LModel(floorEffect, "ground\\Ground", out groundTextures);
             tank.Load(Content);
             music = new Music(this);
+            myModel = Content.Load<Model>("house/house");
+
+            Vector3 modelPosition = Vector3.Zero;
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
@@ -316,12 +320,27 @@ namespace ShootingGame
             
                 background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
                 background.DrawGround(device, camera, ground, groundTextures);
-                tank.Draw(rotation, camera.view, camera.projection, tankPosition);
+                //tank.Draw(rotation, camera.view, camera.projection, tankPosition);
+                Matrix[] transforms = new Matrix[myModel.Bones.Count];
+                myModel.CopyAbsoluteBoneTransformsTo(transforms);
+                foreach (ModelMesh mesh in myModel.Meshes)
+                {
+                    // This is where the mesh orientation is set, as well 
+                    // as our camera and projection.
+                    foreach (BasicEffect effect in mesh.Effects)
+                    {
+                        effect.EnableDefaultLighting();
+                        effect.World = transforms[mesh.ParentBone.Index];
+                        effect.View = camera.view;
+                        effect.Projection = camera.projection;
+                    }
+                    // Draw the mesh, using the effects set above.
+                    mesh.Draw();
+                }
+
 
                 // TODO: Add your drawing code here
-                effect.World = Matrix.Identity;
-                effect.View = camera.view;
-                effect.Projection = camera.projection;
+                
                 spriteBatch.Begin();
                 // Find the center of the string
                 Vector2 FontOrigin = Font1.MeasureString(scoreText) / 2;
