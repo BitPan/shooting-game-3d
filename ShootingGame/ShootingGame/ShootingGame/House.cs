@@ -34,7 +34,7 @@ namespace ShootingGame
             base.Initialize();
         }
 
-        public void Draw(Model myModel,Matrix view,Matrix projection)
+        public void Draw(Model myModel,Matrix view,Matrix projection,Vector3 position)
         {
             Matrix[] transforms = new Matrix[myModel.Bones.Count];
             myModel.CopyAbsoluteBoneTransformsTo(transforms);
@@ -45,7 +45,7 @@ namespace ShootingGame
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.EnableDefaultLighting();
-                    effect.World = Matrix.Identity * mesh.ParentBone.Transform;
+                    effect.World =   mesh.ParentBone.Transform*Matrix.CreateScale(1f)*Matrix.CreateRotationX(0f)*Matrix.CreateTranslation(position);
                     //effect.World = transforms[mesh.ParentBone.Index];
                     effect.View = view;
                     effect.Projection = projection;
