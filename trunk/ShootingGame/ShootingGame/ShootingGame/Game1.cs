@@ -321,13 +321,13 @@ namespace ShootingGame
             else if (currentGameState == GameState.PLAY)
             {
                
-               // background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
+               background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
                // background.DrawGround(device, camera, ground, groundTextures);
                 DrawCity(floorEffect,50f,0f,new Vector3(0,0,0));  
-              //  house = new House(this);
-               // house.Draw(myModel, camera.view*2f, Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
- //(float)Window.ClientBounds.Width /
-   //             (float)Window.ClientBounds.Height, 1, 10000));
+               house = new House(this);
+                house.Draw(myModel, camera.view*2f, Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
+ (float)Window.ClientBounds.Width /
+                (float)Window.ClientBounds.Height, 1, 10000),new Vector3(250,0,-500));
 
                
                 // TODO: Add your drawing code here
@@ -484,26 +484,26 @@ namespace ShootingGame
         {
             floorPlan = new int[,]
              {
-                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                 {1,0,0,1,1,0,0,0,1,1,0,0,1,0,1},
-                 {1,0,0,1,1,0,0,0,1,0,0,0,1,0,1},
-                 {1,0,0,0,1,1,0,1,1,0,0,0,0,0,1},
-                 {1,0,0,0,0,0,0,0,0,0,0,1,0,0,1},
-                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                 {1,0,1,1,0,0,0,1,0,0,0,0,0,0,1},
-                 {1,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
-                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-                 {1,0,0,0,0,1,0,0,0,0,0,0,0,0,1},
-                 {1,0,0,0,0,1,0,0,0,1,0,0,0,0,1},
-                 {1,0,1,0,0,0,0,0,0,1,0,0,0,0,1},
-                 {1,0,1,1,0,0,0,0,1,1,0,0,0,1,1},
-                 {1,0,0,0,0,0,0,0,1,1,0,0,0,1,1},
-                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,1,1,0,0,0,1,1,0,0,1,0,0},
+                 {0,0,0,1,1,0,0,0,1,0,0,0,1,0,0},
+                 {0,0,0,0,1,1,0,1,1,0,0,0,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,1,1,0,0,0,1,0,0,0,0,0,0,0},
+                 {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,1,0,0,0,1,0,0,0,0,0},
+                 {0,0,1,0,0,0,0,0,0,1,0,0,0,0,0},
+                 {0,0,1,1,0,0,0,0,1,1,0,0,0,1,0},
+                 {0,0,0,0,0,0,0,0,1,1,0,0,0,1,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
              };
             Random random = new Random();
             int differentBuildings = buildingHeights.Length - 1;
