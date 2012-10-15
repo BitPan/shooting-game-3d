@@ -45,7 +45,8 @@ namespace ShootingGame
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.EnableDefaultLighting();
-                    effect.World = transforms[mesh.ParentBone.Index];
+                    effect.World = Matrix.Identity * mesh.ParentBone.Transform;
+                    //effect.World = transforms[mesh.ParentBone.Index];
                     effect.View = view;
                     effect.Projection = projection;
                 }
@@ -54,7 +55,7 @@ namespace ShootingGame
             }
         
         }
-
+        
         /// <summary>
         /// Allows the game component to update itself.
         /// </summary>

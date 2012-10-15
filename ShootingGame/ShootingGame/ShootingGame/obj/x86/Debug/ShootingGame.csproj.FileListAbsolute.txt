@@ -284,3 +284,5 @@ C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\obj\x86\De
 C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\obj\x86\Debug\ShootingGame.exe
 C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\obj\x86\Debug\ShootingGame.pdb
+C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\texturemap.xnb
+C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\effects.xnb

@@ -86,6 +86,7 @@ namespace ShootingGame
             device.DepthStencilState = dss;
         }
 
+        
 
         public void DrawSkybox(GraphicsDevice device, Camera camera, Model skyboxModel, Texture2D[] skyboxTextures)
         {

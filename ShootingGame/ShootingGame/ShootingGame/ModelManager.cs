@@ -407,7 +407,7 @@ namespace ShootingGame
 
         public void addPlayer(Vector3 position, Vector3 direction)
         {
-            player.Add(new SpinningModel(Game.Content.Load<Model>("Models\\spaceship"), 0.3f, position, direction, 0, 0, 0));
+            player.Add(new SpinningModel(Game.Content.Load<Model>("Models\\player"), 0.3f, position, direction, 0, 0, 0));
         }
 
         public void addTree(Vector3 position)

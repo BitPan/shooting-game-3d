@@ -862,6 +862,24 @@
       <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingTexL_0.xnb</Output>
       <Time>2012-09-07T12:56:50.4785039+10:00</Time>
     </Item>
+    <Item>
+      <Source>texturemap.jpg</Source>
+      <Name>texturemap</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\texturemap.xnb</Output>
+      <Time>2012-10-15T19:13:52.7860645+11:00</Time>
+    </Item>
+    <Item>
+      <Source>effects.fx</Source>
+      <Name>effects</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\effects.xnb</Output>
+      <Time>2012-10-15T19:22:32.7160523+11:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
