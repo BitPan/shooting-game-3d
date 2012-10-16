@@ -7,8 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\text\SpriteFont1.xnb</Output>
-      <Time>2012-09-07T11:17:16.9875646+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\text\SpriteFont1.xnb</Output>
+      <Time>2012-10-15T22:59:30.4005405+11:00</Time>
     </Item>
     <Item>
       <Source>Models\ammo.x</Source>
@@ -16,11 +16,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ammo.xnb</Output>
-      <Time>2012-09-07T11:17:16.4275086+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ammo.xnb</Output>
+      <Time>2012-10-15T22:58:30.7181268+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\ammo_0.xml</Key>
-        <Value>2012-09-07T22:25:19.4697154+10:00</Value>
+        <Value>2012-10-15T23:53:50.1659884+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -29,11 +29,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\spaceship.xnb</Output>
-      <Time>2012-09-07T11:17:16.4445103+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\spaceship.xnb</Output>
+      <Time>2012-10-15T22:59:17.4708009+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\spaceship_0.xml</Key>
-        <Value>2012-09-07T22:25:19.7287413+10:00</Value>
+        <Value>2012-10-15T23:53:50.8840294+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -42,13 +42,13 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ground.xnb</Output>
-      <Time>2012-09-07T11:17:19.9488607+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ground.xnb</Output>
+      <Time>2012-10-15T22:59:55.0539505+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\ground\Ground_0.xml</Key>
-        <Value>2012-09-07T22:25:19.7937478+10:00</Value>
+        <Value>2012-10-15T23:53:50.998036+11:00</Value>
       </Dependency>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe_0.xnb</Request>
     </Item>
     <Item>
       <Source>skybox\skybox.x</Source>
@@ -56,17 +56,17 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\skybox.xnb</Output>
-      <Time>2012-09-07T11:17:12.7531412+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\skybox.xnb</Output>
+      <Time>2012-10-15T22:58:16.6843241+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\skybox\skybox_0.xml</Key>
-        <Value>2012-09-07T22:25:19.9927677+10:00</Value>
+        <Value>2012-10-15T23:53:51.6060707+11:00</Value>
       </Dependency>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top_0.xnb</Request>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right_0.xnb</Request>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left_0.xnb</Request>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front_0.xnb</Request>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back_0.xnb</Request>
     </Item>
     <Item>
       <Source>vic viper small junctioned.x</Source>
@@ -74,11 +74,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\junctioned.xnb</Output>
-      <Time>2012-09-07T11:17:20.0938752+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\junctioned.xnb</Output>
+      <Time>2012-10-15T22:59:32.001632+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\vic viper small junctioned_0.xml</Key>
-        <Value>2012-09-07T22:25:20.7568441+10:00</Value>
+        <Value>2012-10-15T23:53:53.3101682+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -87,11 +87,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\viper test.xnb</Output>
-      <Time>2012-09-07T11:17:20.1068765+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\viper test.xnb</Output>
+      <Time>2012-10-15T22:59:55.0019476+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\viper test_0.xml</Key>
-        <Value>2012-09-07T22:25:20.9218606+10:00</Value>
+        <Value>2012-10-15T23:53:53.8291979+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -100,13 +100,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\map.xnb</Output>
-      <Time>2012-09-07T11:17:16.4955154+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\map.xnb</Output>
+      <Time>2012-10-15T22:59:17.5348046+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\map_0.xml</Key>
-        <Value>2012-09-07T22:25:21.6509335+10:00</Value>
+        <Value>2012-10-15T23:53:55.2852812+11:00</Value>
       </Dependency>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\tank.FBX</Source>
@@ -114,14 +114,14 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\tank.xnb</Output>
-      <Time>2012-09-07T11:17:16.5145173+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\tank.xnb</Output>
+      <Time>2012-10-15T22:59:17.5548057+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\tank_0.xml</Key>
-        <Value>2012-09-07T22:25:23.4401124+10:00</Value>
+        <Value>2012-10-15T23:53:58.2874529+11:00</Value>
       </Dependency>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex_0.xnb</Request>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\weapon.fbx</Source>
@@ -129,13 +129,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\weapon.xnb</Output>
-      <Time>2012-09-07T11:17:16.451511+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\weapon.xnb</Output>
+      <Time>2012-10-15T22:59:17.4798014+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\weapon_0.xml</Key>
-        <Value>2012-09-07T22:25:24.6592343+10:00</Value>
+        <Value>2012-10-15T23:54:01.3696292+11:00</Value>
       </Dependency>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\player.FBX</Source>
@@ -143,11 +143,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\player.xnb</Output>
-      <Time>2012-09-07T11:17:16.4885147+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\player.xnb</Output>
+      <Time>2012-10-15T22:59:17.524804+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\player_0.xml</Key>
-        <Value>2012-09-07T22:25:24.8372521+10:00</Value>
+        <Value>2012-10-15T23:54:01.7646518+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -156,13 +156,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateA_fbx.xnb</Output>
-      <Time>2012-09-07T12:56:50.3764937+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateA_fbx.xnb</Output>
+      <Time>2012-10-15T22:59:30.2685329+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\house\crateA_fbx_0.xml</Key>
-        <Value>2012-09-07T22:25:24.8992583+10:00</Value>
+        <Value>2012-10-15T23:54:01.890659+11:00</Value>
       </Dependency>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateA_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateA_0.xnb</Request>
     </Item>
     <Item>
       <Source>house\houseA_fbx.fbx</Source>
@@ -170,13 +170,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\house.xnb</Output>
-      <Time>2012-09-07T12:56:50.409497+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\house.xnb</Output>
+      <Time>2012-10-15T22:59:30.2135298+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\house\houseA_fbx_0.xml</Key>
-        <Value>2012-09-07T22:25:25.6293313+10:00</Value>
+        <Value>2012-10-15T23:54:03.2817385+11:00</Value>
       </Dependency>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\houseA_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\houseA_0.xnb</Request>
     </Item>
     <Item>
       <Source>house\sacks_fbx.fbx</Source>
@@ -184,13 +184,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sacks_fbx.xnb</Output>
-      <Time>2012-09-07T12:56:50.4395+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sacks_fbx.xnb</Output>
+      <Time>2012-10-15T22:59:30.2195301+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\house\sacks_fbx_0.xml</Key>
-        <Value>2012-09-07T22:25:26.8434527+10:00</Value>
+        <Value>2012-10-15T23:54:05.2168492+11:00</Value>
       </Dependency>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sackTex_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sackTex_0.xnb</Request>
     </Item>
     <Item>
       <Source>house\swingA_fbx.fbx</Source>
@@ -198,13 +198,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingA_fbx.xnb</Output>
-      <Time>2012-09-07T12:56:50.459502+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingA_fbx.xnb</Output>
+      <Time>2012-10-15T22:59:30.2445315+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\house\swingA_fbx_0.xml</Key>
-        <Value>2012-09-07T22:25:27.0924776+10:00</Value>
+        <Value>2012-10-15T23:54:05.7918821+11:00</Value>
       </Dependency>
-      <Request>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingTexL_0.xnb</Request>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingTexL_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\dirt2-1\dirt 2-242837c0.bmp</Source>
@@ -212,8 +212,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-242837c0.xnb</Output>
-      <Time>2012-09-07T11:17:14.5173176+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-242837c0.xnb</Output>
+      <Time>2012-10-15T22:58:30.7541289+11:00</Time>
     </Item>
     <Item>
       <Source>Models\dirt2-1\dirt 2-26c2d220.bmp</Source>
@@ -221,8 +221,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-26c2d220.xnb</Output>
-      <Time>2012-09-07T11:17:14.511317+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-26c2d220.xnb</Output>
+      <Time>2012-10-15T22:58:30.7401281+11:00</Time>
     </Item>
     <Item>
       <Source>Models\dirt2-1\dirt 2-4be9a760.bmp</Source>
@@ -230,8 +230,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760.xnb</Output>
-      <Time>2012-09-07T11:17:14.4923151+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760.xnb</Output>
+      <Time>2012-10-15T22:58:30.7321276+11:00</Time>
     </Item>
     <Item>
       <Source>Textures\floortexture.jpg</Source>
@@ -239,8 +239,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\floortexture.xnb</Output>
-      <Time>2012-09-07T11:17:16.9045563+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\floortexture.xnb</Output>
+      <Time>2012-10-15T22:59:30.3825394+11:00</Time>
     </Item>
     <Item>
       <Source>ground\029terresable.jpg</Source>
@@ -248,8 +248,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\029terresable.xnb</Output>
-      <Time>2012-09-07T11:17:19.9398598+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\029terresable.xnb</Output>
+      <Time>2012-10-15T22:59:55.0419499+11:00</Time>
     </Item>
     <Item>
       <Source>ground\19uq.png</Source>
@@ -257,8 +257,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\19uq.xnb</Output>
-      <Time>2012-09-07T11:17:19.9358594+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\19uq.xnb</Output>
+      <Time>2012-10-15T22:59:55.0359495+11:00</Time>
     </Item>
     <Item>
       <Source>ground\3SNe.png</Source>
@@ -266,8 +266,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe.xnb</Output>
-      <Time>2012-09-07T11:17:19.9738632+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe.xnb</Output>
+      <Time>2012-10-15T22:59:55.0849523+11:00</Time>
     </Item>
     <Item>
       <Source>ground\Ak4c.jpg</Source>
@@ -275,8 +275,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ak4c.xnb</Output>
-      <Time>2012-09-07T11:17:19.9258584+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ak4c.xnb</Output>
+      <Time>2012-10-15T22:59:55.0219487+11:00</Time>
     </Item>
     <Item>
       <Source>ground\Checker.bmp</Source>
@@ -284,8 +284,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Checker.xnb</Output>
-      <Time>2012-09-07T11:17:19.921858+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Checker.xnb</Output>
+      <Time>2012-10-15T22:59:55.0149483+11:00</Time>
     </Item>
     <Item>
       <Source>ground\greytiles.jpg</Source>
@@ -293,8 +293,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\greytiles.xnb</Output>
-      <Time>2012-09-07T11:17:19.9608619+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\greytiles.xnb</Output>
+      <Time>2012-10-15T22:59:55.0669513+11:00</Time>
     </Item>
     <Item>
       <Source>ground\mapzoneagedpavementdiff.png</Source>
@@ -302,8 +302,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneagedpavementdiff.xnb</Output>
-      <Time>2012-09-07T11:17:19.9568615+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneagedpavementdiff.xnb</Output>
+      <Time>2012-10-15T22:59:55.0609509+11:00</Time>
     </Item>
     <Item>
       <Source>ground\mapzonegrass01diffuse.png</Source>
@@ -311,8 +311,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzonegrass01diffuse.xnb</Output>
-      <Time>2012-09-07T11:17:19.9458604+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzonegrass01diffuse.xnb</Output>
+      <Time>2012-10-15T22:59:55.0479502+11:00</Time>
     </Item>
     <Item>
       <Source>ground\mapzoneoldroaddiffuse.png</Source>
@@ -320,8 +320,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneoldroaddiffuse.xnb</Output>
-      <Time>2012-09-07T11:17:19.9698628+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneoldroaddiffuse.xnb</Output>
+      <Time>2012-10-15T22:59:55.079952+11:00</Time>
     </Item>
     <Item>
       <Source>ground\mapzoneredtilescratched.png</Source>
@@ -329,8 +329,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneredtilescratched.xnb</Output>
-      <Time>2012-09-07T11:17:19.9658624+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneredtilescratched.xnb</Output>
+      <Time>2012-10-15T22:59:55.0729516+11:00</Time>
     </Item>
     <Item>
       <Source>ground\sanddf.png</Source>
@@ -338,8 +338,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf.xnb</Output>
-      <Time>2012-09-07T11:17:19.9308589+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf.xnb</Output>
+      <Time>2012-10-15T22:59:55.0299492+11:00</Time>
     </Item>
     <Item>
       <Source>ground\TedO.png</Source>
@@ -347,8 +347,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\TedO.xnb</Output>
-      <Time>2012-09-07T11:17:19.9788637+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\TedO.xnb</Output>
+      <Time>2012-10-15T22:59:55.0899526+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_back.JPG</Source>
@@ -356,8 +356,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back.xnb</Output>
-      <Time>2012-09-07T11:17:12.7491408+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back.xnb</Output>
+      <Time>2012-10-15T22:58:16.6803239+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_front.JPG</Source>
@@ -365,8 +365,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front.xnb</Output>
-      <Time>2012-09-07T11:17:12.781144+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front.xnb</Output>
+      <Time>2012-10-15T22:58:16.6943247+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_left.JPG</Source>
@@ -374,8 +374,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left.xnb</Output>
-      <Time>2012-09-07T11:17:12.7391398+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left.xnb</Output>
+      <Time>2012-10-15T22:58:16.6713234+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_right.JPG</Source>
@@ -383,8 +383,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right.xnb</Output>
-      <Time>2012-09-07T11:17:12.7441403+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right.xnb</Output>
+      <Time>2012-10-15T22:58:16.6753236+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_top.JPG</Source>
@@ -392,8 +392,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top.xnb</Output>
-      <Time>2012-09-07T11:17:12.7761435+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top.xnb</Output>
+      <Time>2012-10-15T22:58:16.6903245+11:00</Time>
     </Item>
     <Item>
       <Source>Models\hk_mp5n.jpg</Source>
@@ -401,8 +401,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n.xnb</Output>
-      <Time>2012-09-07T11:17:16.4385097+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n.xnb</Output>
+      <Time>2012-10-15T22:58:30.7241272+11:00</Time>
     </Item>
     <Item>
       <Source>Models\engine_diff_tex.tga</Source>
@@ -410,8 +410,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex.xnb</Output>
-      <Time>2012-09-07T11:17:16.4695128+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex.xnb</Output>
+      <Time>2012-10-15T22:59:17.4988025+11:00</Time>
     </Item>
     <Item>
       <Source>Models\turret_alt_diff_tex.tga</Source>
@@ -419,8 +419,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex.xnb</Output>
-      <Time>2012-09-07T11:17:16.4825141+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex.xnb</Output>
+      <Time>2012-10-15T22:59:17.5148034+11:00</Time>
     </Item>
     <Item>
       <Source>house\crateA.jpg</Source>
@@ -428,8 +428,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateA.xnb</Output>
-      <Time>2012-09-07T12:56:50.3664927+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateA.xnb</Output>
+      <Time>2012-10-15T22:59:30.3335366+11:00</Time>
     </Item>
     <Item>
       <Source>house\crateANM.jpg</Source>
@@ -437,8 +437,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateANM.xnb</Output>
-      <Time>2012-09-07T12:56:50.3854946+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateANM.xnb</Output>
+      <Time>2012-10-15T22:59:30.2585323+11:00</Time>
     </Item>
     <Item>
       <Source>house\houseA.jpg</Source>
@@ -446,8 +446,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\houseA.xnb</Output>
-      <Time>2012-09-07T12:56:50.3934954+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\houseA.xnb</Output>
+      <Time>2012-10-15T22:59:30.2375311+11:00</Time>
     </Item>
     <Item>
       <Source>house\houseANM.jpg</Source>
@@ -455,8 +455,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\houseANM.xnb</Output>
-      <Time>2012-09-07T12:56:50.419498+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\houseANM.xnb</Output>
+      <Time>2012-10-15T22:59:30.3265362+11:00</Time>
     </Item>
     <Item>
       <Source>house\sackNM.jpg</Source>
@@ -464,8 +464,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sackNM.xnb</Output>
-      <Time>2012-09-07T12:56:50.4274988+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sackNM.xnb</Output>
+      <Time>2012-10-15T22:59:30.2645327+11:00</Time>
     </Item>
     <Item>
       <Source>house\sackTex.jpg</Source>
@@ -473,8 +473,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sackTex.xnb</Output>
-      <Time>2012-09-07T12:56:50.4475008+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sackTex.xnb</Output>
+      <Time>2012-10-15T22:59:30.2275306+11:00</Time>
     </Item>
     <Item>
       <Source>house\swingNML.tga</Source>
@@ -482,8 +482,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingNML.xnb</Output>
-      <Time>2012-09-07T12:56:50.4685029+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingNML.xnb</Output>
+      <Time>2012-10-15T22:59:30.253532+11:00</Time>
     </Item>
     <Item>
       <Source>house\swingTexL.tga</Source>
@@ -491,8 +491,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingTexL.xnb</Output>
-      <Time>2012-09-07T12:56:50.4785039+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingTexL.xnb</Output>
+      <Time>2012-10-15T22:59:30.2775334+11:00</Time>
+    </Item>
+    <Item>
+      <Source>texturemap.jpg</Source>
+      <Name>texturemap</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\texturemap.xnb</Output>
+      <Time>2012-10-15T22:59:55.008948+11:00</Time>
     </Item>
     <Item>
       <Source>Effects\effects.fx</Source>
@@ -500,8 +509,17 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Effects\effects.xnb</Output>
-      <Time>2012-09-07T11:17:12.5381197+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Effects\effects.xnb</Output>
+      <Time>2012-10-15T22:58:15.9532823+11:00</Time>
+    </Item>
+    <Item>
+      <Source>effects.fx</Source>
+      <Name>effects</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\effects.xnb</Output>
+      <Time>2012-10-15T22:59:54.991947+11:00</Time>
     </Item>
     <Item>
       <Source>music\background.mp3</Source>
@@ -509,9 +527,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.xnb</Output>
-      <Extra>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.wma</Extra>
-      <Time>2012-09-07T11:17:13.5992258+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.xnb</Output>
+      <Extra>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.wma</Extra>
+      <Time>2012-10-15T22:58:22.6946679+11:00</Time>
     </Item>
     <Item>
       <Source>music\BOMB3.WAV</Source>
@@ -519,8 +537,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\Bomb.xnb</Output>
-      <Time>2012-09-07T11:26:47.0703753+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\Bomb.xnb</Output>
+      <Time>2012-10-15T22:58:22.6996682+11:00</Time>
     </Item>
     <Item>
       <Source>music\LASER03.WAV</Source>
@@ -528,8 +546,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\laser.xnb</Output>
-      <Time>2012-09-07T11:58:55.6310095+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\laser.xnb</Output>
+      <Time>2012-10-15T22:58:22.6896676+11:00</Time>
     </Item>
     <Item>
       <Source>music\Pain-SoundBible.com-1883168362.wav</Source>
@@ -537,29 +555,29 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\hit.xnb</Output>
-      <Time>2012-09-07T12:28:22.4805401+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\hit.xnb</Output>
+      <Time>2012-10-15T22:58:22.678667+11:00</Time>
     </Item>
     <Item>
       <Source>Models\ammo.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\ammo_0.xml</Output>
-      <Time>2012-09-07T11:17:16.4275086+10:00</Time>
+      <Time>2012-10-15T22:58:30.7181268+11:00</Time>
     </Item>
     <Item>
       <Source>Models\spaceship.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\spaceship_0.xml</Output>
-      <Time>2012-09-07T11:17:16.4445103+10:00</Time>
+      <Time>2012-10-15T22:59:17.4708009+11:00</Time>
     </Item>
     <Item>
       <Source>ground\Ground.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\ground\Ground_0.xml</Output>
-      <Time>2012-09-07T11:17:19.9488607+10:00</Time>
+      <Time>2012-10-15T22:59:55.0539505+11:00</Time>
     </Item>
     <Item>
       <Source>ground\3SNe.png</Source>
@@ -574,15 +592,15 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe_0.xnb</Output>
-      <Time>2012-09-07T11:17:19.9738632+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe_0.xnb</Output>
+      <Time>2012-10-15T22:59:55.0849523+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\skybox.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\skybox\skybox_0.xml</Output>
-      <Time>2012-09-07T11:17:12.7531412+10:00</Time>
+      <Time>2012-10-15T22:58:16.6843241+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_top.jpg</Source>
@@ -597,8 +615,8 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top_0.xnb</Output>
-      <Time>2012-09-07T11:17:12.7761435+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top_0.xnb</Output>
+      <Time>2012-10-15T22:58:16.6903245+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_right.jpg</Source>
@@ -613,8 +631,8 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right_0.xnb</Output>
-      <Time>2012-09-07T11:17:12.7441403+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right_0.xnb</Output>
+      <Time>2012-10-15T22:58:16.6753236+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_left.jpg</Source>
@@ -629,8 +647,8 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left_0.xnb</Output>
-      <Time>2012-09-07T11:17:12.7391398+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left_0.xnb</Output>
+      <Time>2012-10-15T22:58:16.6713234+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_front.jpg</Source>
@@ -645,8 +663,8 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front_0.xnb</Output>
-      <Time>2012-09-07T11:17:12.781144+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front_0.xnb</Output>
+      <Time>2012-10-15T22:58:16.6943247+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_back.jpg</Source>
@@ -661,29 +679,29 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back_0.xnb</Output>
-      <Time>2012-09-07T11:17:12.7491408+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back_0.xnb</Output>
+      <Time>2012-10-15T22:58:16.6803239+11:00</Time>
     </Item>
     <Item>
       <Source>vic viper small junctioned.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\vic viper small junctioned_0.xml</Output>
-      <Time>2012-09-07T11:17:20.0938752+10:00</Time>
+      <Time>2012-10-15T22:59:32.001632+11:00</Time>
     </Item>
     <Item>
       <Source>viper test.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\viper test_0.xml</Output>
-      <Time>2012-09-07T11:17:20.1068765+10:00</Time>
+      <Time>2012-10-15T22:59:55.0019476+11:00</Time>
     </Item>
     <Item>
       <Source>Models\map.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\map_0.xml</Output>
-      <Time>2012-09-07T11:17:16.4955154+10:00</Time>
+      <Time>2012-10-15T22:59:17.5348046+11:00</Time>
     </Item>
     <Item>
       <Source>Models\dirt2-1\dirt 2-4be9a760.bmp</Source>
@@ -698,15 +716,15 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb</Output>
-      <Time>2012-09-07T11:17:14.4923151+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb</Output>
+      <Time>2012-10-15T22:58:30.7321276+11:00</Time>
     </Item>
     <Item>
       <Source>Models\tank.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\tank_0.xml</Output>
-      <Time>2012-09-07T11:17:16.5145173+10:00</Time>
+      <Time>2012-10-15T22:59:17.5548057+11:00</Time>
     </Item>
     <Item>
       <Source>Models\engine_diff_tex.tga</Source>
@@ -721,8 +739,8 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex_0.xnb</Output>
-      <Time>2012-09-07T11:17:16.4695128+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex_0.xnb</Output>
+      <Time>2012-10-15T22:59:17.4988025+11:00</Time>
     </Item>
     <Item>
       <Source>Models\turret_alt_diff_tex.tga</Source>
@@ -737,15 +755,15 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex_0.xnb</Output>
-      <Time>2012-09-07T11:17:16.4825141+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex_0.xnb</Output>
+      <Time>2012-10-15T22:59:17.5148034+11:00</Time>
     </Item>
     <Item>
       <Source>Models\weapon.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\weapon_0.xml</Output>
-      <Time>2012-09-07T11:17:16.451511+10:00</Time>
+      <Time>2012-10-15T22:59:17.4798014+11:00</Time>
     </Item>
     <Item>
       <Source>Models\hk_mp5n.jpg</Source>
@@ -760,22 +778,22 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n_0.xnb</Output>
-      <Time>2012-09-07T11:17:16.4385097+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n_0.xnb</Output>
+      <Time>2012-10-15T22:58:30.7241272+11:00</Time>
     </Item>
     <Item>
       <Source>Models\player.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\player_0.xml</Output>
-      <Time>2012-09-07T11:17:16.4885147+10:00</Time>
+      <Time>2012-10-15T22:59:17.524804+11:00</Time>
     </Item>
     <Item>
       <Source>house\crateA_fbx.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\house\crateA_fbx_0.xml</Output>
-      <Time>2012-09-07T12:56:50.3764937+10:00</Time>
+      <Time>2012-10-15T22:59:30.2685329+11:00</Time>
     </Item>
     <Item>
       <Source>house\crateA.jpg</Source>
@@ -790,15 +808,15 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateA_0.xnb</Output>
-      <Time>2012-09-07T12:56:50.3664927+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\crateA_0.xnb</Output>
+      <Time>2012-10-15T22:59:30.3335366+11:00</Time>
     </Item>
     <Item>
       <Source>house\houseA_fbx.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\house\houseA_fbx_0.xml</Output>
-      <Time>2012-09-07T12:56:50.409497+10:00</Time>
+      <Time>2012-10-15T22:59:30.2135298+11:00</Time>
     </Item>
     <Item>
       <Source>house\houseA.jpg</Source>
@@ -813,15 +831,15 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\houseA_0.xnb</Output>
-      <Time>2012-09-07T12:56:50.3934954+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\houseA_0.xnb</Output>
+      <Time>2012-10-15T22:59:30.2375311+11:00</Time>
     </Item>
     <Item>
       <Source>house\sacks_fbx.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\house\sacks_fbx_0.xml</Output>
-      <Time>2012-09-07T12:56:50.4395+10:00</Time>
+      <Time>2012-10-15T22:59:30.2195301+11:00</Time>
     </Item>
     <Item>
       <Source>house\sackTex.jpg</Source>
@@ -836,15 +854,15 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sackTex_0.xnb</Output>
-      <Time>2012-09-07T12:56:50.4475008+10:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sackTex_0.xnb</Output>
+      <Time>2012-10-15T22:59:30.2275306+11:00</Time>
     </Item>
     <Item>
       <Source>house\swingA_fbx.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\house\swingA_fbx_0.xml</Output>
-      <Time>2012-09-07T12:56:50.459502+10:00</Time>
+      <Time>2012-10-15T22:59:30.2445315+11:00</Time>
     </Item>
     <Item>
       <Source>house\swingTexL.tga</Source>
@@ -859,26 +877,8 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingTexL_0.xnb</Output>
-      <Time>2012-09-07T12:56:50.4785039+10:00</Time>
-    </Item>
-    <Item>
-      <Source>texturemap.jpg</Source>
-      <Name>texturemap</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\texturemap.xnb</Output>
-      <Time>2012-10-15T19:13:52.7860645+11:00</Time>
-    </Item>
-    <Item>
-      <Source>effects.fx</Source>
-      <Name>effects</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\effects.xnb</Output>
-      <Time>2012-10-15T19:22:32.7160523+11:00</Time>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingTexL_0.xnb</Output>
+      <Time>2012-10-15T22:59:30.2775334+11:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -886,39 +886,39 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGameContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGameContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGameContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGameContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T11:41:18+10:00</Value>
+        <Value>2010-08-23T12:41:18+10:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T11:41:18+10:00</Value>
+        <Value>2010-08-23T12:41:18+10:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T11:41:18+10:00</Value>
+        <Value>2010-08-23T12:41:18+10:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T11:41:18+10:00</Value>
+        <Value>2010-08-23T12:41:18+10:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T11:41:18+10:00</Value>
+        <Value>2010-08-23T12:41:18+10:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T11:41:18+10:00</Value>
+        <Value>2010-08-23T12:41:18+10:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2012-02-10T19:02:23.3256226+11:00</Value>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-08-13T12:26:14.3598864+10:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

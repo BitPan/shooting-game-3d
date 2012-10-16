@@ -53,7 +53,7 @@ namespace ShootingGame
             return newModel;
         }
 
-        public void DrawGround(GraphicsDevice device, Camera camera, Model ground, Texture2D[] groundTextures)
+        public void DrawGround(GraphicsDevice device, FirstPersonCamera camera, Model ground, Texture2D[] groundTextures)
         {
             SamplerState ss = new SamplerState();
             ss.AddressU = TextureAddressMode.Clamp;
@@ -74,8 +74,8 @@ namespace ShootingGame
                     Matrix worldMatrix = groundTransforms[mesh.ParentBone.Index] * Matrix.CreateTranslation(new Vector3(0, 0, 0));
                     currentEffect.CurrentTechnique = currentEffect.Techniques["Textured"];
                     currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
-                    currentEffect.Parameters["xView"].SetValue(camera.view);
-                    currentEffect.Parameters["xProjection"].SetValue(camera.projection);
+                    currentEffect.Parameters["xView"].SetValue(camera.ViewMatrix);
+                    currentEffect.Parameters["xProjection"].SetValue(camera.ProjectionMatrix);
                     currentEffect.Parameters["xTexture"].SetValue(groundTextures[i++]);
                 }
                 mesh.Draw();
@@ -88,7 +88,7 @@ namespace ShootingGame
 
         
 
-        public void DrawSkybox(GraphicsDevice device, Camera camera, Model skyboxModel, Texture2D[] skyboxTextures)
+        public void DrawSkybox(GraphicsDevice device, FirstPersonCamera camera, Model skyboxModel, Texture2D[] skyboxTextures)
         {
             SamplerState ss = new SamplerState();
             ss.AddressU = TextureAddressMode.Clamp;
@@ -105,11 +105,11 @@ namespace ShootingGame
             {
                 foreach (Effect currentEffect in mesh.Effects)
                 {
-                    Matrix worldMatrix = Matrix.CreateScale(200) * skyboxTransforms[mesh.ParentBone.Index] * Matrix.CreateTranslation(camera.cameraPostion - (new Vector3(0, 50, 0)));
+                    Matrix worldMatrix = Matrix.CreateScale(200) * skyboxTransforms[mesh.ParentBone.Index] * Matrix.CreateTranslation(camera.Position - (new Vector3(0, 50, 0)));
                     currentEffect.CurrentTechnique = currentEffect.Techniques["Textured"];
                     currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
-                    currentEffect.Parameters["xView"].SetValue(camera.view);
-                    currentEffect.Parameters["xProjection"].SetValue(camera.projection);
+                    currentEffect.Parameters["xView"].SetValue(camera.ViewMatrix);
+                    currentEffect.Parameters["xProjection"].SetValue(camera.ProjectionMatrix);
                     currentEffect.Parameters["xTexture"].SetValue(skyboxTextures[i++]);
                 }
                 mesh.Draw();

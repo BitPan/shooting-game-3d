@@ -45,7 +45,9 @@ Content\house\sackNM.xnb
 Content\house\sackTex.xnb
 Content\house\swingNML.xnb
 Content\house\swingTexL.xnb
+Content\texturemap.xnb
 Content\Effects\effects.xnb
+Content\effects.xnb
 Content\music\background.xnb
 Content\music\Bomb.xnb
 Content\music\laser.xnb
@@ -64,6 +66,4 @@ Content\house\crateA_0.xnb
 Content\house\houseA_0.xnb
 Content\house\sackTex_0.xnb
 Content\house\swingTexL_0.xnb
-Content\texturemap.xnb
-Content\effects.xnb
 Content\music\background.wma

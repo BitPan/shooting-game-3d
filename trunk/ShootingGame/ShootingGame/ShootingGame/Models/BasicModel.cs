@@ -43,7 +43,7 @@ namespace ShootingGame
         {
         }
 
-        public void Draw(Camera camera)
+        public void Draw(FirstPersonCamera camera)
         {
             Matrix[] transforms = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(transforms);
@@ -54,8 +54,8 @@ namespace ShootingGame
                 {
                     effect.EnableDefaultLighting();
                     effect.World = GetWorld() * mesh.ParentBone.Transform;
-                    effect.View = camera.view;
-                    effect.Projection = camera.projection;
+                    effect.View = camera.ViewMatrix;
+                    effect.Projection = camera.ProjectionMatrix;
                 }
                 mesh.Draw();
             }
