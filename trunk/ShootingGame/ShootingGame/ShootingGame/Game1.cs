@@ -67,6 +67,16 @@ namespace ShootingGame
         private const int boundryNear = 1500;
         private const int boundryFar = -1500;
 
+
+        private const float WEAPON_SCALE = 0.03f;
+        private const float WEAPON_X_OFFSET = 0.45f;
+        private const float WEAPON_Y_OFFSET = -0.75f;
+        private const float WEAPON_Z_OFFSET = 1.65f;
+
+        private Model weapon;
+        private Matrix[] weaponTransforms;
+        private Matrix weaponWorldMatrix;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -82,6 +92,7 @@ namespace ShootingGame
             rnd = new Random();
             finalScore = 0;
             camera = new FirstPersonCamera(this);
+            Components.Add(camera);
 
         }
 
@@ -93,15 +104,19 @@ namespace ShootingGame
         /// </summary>
         protected override void Initialize()
         {
-            Components.Add(camera);
-            Components.Add(modelManager);
-            camera.prepareCamera();
+            background = new BackGround(this);
             modelManager = new ModelManager(this);
             InitializegameMenuList();
-            background = new BackGround(this);
 
-
+            Components.Add(modelManager);
+            camera.prepareCamera();
             base.Initialize();
+            
+            weaponTransforms = new Matrix[weapon.Bones.Count];
+            weaponWorldMatrix = Matrix.Identity;
+            
+
+            
             // TODO: Add your initialization logic here
         }
 
@@ -124,17 +139,14 @@ namespace ShootingGame
             Font1 = Content.Load<SpriteFont>(@"text\SpriteFont1");
             floorEffect = Content.Load<Effect>("effects");
             sceneryTexture = Content.Load<Texture2D>("texturemap");
-            skyboxModel = background.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
-            ground = background.LModel(floorEffect, "ground\\Ground", out groundTextures);
             // tank.Load(Content);
             music = new Music(this);
             myModel = Content.Load<Model>("house/house");
-            // Vector3 modelPosition = new Vector3(50,0,0);
+            weapon = Content.Load<Model>(@"Models\weapon");
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
-
-            // TODO: use this.Content to load your game content here
+            skyboxModel = background.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
         }
 
         /// <summary>
@@ -165,7 +177,7 @@ namespace ShootingGame
             graphics.GraphicsDevice.Viewport.Height * 0.9f);
             effect = new BasicEffect(GraphicsDevice);
             LoadFloorPlan();
-            SetUpVertices();                
+            SetUpVertices();
         }
 
 
@@ -215,6 +227,7 @@ namespace ShootingGame
             if (currentGameState == GameState.PLAY)
             {
                 UpdateTank(gameTime);
+                UpdateWeapon();
 
                 if (playerHealth == 0)
                 {
@@ -250,6 +263,14 @@ namespace ShootingGame
             scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel + "\n: " + camera.Position.X + "," + camera.Position.Y + "," + camera.Position.Z;
             prevmousestate = mousetate;
             base.Update(gameTime);
+        }
+
+        private void UpdateWeapon()
+        {
+            weapon.CopyAbsoluteBoneTransformsTo(weaponTransforms);
+
+            weaponWorldMatrix = camera.WeaponWorldMatrix(WEAPON_X_OFFSET,
+                WEAPON_Y_OFFSET, WEAPON_Z_OFFSET, WEAPON_SCALE);
         }
 
         protected Boolean setGameLevel(int gameScore)
@@ -317,29 +338,48 @@ namespace ShootingGame
  (float)Window.ClientBounds.Width /
                 (float)Window.ClientBounds.Height, 1, 10000), new Vector3(250, 0, -500));
 
-
+                DrawWeapon();
                 // TODO: Add your drawing code here
-
-                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
-                // Find the center of the string
-                Vector2 FontOrigin = Font1.MeasureString(scoreText) / 2;
-                // Draw the string
-                spriteBatch.DrawString(Font1, scoreText, FontPos, Color.LightGreen,
-                    0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
-
-                if (levelUpTextTimer > 0)
-                {
-                    levelUpTextTimer -= gameTime.ElapsedGameTime.Milliseconds;
-                    Vector2 textSize = Font1.MeasureString(levelUpText);
-                    spriteBatch.DrawString(Font1, levelUpText,
-                        new Vector2((Window.ClientBounds.Width / 2) - (textSize.X / 2),
-                            (Window.ClientBounds.Height / 5) - (textSize.Y / 2)), Color.Goldenrod);
-                }
-                spriteBatch.End();
+                DrawText(gameTime);
             }
-
-
             base.Draw(gameTime);
+        }
+
+        private void DrawText(GameTime gameTime)
+        {
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
+            // Find the center of the string
+            Vector2 FontOrigin = Font1.MeasureString(scoreText) / 2;
+            // Draw the string
+            spriteBatch.DrawString(Font1, scoreText, FontPos, Color.LightGreen,
+                0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+
+            if (levelUpTextTimer > 0)
+            {
+                levelUpTextTimer -= gameTime.ElapsedGameTime.Milliseconds;
+                Vector2 textSize = Font1.MeasureString(levelUpText);
+                spriteBatch.DrawString(Font1, levelUpText,
+                    new Vector2((Window.ClientBounds.Width / 2) - (textSize.X / 2),
+                        (Window.ClientBounds.Height / 5) - (textSize.Y / 2)), Color.Goldenrod);
+            }
+            spriteBatch.End();
+        }
+
+        private void DrawWeapon()
+        {
+            foreach (ModelMesh m in weapon.Meshes)
+            {
+                foreach (BasicEffect e in m.Effects)
+                {
+                    e.TextureEnabled = true;
+                    e.EnableDefaultLighting();
+                    e.World = weaponTransforms[m.ParentBone.Index] * weaponWorldMatrix;
+                    e.View = camera.ViewMatrix;
+                    e.Projection = camera.ProjectionMatrix;
+                }
+
+                m.Draw();
+            }
         }
 
         public void DeductPlayerHealth(int health)
