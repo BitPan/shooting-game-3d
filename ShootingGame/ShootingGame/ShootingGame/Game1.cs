@@ -18,14 +18,14 @@ namespace ShootingGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public Camera camera {get; protected set;}
+        public FirstPersonCamera camera { get; protected set; }
         SpriteFont Font1;
         Vector2 FontPos;
         BasicEffect effect;
         ModelManager modelManager;
         public Random rnd { get; protected set; }
         public enum GameState { START, PLAY, END };
-        public enum GameLevel { LEVEL1,LEVEL2,LEVEL3,LEVEL4,LEVEL5};
+        public enum GameLevel { LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5 };
         GameState currentGameState;
         List<GameMenu> gameMenuList;
         GameLevel currentGameLevel;
@@ -35,17 +35,17 @@ namespace ShootingGame
         public string scoreText;
         private int timeSinceLastShoot;
         private int nextShootTime;
-        
+
         Texture2D[] skyboxTextures;
         Texture2D[] groundTextures;
         Model skyboxModel;
         Model ground;
         Tank tank;
-        
+
         GraphicsDevice device;
         Effect floorEffect;
         Music music;
-      
+
         int finalScore;
         int playerHealth;
         string levelUpText = "";
@@ -60,12 +60,12 @@ namespace ShootingGame
         Texture2D sceneryTexture;
         VertexBuffer cityVertexBuffer;
         int[] buildingHeights = new int[] { 0, 2, 2, 6, 5, 4 };
-         float time ;
+        float time;
 
         private const int boundryLeft = -800;
         private const int boundryRight = 800;
         private const int boundryNear = 1500;
-        private const int boundryFar = -1500;    
+        private const int boundryFar = -1500;
 
         public Game1()
         {
@@ -81,6 +81,8 @@ namespace ShootingGame
             nextShootTime = 0;
             rnd = new Random();
             finalScore = 0;
+            camera = new FirstPersonCamera(this);
+
         }
 
         /// <summary>
@@ -91,13 +93,14 @@ namespace ShootingGame
         /// </summary>
         protected override void Initialize()
         {
-            camera = new Camera(this, new Vector3(0, 30, 0), new Vector3(0, 30, -1), Vector3.Up);
+            Components.Add(camera);
+            Components.Add(modelManager);
+            camera.prepareCamera();
             modelManager = new ModelManager(this);
             InitializegameMenuList();
             background = new BackGround(this);
-            Components.Add(modelManager);
-            Components.Add(camera);
-            
+
+
             base.Initialize();
             // TODO: Add your initialization logic here
         }
@@ -123,10 +126,10 @@ namespace ShootingGame
             sceneryTexture = Content.Load<Texture2D>("texturemap");
             skyboxModel = background.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
             ground = background.LModel(floorEffect, "ground\\Ground", out groundTextures);
-           // tank.Load(Content);
+            // tank.Load(Content);
             music = new Music(this);
             myModel = Content.Load<Model>("house/house");
-           // Vector3 modelPosition = new Vector3(50,0,0);
+            // Vector3 modelPosition = new Vector3(50,0,0);
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
@@ -145,6 +148,7 @@ namespace ShootingGame
 
         private void InitializeGameComponents()
         {
+
             gameMenuList = new List<GameMenu>();
             modelManager = new ModelManager(this);
             Components.Add(modelManager);
@@ -156,14 +160,16 @@ namespace ShootingGame
             currentGameState = GameState.PLAY;
             currentGameLevel = GameLevel.LEVEL1;
             modelManager.LoadGameLevelData(gameLevel.loadLevelData(GameLevel.LEVEL1));
-            modelManager.addPlayer(camera.cameraPostion, new Vector3());
+            modelManager.addPlayer(camera.Position, new Vector3());
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width * 0.9f,
             graphics.GraphicsDevice.Viewport.Height * 0.9f);
-            effect = new BasicEffect(GraphicsDevice);          
+            effect = new BasicEffect(GraphicsDevice);
+            LoadFloorPlan();
+            SetUpVertices();                
         }
 
 
-      
+
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -178,9 +184,10 @@ namespace ShootingGame
             float fps = (float)(1 / (gameTime.ElapsedGameTime.TotalMilliseconds / 1000));
             float movingDistance = 100 / fps;
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            //Press Exit to exit the game
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyState.IsKeyDown(Keys.Escape))
                 this.Exit();
-
+            /*
             if (gameMenuList.Count > 0)
             {
                 foreach (GameMenu m in gameMenuList)
@@ -197,7 +204,13 @@ namespace ShootingGame
                     }
                 }
             }
-            
+            */
+
+            if (currentGameState == GameState.START)
+            {
+                currentGameState = GameState.PLAY;
+                InitializeGameComponents();
+            }
 
             if (currentGameState == GameState.PLAY)
             {
@@ -217,49 +230,26 @@ namespace ShootingGame
                 {
                     setGameLevel(modelManager.score);
                     modelManager.spawnEnemy(gameTime);
-                   // tank.Draw(rotation, camera.view, camera.projection, tankPosition);
-                    
+                    // tank.Draw(rotation, camera.view, camera.projection, tankPosition);
+
 
                     if (Mouse.GetState().LeftButton == ButtonState.Pressed)
                     {
-                       
+
                         if (timeSinceLastShoot >= nextShootTime)
                         {
                             music.PlayShootingEffect();
-                            modelManager.addShot(camera.cameraPostion, camera.cameraDirection);
-                           
+                            modelManager.addShot(camera.Position, camera.ViewDirection);
+
                             timeSinceLastShoot = 0;
                         }
                     }
-
-                    if (keyState.IsKeyDown(Keys.W))
-                        modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, new Vector3(movingDistance, 0, movingDistance) * camera.cameraDirection));
-                    if (keyState.IsKeyDown(Keys.S))
-                        modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, new Vector3(-movingDistance, 0, -movingDistance) * camera.cameraDirection));
-                    if (keyState.IsKeyDown(Keys.A))
-                        modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
-                    if (keyState.IsKeyDown(Keys.D))
-                        modelManager.GetPlayer().DoTranslation(CalculateTranslation(modelManager.GetPlayer().GetWorld().Translation, -Vector3.Cross(camera.cameraUp, camera.cameraDirection) * movingDistance));
-
-                }   
+                }
             }
 
-            scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel + "\n: " + (int)camera.cameraPostion.X + "," + (int)camera.cameraPostion.Y + "," + (int)camera.cameraPostion.Z;
+            scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel + "\n: " + camera.Position.X + "," + camera.Position.Y + "," + camera.Position.Z;
             prevmousestate = mousetate;
             base.Update(gameTime);
-        }
-
-        protected Vector3 CalculateTranslation(Vector3 playerPosition, Vector3 translation)
-        {
-            Vector3 preocessedPostion = playerPosition + translation;
-            
-            preocessedPostion.X = preocessedPostion.X >= boundryRight ? boundryRight : preocessedPostion.X;
-            preocessedPostion.X = preocessedPostion.X <= boundryLeft ? boundryLeft : preocessedPostion.X;
-            preocessedPostion.Z = preocessedPostion.Z >= boundryNear ? boundryNear : preocessedPostion.Z;
-            preocessedPostion.Z = preocessedPostion.Z <= boundryFar ? boundryFar : preocessedPostion.Z;
-
-            Vector3 newTranslation = preocessedPostion - playerPosition;
-            return newTranslation;
         }
 
         protected Boolean setGameLevel(int gameScore)
@@ -296,13 +286,12 @@ namespace ShootingGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             //DrawCity();
-            
+
             if (currentGameState == GameState.START || currentGameState == GameState.END)
             {
                 spriteBatch.Begin();
                 device.Clear(Color.Black);
-                LoadFloorPlan();
-                SetUpVertices();
+
                 if (currentGameState == GameState.END)
                 {
                     FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width * 0.45f,
@@ -320,26 +309,25 @@ namespace ShootingGame
             }
             else if (currentGameState == GameState.PLAY)
             {
-               
-               background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
-               // background.DrawGround(device, camera, ground, groundTextures);
-                DrawCity(floorEffect,50f,0f,new Vector3(0,0,0));  
-               house = new House(this);
-                house.Draw(myModel, camera.view*2f, Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
+                background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
+                // background.DrawGround(device, camera, ground, groundTextures);
+                DrawCity(floorEffect, 50f, 0f, new Vector3(0, 0, 0));
+                house = new House(this);
+                house.Draw(myModel, camera.ViewMatrix, Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
  (float)Window.ClientBounds.Width /
-                (float)Window.ClientBounds.Height, 1, 10000),new Vector3(250,0,-500));
+                (float)Window.ClientBounds.Height, 1, 10000), new Vector3(250, 0, -500));
 
-               
+
                 // TODO: Add your drawing code here
-                
-                spriteBatch.Begin();
+
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
                 // Find the center of the string
                 Vector2 FontOrigin = Font1.MeasureString(scoreText) / 2;
                 // Draw the string
                 spriteBatch.DrawString(Font1, scoreText, FontPos, Color.LightGreen,
                     0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
 
-                if (levelUpTextTimer > 0)                    
+                if (levelUpTextTimer > 0)
                 {
                     levelUpTextTimer -= gameTime.ElapsedGameTime.Milliseconds;
                     Vector2 textSize = Font1.MeasureString(levelUpText);
@@ -347,10 +335,10 @@ namespace ShootingGame
                         new Vector2((Window.ClientBounds.Width / 2) - (textSize.X / 2),
                             (Window.ClientBounds.Height / 5) - (textSize.Y / 2)), Color.Goldenrod);
                 }
-                spriteBatch.End();                
+                spriteBatch.End();
             }
 
-           
+
             base.Draw(gameTime);
         }
 
@@ -358,8 +346,8 @@ namespace ShootingGame
         {
             music.hitSoundPlay();
             playerHealth -= health;
-            camera.SetShake(0.2f, 0.4f);
-        
+            //camera.SetShake(0.2f, 0.4f);
+
 
         }
 
@@ -370,23 +358,27 @@ namespace ShootingGame
             rotation = rotation = Matrix.CreateScale(0.1f) * Matrix.CreateRotationY(time * 0.1f);
         }
 
-        public void PlayBackGroundMusic() {
+        public void PlayBackGroundMusic()
+        {
 
             this.music.BackGroundPlay();
-        
+
         }
-        public void PlaySoundEffect() {
+        public void PlaySoundEffect()
+        {
             this.music.EffectPlay();
-        
+
         }
 
-        public void BackGroundPause() {
+        public void BackGroundPause()
+        {
             this.music.BackgroundPause();
         }
 
-        public void BackGroudResumePlay() {
+        public void BackGroudResumePlay()
+        {
             this.music.BackGroundResume();
-        
+
         }
         private void SetNextShootTime(int shootCD)
         {
@@ -463,14 +455,14 @@ namespace ShootingGame
             }
         }
 
-        private void DrawCity(Effect effect,float scale ,float rotation ,Vector3 position)
+        private void DrawCity(Effect effect, float scale, float rotation, Vector3 position)
         {
 
             Matrix cityMatrix = Matrix.Identity * Matrix.CreateScale(scale) * Matrix.CreateRotationX(0) * Matrix.CreateTranslation(position);
             effect.CurrentTechnique = effect.Techniques["Textured"];
             effect.Parameters["xWorld"].SetValue(cityMatrix);
-            effect.Parameters["xView"].SetValue(camera.view);
-            effect.Parameters["xProjection"].SetValue(camera.projection);
+            effect.Parameters["xView"].SetValue(camera.ViewMatrix);
+            effect.Parameters["xProjection"].SetValue(camera.ProjectionMatrix);
             effect.Parameters["xTexture"].SetValue(sceneryTexture);
 
             foreach (EffectPass pass in effect.CurrentTechnique.Passes)

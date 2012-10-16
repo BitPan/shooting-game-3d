@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>houseA</Name>
     <Identity>
-      <SourceFilename>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGameContent\house\houseA_fbx.fbx</SourceFilename>
+      <SourceFilename>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGameContent\house\houseA_fbx.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 1</Transform>
@@ -37,7 +37,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>HouseAMat__houseA_jpg</Name>
       <Identity>
-        <SourceFilename>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGameContent\house\houseA_fbx.fbx</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGameContent\house\houseA_fbx.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -58,7 +58,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>HouseAMat</Name>
       <Identity>
-        <SourceFilename>C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGameContent\house\houseA_fbx.fbx</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGameContent\house\houseA_fbx.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
