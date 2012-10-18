@@ -361,3 +361,6 @@ C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\obj\x86\De
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\obj\x86\Debug\ShootingGame.exe
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\obj\x86\Debug\ShootingGame.pdb
+C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\Ship.xnb
+C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse.xnb
+C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse_0.xnb

@@ -172,7 +172,6 @@ namespace ShootingGame
                         enemies.RemoveAt(j);
                         shots.RemoveAt(i);                        
                         score += 10;
-                        j--;
                         ((Game1)Game).BackGroudResumePlay();
                     }
                 }                

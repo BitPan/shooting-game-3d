@@ -880,6 +880,52 @@
       <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingTexL_0.xnb</Output>
       <Time>2012-10-15T22:59:30.2775334+11:00</Time>
     </Item>
+    <Item>
+      <Source>Models\Ship.fbx</Source>
+      <Name>Models\Ship</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\Ship.xnb</Output>
+      <Time>2012-10-17T10:18:24.4724199+11:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\Ship_0.xml</Key>
+        <Value>2012-10-17T10:38:32.4995151+11:00</Value>
+      </Dependency>
+      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\ShipDiffuse.tga</Source>
+      <Name>Models\ShipDiffuse</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse.xnb</Output>
+      <Time>2012-10-17T10:18:24.5334234+11:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Ship.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\Ship_0.xml</Output>
+      <Time>2012-10-17T10:18:24.4724199+11:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\ShipDiffuse.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse_0.xnb</Output>
+      <Time>2012-10-17T10:18:24.5334234+11:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

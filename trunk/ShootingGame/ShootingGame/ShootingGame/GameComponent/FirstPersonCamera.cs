@@ -13,7 +13,7 @@ using ShootingGame.Data;
 
 namespace ShootingGame
 {
-    public class FirstPersonCamera : GameComponent
+    public class FirstPersonCamera : Microsoft.Xna.Framework.GameComponent
     {
 
         public enum Actions
@@ -36,7 +36,7 @@ namespace ShootingGame
         };
 
         public const float DEFAULT_FOVX = 90.0f;
-        public const float DEFAULT_ZNEAR = 0.1f;
+        public const float DEFAULT_ZNEAR = 0.00001f;
         public const float DEFAULT_ZFAR = 1000.0f;
 
         private static Vector3 WORLD_X_AXIS = new Vector3(1.0f, 0.0f, 0.0f);
@@ -97,6 +97,16 @@ namespace ShootingGame
         private Dictionary<Actions, Keys> actionKeys;
         private CameraData cameraData;
 
+        private Model weapon;
+        private Matrix[] weaponTransforms;
+        private Matrix weaponWorldMatrix;
+
+        private const float WEAPON_SCALE = 0.03f;
+        private const float WEAPON_X_OFFSET = 0.45f;
+        private const float WEAPON_Y_OFFSET = -0.75f;
+        private const float WEAPON_Z_OFFSET = 1.65f;
+
+
         #region Public Methods
 
         public FirstPersonCamera(Game game)
@@ -112,7 +122,7 @@ namespace ShootingGame
             accumPitchDegrees = 0.0f;
             eyeHeightStanding = 0.0f;
             eyeHeightCrouching = 0.0f;
-            eye = Vector3.Zero;
+            eye = new Vector3(0, 0, 0);
             target = Vector3.Zero;
             targetYAxis = Vector3.UnitY;
             xAxis = Vector3.UnitX;
@@ -158,6 +168,16 @@ namespace ShootingGame
             float aspect = (float)clientBounds.Width / (float)clientBounds.Height;
             Perspective(fovx, aspect, znear, zfar);
             cameraData = new CameraData();
+
+                    }
+
+        public void setWeapon(Model model)
+        {
+            //load weapon
+            this.weapon = model;
+            weaponTransforms = new Matrix[weapon.Bones.Count];
+            weaponWorldMatrix = Matrix.Identity;       
+
         }
 
         public void prepareCamera()
@@ -310,6 +330,23 @@ namespace ShootingGame
             projMatrix.M44 = 0.0f;
         }
 
+        public void DrawWeapon()
+        {
+            foreach (ModelMesh m in weapon.Meshes)
+            {
+                foreach (BasicEffect e in m.Effects)
+                {
+                    e.TextureEnabled = true;
+                    e.EnableDefaultLighting();
+                    e.World = weaponTransforms[m.ParentBone.Index] * weaponWorldMatrix;
+                    e.View = ViewMatrix;
+                    e.Projection = ProjectionMatrix;
+                }
+
+                m.Draw();
+            }
+        }
+
         public void Rotate(float headingDegrees, float pitchDegrees)
         {
             headingDegrees = -headingDegrees;
@@ -357,12 +394,20 @@ namespace ShootingGame
 
             UpdateViewMatrix();
         }
+        private void UpdateWeapon()
+        {
+            weapon.CopyAbsoluteBoneTransformsTo(weaponTransforms);
+
+            weaponWorldMatrix = WeaponWorldMatrix(WEAPON_X_OFFSET,
+                WEAPON_Y_OFFSET, WEAPON_Z_OFFSET, WEAPON_SCALE);
+        }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             UpdateInput();
             UpdateCamera(gameTime);
+            UpdateWeapon();
         }
 
         /// <summary>

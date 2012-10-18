@@ -13,7 +13,7 @@ namespace ShootingGame
         {
             levelData = new List<int[]>();
 
-            levelData.Add(iniLevelData(2500, 1500, 6, 4, 8, 15, 100, 800, 150));
+            levelData.Add(iniLevelData(2500, 1500, 6, 4, 8, 1, 100, 800, 150));
             levelData.Add(iniLevelData(2400, 1450, 6, 4, 8, 13, 100, 900, 120));
             levelData.Add(iniLevelData(2300, 1400, 6, 4, 8, 11, 100, 1000, 110));
             levelData.Add(iniLevelData(2200, 1350, 7, 4, 8, 8, 100, 1100, 100));
