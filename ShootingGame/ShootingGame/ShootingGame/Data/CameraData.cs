@@ -28,7 +28,7 @@ namespace ShootingGame.Data
             get { return WALL_HEIGHT; }
         }
 
-        private const float CAMERA_ZNEAR = 0.01f;
+        private const float CAMERA_ZNEAR = 0.1f;
 
         public float CAMERA_ZNEAR1
         {

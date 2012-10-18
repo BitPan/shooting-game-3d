@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using ShootingGame.Core;
 
 namespace ShootingGame
 {
@@ -22,6 +23,7 @@ namespace ShootingGame
         SpriteFont Font1;
         Vector2 FontPos;
         BasicEffect effect;
+        CoordCross cCross;
         ModelManager modelManager;
         public Random rnd { get; protected set; }
         public enum GameState { START, PLAY, END };
@@ -37,9 +39,8 @@ namespace ShootingGame
         private int nextShootTime;
 
         Texture2D[] skyboxTextures;
-        Texture2D[] groundTextures;
         Model skyboxModel;
-        Model ground;
+        Model myModel, weapon;
         Tank tank;
 
         GraphicsDevice device;
@@ -54,28 +55,15 @@ namespace ShootingGame
         Vector3 tankPosition;
         Matrix rotation;
         BackGround background;
-        Model myModel;
-        House house;
         int[,] floorPlan;
         Texture2D sceneryTexture;
         VertexBuffer cityVertexBuffer;
         int[] buildingHeights = new int[] { 0, 2, 2, 6, 5, 4 };
         float time;
+        SceneManager sceneManager;
 
-        private const int boundryLeft = -800;
-        private const int boundryRight = 800;
-        private const int boundryNear = 1500;
-        private const int boundryFar = -1500;
-
-
-        private const float WEAPON_SCALE = 0.03f;
-        private const float WEAPON_X_OFFSET = 0.45f;
-        private const float WEAPON_Y_OFFSET = -0.75f;
-        private const float WEAPON_Z_OFFSET = 1.65f;
-
-        private Model weapon;
-        private Matrix[] weaponTransforms;
-        private Matrix weaponWorldMatrix;
+        
+        
 
         public Game1()
         {
@@ -105,28 +93,18 @@ namespace ShootingGame
         protected override void Initialize()
         {
             background = new BackGround(this);
-            modelManager = new ModelManager(this);
-            InitializegameMenuList();
-
-            Components.Add(modelManager);
+//modelManager = new ModelManager(this);
+            sceneManager = new SceneManager(this);
+            Components.Add(sceneManager);            
+           // Components.Add(modelManager);
             camera.prepareCamera();
             base.Initialize();
             
-            weaponTransforms = new Matrix[weapon.Bones.Count];
-            weaponWorldMatrix = Matrix.Identity;
-            
-
-            
+                
             // TODO: Add your initialization logic here
         }
 
-        protected void InitializegameMenuList()
-        {
-            gameMenuList.Add(new GameMenu(new Rectangle((Window.ClientBounds.Width / 2) - 25, (Window.ClientBounds.Height / 2) - 100, 100, 14), "Play"));
-            gameMenuList.Add(new GameMenu(new Rectangle((Window.ClientBounds.Width / 2) - 25, (Window.ClientBounds.Height / 2) - 50, 100, 14), "Exit"));
-        }
-
-        /// <summary>
+ /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
@@ -134,6 +112,7 @@ namespace ShootingGame
         {
             device = graphics.GraphicsDevice;
 
+            //cCross = new CoordCross(device);
             // Create a new SpriteBatch, which can be used to draw textures.     
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Font1 = Content.Load<SpriteFont>(@"text\SpriteFont1");
@@ -141,12 +120,14 @@ namespace ShootingGame
             sceneryTexture = Content.Load<Texture2D>("texturemap");
             // tank.Load(Content);
             music = new Music(this);
-            myModel = Content.Load<Model>("house/house");
-            weapon = Content.Load<Model>(@"Models\weapon");
+            
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
             skyboxModel = background.LModel(floorEffect, "skybox\\skybox", out skyboxTextures);
+            weapon = Content.Load<Model>(@"Models\weapon");
+            myModel = Content.Load<Model>(@"Models\Ship");
+            camera.setWeapon(weapon);
         }
 
         /// <summary>
@@ -158,12 +139,11 @@ namespace ShootingGame
             // TODO: Unload any non ContentManager content here
         }
 
-        private void InitializeGameComponents()
+        public void InitializeGameComponents()
         {
-
             gameMenuList = new List<GameMenu>();
-            modelManager = new ModelManager(this);
-            Components.Add(modelManager);
+            //modelManager = new ModelManager(this);
+            //Components.Add(modelManager);
             playerHealth = 100;
             SetNextShootTime(500);
             music.BackGroundPlay();
@@ -171,8 +151,8 @@ namespace ShootingGame
             this.IsMouseVisible = false;
             currentGameState = GameState.PLAY;
             currentGameLevel = GameLevel.LEVEL1;
-            modelManager.LoadGameLevelData(gameLevel.loadLevelData(GameLevel.LEVEL1));
-            modelManager.addPlayer(camera.Position, new Vector3());
+            //modelManager.LoadGameLevelData(gameLevel.loadLevelData(GameLevel.LEVEL1));
+            //modelManager.addPlayer(camera.Position, new Vector3());
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width * 0.9f,
             graphics.GraphicsDevice.Viewport.Height * 0.9f);
             effect = new BasicEffect(GraphicsDevice);
@@ -199,24 +179,6 @@ namespace ShootingGame
             //Press Exit to exit the game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyState.IsKeyDown(Keys.Escape))
                 this.Exit();
-            /*
-            if (gameMenuList.Count > 0)
-            {
-                foreach (GameMenu m in gameMenuList)
-                {
-                    m.mouseOver(mousetate);
-                    if (m.isSelected == true &&
-                        mousetate.LeftButton == ButtonState.Pressed &&
-                        prevmousestate.LeftButton == ButtonState.Released)
-                    {
-                        if (m.text == "Play")
-                            InitializeGameComponents();
-                        else if (m.text == "Exit")
-                            this.Exit();
-                    }
-                }
-            }
-            */
 
             if (currentGameState == GameState.START)
             {
@@ -227,22 +189,20 @@ namespace ShootingGame
             if (currentGameState == GameState.PLAY)
             {
                 UpdateTank(gameTime);
-                UpdateWeapon();
 
                 if (playerHealth == 0)
                 {
                     currentGameState = GameState.END;
-                    InitializegameMenuList();
-                    finalScore = modelManager.score;
+                    //finalScore = modelManager.score;
                     music.BackgroundPause();
                     music.Dispose();
-                    modelManager.Dispose();
+                    //modelManager.Dispose();
                     this.IsMouseVisible = true;
                 }
                 else
                 {
-                    setGameLevel(modelManager.score);
-                    modelManager.spawnEnemy(gameTime);
+                    //setGameLevel(modelManager.score);
+                    //modelManager.spawnEnemy(gameTime);
                     // tank.Draw(rotation, camera.view, camera.projection, tankPosition);
 
 
@@ -252,7 +212,8 @@ namespace ShootingGame
                         if (timeSinceLastShoot >= nextShootTime)
                         {
                             music.PlayShootingEffect();
-                            modelManager.addShot(camera.Position, camera.ViewDirection);
+                            sceneManager.AddPlayerBulletModel(camera.Position, camera.ViewDirection);
+                            //modelManager.addShot(camera.Position, camera.ViewDirection);
 
                             timeSinceLastShoot = 0;
                         }
@@ -260,18 +221,13 @@ namespace ShootingGame
                 }
             }
 
-            scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel + "\n: " + camera.Position.X + "," + camera.Position.Y + "," + camera.Position.Z;
+            //scoreText = "Health: " + playerHealth + "\nScore:" + modelManager.score + "\nLevel:" + currentGameLevel + "\n: " + camera.Position.X + "," + camera.Position.Y + "," + camera.Position.Z;
+            scoreText = "Health:";
             prevmousestate = mousetate;
             base.Update(gameTime);
         }
 
-        private void UpdateWeapon()
-        {
-            weapon.CopyAbsoluteBoneTransformsTo(weaponTransforms);
-
-            weaponWorldMatrix = camera.WeaponWorldMatrix(WEAPON_X_OFFSET,
-                WEAPON_Y_OFFSET, WEAPON_Z_OFFSET, WEAPON_SCALE);
-        }
+        
 
         protected Boolean setGameLevel(int gameScore)
         {
@@ -330,15 +286,12 @@ namespace ShootingGame
             }
             else if (currentGameState == GameState.PLAY)
             {
-                background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
+                sceneManager.GetOcTreeRoot.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, device, effect);
+                //background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
                 // background.DrawGround(device, camera, ground, groundTextures);
                 DrawCity(floorEffect, 50f, 0f, new Vector3(0, 0, 0));
-                house = new House(this);
-                house.Draw(myModel, camera.ViewMatrix, Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
- (float)Window.ClientBounds.Width /
-                (float)Window.ClientBounds.Height, 1, 10000), new Vector3(250, 0, -500));
 
-                DrawWeapon();
+                camera.DrawWeapon();
                 // TODO: Add your drawing code here
                 DrawText(gameTime);
             }
@@ -365,22 +318,7 @@ namespace ShootingGame
             spriteBatch.End();
         }
 
-        private void DrawWeapon()
-        {
-            foreach (ModelMesh m in weapon.Meshes)
-            {
-                foreach (BasicEffect e in m.Effects)
-                {
-                    e.TextureEnabled = true;
-                    e.EnableDefaultLighting();
-                    e.World = weaponTransforms[m.ParentBone.Index] * weaponWorldMatrix;
-                    e.View = camera.ViewMatrix;
-                    e.Projection = camera.ProjectionMatrix;
-                }
-
-                m.Draw();
-            }
-        }
+        
 
         public void DeductPlayerHealth(int health)
         {
@@ -524,7 +462,7 @@ namespace ShootingGame
                  {0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
                  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
                  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                  {0,0,1,1,0,0,0,1,0,0,0,0,0,0,0},
                  {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
