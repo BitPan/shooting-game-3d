@@ -153,6 +153,8 @@ namespace ShootingGame.Core
                             }
                         }
                     }
+                    enemyModel.Clear();
+                    playerBullet.Clear();
                 }
         }            
 
