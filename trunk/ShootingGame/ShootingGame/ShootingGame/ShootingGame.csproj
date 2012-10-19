@@ -113,10 +113,12 @@
     <Compile Include="Data\CameraData.cs" />
     <Compile Include="GameComponent\FirstPersonCamera.cs" />
     <Compile Include="GameComponent\LoadingScene.cs" />
+    <Compile Include="GameComponent\NewCamera.cs" />
     <Compile Include="GameUtil\XNAUtil.cs" />
     <Compile Include="Models\BackGround.cs" />
     <Compile Include="GameComponent\GameMenu.cs" />
     <Compile Include="Models\Bullet.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\EnemyPlane.cs" />
     <Compile Include="Models\DrawableModel.cs" />
     <Compile Include="Models\House.cs" />

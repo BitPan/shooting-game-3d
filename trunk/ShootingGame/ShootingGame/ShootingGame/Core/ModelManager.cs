@@ -422,7 +422,7 @@ namespace ShootingGame
 
         public override void Draw(GameTime gameTime)
         {
-
+            /*
             foreach (BasicModel enemy in enemies)
             {
                 enemy.Draw(((Game1)Game).camera);
@@ -442,7 +442,7 @@ namespace ShootingGame
             foreach (BasicModel shot in shots)
             {
                 shot.Draw(((Game1)Game).camera);
-            }
+            }*/
             base.Draw(gameTime);
         }
 

@@ -30,7 +30,7 @@ namespace ShootingGame
 
         public override void Update()
         {
-            worldMatrix *= Matrix.CreateTranslation(direction);
+            WorldMatrix = worldMatrix * Matrix.CreateTranslation(direction);
         }
 
         public Vector3 GetDirection()

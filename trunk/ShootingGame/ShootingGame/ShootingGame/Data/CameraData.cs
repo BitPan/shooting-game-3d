@@ -35,7 +35,7 @@ namespace ShootingGame.Data
             get { return CAMERA_ZNEAR; }
         }
 
-        private const float FLOOR_PLANE_SIZE = 1024.0f;
+        private const float FLOOR_PLANE_SIZE = 2000f;
 
         public float FLOOR_PLANE_SIZE1
         {
