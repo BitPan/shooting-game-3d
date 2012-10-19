@@ -63,8 +63,8 @@ namespace ShootingGame.Core
         /// </summary>
         public override void Initialize()
         {
-            float verticalPosition = (float)rnd.NextDouble() * 100 + 100;
-            float horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
+            float verticalPosition = (float)rnd.NextDouble() * 100 + 500;
+            float horizontalPosition = (float)rnd.NextDouble() * 1000 - 100;
             ocTreeRoot = new OcTreeNode(new Vector3(500, 0, -300), 2000);
             ocTreeRoot.RootSize = 2000;
             AddPlayerModel(new Vector3(500, 0, -500));

@@ -75,6 +75,7 @@ namespace ShootingGame.Core
                     if (!IsModelOutOfOctree(deletedModel))
                         models.Add(deletedModel);
                 }
+
             }
             else
             {
@@ -153,9 +154,7 @@ namespace ShootingGame.Core
                         }
                     }
                 }
-        }
-             
-        
+        }            
 
         private bool IsModelOutOfOctree(DrawableModel dModel)
         {
@@ -289,7 +288,7 @@ namespace ShootingGame.Core
             foreach (OcTreeNode childNode in childList)
                 childNode.DrawBoxLines(viewMatrix, projectionMatrix, device, basicEffect);
 
-            if (childList.Count == 0)
+            if (modelList.Count > 0)
                 XNAUtils.DrawBoundingBox(nodeBoundingBox, device, basicEffect, Matrix.Identity, viewMatrix, projectionMatrix);
         }
     }
