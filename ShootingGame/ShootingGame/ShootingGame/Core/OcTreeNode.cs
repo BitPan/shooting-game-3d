@@ -15,6 +15,7 @@ namespace ShootingGame.Core
         private const float minSize = 10.0f;
 
         private Vector3 center;
+        private float rootSize;
         private float size;
         List<DrawableModel> modelList;
         private BoundingBox nodeBoundingBox;
@@ -32,6 +33,7 @@ namespace ShootingGame.Core
         public static int modelsDrawn;
         private static int modelsStoredInQuadTree;
 
+        public float RootSize { get { return rootSize; } set { rootSize = value; } }
         public int ModelsDrawn { get { return modelsDrawn; } set { modelsDrawn = value; } }
 
         public OcTreeNode(Vector3 center, float size)
@@ -60,22 +62,25 @@ namespace ShootingGame.Core
             return deletedModel;
         }
 
-        public void Update()
+        public void GetUpdatedModels(ref List<DrawableModel> models)
         {
-            List<DrawableModel> newModels = new List<DrawableModel>();
-            for (int i = 0; i < modelList.Count; i++ )
+            if (modelList.Count > 0)
             {
-                DrawableModel deletedModel = modelList[i];
-                modelList.Remove(deletedModel);
-                i--;
-                deletedModel.Update();
-                newModels.Add(deletedModel);                
+                for (int i = 0; i < modelList.Count; i++)
+                {
+                    DrawableModel deletedModel = modelList[i];
+                    modelList.RemoveAt(i);
+                    i--;
+                    deletedModel.Update();
+                    if (!IsModelOutOfOctree(deletedModel))
+                        models.Add(deletedModel);
+                }
             }
-            foreach (DrawableModel model in newModels)
-                AddDrawableModel(model);
-
-            foreach (OcTreeNode node in childList)
-                node.Update();
+            else
+            {
+                foreach (OcTreeNode node in childList)
+                    node.GetUpdatedModels(ref models);
+            }
         }
 
         public DrawableModel findModel(int modelID)
@@ -108,38 +113,55 @@ namespace ShootingGame.Core
             return dModel;
         }
         
-        public void DetectCollision()
+        public void DetectCollision(ref List<int> modelsToRemove)
         {
-            List<EnemyPlane> enemyModel = new List<EnemyPlane>();
-            List<Bullet> playerBullet = new List<Bullet>();
+           List<EnemyPlane> enemyModel = new List<EnemyPlane>();
+                List<Bullet> playerBullet = new List<Bullet>();
 
-            foreach(DrawableModel model in modelList)
+            if (modelList.Count > 0)
             {
-                if (model.GetType().ToString().Equals("ShootingGame.EnemyPlane"))
-                    enemyModel.Add((EnemyPlane)model);
-                else if (model.GetType().ToString().Equals("ShootingGame.Bullet"))
-                    playerBullet.Add((Bullet)model);                   
-            }
-
-            if(enemyModel.Count > 0 && playerBullet.Count > 0)
-            {
-                foreach(EnemyPlane enemy in enemyModel)
+                foreach (DrawableModel model in modelList)
                 {
-                    foreach(Bullet bullet in playerBullet)
+                    if (model.GetType().ToString().Equals("ShootingGame.EnemyPlane"))
+                        enemyModel.Add((EnemyPlane)model);
+                    else if (model.GetType().ToString().Equals("ShootingGame.Bullet"))
+                        playerBullet.Add((Bullet)model);
+                }
+            }
+            else
+            {
+                foreach (OcTreeNode childNode in childList)
+                {
+                    childNode.DetectCollision(ref modelsToRemove);
+                }
+            }
+                if (enemyModel.Count > 0 && playerBullet.Count > 0)
+                {
+                    for (int i = 0; i < enemyModel.Count; i++)
                     {
-                        if(enemy.CollidesWith(bullet.Model, bullet.WorldMatrix))
+                        for (int j = 0; j < playerBullet.Count; j++)
                         {
-                            modelList.Remove(enemy);
-                            modelList.Remove(bullet);
+                            if (enemyModel[i].CollidesWith(playerBullet[j].Model, playerBullet[j].WorldMatrix))
+                            {
+                                modelsToRemove.Add(enemyModel[i].ModelID);
+                                modelsToRemove.Add(playerBullet[j].ModelID);
+                                enemyModel.RemoveAt(i);
+                                playerBullet.RemoveAt(j);
+                                i--;
+                                j--;
+                            }
                         }
                     }
                 }
-            }
+        }
+             
+        
 
-            foreach (OcTreeNode childNode in childList)
-            {
-                childNode.DetectCollision();
-            }
+        private bool IsModelOutOfOctree(DrawableModel dModel)
+        {
+            return Math.Abs(dModel.Position.X - center.X) > rootSize ||
+                Math.Abs(dModel.Position.Y - center.Y) > rootSize ||
+                Math.Abs(dModel.Position.Z - center.Z) > rootSize;
         }
         
         private void AddDrawableModel(DrawableModel dModel)
@@ -191,7 +213,7 @@ namespace ShootingGame.Core
             float sizeOver2 = size / 2.0f;
             float sizeOver4 = size / 4.0f;
 
-            nodeUFR = new OcTreeNode(center + new Vector3(sizeOver4, sizeOver4, -sizeOver4), sizeOver2);
+            nodeUFR = new OcTreeNode(center + new Vector3(sizeOver4, sizeOver4, -sizeOver4), sizeOver2);            
             nodeUFL = new OcTreeNode(center + new Vector3(-sizeOver4, sizeOver4, -sizeOver4), sizeOver2);
             nodeUBR = new OcTreeNode(center + new Vector3(sizeOver4, sizeOver4, sizeOver4), sizeOver2);
             nodeUBL = new OcTreeNode(center + new Vector3(-sizeOver4, sizeOver4, sizeOver4), sizeOver2);
@@ -199,6 +221,15 @@ namespace ShootingGame.Core
             nodeDFL = new OcTreeNode(center + new Vector3(-sizeOver4, -sizeOver4, -sizeOver4), sizeOver2);
             nodeDBR = new OcTreeNode(center + new Vector3(sizeOver4, -sizeOver4, sizeOver4), sizeOver2);
             nodeDBL = new OcTreeNode(center + new Vector3(-sizeOver4, -sizeOver4, sizeOver4), sizeOver2);
+
+            nodeUFR.RootSize = rootSize;
+            nodeUFL.RootSize = rootSize;
+            nodeUBR.RootSize = rootSize;
+            nodeUBL.RootSize = rootSize;
+            nodeDFR.RootSize = rootSize;
+            nodeDFL.RootSize = rootSize;
+            nodeDBR.RootSize = rootSize;
+            nodeDBL.RootSize = rootSize;
 
             childList.Add(nodeUFR);
             childList.Add(nodeUFL);
@@ -239,10 +270,8 @@ namespace ShootingGame.Core
 
         public void Draw(Matrix viewMatrix, Matrix projectionMatrix, BoundingFrustum cameraFrustrum)
         {
-            bool intersected = cameraFrustrum.Intersects(nodeBoundingBox);
-            //ContainmentType cameraNodeContainment = cameraFrustrum.Contains(nodeBoundingBox);
-            //if (cameraNodeContainment != ContainmentType.Disjoint)
-            if (intersected)
+            ContainmentType cameraNodeContainment = cameraFrustrum.Contains(nodeBoundingBox);
+            if (cameraNodeContainment != ContainmentType.Disjoint)
             {
                 foreach (DrawableModel dModel in modelList)
                 {

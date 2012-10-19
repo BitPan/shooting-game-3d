@@ -51,7 +51,7 @@ namespace ShootingGame
 
         public override void Update()
         {
-            worldMatrix *= Matrix.CreateTranslation(direction);
+            WorldMatrix = worldMatrix * Matrix.CreateTranslation(direction);
         }
 
         public void yawRotate(float rawRotate)

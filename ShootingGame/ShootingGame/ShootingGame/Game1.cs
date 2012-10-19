@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using ShootingGame.Core;
+using ShootingGame.GameComponent;
 
 namespace ShootingGame
 {
@@ -19,6 +20,7 @@ namespace ShootingGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        //public FirstPersonCamera camera { get; protected set; }
         public FirstPersonCamera camera { get; protected set; }
         SpriteFont Font1;
         Vector2 FontPos;
@@ -58,7 +60,7 @@ namespace ShootingGame
         int[,] floorPlan;
         Texture2D sceneryTexture;
         VertexBuffer cityVertexBuffer;
-        int[] buildingHeights = new int[] { 0, 2, 2, 6, 5, 4 };
+        int[] buildingHeights = new int[] { 0, 1, 2, 3, 4,3 };
         float time;
         SceneManager sceneManager;
 
@@ -80,6 +82,7 @@ namespace ShootingGame
             rnd = new Random();
             finalScore = 0;
             camera = new FirstPersonCamera(this);
+            
             Components.Add(camera);
 
         }
@@ -96,8 +99,9 @@ namespace ShootingGame
 //modelManager = new ModelManager(this);
             sceneManager = new SceneManager(this);
             Components.Add(sceneManager);            
-           // Components.Add(modelManager);
+            Components.Add(modelManager);
             camera.prepareCamera();
+            //camera = new NewCamera(graphics.GraphicsDevice.Viewport, new Vector3(1, 15, -1), 0, 0);
             base.Initialize();
             
                 
@@ -188,6 +192,11 @@ namespace ShootingGame
 
             if (currentGameState == GameState.PLAY)
             {
+                MouseState mouseState = Mouse.GetState();
+                KeyboardState kState = Keyboard.GetState();
+                GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+                //camera.Update(mouseState, keyState, gamePadState);
+
                 UpdateTank(gameTime);
 
                 if (playerHealth == 0)
@@ -208,7 +217,6 @@ namespace ShootingGame
 
                     if (Mouse.GetState().LeftButton == ButtonState.Pressed)
                     {
-
                         if (timeSinceLastShoot >= nextShootTime)
                         {
                             music.PlayShootingEffect();
@@ -286,7 +294,13 @@ namespace ShootingGame
             }
             else if (currentGameState == GameState.PLAY)
             {
+
+                sceneManager.GetOcTreeRoot.ModelsDrawn = 0;
+                
+                BoundingFrustum cameraFrustrum = new BoundingFrustum(camera.ViewMatrix * camera.ProjectionMatrix);
+                sceneManager.GetOcTreeRoot.Draw(camera.ViewMatrix,camera.ProjectionMatrix, cameraFrustrum);            
                 sceneManager.GetOcTreeRoot.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, device, effect);
+                Window.Title = string.Format("Models drawn: {0}", sceneManager.GetOcTreeRoot.ModelsDrawn);
                 //background.DrawSkybox(device, camera, skyboxModel, skyboxTextures);
                 // background.DrawGround(device, camera, ground, groundTextures);
                 DrawCity(floorEffect, 50f, 0f, new Vector3(0, 0, 0));

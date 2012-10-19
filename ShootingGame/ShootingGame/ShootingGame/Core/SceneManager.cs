@@ -65,17 +65,24 @@ namespace ShootingGame.Core
         {
             float verticalPosition = (float)rnd.NextDouble() * 100 + 100;
             float horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
-            ocTreeRoot = new OcTreeNode(new Vector3(500, 0, -300), 1200);
+            ocTreeRoot = new OcTreeNode(new Vector3(500, 0, -300), 2000);
+            ocTreeRoot.RootSize = 2000;
             AddPlayerModel(new Vector3(500, 0, -500));
 
             Vector3 position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
-            Vector3 direction1 = new Vector3(0, 0, 4);          
+            Vector3 direction1 = new Vector3(0, 0, 4);
+
+
+            for (int i = 0; i < 20; i++)
+            {
+                verticalPosition = (float)rnd.NextDouble() * 100 + 100;
+                horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
+                position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
+                direction1 = new Vector3(0, 0, 1);
+                AddEnemyModel(position1, direction1, enemyData);
+            }
+                
             
-            AddEnemyModel(position1, direction1, enemyData);
-            verticalPosition = (float)rnd.NextDouble() * 100 + 100;
-            horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
-            position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
-            direction1 = new Vector3(0, 0, 4);
             base.Initialize();
         }
 
@@ -99,6 +106,7 @@ namespace ShootingGame.Core
             Vector3 bulletPosition = new Vector3(position.X + direction.X * 3, position.Y + direction.Y * 3, position.Z + direction.Z * 3);
             DrawableModel newDModel = new Bullet(Game.Content.Load<Model>("Models\\ammo"), Matrix.CreateTranslation(bulletPosition.X, bulletPosition.Y, bulletPosition.Z), direction*20);
             int id = ocTreeRoot.Add(newDModel);
+            
             enemyIDs.Add(id);
         }
 
@@ -191,18 +199,22 @@ namespace ShootingGame.Core
             MouseState mouseState = Mouse.GetState();
             KeyboardState keyState = Keyboard.GetState();
 
-            ocTreeRoot.DetectCollision();
-            ocTreeRoot.Update();
-            //UpdateEnemyModel(gameTime);
-            //UpdatePlayerBulletModel();
-            //ocTreeRoot.UpdateModelWorldMatrix(enemyIDs[0]);
+            //ocTreeRoot.DetectCollision();
+            List<DrawableModel> models = new List<DrawableModel>();
+            ocTreeRoot.GetUpdatedModels(ref models);
+
+            foreach (DrawableModel model in models)
+                ocTreeRoot.Add(model);
+
+            List<int> modelsToRemove = new List<int>();
+            ocTreeRoot.DetectCollision(ref modelsToRemove);
+
+            foreach (int modelID in modelsToRemove)
+                ocTreeRoot.RemoveDrawableModel(modelID);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            ocTreeRoot.ModelsDrawn = 0;
-            BoundingFrustum cameraFrustrum = new BoundingFrustum(((Game1)Game).camera.ViewMatrix * ((Game1)Game).camera.ProjectionMatrix);
-            ocTreeRoot.Draw(((Game1)Game).camera.ViewMatrix, ((Game1)Game).camera.ProjectionMatrix, cameraFrustrum);
             base.Draw(gameTime);
         }
     }
