@@ -37,20 +37,6 @@
       </Dependency>
     </Item>
     <Item>
-      <Source>ground\Ground.x</Source>
-      <Name>ground\Ground</Name>
-      <Importer>XImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ground.xnb</Output>
-      <Time>2012-10-15T22:59:55.0539505+11:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\ground\Ground_0.xml</Key>
-        <Value>2012-10-15T23:53:50.998036+11:00</Value>
-      </Dependency>
-      <Request>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe_0.xnb</Request>
-    </Item>
-    <Item>
       <Source>skybox\skybox.x</Source>
       <Name>skybox\skybox</Name>
       <Importer>XImporter</Importer>
@@ -241,114 +227,6 @@
       <Options>None</Options>
       <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\floortexture.xnb</Output>
       <Time>2012-10-15T22:59:30.3825394+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\029terresable.jpg</Source>
-      <Name>ground\029terresable</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\029terresable.xnb</Output>
-      <Time>2012-10-15T22:59:55.0419499+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\19uq.png</Source>
-      <Name>ground\19uq</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\19uq.xnb</Output>
-      <Time>2012-10-15T22:59:55.0359495+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\3SNe.png</Source>
-      <Name>ground\3SNe</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe.xnb</Output>
-      <Time>2012-10-15T22:59:55.0849523+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\Ak4c.jpg</Source>
-      <Name>ground\Ak4c</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ak4c.xnb</Output>
-      <Time>2012-10-15T22:59:55.0219487+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\Checker.bmp</Source>
-      <Name>ground\Checker</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Checker.xnb</Output>
-      <Time>2012-10-15T22:59:55.0149483+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\greytiles.jpg</Source>
-      <Name>ground\greytiles</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\greytiles.xnb</Output>
-      <Time>2012-10-15T22:59:55.0669513+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\mapzoneagedpavementdiff.png</Source>
-      <Name>ground\mapzoneagedpavementdiff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneagedpavementdiff.xnb</Output>
-      <Time>2012-10-15T22:59:55.0609509+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\mapzonegrass01diffuse.png</Source>
-      <Name>ground\mapzonegrass01diffuse</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzonegrass01diffuse.xnb</Output>
-      <Time>2012-10-15T22:59:55.0479502+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\mapzoneoldroaddiffuse.png</Source>
-      <Name>ground\mapzoneoldroaddiffuse</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneoldroaddiffuse.xnb</Output>
-      <Time>2012-10-15T22:59:55.079952+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\mapzoneredtilescratched.png</Source>
-      <Name>ground\mapzoneredtilescratched</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneredtilescratched.xnb</Output>
-      <Time>2012-10-15T22:59:55.0729516+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\sanddf.png</Source>
-      <Name>ground\sanddf</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf.xnb</Output>
-      <Time>2012-10-15T22:59:55.0299492+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\TedO.png</Source>
-      <Name>ground\TedO</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\TedO.xnb</Output>
-      <Time>2012-10-15T22:59:55.0899526+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\clear_back.JPG</Source>
@@ -571,29 +449,6 @@
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\spaceship_0.xml</Output>
       <Time>2012-10-15T22:59:17.4708009+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\Ground.x</Source>
-      <Importer>XImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>obj\x86\Debug\ground\Ground_0.xml</Output>
-      <Time>2012-10-15T22:59:55.0539505+11:00</Time>
-    </Item>
-    <Item>
-      <Source>ground\3SNe.png</Source>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Parameters>
-        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
-        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
-        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
-        <Data Key="GenerateMipmaps" Type="bool">true</Data>
-        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
-        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe_0.xnb</Output>
-      <Time>2012-10-15T22:59:55.0849523+11:00</Time>
     </Item>
     <Item>
       <Source>skybox\skybox.x</Source>

@@ -289,7 +289,6 @@ C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGame\bin\x86\De
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\text\SpriteFont1.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ammo.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\spaceship.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ground.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\skybox.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\junctioned.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\viper test.xnb
@@ -305,18 +304,6 @@ C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\De
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-26c2d220.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\floortexture.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\029terresable.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\19uq.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ak4c.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Checker.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\greytiles.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneagedpavementdiff.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzonegrass01diffuse.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneoldroaddiffuse.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzoneredtilescratched.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\TedO.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left.xnb
@@ -340,7 +327,6 @@ C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\De
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\Bomb.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\laser.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\hit.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\3SNe_0.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top_0.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right_0.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left_0.xnb
@@ -354,6 +340,9 @@ C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\De
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\houseA_0.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\sackTex_0.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\house\swingTexL_0.xnb
+C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\Ship.xnb
+C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse.xnb
+C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse_0.xnb
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.wma
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\ShootingGame.exe
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\ShootingGame.pdb
@@ -361,6 +350,3 @@ C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\obj\x86\De
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\obj\x86\Debug\ShootingGame.exe
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\obj\x86\Debug\ShootingGame.pdb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\Ship.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse.xnb
-C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse_0.xnb

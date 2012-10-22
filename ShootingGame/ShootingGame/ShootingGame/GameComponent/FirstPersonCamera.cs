@@ -122,7 +122,7 @@ namespace ShootingGame
             accumPitchDegrees = 0.0f;
             eyeHeightStanding = 0.0f;
             eyeHeightCrouching = 0.0f;
-            eye = new Vector3(0, 0, 0);
+            eye = new Vector3(500, 0, -500);
             target = Vector3.Zero;
             targetYAxis = Vector3.UnitY;
             xAxis = Vector3.UnitX;
@@ -170,6 +170,11 @@ namespace ShootingGame
             cameraData = new CameraData();
 
                     }
+
+        public void UpdateMousePosition(MouseState mouseState)
+        {
+            currentMouseState = mouseState;
+        }
 
         public void setWeapon(Model model)
         {
@@ -671,7 +676,7 @@ namespace ShootingGame
         /// </summary>
         /// <param name="headingDegrees">Y axis rotation in degrees.</param>
         /// <param name="pitchDegrees">X axis rotation in degrees.</param>
-        private void RotateSmoothly(float headingDegrees, float pitchDegrees)
+        public void RotateSmoothly(float headingDegrees, float pitchDegrees)
         {
             headingDegrees *= rotationSpeed;
             pitchDegrees *= rotationSpeed;
@@ -729,7 +734,7 @@ namespace ShootingGame
         /// </summary>
         /// <param name="direction">Direction moved.</param>
         /// <param name="elapsedTimeSec">Elapsed game time.</param>
-        private void UpdatePosition(ref Vector3 direction, float elapsedTimeSec)
+        public void UpdatePosition(ref Vector3 direction, float elapsedTimeSec)
         {
             if (currentVelocity.LengthSquared() != 0.0f)
             {

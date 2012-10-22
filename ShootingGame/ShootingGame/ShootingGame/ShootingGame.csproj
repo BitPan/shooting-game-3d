@@ -107,21 +107,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\CoordCross.cs" />
+    <Compile Include="Core\Octree.cs" />
     <Compile Include="Core\OcTreeNode.cs" />
     <Compile Include="Core\SceneManager.cs" />
     <Compile Include="Data\CameraData.cs" />
     <Compile Include="GameComponent\FirstPersonCamera.cs" />
+    <Compile Include="GameComponent\InputHandler.cs" />
     <Compile Include="GameComponent\LoadingScene.cs" />
     <Compile Include="GameComponent\NewCamera.cs" />
+    <Compile Include="GameComponent\TextHandler.cs" />
     <Compile Include="GameUtil\XNAUtil.cs" />
     <Compile Include="Models\BackGround.cs" />
     <Compile Include="GameComponent\GameMenu.cs" />
     <Compile Include="Models\Bullet.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\EnemyBullet.cs" />
     <Compile Include="Models\EnemyPlane.cs" />
     <Compile Include="Models\DrawableModel.cs" />
-    <Compile Include="Models\House.cs" />
     <Compile Include="Level\LevelData.cs" />
     <Compile Include="GameComponent\Camera.cs" />
     <Compile Include="Models\BasicModel.cs" />

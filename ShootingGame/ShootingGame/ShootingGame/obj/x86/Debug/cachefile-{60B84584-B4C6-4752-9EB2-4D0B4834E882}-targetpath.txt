@@ -1,7 +1,6 @@
 Content\text\SpriteFont1.xnb
 Content\Models\ammo.xnb
 Content\Models\spaceship.xnb
-Content\ground\Ground.xnb
 Content\skybox\skybox.xnb
 Content\junctioned.xnb
 Content\viper test.xnb
@@ -17,18 +16,6 @@ Content\Models\dirt2-1\dirt 2-242837c0.xnb
 Content\Models\dirt2-1\dirt 2-26c2d220.xnb
 Content\Models\dirt2-1\dirt 2-4be9a760.xnb
 Content\Textures\floortexture.xnb
-Content\ground\029terresable.xnb
-Content\ground\19uq.xnb
-Content\ground\3SNe.xnb
-Content\ground\Ak4c.xnb
-Content\ground\Checker.xnb
-Content\ground\greytiles.xnb
-Content\ground\mapzoneagedpavementdiff.xnb
-Content\ground\mapzonegrass01diffuse.xnb
-Content\ground\mapzoneoldroaddiffuse.xnb
-Content\ground\mapzoneredtilescratched.xnb
-Content\ground\sanddf.xnb
-Content\ground\TedO.xnb
 Content\skybox\clear_back.xnb
 Content\skybox\clear_front.xnb
 Content\skybox\clear_left.xnb
@@ -53,7 +40,6 @@ Content\music\background.wma
 Content\music\Bomb.xnb
 Content\music\laser.xnb
 Content\music\hit.xnb
-Content\ground\3SNe_0.xnb
 Content\skybox\clear_top_0.xnb
 Content\skybox\clear_right_0.xnb
 Content\skybox\clear_left_0.xnb

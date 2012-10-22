@@ -8,14 +8,14 @@ using ShootingGame.Models;
 
 namespace ShootingGame
 {
-    public class Bullet : DrawableModel
+    public class Player : DrawableModel
     {
 
-        public Bullet(Model inModel, Matrix inWorldMatrix, Vector3 newDirection)
+        public Player(Model inModel, Matrix inWorldMatrix, Vector3 newDirection)
             : base(inModel, inWorldMatrix, newDirection)
         {
             worldMatrix = inWorldMatrix;
-            this.direction = newDirection*2;
+            this.direction = newDirection;
         }
 
         public void DoTranslation(Vector3 translation)
@@ -30,7 +30,7 @@ namespace ShootingGame
 
         public override void Update()
         {
-            WorldMatrix = worldMatrix * Matrix.CreateTranslation(direction);
+            this.WorldMatrix = worldMatrix;
         }
 
         public Vector3 GetDirection()

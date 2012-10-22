@@ -8,14 +8,14 @@ using ShootingGame.Models;
 
 namespace ShootingGame
 {
-    public class Bullet : DrawableModel
+    public class EnemyBullet : DrawableModel
     {
 
-        public Bullet(Model inModel, Matrix inWorldMatrix, Vector3 newDirection)
+        public EnemyBullet(Model inModel, Matrix inWorldMatrix, Vector3 newDirection)
             : base(inModel, inWorldMatrix, newDirection)
         {
             worldMatrix = inWorldMatrix;
-            this.direction = newDirection*2;
+            this.direction = newDirection;
         }
 
         public void DoTranslation(Vector3 translation)
