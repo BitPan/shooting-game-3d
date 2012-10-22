@@ -111,10 +111,13 @@
     <Compile Include="Core\OcTreeNode.cs" />
     <Compile Include="Core\SceneManager.cs" />
     <Compile Include="Data\CameraData.cs" />
+    <Compile Include="Data\GameWorldData.cs" />
     <Compile Include="GameComponent\FirstPersonCamera.cs" />
+    <Compile Include="GameComponent\GameLevelHandler.cs" />
     <Compile Include="GameComponent\InputHandler.cs" />
     <Compile Include="GameComponent\LoadingScene.cs" />
     <Compile Include="GameComponent\NewCamera.cs" />
+    <Compile Include="GameComponent\GameMenuScreen.cs" />
     <Compile Include="GameComponent\TextHandler.cs" />
     <Compile Include="GameUtil\XNAUtil.cs" />
     <Compile Include="Models\BackGround.cs" />
@@ -125,10 +128,9 @@
     <Compile Include="Models\EnemyBullet.cs" />
     <Compile Include="Models\EnemyPlane.cs" />
     <Compile Include="Models\DrawableModel.cs" />
-    <Compile Include="Level\LevelData.cs" />
+    <Compile Include="Data\LevelData.cs" />
     <Compile Include="GameComponent\Camera.cs" />
     <Compile Include="Models\BasicModel.cs" />
-    <Compile Include="Core\ModelManager.cs" />
     <Compile Include="GameComponent\Music.cs" />
     <Compile Include="Models\IModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

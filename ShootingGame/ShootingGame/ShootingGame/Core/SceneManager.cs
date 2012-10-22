@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using ShootingGame.Models;
+using ShootingGame.Data;
+using ShootingGame.GameComponent;
 
 
 namespace ShootingGame.Core
@@ -18,38 +20,48 @@ namespace ShootingGame.Core
     /// </summary>
     public class SceneManager : DrawableGameComponent
     {
-        public OcTreeNode ocTreeRoot;
-
         Game game;
-        City city;
-        LevelData levelData;
-        Random rnd;
-        int[] enemyData;
+        City city;        
         Octree octreeWorld;
+        Music music;
+        BackGround background;
+
+        GameWorldData worldData;       
+        GameLevelHandler levelHander;
+        InputHandler inputHandler;
+        TextHandler textHandler;
+        GameMenuScreen gameMenu;
+        Vector2 fontPosition;
+
+        BasicEffect effect;
+        Effect floorEffect;
+        Texture2D sceneryTexture;
+
+        public FirstPersonCamera camera { get; protected set; }
+
         private int playerHealth;
-        GameLevel currentGameLevel;
-
-        public enum GameLevel { LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5 };
-
-        private const int boundryLeft = -1000;
-        private const int boundryRight = 1000;
-        private const int boundryNear = 2000;
-        private const int boundryFar = -2000;
-        private const int FLYING_OUT_ZONE = 500;
-        private const int PLAYER_BULLET_SPEED = 20;
-
-
+        
+        
         public int GetPlayerHealth { get { return playerHealth; } }
         public OcTreeNode GetOcTreeRoot { get { return octreeWorld.GetOctree(); } }
-        public GameLevel GetGameLevel { get { return currentGameLevel; } }
 
         public SceneManager(Game game)
             : base(game)
         {
             this.game = game;
             city = new City();
-            rnd = new Random();
-            LoadWorldData();
+            inputHandler = new InputHandler();
+            textHandler = new TextHandler();
+            levelHander = new GameLevelHandler();
+            gameMenu = new GameMenuScreen(game, levelHander);            
+            worldData = new GameWorldData();
+            camera = new FirstPersonCamera(game);
+            music = new Music(game);
+            background = new BackGround(game);
+            fontPosition = new Vector2(Game.GraphicsDevice.Viewport.Width * 0.9f,
+                    Game.GraphicsDevice.Viewport.Height * 0.9f);
+            camera.prepareCamera();
+            camera.setWeapon(Game.Content.Load<Model>(@"Models\weapon"));
         }
 
         /// <summary>
@@ -57,11 +69,12 @@ namespace ShootingGame.Core
         /// to run.  This is where it can query for any required services and load content.
         /// </summary>
         public override void Initialize()
-        {
-            LoadWorldModels();
-            octreeWorld.TestInitialize(rnd, enemyData);
-            currentGameLevel = GameLevel.LEVEL1;
+        {           
             playerHealth = 100;
+            Game.Components.Add(gameMenu);
+            effect = new BasicEffect(Game.GraphicsDevice);
+            sceneryTexture = Game.Content.Load<Texture2D>("texturemap");
+            floorEffect = Game.Content.Load<Effect>("effects");
             base.Initialize();
         }
 
@@ -69,15 +82,7 @@ namespace ShootingGame.Core
         public void AddPlayerBulletModel(Vector3 position, Vector3 direction)
         {
             octreeWorld.AddPlayerBulletModel(position, direction);
-        }
-
-        private void LoadWorldData()
-        {
-            int[] worldData = { boundryLeft, boundryRight, boundryNear, boundryFar };
-            octreeWorld = new Octree(new Vector3(500, 0, -300), 2000, worldData);
-            levelData = new LevelData();
-            enemyData = levelData.loadLevelData(currentGameLevel);
-        }
+        }        
 
         private void LoadWorldModels()
         {
@@ -89,11 +94,6 @@ namespace ShootingGame.Core
             octreeWorld.LoadModels(models);
         }
 
-        public City GetCity()
-        {
-            return city;
-        }
-
         /// <summary>
         /// Allows the game component to update itself.
         /// </summary>
@@ -103,14 +103,69 @@ namespace ShootingGame.Core
             float time = (float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f;
             MouseState mouseState = Mouse.GetState();
             KeyboardState keyState = Keyboard.GetState();
+            levelHander.UpdateGameStatus();
 
-            octreeWorld.Update(gameTime, rnd, ((Game1)Game).GetGameCamera());
-            //octreeWorld.UpdatePlayer(((Game1)Game).GetGameCamera().Position);
+            if (levelHander.GetGameState == GameLevelHandler.GameState.INITIALIZE)
+            {
+                octreeWorld = new Octree(worldData);
+                LoadWorldModels();
+                octreeWorld.TestInitialize(levelHander.GetEmemyData);
+                levelHander.SetGameState = GameLevelHandler.GameState.PLAY;
+                Game.Components.Remove(gameMenu);
+                game.Components.Add(camera);
+                music.BackGroundPlay();
+                game.IsMouseVisible = false;
+                textHandler.UpdateText(this);
+                city.SetUpCity(Game.GraphicsDevice, sceneryTexture);
+            }
+            else if (levelHander.GetGameState == GameLevelHandler.GameState.PLAY)
+            {
+                textHandler.UpdateText(this);
+                inputHandler.UpdateWorld(gameTime, camera, this, music);
+                octreeWorld.Update(gameTime, camera);
+            }
+            else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
+            {
+
+            }
+        }
+
+        public void TriggerGameState(GameLevelHandler.GameState gameState)
+        {
+
         }
 
         public override void Draw(GameTime gameTime)
         {
+            if (levelHander.GetGameState == GameLevelHandler.GameState.PLAY)
+            {
+                octreeWorld.GetOctree().ModelsDrawn = 0;
+                BoundingFrustum cameraFrustrum = new BoundingFrustum(camera.ViewMatrix * camera.ProjectionMatrix);
+                octreeWorld.GetOctree().Draw(camera.ViewMatrix, camera.ProjectionMatrix, cameraFrustrum);
+                octreeWorld.GetOctree().DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
+                Game.Window.Title = string.Format("Models drawn: {0}", octreeWorld.GetOctree().ModelsDrawn);
+                city.DrawCity(Game.GraphicsDevice, camera, floorEffect, 50f, 0f, new Vector3(0, 0, 0));
+                camera.DrawWeapon();
+                textHandler.DrawText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), gameTime, fontPosition);
+            }
+            else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
+            {
+
+            }
+            
+
+
             base.Draw(gameTime);
+        }
+
+        public GameLevelHandler.GameLevel GetGameLevel()
+        {
+            return levelHander.GetGameLevel;
+        }
+
+        public City GetCity()
+        {
+            return city;
         }
     }
 }
