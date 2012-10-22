@@ -54,12 +54,11 @@ namespace ShootingGame.Core
             return model.ModelID;
         }
 
-        public DrawableModel UpdateModelWorldMatrix(int modelID)
+        public void UpdateModelWorldMatrix(int modelID, Vector3 newPosition)
         {
-            DrawableModel deletedModel = RemoveDrawableModel(modelID);
-            deletedModel.Update();
-            AddDrawableModel(deletedModel);
-            return deletedModel;
+            //findModel(modelID).Position = newPosition;
+            //AddDrawableModel(newModel);
+            //return newModel.ModelID;
         }
 
         public void GetUpdatedModels(ref List<DrawableModel> models)
@@ -148,8 +147,9 @@ namespace ShootingGame.Core
                                 modelsToRemove.Add(playerBullet[j].ModelID);
                                 enemyModel.RemoveAt(i);
                                 playerBullet.RemoveAt(j);
-                                i--;
-                                j--;
+                                i = i >0 ? i-1 : 0;
+                                j = j >0 ? j-1 : 0;
+
                             }
                         }
                     }

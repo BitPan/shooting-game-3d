@@ -167,12 +167,12 @@ namespace ShootingGame
                 {
                     if (shots[i].CollidesWith(enemies[j].model, enemies[j].GetWorld()))
                     {
-                        ((Game1)Game).BackGroundPause();
-                        ((Game1)Game).PlaySoundEffect();
+                       // ((Game1)Game).BackGroundPause();
+                       // ((Game1)Game).PlaySoundEffect();
                         enemies.RemoveAt(j);
                         shots.RemoveAt(i);                        
                         score += 10;
-                        ((Game1)Game).BackGroudResumePlay();
+                        //((Game1)Game).BackGroudResumePlay();
                     }
                 }                
             }
@@ -195,7 +195,7 @@ namespace ShootingGame
                 if (player[0].CollidesWith(enemyBullets[j].model, enemyBullets[j].GetWorld()))
                     {
                         enemyBullets.RemoveAt(j);
-                        ((Game1)Game).DeductPlayerHealth(10);
+                        //((Game1)Game).DeductPlayerHealth(10);
                         j--;
                     }
             }

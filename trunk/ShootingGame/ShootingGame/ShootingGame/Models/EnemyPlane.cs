@@ -21,6 +21,7 @@ namespace ShootingGame
         private static int enemyAttackChanceFactor = 0;
 
 
+
         float originalSpeed = 0;
         Vector3 originalPosition;
         bool doTurnAround;
@@ -30,13 +31,14 @@ namespace ShootingGame
         public EnemyPlane(Model inModel, Matrix inWorldMatrix, Vector3 newDirection, int[] enemyData)
             : base(inModel, inWorldMatrix, newDirection)
         {
-            worldMatrix = Matrix.CreateScale(0.03f) * inWorldMatrix;            
-            direction = newDirection;
+            worldMatrix = Matrix.CreateScale(0.03f) * inWorldMatrix;     
+            direction = newDirection * 4;
             originalPosition = Position;
             originalSpeed = direction.Z;
             timeSinceLastShoot = 0;
-            //yawRotate((float)Math.PI/2);
             loadEnemyData(enemyData);
+            doTurnAround = false;
+           // yawRotate((float)Math.PI/2);
         }
 
         public void DoTranslation(Vector3 translation)
@@ -56,7 +58,7 @@ namespace ShootingGame
 
         public void yawRotate(float rawRotate)
         {
-            worldMatrix *= (Matrix.Identity * Matrix.CreateFromYawPitchRoll(rawRotate, 0, 0));
+            //rotation *= Matrix.CreateFromYawPitchRoll(rawRotate, 0, 0);
         }
 
         public bool IsTurningAround()
@@ -174,7 +176,7 @@ namespace ShootingGame
                 speedToReduce = 0;
                 speedX = 0;
                 ChangeDoTurnAround();
-                yawRotate((float)Math.PI);
+                //yawRotate((float)Math.PI);
                 SetOriginalPosition(Position);
             }
             //float speedX = (enemies[i].GetDirection().X < 4) ? (enemies[i].GetOriginalSpeed() - 0) / 10 : -(enemies[i].GetOriginalSpeed()) / 10;
@@ -191,20 +193,26 @@ namespace ShootingGame
 
         public void CalculateEnemyTurnAround(Random rnd)
         {
-            if (rnd.Next(enemyTurnAroundFactor) == 0) 
+            if (!doTurnAround && rnd.Next(enemyTurnAroundFactor) == 0)
+            {                
                 ChangeDoTurnAround();
+            }
         }
 
         private bool CanAttackPlayerInRange(Vector3 playerPosition)
         {
             return Math.Abs(Position.Z - playerPosition.Z) <= enemyAttackRange &&
-                    Math.Abs(Position.X - playerPosition.X) <= -enemyAttackRange;
+                    Math.Abs(Position.X - playerPosition.X) <= enemyAttackRange;
         }
 
         public bool canEnemyAttack(GameTime gameTime, Random rnd, Vector3 playerPosition)
         {
-            timeSinceLastShoot += gameTime.ElapsedGameTime.Milliseconds;
-            return (timeSinceLastShoot  >= enemyShootCd && CanAttackPlayerInRange(playerPosition) && rnd.Next(enemyAttackChanceFactor) == 0);
+            if (CanAttackPlayerInRange(playerPosition))
+            {                
+                timeSinceLastShoot += gameTime.ElapsedGameTime.Milliseconds;
+                return (timeSinceLastShoot >= enemyShootCd && rnd.Next(enemyAttackChanceFactor) == 0);
+            }
+            return false;
         }
         
         public Vector3 getAttackDirection(Random rnd, Vector3 playerPosition)

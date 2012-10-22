@@ -15,6 +15,7 @@ namespace ShootingGame.Models
         protected Vector3 position;
         protected int modelID;
         protected Vector3 direction;
+        protected Matrix rotation = Matrix.Identity;
 
         public Matrix WorldMatrix
         {
@@ -26,7 +27,7 @@ namespace ShootingGame.Models
             }
         }
 
-        public Vector3 Position { get { return position; } }
+        public Vector3 Position { get { return position; } set { position = value; } }
         public Vector3 Direction { get { return direction; } }
         public Model Model { get { return model; } }
         public int ModelID { get { return modelID; } set { modelID= value; } }
@@ -49,7 +50,7 @@ namespace ShootingGame.Models
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.EnableDefaultLighting();
-                    effect.World = modelTransforms[mesh.ParentBone.Index] * worldMatrix;
+                    effect.World = modelTransforms[mesh.ParentBone.Index] * (worldMatrix * rotation);
                     effect.View = viewMatrix;
                     effect.Projection = projectionMatrix;
                 }
