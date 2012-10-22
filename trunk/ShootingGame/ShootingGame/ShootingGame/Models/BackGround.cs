@@ -17,6 +17,8 @@ namespace ShootingGame
     /// </summary>
     public class BackGround : Microsoft.Xna.Framework.GameComponent
     {
+        Effect floorEffect;
+
         public BackGround(Game game)
             : base(game)
         {
@@ -30,13 +32,13 @@ namespace ShootingGame
         public override void Initialize()
         {
             // TODO: Add your initialization code here
-
+            floorEffect = Game.Content.Load<Effect>("effects");
             base.Initialize();
         }
 
 
 
-        public Model LModel(Effect effect, string assetName, out Texture2D[] textures)
+        public Model LModel(string assetName, out Texture2D[] textures)
         {
 
             Model newModel = this.Game.Content.Load<Model>(@assetName);
@@ -48,7 +50,7 @@ namespace ShootingGame
 
             foreach (ModelMesh mesh in newModel.Meshes)
                 foreach (ModelMeshPart meshPart in mesh.MeshParts)
-                    meshPart.Effect = effect.Clone();
+                    meshPart.Effect = floorEffect.Clone();
 
             return newModel;
         }

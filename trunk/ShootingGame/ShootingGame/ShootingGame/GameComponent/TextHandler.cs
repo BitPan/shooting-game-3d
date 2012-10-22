@@ -15,8 +15,7 @@ namespace ShootingGame.GameComponent
 
         public void UpdateText(SceneManager scene)
         {
-            scoreText = "Health: " + scene.GetPlayerHealth + "\nLevel:" + scene.GetGameLevel;
-            
+            scoreText = "Health: " + scene.GetPlayerHealth + "\nLevel:" + scene.GetGameLevel();            
         }
 
 

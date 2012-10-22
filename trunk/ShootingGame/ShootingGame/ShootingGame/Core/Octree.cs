@@ -5,11 +5,13 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using ShootingGame.Models;
 using Microsoft.Xna.Framework.Graphics;
+using ShootingGame.Data;
 
 namespace ShootingGame.Core
 {
     public class Octree
     {
+        Random rnd;
         OcTreeNode octreeRoot;
         List<int> enemyIDs;
         List<int> playerIDs;
@@ -28,21 +30,22 @@ namespace ShootingGame.Core
         private Model enemyBulletModel;
 
 
-        public Octree(Vector3 position, int size, int[] worldData)
+        public Octree(GameWorldData worldData)
         {
-            octreeRoot = new OcTreeNode(position, size);
-            octreeRoot.RootSize = size;
-            boundryLeft = worldData[0];
-            boundryRight = worldData[1];
-            boundryNear = worldData[2];
-            boundryFar = worldData[3];
+            octreeRoot = new OcTreeNode(worldData.OCTREE_WORLD_CENTER1, worldData.OCTREE_WORLD_SIZE1);
+            octreeRoot.RootSize = worldData.OCTREE_WORLD_SIZE1;
+            boundryLeft = worldData.BoundryLeft;
+            boundryRight = worldData.BoundryRight;
+            boundryNear = worldData.BoundryNear;
+            boundryFar = worldData.BoundryFar;
             enemyIDs = new List<int>();
             playerIDs = new List<int>();
             enemyBulletIDs = new List<int>();
             playerBulletIDs = new List<int>();
+            rnd = new Random();
         }
 
-        public void TestInitialize(Random rnd, int[] enemyData)
+        public void TestInitialize(int[] enemyData)
         {
             AddPlayerModel(new Vector3(500, 0, -500));
             float verticalPosition = (float)rnd.NextDouble() * 100 + 500;
@@ -63,7 +66,7 @@ namespace ShootingGame.Core
             }
         }
 
-        public void Update(GameTime gameTime, Random rnd, FirstPersonCamera camera)
+        public void Update(GameTime gameTime, FirstPersonCamera camera)
         {
 
             List<DrawableModel> models = new List<DrawableModel>();

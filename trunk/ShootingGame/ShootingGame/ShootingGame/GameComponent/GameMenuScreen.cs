@@ -8,24 +8,31 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using ShootingGame.Models;
+using ShootingGame.Data;
+using ShootingGame.GameComponent;
 
 
-namespace ShootingGame.GameComponent
+namespace ShootingGame.Core
 {
     /// <summary>
     /// This is a game component that implements IUpdateable.
     /// </summary>
-    public class LoadingScene : Microsoft.Xna.Framework.GameComponent
+    public class GameMenuScreen :DrawableGameComponent
     {
-        Game game;
+
         List<GameMenu> gameMenuList;
         MouseState mousetate;
         MouseState prevmousestate;
+        SpriteBatch spriteBatch;
+        GameLevelHandler levelHandler;
 
-        public LoadingScene(Game game)
+        public GameMenuScreen(Game game, GameLevelHandler levelHandler)
             : base(game)
         {
-            this.game = game;
+
+            game.IsMouseVisible = true;
+            this.levelHandler = levelHandler;
             gameMenuList = new List<GameMenu>();
         }
 
@@ -35,19 +42,19 @@ namespace ShootingGame.GameComponent
         /// </summary>
         public override void Initialize()
         {
-            // TODO: Add your initialization code here
+            spriteBatch = new SpriteBatch(Game.GraphicsDevice);
             gameMenuList.Add(new GameMenu(new Rectangle(((Game).Window.ClientBounds.Width / 2) - 25, ((Game).Window.ClientBounds.Height / 2) - 100, 100, 14), "Play"));
             gameMenuList.Add(new GameMenu(new Rectangle(((Game).Window.ClientBounds.Width / 2) - 25, ((Game).Window.ClientBounds.Height / 2) - 50, 100, 14), "Exit"));
             base.Initialize();
         }
-
+        
         /// <summary>
         /// Allows the game component to update itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
-            // TODO: Add your update code here
+            float time = (float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f;
             mousetate = Mouse.GetState();
 
             if (gameMenuList.Count > 0)
@@ -60,13 +67,26 @@ namespace ShootingGame.GameComponent
                         prevmousestate.LeftButton == ButtonState.Released)
                     {
                         if (m.text == "Play")
-                            ((Game1)Game).InitializeGameComponents();
+                            levelHandler.SetGameState = GameLevelHandler.GameState.INITIALIZE;
                         else if (m.text == "Exit")
                             ((Game1)Game).Exit();
                     }
                 }
             }
-            base.Update(gameTime);
+
         }
+        public override void Draw(GameTime gameTime)
+        {
+            spriteBatch.Begin();
+            Game.GraphicsDevice.Clear(Color.Black);
+
+            foreach (GameMenu menu in gameMenuList)
+            {
+                menu.Draw(spriteBatch, ((Game1)Game).GetSpriteFont());
+            }
+            spriteBatch.End();
+            base.Draw(gameTime);
+        }
+
     }
 }
