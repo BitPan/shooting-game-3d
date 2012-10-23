@@ -37,5 +37,17 @@ namespace ShootingGame
         {
             return direction;
         }
+
+        public bool CollidesWithPlayer(Vector3 playerPosition)
+        {
+            BoundingSphere playerSphere = new BoundingSphere(playerPosition, 10f);
+
+            foreach (ModelMesh myModelMeshes in model.Meshes)
+            {
+                if (playerSphere.Contains(myModelMeshes.BoundingSphere.Transform(worldMatrix)) != ContainmentType.Disjoint)
+                    return true;
+            }
+            return false;
+        }
     }
 }

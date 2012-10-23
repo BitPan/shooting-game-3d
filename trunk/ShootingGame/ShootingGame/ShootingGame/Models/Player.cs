@@ -28,6 +28,9 @@ namespace ShootingGame
             this.direction = direction;
         }
 
+        public override void Draw(Matrix viewMatrix, Matrix projectionMatrix)
+        { }
+
         public override void Update()
         {
             this.WorldMatrix = worldMatrix;

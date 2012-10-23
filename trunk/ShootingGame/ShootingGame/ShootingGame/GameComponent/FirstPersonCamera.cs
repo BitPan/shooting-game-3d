@@ -169,7 +169,7 @@ namespace ShootingGame
             Perspective(fovx, aspect, znear, zfar);
             cameraData = new CameraData();
 
-                    }
+        }
 
         public void UpdateMousePosition(MouseState mouseState)
         {
@@ -181,7 +181,7 @@ namespace ShootingGame
             //load weapon
             this.weapon = model;
             weaponTransforms = new Matrix[weapon.Bones.Count];
-            weaponWorldMatrix = Matrix.Identity;       
+            weaponWorldMatrix = Matrix.Identity;
 
         }
 
@@ -292,11 +292,28 @@ namespace ShootingGame
             // move more slowly as the camera's view approaches 90 degrees
             // straight up and down.
 
+            //  if (!moveDisabled)
+            // {
             Vector3 forwards = Vector3.Normalize(Vector3.Cross(WORLD_Y_AXIS, xAxis));
+            Vector3 nextFramePosition = eye;
 
-            eye += xAxis * dx;
-            eye += WORLD_Y_AXIS * dy;
-            eye += forwards * dz;
+            nextFramePosition += xAxis * dx;
+            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition))
+                eye = nextFramePosition;
+            else
+                nextFramePosition -= xAxis * dx;
+
+            nextFramePosition += WORLD_Y_AXIS * dy;
+            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition))
+                eye = nextFramePosition;
+            else
+                nextFramePosition -= WORLD_Y_AXIS * dy;
+
+            nextFramePosition += forwards * dz;
+            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition))
+                eye = nextFramePosition;
+            else
+                nextFramePosition -= forwards * dz;
 
             Position = eye;
         }
@@ -347,7 +364,6 @@ namespace ShootingGame
                     e.View = ViewMatrix;
                     e.Projection = ProjectionMatrix;
                 }
-
                 m.Draw();
             }
         }

@@ -42,7 +42,7 @@ namespace ShootingGame.Models
             position = inWorldMatrix.Translation;
         }
 
-        public void Draw(Matrix viewMatrix, Matrix projectionMatrix)
+        public virtual void Draw(Matrix viewMatrix, Matrix projectionMatrix)
         {
             model.CopyAbsoluteBoneTransformsTo(modelTransforms);
             foreach (ModelMesh mesh in model.Meshes)
@@ -70,7 +70,7 @@ namespace ShootingGame.Models
                 }
             }
             return false;
-        }
+        }       
 
         public virtual void Update()
         {

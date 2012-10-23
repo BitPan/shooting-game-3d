@@ -11,13 +11,14 @@ namespace ShootingGame.Core
 {
     public class Octree
     {
+        SceneManager sceneManager;
         Random rnd;
         OcTreeNode octreeRoot;
         List<int> enemyIDs;
         List<int> playerIDs;
         List<int> enemyBulletIDs;
         List<int> playerBulletIDs;
-        DrawableModel player;
+        Player player;
         private int boundryLeft;
         private int boundryRight;
         private int boundryNear;
@@ -30,8 +31,9 @@ namespace ShootingGame.Core
         private Model enemyBulletModel;
 
 
-        public Octree(GameWorldData worldData)
+        public Octree(SceneManager sceneManager, GameWorldData worldData)
         {
+            this.sceneManager = sceneManager;
             octreeRoot = new OcTreeNode(worldData.OCTREE_WORLD_CENTER1, worldData.OCTREE_WORLD_SIZE1);
             octreeRoot.RootSize = worldData.OCTREE_WORLD_SIZE1;
             boundryLeft = worldData.BoundryLeft;
@@ -68,7 +70,6 @@ namespace ShootingGame.Core
 
         public void Update(GameTime gameTime, FirstPersonCamera camera)
         {
-
             List<DrawableModel> models = new List<DrawableModel>();
             octreeRoot.GetUpdatedModels(ref models);
 
@@ -85,6 +86,7 @@ namespace ShootingGame.Core
                     Player newPlayer = (Player)model;
                     newPlayer.DoTranslation(new Vector3((camera.Position - newPlayer.Position).X, 0, (camera.Position - newPlayer.Position).Z));
                     octreeRoot.Add(newPlayer);
+                    player = newPlayer;
                 }
                 else
                 octreeRoot.Add(model);
@@ -95,22 +97,26 @@ namespace ShootingGame.Core
             octreeRoot.DetectCollision(ref modelsToRemove);
 
             foreach (int modelID in modelsToRemove)
-                octreeRoot.RemoveDrawableModel(modelID);
+            {                
+                DrawableModel model = octreeRoot.RemoveDrawableModel(modelID);
+                if (model.GetType().ToString().Equals("ShootingGame.EnemyPlane"))
+                {
+                    sceneManager.IncreasePlayerScore(10);
+                    sceneManager.GetMusic().EffectStopPlay();
+                    sceneManager.GetMusic().EffectPlay();
+                }
+                if (model.GetType().ToString().Equals("ShootingGame.EnemyBullet"))
+                {
+                    sceneManager.DeductPlayerHealth(10);
+                    sceneManager.GetMusic().hitSoundPlay();                    
+                }
+            }
         }
 
-        public void UpdatePlayer(Vector3 cameraPosition)
-        {
-            //player.Position = cameraPosition;
-            //int newID = octreeRoot.UpdateModelWorldMatrix(playerIDs[0], player);
-            //playerIDs[0] = newID;
-            //Console.WriteLine("player:" + playerIDs[0]);
-            //DrawableModel playeroctreeRoot.UpdateModelWorldMatrix(playerIDs[0]);
-        }
-
-
+        
         public void LoadModels(List<Model> models)
         {
-            playerModel = models[0];
+            playerModel = models[1];
             enemyPlaneModel = models[1];
             playerBulletModel = models[2];
             enemyBulletModel = models[3];
@@ -118,7 +124,7 @@ namespace ShootingGame.Core
 
         public void AddPlayerModel(Vector3 position)
         {
-            DrawableModel newDModel = new Player(playerModel, Matrix.CreateScale(0.3f)*Matrix.CreateTranslation(position.X, position.Y, position.Z), Vector3.Zero);
+            Player newDModel = new Player(playerModel, Matrix.CreateScale(0.01f) * Matrix.CreateTranslation(position.X, position.Y + 20f, position.Z), Vector3.Zero);
             int id = octreeRoot.Add(newDModel);
             playerIDs.Add(id);
             player = newDModel;
@@ -182,6 +188,11 @@ namespace ShootingGame.Core
         public OcTreeNode GetOctree()
         {
             return octreeRoot;
+        }
+
+        public Player GetPlayer()
+        {
+            return player;
         }
     }
 }

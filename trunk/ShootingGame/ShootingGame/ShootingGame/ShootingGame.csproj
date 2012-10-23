@@ -114,14 +114,13 @@
     <Compile Include="Data\GameWorldData.cs" />
     <Compile Include="GameComponent\FirstPersonCamera.cs" />
     <Compile Include="GameComponent\GameLevelHandler.cs" />
+    <Compile Include="GameComponent\GameMenu.cs" />
     <Compile Include="GameComponent\InputHandler.cs" />
-    <Compile Include="GameComponent\LoadingScene.cs" />
     <Compile Include="GameComponent\NewCamera.cs" />
     <Compile Include="GameComponent\GameMenuScreen.cs" />
     <Compile Include="GameComponent\TextHandler.cs" />
     <Compile Include="GameUtil\XNAUtil.cs" />
     <Compile Include="Models\BackGround.cs" />
-    <Compile Include="GameComponent\GameMenu.cs" />
     <Compile Include="Models\Bullet.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Player.cs" />
