@@ -19,7 +19,6 @@ namespace ShootingGame
     {
 
         private Song song;
-        private SoundEffect seffect;
         private SoundEffectInstance se;
         SoundEffect shootingEffect;
         SoundEffectInstance shootingEffectInstance;
@@ -55,24 +54,21 @@ namespace ShootingGame
         }
 
         public void hitSoundPlay() {
-            this.hitSound.Volume = 1f;
+            this.hitSound.Volume = 0.5f;
             this.hitSound.Play();
         
         }
         public void EffectStopPlay() {
-
-            this.se.Stop();
+            this.se.Stop(true);
         }
 
         public void PlayShootingEffect() { 
-        this.shootingEffectInstance.Volume=1f;
+        this.shootingEffectInstance.Volume=0.5f;
         this.shootingEffectInstance.Play();
         
         }
         public void BackgroundPause() {
-
-            MediaPlayer.Pause();
-        
+            MediaPlayer.Pause();        
         }
 
 
@@ -81,7 +77,7 @@ namespace ShootingGame
             MediaPlayer.Resume();
         }
         public void BackGroundPlay() {
-
+            MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(this.song);
         

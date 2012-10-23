@@ -111,6 +111,11 @@ namespace ShootingGame
             base.Draw(gameTime);
         }
 
+        public SceneManager GetSceneManager()
+        {
+            return this.sceneManager;
+        }
+
         public SpriteBatch GetSpriteBatch()
         {
             return this.spriteBatch;

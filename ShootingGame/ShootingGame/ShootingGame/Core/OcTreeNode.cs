@@ -115,8 +115,10 @@ namespace ShootingGame.Core
         
         public void DetectCollision(ref List<int> modelsToRemove)
         {
-           List<EnemyPlane> enemyModel = new List<EnemyPlane>();
-                List<Bullet> playerBullet = new List<Bullet>();
+             List<EnemyPlane> enemyModel = new List<EnemyPlane>();
+             List<Bullet> playerBullet = new List<Bullet>();
+             List<EnemyBullet> enemyBullet = new List<EnemyBullet>();
+             List<Player> player = new List<Player>();
 
             if (modelList.Count > 0)
             {
@@ -126,6 +128,10 @@ namespace ShootingGame.Core
                         enemyModel.Add((EnemyPlane)model);
                     else if (model.GetType().ToString().Equals("ShootingGame.Bullet"))
                         playerBullet.Add((Bullet)model);
+                    else if (model.GetType().ToString().Equals("ShootingGame.EnemyBullet"))
+                        enemyBullet.Add((EnemyBullet)model);
+                    else if (model.GetType().ToString().Equals("ShootingGame.Player"))
+                        player.Add((Player)model);
                 }
             }
             else
@@ -156,7 +162,26 @@ namespace ShootingGame.Core
                     enemyModel.Clear();
                     playerBullet.Clear();
                 }
-        }            
+
+                if (enemyBullet.Count > 0 && player.Count > 0)
+                {
+                    for (int i = 0; i < enemyBullet.Count; i++)
+                    {
+                        for (int j = 0; j < player.Count; j++)
+                        {
+                            if (enemyBullet[i].CollidesWithPlayer(player[j].Position))
+                            //if (enemyBullet[i].CollidesWith(player[j].Model, player[j].WorldMatrix))
+                            {
+                                modelsToRemove.Add(enemyBullet[i].ModelID);
+                                enemyBullet.RemoveAt(i);
+                                i = i > 0 ? i - 1 : 0;
+                            }
+                        }
+                    }
+                    enemyBullet.Clear();
+                    player.Clear();
+                }
+        }
 
         private bool IsModelOutOfOctree(DrawableModel dModel)
         {
