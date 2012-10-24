@@ -205,6 +205,18 @@ namespace ShootingGame.Models
             return false;
         }
 
+        public bool CollideWithBullet(Model otherModel, Matrix otherWorld)
+        {
+            foreach (BoundingBox building in buildingBoundingBoxes)
+            {
 
+                foreach (ModelMesh hisModelMeshes in otherModel.Meshes)
+                {
+                    if (building.Contains(hisModelMeshes.BoundingSphere.Transform(otherWorld)) != ContainmentType.Disjoint)
+                        return true;
+                }
+            }
+            return false;
+        }
     }
 }
