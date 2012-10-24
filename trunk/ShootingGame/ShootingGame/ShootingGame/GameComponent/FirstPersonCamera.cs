@@ -297,20 +297,24 @@ namespace ShootingGame
             Vector3 forwards = Vector3.Normalize(Vector3.Cross(WORLD_Y_AXIS, xAxis));
             Vector3 nextFramePosition = eye;
 
+
             nextFramePosition += xAxis * dx;
-            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition))
+            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition)
+                && !((Game1)Game).GetSceneManager().GetOctreeWorld().GetTank().DetectPlayerCollision(nextFramePosition))
                 eye = nextFramePosition;
             else
                 nextFramePosition -= xAxis * dx;
 
             nextFramePosition += WORLD_Y_AXIS * dy;
-            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition))
+            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition)
+                && !((Game1)Game).GetSceneManager().GetOctreeWorld().GetTank().DetectPlayerCollision(nextFramePosition))
                 eye = nextFramePosition;
             else
                 nextFramePosition -= WORLD_Y_AXIS * dy;
 
             nextFramePosition += forwards * dz;
-            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition))
+            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition)
+                && !((Game1)Game).GetSceneManager().GetOctreeWorld().GetTank().DetectPlayerCollision(nextFramePosition))
                 eye = nextFramePosition;
             else
                 nextFramePosition -= forwards * dz;

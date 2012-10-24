@@ -93,6 +93,7 @@ namespace ShootingGame.Core
             models.Add(Game.Content.Load<Model>("Models\\ship"));
             models.Add(Game.Content.Load<Model>("Models\\ammo"));
             models.Add(Game.Content.Load<Model>("Models\\ammo"));
+            models.Add(Game.Content.Load<Model>("Models\\tank"));
             octreeWorld.LoadModels(models);
         }
 
@@ -190,6 +191,11 @@ namespace ShootingGame.Core
         public City GetCity()
         {
             return city;
+        }
+
+        public Octree GetOctreeWorld()
+        {
+            return this.octreeWorld;
         }
     }
 }

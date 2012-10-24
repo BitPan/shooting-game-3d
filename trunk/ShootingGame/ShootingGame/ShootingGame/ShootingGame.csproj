@@ -119,10 +119,13 @@
     <Compile Include="GameComponent\NewCamera.cs" />
     <Compile Include="GameComponent\GameMenuScreen.cs" />
     <Compile Include="GameComponent\TextHandler.cs" />
+    <Compile Include="GameUtil\MathUtil.cs" />
+    <Compile Include="GameUtil\PathFinder.cs" />
     <Compile Include="GameUtil\XNAUtil.cs" />
     <Compile Include="Models\BackGround.cs" />
     <Compile Include="Models\Bullet.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\TankModel.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\EnemyBullet.cs" />
     <Compile Include="Models\EnemyPlane.cs" />

@@ -154,6 +154,11 @@ namespace ShootingGame.Models
                 XNAUtils.DrawBoundingBox(box, device, basicEffect, Matrix.Identity, viewMatrix, projectionMatrix);
         }
 
+        public int[,] GetCityMap()
+        {
+            return floorPlan;
+        }
+
 
         private void LoadFloorPlan()
         {

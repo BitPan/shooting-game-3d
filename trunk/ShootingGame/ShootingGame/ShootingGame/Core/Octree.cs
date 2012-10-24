@@ -18,7 +18,9 @@ namespace ShootingGame.Core
         List<int> playerIDs;
         List<int> enemyBulletIDs;
         List<int> playerBulletIDs;
+        List<int> tankIDs;
         Player player;
+        TankModel tank;
         private int boundryLeft;
         private int boundryRight;
         private int boundryNear;
@@ -29,6 +31,7 @@ namespace ShootingGame.Core
         private Model enemyPlaneModel;
         private Model playerBulletModel;
         private Model enemyBulletModel;
+        private Model tankModel;
 
 
         public Octree(SceneManager sceneManager, GameWorldData worldData)
@@ -44,6 +47,7 @@ namespace ShootingGame.Core
             playerIDs = new List<int>();
             enemyBulletIDs = new List<int>();
             playerBulletIDs = new List<int>();
+            tankIDs = new List<int>();
             rnd = new Random();
         }
 
@@ -66,6 +70,7 @@ namespace ShootingGame.Core
                 direction1 = new Vector3(0, 0, 1);
                 AddEnemyModel(position1, direction1, enemyData);
             }
+            AddTankModel(new Vector3(0,0,0));
         }
 
         public void Update(GameTime gameTime, FirstPersonCamera camera)
@@ -73,6 +78,7 @@ namespace ShootingGame.Core
             List<DrawableModel> models = new List<DrawableModel>();
             octreeRoot.GetUpdatedModels(ref models);
 
+            
             //Update All Models
             foreach (DrawableModel model in models)
             {
@@ -87,11 +93,18 @@ namespace ShootingGame.Core
                     newPlayer.DoTranslation(new Vector3((camera.Position - newPlayer.Position).X, 0, (camera.Position - newPlayer.Position).Z));
                     octreeRoot.Add(newPlayer);
                     player = newPlayer;
+
+                }
+                else if (model.GetType().ToString().Equals("ShootingGame.TankModel"))
+                {
+                    TankModel newTankModel = (TankModel)model;
+                    newTankModel.Update(player, rnd);
+                    octreeRoot.Add(newTankModel);
+                    this.tank = newTankModel;
                 }
                 else
                 octreeRoot.Add(model);
             }
-
             //Detect Collision
             List<int> modelsToRemove = new List<int>();
             octreeRoot.DetectCollision(ref modelsToRemove);
@@ -120,6 +133,15 @@ namespace ShootingGame.Core
             enemyPlaneModel = models[1];
             playerBulletModel = models[2];
             enemyBulletModel = models[3];
+            tankModel = models[4];
+        }
+
+        public void AddTankModel(Vector3 position)
+        {
+            TankModel newDModel = new TankModel(tankModel, Matrix.CreateScale(0.09f) * Matrix.CreateTranslation(position.X, position.Y, position.Z), new Vector3(0, 1, 0), sceneManager.GetCity().GetCityMap());
+            int id = octreeRoot.Add(newDModel);
+            tankIDs.Add(id);
+            tank = newDModel;
         }
 
         public void AddPlayerModel(Vector3 position)
@@ -154,6 +176,14 @@ namespace ShootingGame.Core
             playerBulletIDs.Add(id);
         }
 
+        private TankModel UpdateTankModel(GameTime gameTime, TankModel tank, Random rnd)
+        {
+            TankModel newTank = tank;
+
+
+            return newTank;
+        }
+
         private EnemyPlane UpdateEnemyPlane(GameTime gameTime, EnemyPlane enemy, Random rnd)
         {
             EnemyPlane newPlane = enemy;
@@ -183,6 +213,11 @@ namespace ShootingGame.Core
             if (Math.Abs(modelPosition.Z - boundryInZ) <= FLYING_OUT_ZONE)
                 return true;
             return false;
+        }
+
+        public TankModel GetTank()
+        {
+            return this.tank;
         }
 
         public OcTreeNode GetOctree()

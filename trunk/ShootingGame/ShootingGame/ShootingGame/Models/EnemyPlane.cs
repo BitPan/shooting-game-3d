@@ -38,7 +38,8 @@ namespace ShootingGame
             timeSinceLastShoot = 0;
             loadEnemyData(enemyData);
             doTurnAround = false;
-           // yawRotate((float)Math.PI/2);
+            //this.rotation = Matrix.CreateFromYawPitchRoll((float)Math.PI / 2,0,0);
+            //yawRotate((float)Math.PI/2);
         }
 
         public void DoTranslation(Vector3 translation)
@@ -54,11 +55,12 @@ namespace ShootingGame
         public override void Update()
         {
             WorldMatrix = worldMatrix * Matrix.CreateTranslation(direction);
+            
         }
 
         public void yawRotate(float rawRotate)
         {
-            //rotation *= Matrix.CreateFromYawPitchRoll(rawRotate, 0, 0);
+            rotation *= Matrix.CreateFromYawPitchRoll(rawRotate, 0, 0);
         }
 
         public bool IsTurningAround()
@@ -245,6 +247,19 @@ namespace ShootingGame
                 default:
                     return 0;
             }
+        }
+
+        public bool CollidesWithRay(Ray ray)
+        {
+            float? collisionPosition;
+            foreach (ModelMesh myModelMeshes in model.Meshes)
+            {
+                collisionPosition = ray.Intersects(myModelMeshes.BoundingSphere.Transform(worldMatrix));
+
+                if (null != collisionPosition)
+                    return true;
+            }
+            return false;
         }
 
        
