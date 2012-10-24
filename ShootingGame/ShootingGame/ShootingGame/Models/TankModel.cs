@@ -27,7 +27,8 @@ namespace ShootingGame
         public enum Mode{
             WANDER,
             FOLLOW,
-            ATTACK
+            ATTACK,
+            STOP
         }
 
         // Shortcut references to the bones that we are going to animate.
@@ -161,7 +162,6 @@ namespace ShootingGame
             isMoving = false;
             currentTurnedAngle = 0;
             ActivateWanderMode();
-            EnableAutoSearch();
         }
 
         private void EnableAutoSearch()
@@ -176,17 +176,26 @@ namespace ShootingGame
 
         public void ActivateWanderMode()
         {
+            EnableAutoSearch();
             this.currentState = Mode.WANDER;
         }
 
         public void ActivateFollowMode()
         {
+            pathToTargetDestination.Clear();
             this.currentState = Mode.FOLLOW;
         }
 
         public void ActivateAttackMode()
         {
+            this.enableAutoSearch = false;
             this.currentState = Mode.ATTACK;
+        }
+
+        public void DeactiveActionMode()
+        {
+            this.enableAutoSearch = false;
+            this.currentState = Mode.STOP;
         }
 
         public void yawRotate(float rawRotate)
@@ -230,82 +239,97 @@ namespace ShootingGame
                     targetDestination = MapIndexToWorldCorrd(PickRandomPosition(rnd));
                     DisableAutoSearch();
                 }
-                if (isMoving)
+                StartMoving(player, rnd);
+            }
+            else if (this.currentState == Mode.FOLLOW)
+            {
+                targetDestination = player.Position;
+                StartMoving(player, rnd);
+            }
+            else if (this.currentState == Mode.ATTACK)
+            {
+
+            }
+            else if (this.currentState == Mode.STOP)
+            {
+
+            }
+        }
+
+        private void StartMoving(Player player, Random rnd)
+        {
+            if (isMoving)
+            {
+                WheelRotation += 0.05f;
+            }
+            if (Position != targetDestination)
+            {
+                if (Math.Abs(Position.X - targetDestination.X) <= 25 && Math.Abs(Position.Z - targetDestination.Z) <= 25)
                 {
-                    WheelRotation += 0.05f;
-                }
-                if (Position != targetDestination)
-                {
-                    if (Math.Abs(Position.X - targetDestination.X) <= 25 && Math.Abs(Position.Z - targetDestination.Z) <= 25)
-                    {
-                        Position = targetDestination;
-                        isMoving = false;
-                        pathToTargetDestination.Clear();
+                    Position = targetDestination;
+                    isMoving = false;
+                    pathToTargetDestination.Clear();
+                    if (this.currentState == Mode.WANDER)
                         EnableAutoSearch();
-                    }
-                    else
+                    else if (this.currentState == Mode.FOLLOW)
+                        DeactiveActionMode();
+                }
+                else
+                {
+                    if (null == pathToTargetDestination || pathToTargetDestination.Count == 0)
+                        CalculatePath();
+                    if (null != pathToTargetDestination && pathToTargetDestination.Count > 0)
                     {
-                        if (null == pathToTargetDestination || pathToTargetDestination.Count == 0)
-                            CalculatePath();
+                        Vector2 targetPoint = pathToTargetDestination.First();
+                        Vector3 targetPoint1 = MapIndexToWorldCorrd(targetPoint);
+                        if (Math.Abs(Position.X - targetPoint1.X) <= 25 && Math.Abs(Position.Z - targetPoint1.Z) <= 25)
+                        {
+                            Position = targetPoint1;
+                            pathToTargetDestination.RemoveFirst();
+                        }
                         else
                         {
-                            Vector2 targetPoint = pathToTargetDestination.First();
-                            Vector3 targetPoint1 = MapIndexToWorldCorrd(targetPoint);
-                            if (Math.Abs(Position.X - targetPoint1.X) <= 25 && Math.Abs(Position.Z - targetPoint1.Z) <= 25)
+                            double angleToTurn = MathUtil.AngleToTurn(Position, targetPoint1);
+                            isMoving = true;
+                            if (Math.Abs(currentTurnedAngle - angleToTurn) >= Math.PI / 50f)
                             {
-                                Position = targetPoint1;
-                                pathToTargetDestination.RemoveFirst();
-                            }
-                            else
-                            {
-                                double angleToTurn = MathUtil.AngleToTurn(Position, targetPoint1);
-                                isMoving = true;
-                                if (Math.Abs(currentTurnedAngle - angleToTurn) >= Math.PI / 50f)
+                                if (currentTurnedAngle > angleToTurn)
                                 {
-                                    if (currentTurnedAngle > angleToTurn)
-                                    {
-                                        SteerRotation -= (float)Math.PI / 360f;
-                                        yawRotate(-(float)Math.PI / 360f);
-                                        currentTurnedAngle -= Math.PI / 360;
+                                    SteerRotation -= (float)Math.PI / 360f;
+                                    yawRotate(-(float)Math.PI / 360f);
+                                    currentTurnedAngle -= Math.PI / 360;
 
-                                    }
-                                    else
-                                    {
-                                        SteerRotation += (float)Math.PI / 360f;
-                                        yawRotate((float)Math.PI / 360f);
-                                        currentTurnedAngle += Math.PI / 360;
-
-                                    }
-
-                                    if (Math.Abs(currentTurnedAngle - angleToTurn) <= Math.PI / 100f)
-                                    {
-                                        SteerRotation = 0;
-                                        yawRotate((float)(angleToTurn - currentTurnedAngle));
-                                        currentTurnedAngle = angleToTurn;
-                                    }
                                 }
                                 else
                                 {
-                                    if (CheckIsCollidingWithPlayer(Matrix.CreateTranslation(direction), player.Position))
-                                        isMoving = false;
-                                    else
-                                    {
-                                        isMoving = true;
-                                        SteerRotation = 0;
-                                        setDirection((targetPoint1 - position));
-                                        WorldMatrix = worldMatrix * Matrix.CreateTranslation(direction);
-                                    }
+                                    SteerRotation += (float)Math.PI / 360f;
+                                    yawRotate((float)Math.PI / 360f);
+                                    currentTurnedAngle += Math.PI / 360;
+
+                                }
+
+                                if (Math.Abs(currentTurnedAngle - angleToTurn) <= Math.PI / 100f)
+                                {
+                                    SteerRotation = 0;
+                                    yawRotate((float)(angleToTurn - currentTurnedAngle));
+                                    currentTurnedAngle = angleToTurn;
+                                }
+                            }
+                            else
+                            {
+                                if (CheckIsCollidingWithPlayer(Matrix.CreateTranslation(direction), player.Position))
+                                    isMoving = false;
+                                else
+                                {
+                                    isMoving = true;
+                                    SteerRotation = 0;
+                                    setDirection((targetPoint1 - position));
+                                    WorldMatrix = worldMatrix * Matrix.CreateTranslation(direction);
                                 }
                             }
                         }
                     }
                 }
-            }
-            else if (this.currentState == Mode.FOLLOW)
-            {
-            }
-            else if (this.currentState == Mode.ATTACK)
-            {
             }
         }
 
