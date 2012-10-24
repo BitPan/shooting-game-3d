@@ -10,7 +10,7 @@ namespace ShootingGame.GameComponent
 {
     public class InputHandler
     {
-
+        KeyboardState previousKeySate;
 
         private int timeSinceLastShoot;
         private int nextShootTime;
@@ -24,6 +24,44 @@ namespace ShootingGame.GameComponent
         public void UpdateWorld(GameTime gameTime, FirstPersonCamera camera, SceneManager scene, Music music)
         {
             timeSinceLastShoot += gameTime.ElapsedGameTime.Milliseconds;
+            
+            KeyboardState kState = Keyboard.GetState();
+
+            if (previousKeySate.IsKeyDown(Keys.C) && kState.IsKeyUp(Keys.C))
+            {
+                if (!scene.GetOctreeWorld().IsControlTankEnabled())
+                    scene.GetOctreeWorld().EnableControlTank();
+                else
+                    scene.GetOctreeWorld().DisableControlTank();
+            }
+
+            if (previousKeySate.IsKeyDown(Keys.D1) && kState.IsKeyUp(Keys.D1))
+            {
+                if (scene.GetOctreeWorld().IsControlTankEnabled())
+                    scene.GetOctreeWorld().GetTank().ActivateWanderMode();
+                scene.GetOctreeWorld().DisableControlTank();
+            }
+
+            if (previousKeySate.IsKeyDown(Keys.D2) && kState.IsKeyUp(Keys.D2))
+            {
+                if (scene.GetOctreeWorld().IsControlTankEnabled())
+                    scene.GetOctreeWorld().GetTank().ActivateFollowMode();
+                scene.GetOctreeWorld().DisableControlTank();
+            }
+
+            if (previousKeySate.IsKeyDown(Keys.D3) && kState.IsKeyUp(Keys.D3))
+            {
+                if (scene.GetOctreeWorld().IsControlTankEnabled())
+                    scene.GetOctreeWorld().GetTank().ActivateAttackMode();
+                scene.GetOctreeWorld().DisableControlTank();
+            }
+
+            if (previousKeySate.IsKeyDown(Keys.D4) && kState.IsKeyUp(Keys.D4))
+            {
+                if (scene.GetOctreeWorld().IsControlTankEnabled())
+                    scene.GetOctreeWorld().GetTank().DeactiveActionMode();
+                scene.GetOctreeWorld().DisableControlTank();
+            }
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
@@ -35,6 +73,8 @@ namespace ShootingGame.GameComponent
                     timeSinceLastShoot = 0;
                 }
             }
+
+            previousKeySate = kState;
 
         }
     }

@@ -25,7 +25,7 @@ namespace ShootingGame.Core
         private int boundryRight;
         private int boundryNear;
         private int boundryFar;
-        
+        private bool controlTankEnabled;        
 
         private Model playerModel;
         private Model enemyPlaneModel;
@@ -49,6 +49,7 @@ namespace ShootingGame.Core
             playerBulletIDs = new List<int>();
             tankIDs = new List<int>();
             rnd = new Random();
+            controlTankEnabled = false;
         }
 
         public void TestInitialize(int[] enemyData)
@@ -228,6 +229,21 @@ namespace ShootingGame.Core
         public Player GetPlayer()
         {
             return player;
+        }
+
+        public bool IsControlTankEnabled()
+        {
+            return this.controlTankEnabled;
+        }
+
+        public void EnableControlTank()
+        {
+            this.controlTankEnabled = true;
+        }
+
+        public void DisableControlTank()
+        {
+            this.controlTankEnabled = false;
         }
     }
 }

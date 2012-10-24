@@ -31,7 +31,6 @@ namespace ShootingGame.Core
         InputHandler inputHandler;
         TextHandler textHandler;
         GameMenuScreen gameMenu;
-        Vector2 fontPosition;
 
         BasicEffect effect;
         Effect floorEffect;
@@ -59,8 +58,6 @@ namespace ShootingGame.Core
             camera = new FirstPersonCamera(game);
             music = new Music(game);
             background = new BackGround(game);
-            fontPosition = new Vector2(Game.GraphicsDevice.Viewport.Width * 0.9f,
-                    Game.GraphicsDevice.Viewport.Height * 0.9f);
             camera.prepareCamera();
             camera.setWeapon(Game.Content.Load<Model>(@"Models\weapon"));
         }
@@ -150,7 +147,7 @@ namespace ShootingGame.Core
                 city.DrawCity(Game.GraphicsDevice, camera, floorEffect,0f, new Vector3(0, 0, 0));
                 //city.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
                 camera.DrawWeapon();
-                textHandler.DrawText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), gameTime, fontPosition);
+                textHandler.DrawText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), gameTime, Game.GraphicsDevice);
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
             {
@@ -197,5 +194,6 @@ namespace ShootingGame.Core
         {
             return this.octreeWorld;
         }
+
     }
 }
