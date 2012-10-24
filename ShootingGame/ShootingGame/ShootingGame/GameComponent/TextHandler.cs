@@ -26,7 +26,10 @@ namespace ShootingGame.GameComponent
             scoreText = "Health: " + scene.GetPlayerHealth + "\nScore:" + scene.GetPlayerScore() +"\n" + scene.GetGameLevel();
             if (scene.GetOctreeWorld().IsControlTankEnabled())
             {
-                tankCommandText = "1. Wander Around\n2. Come Here\n3. Attack Enemy\n4. Stop";
+                if(scene.GetOctreeWorld().GetTank().IsAttackEnabled())
+                    tankCommandText = "1. Wander Around\n2. Come Here\n3. Auto Attack Enemy (On)\n4. Stop";
+                else
+                    tankCommandText = "1. Wander Around\n2. Come Here\n3. Auto Attack Enemy (Off)\n4. Stop";
                 controlTankText = "Press C Again To Close Menu";
             }
             else

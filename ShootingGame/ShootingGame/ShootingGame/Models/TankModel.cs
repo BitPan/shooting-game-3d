@@ -24,11 +24,11 @@ namespace ShootingGame
         private LinkedList<Vector2> pathToTargetDestination;
         private PathFinder finder;
         private bool cannonMovingUp;
+        private bool enableAttack;
 
         public enum Mode{
             WANDER,
             FOLLOW,
-            ATTACK,
             STOP
         }
 
@@ -164,6 +164,17 @@ namespace ShootingGame
             currentTurnedAngle = 0;
             ActivateWanderMode();
             cannonMovingUp = true;
+            enableAttack = false;
+        }
+
+        public void EnableAttack()
+        {
+            this.enableAttack = true;
+        }
+
+        public void DisableAttack()
+        {
+            this.enableAttack = false;
         }
 
         private void EnableAutoSearch()
@@ -186,12 +197,6 @@ namespace ShootingGame
         {
             pathToTargetDestination.Clear();
             this.currentState = Mode.FOLLOW;
-        }
-
-        public void ActivateAttackMode()
-        {
-            this.enableAutoSearch = false;
-            this.currentState = Mode.ATTACK;
         }
 
         public void DeactiveActionMode()
@@ -247,15 +252,16 @@ namespace ShootingGame
             {
                 targetDestination = player.Position;
                 StartMoving(player, rnd);
-            }
-            else if (this.currentState == Mode.ATTACK)
-            {
-                UpdateCannonRotation();
-                TurretRotation += 0.02f;
-            }
+            }            
             else if (this.currentState == Mode.STOP)
             {
 
+            }
+
+            if (enableAttack)
+            {
+                UpdateCannonRotation();
+                TurretRotation += 0.02f;
             }
         }
 
@@ -350,6 +356,11 @@ namespace ShootingGame
                     }
                 }
             }
+        }
+
+        public bool IsAttackEnabled()
+        {
+            return this.enableAttack;
         }
 
         private bool CheckIsCollidingWithPlayer(Matrix translation, Vector3 playerPosition)
