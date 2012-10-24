@@ -299,27 +299,33 @@ namespace ShootingGame
 
 
             nextFramePosition += xAxis * dx;
-            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition)
-                && !((Game1)Game).GetSceneManager().GetOctreeWorld().GetTank().DetectPlayerCollision(nextFramePosition))
+
+            if (!IsPlayerMovingOutOfBoundry(nextFramePosition) && (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition)
+                && !((Game1)Game).GetSceneManager().GetOctreeWorld().GetTank().DetectPlayerCollision(nextFramePosition)))
                 eye = nextFramePosition;
             else
                 nextFramePosition -= xAxis * dx;
 
             nextFramePosition += WORLD_Y_AXIS * dy;
-            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition)
-                && !((Game1)Game).GetSceneManager().GetOctreeWorld().GetTank().DetectPlayerCollision(nextFramePosition))
+            if (!IsPlayerMovingOutOfBoundry(nextFramePosition) && (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition)
+                && !((Game1)Game).GetSceneManager().GetOctreeWorld().GetTank().DetectPlayerCollision(nextFramePosition)))
                 eye = nextFramePosition;
             else
                 nextFramePosition -= WORLD_Y_AXIS * dy;
 
             nextFramePosition += forwards * dz;
-            if (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition)
-                && !((Game1)Game).GetSceneManager().GetOctreeWorld().GetTank().DetectPlayerCollision(nextFramePosition))
+            if (!IsPlayerMovingOutOfBoundry(nextFramePosition) && (!((Game1)Game).GetSceneManager().GetCity().DetectPlayerCollision(nextFramePosition)
+                && !((Game1)Game).GetSceneManager().GetOctreeWorld().GetTank().DetectPlayerCollision(nextFramePosition)))
                 eye = nextFramePosition;
             else
                 nextFramePosition -= forwards * dz;
 
             Position = eye;
+        }
+
+        private bool IsPlayerMovingOutOfBoundry(Vector3 position)
+        {
+            return position.X < 0 || position.X > 1000 || position.Z > 0 || position.Z < -750;
         }
 
         public void Perspective(float fovx, float aspect, float znear, float zfar)
