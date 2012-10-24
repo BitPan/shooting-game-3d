@@ -251,7 +251,7 @@ namespace ShootingGame
             else if (this.currentState == Mode.ATTACK)
             {
                 UpdateCannonRotation();
-                TurretRotation += 0.05f;
+                TurretRotation += 0.02f;
             }
             else if (this.currentState == Mode.STOP)
             {
@@ -263,14 +263,14 @@ namespace ShootingGame
         {
             if (cannonMovingUp)
             {
-                CannonRotation += 0.05f;
-                if (CannonRotation >= 3f)
+                CannonRotation -= 0.005f;
+                if (CannonRotation <= -1.5f)
                     cannonMovingUp = false;
             }
             else
             {
-                CannonRotation -= 0.05f;
-                if (CannonRotation <= 0.3f)
+                CannonRotation += 0.005f;
+                if (CannonRotation >-0.2f)
                     cannonMovingUp = true;
             }
         }
