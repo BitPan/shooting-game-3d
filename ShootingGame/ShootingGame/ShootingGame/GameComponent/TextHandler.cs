@@ -52,6 +52,10 @@ namespace ShootingGame.GameComponent
             // Find the center of the string
             Vector2 FontOrigin = font.MeasureString(scoreText) / 2;
             // Draw the string
+
+            spriteBatch.DrawString(font, scoreText, fontPosition1, Color.LightGreen,
+                0, FontOrigin, 1f, SpriteEffects.None, 0.5f);
+
             if (!tankCommandText.Equals(""))
                 spriteBatch.DrawString(font, tankCommandText, fontPosition3, Color.Yellow,
                 0, FontOrigin, 0.8f, SpriteEffects.None, 0.5f);
