@@ -112,13 +112,13 @@ namespace ShootingGame.Core
 
             return dModel;
         }
-        
-        public void DetectCollision(ref List<int> modelsToRemove)
+
+        public void DetectCollision(City city, ref List<int> modelsToRemove, ref List<int> bulletsToRemove)
         {
-             List<EnemyPlane> enemyModel = new List<EnemyPlane>();
-             List<Bullet> playerBullet = new List<Bullet>();
-             List<EnemyBullet> enemyBullet = new List<EnemyBullet>();
-             List<Player> player = new List<Player>();
+            List<EnemyPlane> enemyModel = new List<EnemyPlane>();
+            List<Bullet> playerBullet = new List<Bullet>();
+            List<EnemyBullet> enemyBullet = new List<EnemyBullet>();
+            List<Player> player = new List<Player>();
 
             if (modelList.Count > 0)
             {
@@ -138,9 +138,32 @@ namespace ShootingGame.Core
             {
                 foreach (OcTreeNode childNode in childList)
                 {
-                    childNode.DetectCollision(ref modelsToRemove);
+                    childNode.DetectCollision(city, ref modelsToRemove, ref bulletsToRemove);
                 }
             }
+
+            if (enemyModel.Count > 0 && playerBullet.Count > 0)
+            {
+
+                for (int i = 0; i < enemyBullet.Count; i++)
+                {
+                    if (city.CollideWithBullet(enemyBullet[i].Model, enemyBullet[i].WorldMatrix))
+                    {
+                        bulletsToRemove.Add(enemyBullet[i].ModelID);
+                        enemyBullet.RemoveAt(i);
+                        i = i > 0 ? i - 1 : 0;
+                    }
+                }
+                for (int j = 0; j < playerBullet.Count; j++)
+                {
+                    if (city.CollideWithBullet(playerBullet[j].Model, playerBullet[j].WorldMatrix))
+                    {
+                        bulletsToRemove.Add(playerBullet[j].ModelID);
+                        playerBullet.RemoveAt(j);
+                        j = j > 0 ? j - 1 : 0;
+                    }
+                }
+
                 if (enemyModel.Count > 0 && playerBullet.Count > 0)
                 {
                     for (int i = 0; i < enemyModel.Count; i++)
@@ -153,8 +176,8 @@ namespace ShootingGame.Core
                                 modelsToRemove.Add(playerBullet[j].ModelID);
                                 enemyModel.RemoveAt(i);
                                 playerBullet.RemoveAt(j);
-                                i = i >0 ? i-1 : 0;
-                                j = j >0 ? j-1 : 0;
+                                i = i > 0 ? i - 1 : 0;
+                                j = j > 0 ? j - 1 : 0;
 
                             }
                         }
@@ -181,6 +204,7 @@ namespace ShootingGame.Core
                     enemyBullet.Clear();
                     player.Clear();
                 }
+            }
         }
 
         private bool IsModelOutOfOctree(DrawableModel dModel)

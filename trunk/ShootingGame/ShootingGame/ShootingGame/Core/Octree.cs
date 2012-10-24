@@ -108,7 +108,13 @@ namespace ShootingGame.Core
             }
             //Detect Collision
             List<int> modelsToRemove = new List<int>();
-            octreeRoot.DetectCollision(ref modelsToRemove);
+            List<int> bulletsToRemove = new List<int>();
+            octreeRoot.DetectCollision(sceneManager.GetCity(), ref modelsToRemove, ref bulletsToRemove);
+
+            foreach (int modelID in bulletsToRemove)
+            {
+                octreeRoot.RemoveDrawableModel(modelID);
+            }
 
             foreach (int modelID in modelsToRemove)
             {                
