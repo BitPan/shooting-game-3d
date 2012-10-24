@@ -50,7 +50,7 @@ namespace ShootingGame.Models
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.EnableDefaultLighting();
-                    effect.World = modelTransforms[mesh.ParentBone.Index] * (worldMatrix * rotation);
+                    effect.World = rotation * modelTransforms[mesh.ParentBone.Index]*worldMatrix;
                     effect.View = viewMatrix;
                     effect.Projection = projectionMatrix;
                 }
