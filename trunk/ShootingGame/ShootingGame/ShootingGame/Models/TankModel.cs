@@ -23,6 +23,7 @@ namespace ShootingGame
         private bool enableAutoSearch;
         private LinkedList<Vector2> pathToTargetDestination;
         private PathFinder finder;
+        private bool cannonMovingUp;
 
         public enum Mode{
             WANDER,
@@ -162,6 +163,7 @@ namespace ShootingGame
             isMoving = false;
             currentTurnedAngle = 0;
             ActivateWanderMode();
+            cannonMovingUp = true;
         }
 
         private void EnableAutoSearch()
@@ -248,11 +250,28 @@ namespace ShootingGame
             }
             else if (this.currentState == Mode.ATTACK)
             {
-
+                UpdateCannonRotation();
+                TurretRotation += 0.05f;
             }
             else if (this.currentState == Mode.STOP)
             {
 
+            }
+        }
+
+        private void UpdateCannonRotation()
+        {
+            if (cannonMovingUp)
+            {
+                CannonRotation += 0.05f;
+                if (CannonRotation >= 3f)
+                    cannonMovingUp = false;
+            }
+            else
+            {
+                CannonRotation -= 0.05f;
+                if (CannonRotation <= 0.3f)
+                    cannonMovingUp = true;
             }
         }
 
