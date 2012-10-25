@@ -111,6 +111,7 @@
     <Compile Include="Core\OcTreeNode.cs" />
     <Compile Include="Core\SceneManager.cs" />
     <Compile Include="Data\CameraData.cs" />
+    <Compile Include="Data\DataLoader.cs" />
     <Compile Include="Data\GameWorldData.cs" />
     <Compile Include="GameComponent\FirstPersonCamera.cs" />
     <Compile Include="GameComponent\GameLevelHandler.cs" />

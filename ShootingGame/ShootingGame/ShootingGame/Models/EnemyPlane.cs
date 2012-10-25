@@ -54,6 +54,7 @@ namespace ShootingGame
 
         public override void Update()
         {
+            //yawRotate((float)Math.PI / 180f);
             WorldMatrix = worldMatrix * Matrix.CreateTranslation(direction);
             
         }
