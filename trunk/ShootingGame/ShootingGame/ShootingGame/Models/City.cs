@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Storage;
+using System.IO.IsolatedStorage;
 using ShootingGame.GameUtil;
+using System.IO;
 
 namespace ShootingGame.Models
 {
@@ -159,32 +162,41 @@ namespace ShootingGame.Models
             return floorPlan;
         }
 
+      
+
 
         private void LoadFloorPlan()
         {
-            floorPlan = new int[,]
-             {
-                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,0,0,1,1,0,0,0,1,1,0,0,1,0,0},
-                 {0,0,0,1,1,0,0,0,1,0,0,0,1,0,0},
-                 {0,0,0,0,1,1,0,1,1,0,0,0,0,0,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,0,1,1,0,0,0,1,0,0,0,0,0,0,0},
-                 {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
-                 {0,0,0,0,0,1,0,0,0,1,0,0,0,0,0},
-                 {0,0,1,0,0,0,0,0,0,1,0,0,0,0,0},
-                 {0,0,1,1,0,0,0,0,1,1,0,0,0,1,0},
-                 {0,0,0,0,0,0,0,0,1,1,0,0,0,1,0},
-                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-             };
+            int[,] a = new int[20,15];
+            String numbers = "";
+
+            int lineNum = 0;
+            using (StreamReader sr = new StreamReader("Map.txt"))
+            {
+                while (sr.Peek() >= 0)
+                {
+                    numbers = sr.ReadLine().Replace(" ", "");
+
+                    //int index = 0;
+
+                    for (int i = 0; i < 15; i++)
+                    {
+                        a[lineNum, i] = int.Parse("" + numbers[i]);
+                    }
+                    lineNum++;
+                }
+            }
+
+            for (int i = 0; i < 20; i++)
+            {
+                for (int j = 0; j < 15; j++)
+                {
+                    Console.Write(a[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            floorPlan = a;
             Random random = new Random();
             int differentBuildings = buildingHeights.Length - 1;
             for (int x = 0; x < floorPlan.GetLength(0); x++)

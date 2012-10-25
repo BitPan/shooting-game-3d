@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>MP5N:MP5N</Name>
     <Identity>
-      <SourceFilename>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGameContent\Models\weapon.fbx</SourceFilename>
+      <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\weapon.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -32,7 +32,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Model</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGameContent\Models\weapon.fbx</SourceFilename>
+        <SourceFilename>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\Models\weapon.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

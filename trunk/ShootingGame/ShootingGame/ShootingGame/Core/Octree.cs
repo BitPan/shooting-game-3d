@@ -123,7 +123,7 @@ namespace ShootingGame.Core
                 {
                     sceneManager.IncreasePlayerScore(10);
                     sceneManager.GetMusic().EffectStopPlay();
-                    sceneManager.GetMusic().EffectPlay();
+                    sceneManager.GetMusic().EffectStopPlay();
                 }
                 if (model.GetType().ToString().Equals("ShootingGame.EnemyBullet"))
                 {
