@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <!-- TODO: replace this Asset with your own XML asset data. -->
+  <Asset Type="GameData.TankMode">
+    <name>Tank</name>
+    <hp>200</hp>
+    <statu>
+      <Item>WANDER</Item>
+      <Item>STOP</Item>
+      <Item>COME</Item>
+      <Item>FIRE</Item>
+    </statu>
+    
+</Asset>
+</XnaContent>

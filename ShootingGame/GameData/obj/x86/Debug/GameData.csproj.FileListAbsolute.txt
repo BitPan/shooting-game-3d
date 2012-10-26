@@ -1,0 +1,6 @@
+C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\GameData\bin\x86\Debug\GameData.dll
+C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\GameData\bin\x86\Debug\GameData.pdb
+C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\GameData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\GameData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\GameData\obj\x86\Debug\GameData.dll
+C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\GameData\obj\x86\Debug\GameData.pdb

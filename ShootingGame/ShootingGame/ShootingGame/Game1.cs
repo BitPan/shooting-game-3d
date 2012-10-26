@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using ShootingGame.Core;
 using ShootingGame.GameComponent;
+using ShootingGame.Data;
+using GameData;
 
 namespace ShootingGame
 {
@@ -24,7 +26,7 @@ namespace ShootingGame
         BasicEffect effect;
         GraphicsDevice device;
         SceneManager sceneManager;
-
+        TankMode tankmode;
 
 
         public Game1()
@@ -48,6 +50,9 @@ namespace ShootingGame
             Components.Add(sceneManager);
             base.Initialize();
             InitializeGameComponents();
+            //DataLoader datalo = new DataLoader();
+            //Level level = datalo.LoadLevel(1);
+            //Console.WriteLine("", level.EnemyBulletSpeed);
             // TODO: Add your initialization logic here
         }
 
@@ -65,6 +70,8 @@ namespace ShootingGame
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
+            tankmode = Content.Load<TankMode>(@"Configuration/TankMode");
+       
         }
 
         /// <summary>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<levels>
+  <level number="1">
+    <enemySpawnCd>2500</enemySpawnCd>
+    <enemyShootCd>2000</enemyShootCd>
+    <enemyBulletSpeed>6</enemyBulletSpeed>
+    <enemyMovingSpeed>4</enemyMovingSpeed>
+    <enemyAttackDeviationFactor>8</enemyAttackDeviationFactor>
+    <enemyAttackChanceFactor>500</enemyAttackChanceFactor>
+    <deviationRange>100</deviationRange>
+    <enemyAttackRange>800</enemyAttackRange>
+    <enemyTurnAroundFactor>400</enemyTurnAroundFactor>
+  </level>
+  <level number="2">
+    <enemySpawnCd>2400</enemySpawnCd>
+    <enemyShootCd>1500</enemyShootCd>
+    <enemyBulletSpeed>6</enemyBulletSpeed>
+    <enemyMovingSpeed>4</enemyMovingSpeed>
+    <enemyAttackDeviationFactor>8</enemyAttackDeviationFactor>
+    <enemyAttackChanceFactor>500</enemyAttackChanceFactor>
+    <deviationRange>100</deviationRange>
+    <enemyAttackRange>800</enemyAttackRange>
+    <enemyTurnAroundFactor>400</enemyTurnAroundFactor>
+  </level>
+  <level number="3" >
+    <enemySpawnCd>2300</enemySpawnCd>
+    <enemyShootCd>1450</enemyShootCd>
+    <enemyBulletSpeed>6</enemyBulletSpeed>
+    <enemyMovingSpeed>4</enemyMovingSpeed>
+    <enemyAttackDeviationFactor>8</enemyAttackDeviationFactor>
+    <enemyAttackChanceFactor>500</enemyAttackChanceFactor>
+    <deviationRange>100</deviationRange>
+    <enemyAttackRange>800</enemyAttackRange>
+    <enemyTurnAroundFactor>400</enemyTurnAroundFactor>
+  </level>
+  <level number="4">
+    <enemySpawnCd>2200</enemySpawnCd>
+    <enemyShootCd>1400</enemyShootCd>
+    <enemyBulletSpeed>6</enemyBulletSpeed>
+    <enemyMovingSpeed>4</enemyMovingSpeed>
+    <enemyAttackDeviationFactor>8</enemyAttackDeviationFactor>
+    <enemyAttackChanceFactor>500</enemyAttackChanceFactor>
+    <deviationRange>100</deviationRange>
+    <enemyAttackRange>800</enemyAttackRange>
+    <enemyTurnAroundFactor>400</enemyTurnAroundFactor>
+  </level>
+  <level number="5">
+    <enemySpawnCd>2100</enemySpawnCd>
+    <enemyShootCd>1300</enemyShootCd>
+    <enemyBulletSpeed>6</enemyBulletSpeed>
+    <enemyMovingSpeed>4</enemyMovingSpeed>
+    <enemyAttackDeviationFactor>8</enemyAttackDeviationFactor>
+    <enemyAttackChanceFactor>500</enemyAttackChanceFactor>
+    <deviationRange>100</deviationRange>
+    <enemyAttackRange>800</enemyAttackRange>
+    <enemyTurnAroundFactor>400</enemyTurnAroundFactor>
+  </level>
+</levels>

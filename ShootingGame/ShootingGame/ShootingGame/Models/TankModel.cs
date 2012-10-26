@@ -6,7 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ShootingGame.Models;
 using ShootingGame.GameUtil;
-
+using GameData;
+using ShootingGame;
 namespace ShootingGame
 {
     public class TankModel : DrawableModel
@@ -25,6 +26,7 @@ namespace ShootingGame
         private PathFinder finder;
         private bool cannonMovingUp;
         private bool enableAttack;
+        public TankMode tankemode;
 
         public enum Mode{
             WANDER,
@@ -131,6 +133,9 @@ namespace ShootingGame
         public TankModel(Model inModel, Matrix inWorldMatrix, Vector3 newDirection, int[,] cityMap)
             : base(inModel, inWorldMatrix, newDirection)
         {
+            
+
+            
             leftBackWheelBone = inModel.Bones["l_back_wheel_geo"];
             rightBackWheelBone = inModel.Bones["r_back_wheel_geo"];
             leftFrontWheelBone = inModel.Bones["l_front_wheel_geo"];
@@ -165,7 +170,10 @@ namespace ShootingGame
             ActivateWanderMode();
             cannonMovingUp = true;
             enableAttack = false;
+            
+
         }
+   
 
         public void EnableAttack()
         {

@@ -30,6 +30,14 @@ Content\music\background.wma
 Content\music\Bomb.xnb
 Content\music\laser.xnb
 Content\music\hit.xnb
+Content\Configuration\TankMode.xnb
+Content\Configuration\PlayerData.xnb
+Content\Configuration\WorldData.xnb
+Content\Configuration\Level\Level1.xnb
+Content\Configuration\Level\Level2.xnb
+Content\Configuration\Level\Level3.xnb
+Content\Configuration\Level\Level4.xnb
+Content\Configuration\Level\Level5.xnb
 Content\skybox\clear_top_0.xnb
 Content\skybox\clear_right_0.xnb
 Content\skybox\clear_left_0.xnb
