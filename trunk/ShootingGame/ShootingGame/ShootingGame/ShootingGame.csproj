@@ -147,6 +147,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\GameData\GameData.csproj">
+      <Project>{382DF86E-772E-4AD9-9ECE-FE640E4146F2}</Project>
+      <Name>GameData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShootingGameContent\ShootingGameContent.contentproj">
       <Name>ShootingGameContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

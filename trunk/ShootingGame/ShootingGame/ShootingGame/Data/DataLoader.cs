@@ -3,16 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using GameData;
+using System.Xml.Linq;
 
 namespace ShootingGame.Data
 {
     class DataLoader
     {
         private string path { get; set; }
-        public DataLoader(string path)
+        public DataLoader()
         {
-            this.path = path;
+           
         }
+
+        //public Level LoadLevel(int levelNumber)
+        //{
+
+        //    XDocument document = XDocument.Load("Level.xml");
+        //    var levels = document.Document.Descendants(XName.Get("Level"));
+        //    Level newLevel = new Level(); ;
+            
+
+        //}
 
 
         public int[,] loadMap(string path)
@@ -21,7 +33,7 @@ namespace ShootingGame.Data
             String numbers = "";
 
             int lineNum = 0;
-            using (StreamReader sr = new StreamReader("Map.txt"))
+            using (StreamReader sr = new StreamReader(path))
             {
                 while (sr.Peek() >= 0)
                 {
@@ -38,5 +50,7 @@ namespace ShootingGame.Data
             return a;
 
         }
+
+
     }
 }

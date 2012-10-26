@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Storage;
 using System.IO.IsolatedStorage;
 using ShootingGame.GameUtil;
 using System.IO;
+using ShootingGame.Data;
 
 namespace ShootingGame.Models
 {
@@ -21,10 +22,12 @@ namespace ShootingGame.Models
         BoundingBox[] buildingBoundingBoxes;
         BoundingBox completeCityBox;
         float cityScale;
+        DataLoader dataloader;
 
         public City()
         {
             cityScale = 50f;
+            
             LoadFloorPlan();
         }
 
@@ -167,36 +170,37 @@ namespace ShootingGame.Models
 
         private void LoadFloorPlan()
         {
-            int[,] a = new int[20,15];
-            String numbers = "";
+            //int[,] a = new int[20,15];
+            //String numbers = "";
 
-            int lineNum = 0;
-            using (StreamReader sr = new StreamReader("Map.txt"))
-            {
-                while (sr.Peek() >= 0)
-                {
-                    numbers = sr.ReadLine().Replace(" ", "");
+            //int lineNum = 0;
+            //using (StreamReader sr = new StreamReader("Map.txt"))
+            //{
+            //    while (sr.Peek() >= 0)
+            //    {
+            //        numbers = sr.ReadLine().Replace(" ", "");
 
-                    //int index = 0;
+            //        //int index = 0;
 
-                    for (int i = 0; i < 15; i++)
-                    {
-                        a[lineNum, i] = int.Parse("" + numbers[i]);
-                    }
-                    lineNum++;
-                }
-            }
+            //        for (int i = 0; i < 15; i++)
+            //        {
+            //            a[lineNum, i] = int.Parse("" + numbers[i]);
+            //        }
+            //        lineNum++;
+            //    }
+            //}
 
-            for (int i = 0; i < 20; i++)
-            {
-                for (int j = 0; j < 15; j++)
-                {
-                    Console.Write(a[i, j]);
-                }
-                Console.WriteLine();
-            }
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    for (int j = 0; j < 15; j++)
+            //    {
+            //        Console.Write(a[i, j]);
+            //    }
+            //    Console.WriteLine();
+            //}
+            dataloader = new DataLoader();
 
-            floorPlan = a;
+            floorPlan = dataloader.loadMap("Map.txt");
             Random random = new Random();
             int differentBuildings = buildingHeights.Length - 1;
             for (int x = 0; x < floorPlan.GetLength(0); x++)

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using ShootingGame.Core;
 using ShootingGame.GameComponent;
+using GameData;
+using ShootingGame.Data;
 
 namespace ShootingGame
 {
@@ -14,8 +16,7 @@ namespace ShootingGame
         public LevelData()
         {
             levelData = new List<int[]>();
-
-            levelData.Add(iniLevelData(2500, 2000, 6, 4, 8, 500, 100, 800, 400));
+            levelData.Add(iniLevelData(2500, 1500, 6, 4,8, 13, 100, 800, 400));
             levelData.Add(iniLevelData(2400, 1450, 6, 4, 8, 13, 100, 900, 120));
             levelData.Add(iniLevelData(2300, 1400, 6, 4, 8, 11, 100, 1000, 110));
             levelData.Add(iniLevelData(2200, 1350, 7, 4, 8, 8, 100, 1100, 100));

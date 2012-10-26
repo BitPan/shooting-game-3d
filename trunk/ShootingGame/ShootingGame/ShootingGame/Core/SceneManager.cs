@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using ShootingGame.Models;
 using ShootingGame.Data;
 using ShootingGame.GameComponent;
+using GameData;
 
 
 namespace ShootingGame.Core
@@ -35,6 +36,8 @@ namespace ShootingGame.Core
         BasicEffect effect;
         Effect floorEffect;
         Texture2D sceneryTexture;
+        LevelN level1, level2, level3, level4, level5;
+        List<LevelN> levels;
 
         public FirstPersonCamera camera { get; protected set; }
 
@@ -67,7 +70,18 @@ namespace ShootingGame.Core
         /// to run.  This is where it can query for any required services and load content.
         /// </summary>
         public override void Initialize()
-        {           
+        {
+            levels = new List<LevelN>();
+            level1 = Game.Content.Load<LevelN>("Configuration/Level/Level1");
+            level2 = Game.Content.Load<LevelN>("Configuration/Level/Level2");
+            level3 = Game.Content.Load<LevelN>("Configuration/Level/Level3");
+            level4 = Game.Content.Load<LevelN>("Configuration/Level/Level4");
+            level5 = Game.Content.Load<LevelN>("Configuration/Level/Level5");
+            levels.Add(level1);
+            levels.Add(level2);
+            levels.Add(level3);
+            levels.Add(level4);
+            levels.Add(level5);
             playerHealth = 100;
             playerScore = 0;
             Game.Components.Add(gameMenu);
@@ -142,8 +156,12 @@ namespace ShootingGame.Core
                 octreeWorld.GetOctree().ModelsDrawn = 0;
                 BoundingFrustum cameraFrustrum = new BoundingFrustum(camera.ViewMatrix * camera.ProjectionMatrix);
                 octreeWorld.GetOctree().Draw(camera.ViewMatrix, camera.ProjectionMatrix, cameraFrustrum);
-                //octreeWorld.GetOctree().DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);                
-                Game.Window.Title = string.Format("Models drawn: {0}", octreeWorld.GetOctree().ModelsDrawn);
+                //octreeWorld.GetOctree().DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect); 
+
+                //DataLoader datalo = new DataLoader();
+                //Level level = datalo.LoadLevel(1);
+                //Console.WriteLine("this is {0}", level.EnemyAttackRange);
+                //Game.Window.Title = string.Format("Models drawn: {0}", level.EnemyAttackRange);
                 city.DrawCity(Game.GraphicsDevice, camera, floorEffect,0f, new Vector3(0, 0, 0));
                 //city.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
                 camera.DrawWeapon();
