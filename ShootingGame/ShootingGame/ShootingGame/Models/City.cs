@@ -24,11 +24,11 @@ namespace ShootingGame.Models
         float cityScale;
         DataLoader dataloader;
 
-        public City()
+        public City(string path)
         {
             cityScale = 50f;
             
-            LoadFloorPlan();
+            LoadFloorPlan(path);
         }
 
         private void SetUpBoundingBoxes()
@@ -168,7 +168,7 @@ namespace ShootingGame.Models
       
 
 
-        private void LoadFloorPlan()
+        private void LoadFloorPlan(string path)
         {
             //int[,] a = new int[20,15];
             //String numbers = "";
@@ -200,7 +200,7 @@ namespace ShootingGame.Models
             //}
             dataloader = new DataLoader();
 
-            floorPlan = dataloader.loadMap("Map.txt");
+            floorPlan = dataloader.loadMap(path);
             Random random = new Random();
             int differentBuildings = buildingHeights.Length - 1;
             for (int x = 0; x < floorPlan.GetLength(0); x++)

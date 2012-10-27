@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using GameData;
 using System.Xml.Linq;
+using Microsoft.Xna.Framework;
 
 namespace ShootingGame.Data
 {
@@ -33,7 +34,7 @@ namespace ShootingGame.Data
             String numbers = "";
 
             int lineNum = 0;
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(TitleContainer.OpenStream(path)))
             {
                 while (sr.Peek() >= 0)
                 {

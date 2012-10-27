@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <!-- TODO: replace this Asset with your own XML asset data. -->
-  <Asset Type="System.String"></Asset>
+  <Asset Type="GameData.WorldMatrix">
+    <boundryLeft>-1000</boundryLeft>
+    <boundryRight>1000</boundryRight>
+    <boundryNear>1000</boundryNear>
+    <boundryFar>-1000</boundryFar>
+    <FLYING_OUT_ZONE>500</FLYING_OUT_ZONE>
+    <PLAYER_BULLET_SPEED>20</PLAYER_BULLET_SPEED>
+    <OCTREE_WORLD_CENTER_X>500</OCTREE_WORLD_CENTER_X>
+    <OCTREE_WORLD_CENTER_Z>-300</OCTREE_WORLD_CENTER_Z>
+    <OCTREE_WORLD_SIZE>2000</OCTREE_WORLD_SIZE>
+  </Asset>
 </XnaContent>
