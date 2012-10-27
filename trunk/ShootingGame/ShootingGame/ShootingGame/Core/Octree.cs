@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using ShootingGame.Models;
 using Microsoft.Xna.Framework.Graphics;
 using ShootingGame.Data;
+using GameData;
 
 namespace ShootingGame.Core
 {
@@ -20,7 +21,9 @@ namespace ShootingGame.Core
         List<int> playerBulletIDs;
         List<int> tankIDs;
         Player player;
+        int timeLastStamp;
         TankModel tank;
+        
         private int boundryLeft;
         private int boundryRight;
         private int boundryNear;
@@ -52,41 +55,43 @@ namespace ShootingGame.Core
             controlTankEnabled = false;
         }
 
-        public void TestInitialize(int[] enemyData)
+        public void TestInitialize(int[] enemyData, TankStatusMode tankstatus,GameTime gametime,PlayerData player )
         {
-            AddPlayerModel(new Vector3(500, 0, -500));
+            AddPlayerModel(new Vector3(player.startPosition_x, 0, player.startPosition_z));
             float verticalPosition = (float)rnd.NextDouble() * 100 + 500;
             float horizontalPosition = (float)rnd.NextDouble() * 1000 - 100;
             
 
             Vector3 position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
             Vector3 direction1 = new Vector3(0, 0, 4);
-
-
-            for (int i = 0; i < 20; i++)
-            {
-                verticalPosition = (float)rnd.NextDouble() * 100 + 100;
-                horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
-                position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
-                direction1 = new Vector3(0, 0, 1);
-                AddEnemyModel(position1, direction1, enemyData);
-            }
-            AddTankModel(new Vector3(0,0,0));
+        
+                            verticalPosition = (float)rnd.NextDouble() * 100 + 3000;
+                            horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
+                            position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
+                            direction1 = new Vector3(0, 0, 1);
+                        AddEnemyModel(position1, direction1, enemyData);
+                        timeLastStamp = 0;
+                    
+            
+            AddTankModel(new Vector3(0,0,0),tankstatus);
+            
         }
 
-        public void Update(GameTime gameTime, FirstPersonCamera camera)
+        public void Update(GameTime gameTime, FirstPersonCamera camera, int[] enemyData)
         {
             List<DrawableModel> models = new List<DrawableModel>();
-            octreeRoot.GetUpdatedModels(ref models);
-
-            
+            UpdateAndAddEnemy(gameTime, enemyData);
+             octreeRoot.GetUpdatedModels(ref models);
             //Update All Models
             foreach (DrawableModel model in models)
             {
                 if (model.GetType().ToString().Equals("ShootingGame.EnemyPlane"))
                 {
-                    EnemyPlane newModel = UpdateEnemyPlane(gameTime, (EnemyPlane)model, rnd);
-                    octreeRoot.Add(newModel);
+                    
+                        EnemyPlane newModel = UpdateEnemyPlane(gameTime, (EnemyPlane)model, rnd);
+
+                        octreeRoot.Add(newModel);
+                    
                 }
                 else if(model.GetType().ToString().Equals("ShootingGame.Player"))
                 {
@@ -143,9 +148,36 @@ namespace ShootingGame.Core
             tankModel = models[4];
         }
 
-        public void AddTankModel(Vector3 position)
+        public void UpdateAndAddEnemy(GameTime gametime,int[] enemyData) {
+
+            timeLastStamp += gametime.ElapsedGameTime.Milliseconds * 10;
+            float verticalPosition = (float)rnd.NextDouble() * 100 + 500;
+            float horizontalPosition = (float)rnd.NextDouble() * 1000 - 100;
+
+            Vector3 position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
+            Vector3 direction1 = new Vector3(0, 0, 4);
+
+            int enemyCd = enemyData[0];
+            //  Console.WriteLine("timeLastStamp{0},enemyCd{1}", timeLastStamp, enemyCd);
+            if (timeLastStamp >= enemyCd)
+            {
+
+
+                verticalPosition = (float)rnd.NextDouble() * 100 + 100;
+                horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
+                position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
+                direction1 = new Vector3(0, 0, 1);
+
+                AddEnemyModel(position1, direction1, enemyData);
+                timeLastStamp = 0;
+            }
+        }
+
+
+
+        public void AddTankModel(Vector3 position,TankStatusMode tankStatus)
         {
-            TankModel newDModel = new TankModel(tankModel, Matrix.CreateScale(0.09f) * Matrix.CreateTranslation(position.X, position.Y, position.Z), new Vector3(0, 1, 0), sceneManager.GetCity().GetCityMap());
+            TankModel newDModel = new TankModel(tankStatus,tankModel, Matrix.CreateScale(0.09f) * Matrix.CreateTranslation(position.X, position.Y, position.Z), new Vector3(0, 1, 0), sceneManager.GetCity().GetCityMap());
             int id = octreeRoot.Add(newDModel);
             tankIDs.Add(id);
             tank = newDModel;

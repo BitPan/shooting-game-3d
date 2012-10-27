@@ -22,9 +22,9 @@ namespace ShootingGame.GameComponent
         public GameState SetGameState { set { currentGameState = value; } }
         public GameLevel GetGameLevel { get { return currentGameLevel; } }
 
-        public GameLevelHandler()
+        public GameLevelHandler(List<LevelN> levels)
         {
-            levelData = new LevelData();
+            levelData = new LevelData(levels);
             currentGameState = GameState.START;
             currentGameLevel = GameLevel.Level1;
         }

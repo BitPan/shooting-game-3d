@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 
 namespace GameData
-{   [Serializable]
-   public class PlayerData
+{       [Serializable]
+   public class Mode
     {
+
         public string name;
         public int hp;
-        public int score;
-        public int startPosition_x;
-        public int startPosition_z;
+        public string[] statu;
     }
 }

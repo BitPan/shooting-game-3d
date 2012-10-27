@@ -13,14 +13,14 @@ namespace ShootingGame
 
         private List<int[]> levelData;
  
-        public LevelData()
+        public LevelData(List<LevelN> levels)
         {
             levelData = new List<int[]>();
-            levelData.Add(iniLevelData(2500, 1500, 6, 4,8, 13, 100, 800, 400));
-            levelData.Add(iniLevelData(2400, 1450, 6, 4, 8, 13, 100, 900, 120));
-            levelData.Add(iniLevelData(2300, 1400, 6, 4, 8, 11, 100, 1000, 110));
-            levelData.Add(iniLevelData(2200, 1350, 7, 4, 8, 8, 100, 1100, 100));
-            levelData.Add(iniLevelData(2100, 1300, 7, 4, 8, 6, 100, 1200, 90));
+            foreach (var level in levels)
+            {
+                levelData.Add(iniLevelData(level.enemySpawnCd, level.enemyShootCd, level.enemyBulletSpeed, level.enemyMovingSpeed, level.enemyAttackDeviationFactor
+                    , level.enemyAttackChanceFactor, level.deviationRange, level.enemyAttackRange, level.enemyTurnAroundFactor));
+            }
         }
 
         public int[] loadLevelData(GameLevelHandler.GameLevel gameLevel )

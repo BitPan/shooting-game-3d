@@ -26,7 +26,7 @@ namespace ShootingGame
         private PathFinder finder;
         private bool cannonMovingUp;
         private bool enableAttack;
-        public TankMode tankemode;
+        public TankStatusMode tankStaus;
 
         public enum Mode{
             WANDER,
@@ -130,7 +130,7 @@ namespace ShootingGame
 
         #endregion        
 
-        public TankModel(Model inModel, Matrix inWorldMatrix, Vector3 newDirection, int[,] cityMap)
+        public TankModel(TankStatusMode tankStaus, Model inModel, Matrix inWorldMatrix, Vector3 newDirection, int[,] cityMap)
             : base(inModel, inWorldMatrix, newDirection)
         {
             
@@ -161,6 +161,7 @@ namespace ShootingGame
             worldMatrix = inWorldMatrix;
             this.direction = newDirection;
             this.cityMap = cityMap;
+            this.tankStaus = tankStaus;
             //targetDestination = new Vector3(700,0,-700);
             finder = new PathFinder();
             finder.SetUpMap(cityMap);
@@ -204,7 +205,7 @@ namespace ShootingGame
         public void ActivateFollowMode()
         {
             pathToTargetDestination.Clear();
-            this.currentState = Mode.FOLLOW;
+            this.currentState= Mode.FOLLOW;
         }
 
         public void DeactiveActionMode()
@@ -247,7 +248,7 @@ namespace ShootingGame
 
         public void Update(Player player, Random rnd)
         {
-            if (this.currentState == Mode.WANDER)
+            if (this.currentState.ToString() == this.tankStaus.Status_wander )
             {
                 if (enableAutoSearch)
                 {
@@ -256,12 +257,12 @@ namespace ShootingGame
                 }
                 StartMoving(player, rnd);
             }
-            else if (this.currentState == Mode.FOLLOW)
+            else if (this.currentState.ToString() == this.tankStaus.Status_FOLLOW)
             {
                 targetDestination = player.Position;
                 StartMoving(player, rnd);
             }            
-            else if (this.currentState == Mode.STOP)
+            else if (this.currentState.ToString() == this.tankStaus.Status_STOP)
             {
 
             }

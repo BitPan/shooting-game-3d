@@ -38,6 +38,11 @@ namespace ShootingGame.Core
         Texture2D sceneryTexture;
         LevelN level1, level2, level3, level4, level5;
         List<LevelN> levels;
+        PlayerData player;
+        Mode[] tankmode;
+        TankStatusMode tankStatus;
+        WorldMatrix world;
+
 
         public FirstPersonCamera camera { get; protected set; }
 
@@ -51,13 +56,30 @@ namespace ShootingGame.Core
         public SceneManager(Game game)
             : base(game)
         {
+
             this.game = game;
-            city = new City();
+            levels = new List<LevelN>();
+            level1 = Game.Content.Load<LevelN>("Configuration/Level/Level1");
+            level2 = Game.Content.Load<LevelN>("Configuration/Level/Level2");
+            level3 = Game.Content.Load<LevelN>("Configuration/Level/Level3");
+            level4 = Game.Content.Load<LevelN>("Configuration/Level/Level4");
+            level5 = Game.Content.Load<LevelN>("Configuration/Level/Level5");
+            levels.Add(level1);
+            levels.Add(level2);
+            levels.Add(level3);
+            levels.Add(level4);
+            levels.Add(level5);
+            player = Game.Content.Load<PlayerData>("Configuration/PlayerData");
+            tankmode = Game.Content.Load<Mode[]>(@"Configuration/TankMode");
+            world = Game.Content.Load<WorldMatrix>("Configuration/WorldData");
+            tankStatus = new TankStatusMode(tankmode[0]);
+            string path = "Map.txt";
+            city = new City(path);
             inputHandler = new InputHandler();
             textHandler = new TextHandler();
-            levelHander = new GameLevelHandler();
-            gameMenu = new GameMenuScreen(game, levelHander);            
-            worldData = new GameWorldData();
+            levelHander = new GameLevelHandler(levels);
+            gameMenu = new GameMenuScreen(game, levelHander);
+            worldData = new GameWorldData(world);
             camera = new FirstPersonCamera(game);
             music = new Music(game);
             background = new BackGround(game);
@@ -71,19 +93,9 @@ namespace ShootingGame.Core
         /// </summary>
         public override void Initialize()
         {
-            levels = new List<LevelN>();
-            level1 = Game.Content.Load<LevelN>("Configuration/Level/Level1");
-            level2 = Game.Content.Load<LevelN>("Configuration/Level/Level2");
-            level3 = Game.Content.Load<LevelN>("Configuration/Level/Level3");
-            level4 = Game.Content.Load<LevelN>("Configuration/Level/Level4");
-            level5 = Game.Content.Load<LevelN>("Configuration/Level/Level5");
-            levels.Add(level1);
-            levels.Add(level2);
-            levels.Add(level3);
-            levels.Add(level4);
-            levels.Add(level5);
-            playerHealth = 100;
-            playerScore = 0;
+  
+            playerHealth = player.hp;
+            playerScore = player.score;
             Game.Components.Add(gameMenu);
             effect = new BasicEffect(Game.GraphicsDevice);
             sceneryTexture = Game.Content.Load<Texture2D>("texturemap");
@@ -123,7 +135,7 @@ namespace ShootingGame.Core
             {
                 octreeWorld = new Octree(this, worldData);
                 LoadWorldModels();
-                octreeWorld.TestInitialize(levelHander.GetEmemyData);
+                octreeWorld.TestInitialize(levelHander.GetEmemyData, tankStatus,gameTime,player);
                 levelHander.SetGameState = GameLevelHandler.GameState.PLAY;
                 Game.Components.Remove(gameMenu);
                 game.Components.Add(camera);
@@ -136,7 +148,7 @@ namespace ShootingGame.Core
             {
                 textHandler.UpdateText(this);
                 inputHandler.UpdateWorld(gameTime, camera, this, music);
-                octreeWorld.Update(gameTime, camera);
+                octreeWorld.Update(gameTime, camera,levelHander.GetEmemyData);
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
             {

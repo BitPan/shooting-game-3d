@@ -5,6 +5,7 @@
     <name>player1</name>
     <hp>100</hp>
     <score>0</score>
-    
+    <startPosition_x>500</startPosition_x>
+    <startPosition_z>-500</startPosition_z>
   </Asset>
 </XnaContent>

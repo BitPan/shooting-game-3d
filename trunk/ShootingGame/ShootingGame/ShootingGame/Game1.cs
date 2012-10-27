@@ -26,8 +26,7 @@ namespace ShootingGame
         BasicEffect effect;
         GraphicsDevice device;
         SceneManager sceneManager;
-        TankMode tankmode;
-
+       
 
         public Game1()
         {
@@ -70,7 +69,8 @@ namespace ShootingGame
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
-            tankmode = Content.Load<TankMode>(@"Configuration/TankMode");
+     
+          
        
         }
 
