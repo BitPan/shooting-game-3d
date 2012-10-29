@@ -34,7 +34,7 @@ namespace ShootingGame.Data
             String numbers = "";
 
             int lineNum = 0;
-            using (StreamReader sr = new StreamReader(TitleContainer.OpenStream(path)))
+            using (StreamReader sr = new StreamReader(path))
             {
                 while (sr.Peek() >= 0)
                 {

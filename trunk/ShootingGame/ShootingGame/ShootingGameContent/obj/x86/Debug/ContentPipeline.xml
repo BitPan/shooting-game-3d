@@ -20,7 +20,7 @@
       <Time>2012-10-25T13:37:20.7195833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\ammo_0.xml</Key>
-        <Value>2012-10-27T19:17:32.523349+11:00</Value>
+        <Value>2012-10-29T15:22:41.6615518+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -33,7 +33,7 @@
       <Time>2012-10-25T13:37:20.7615833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\spaceship_0.xml</Key>
-        <Value>2012-10-27T19:17:32.7993766+11:00</Value>
+        <Value>2012-10-29T15:22:41.9275784+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -46,7 +46,7 @@
       <Time>2012-10-25T13:37:08.6075833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\skybox\skybox_0.xml</Key>
-        <Value>2012-10-27T19:17:32.8673834+11:00</Value>
+        <Value>2012-10-29T15:22:41.9925849+11:00</Value>
       </Dependency>
       <Request>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top_0.xnb</Request>
       <Request>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right_0.xnb</Request>
@@ -64,7 +64,7 @@
       <Time>2012-10-25T13:37:28.3905833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\vic viper small junctioned_0.xml</Key>
-        <Value>2012-10-27T19:17:33.7654732+11:00</Value>
+        <Value>2012-10-29T15:22:42.7986655+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -77,7 +77,7 @@
       <Time>2012-10-25T13:37:28.4085833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\viper test_0.xml</Key>
-        <Value>2012-10-27T19:17:33.9364903+11:00</Value>
+        <Value>2012-10-29T15:22:42.9646821+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -90,7 +90,7 @@
       <Time>2012-10-25T13:37:20.8765833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\map_0.xml</Key>
-        <Value>2012-10-27T19:17:34.7045671+11:00</Value>
+        <Value>2012-10-29T15:22:43.7417598+11:00</Value>
       </Dependency>
       <Request>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb</Request>
     </Item>
@@ -104,7 +104,7 @@
       <Time>2012-10-25T13:37:20.8945833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\tank_0.xml</Key>
-        <Value>2012-10-27T19:17:36.5577524+11:00</Value>
+        <Value>2012-10-29T15:22:45.563942+11:00</Value>
       </Dependency>
       <Request>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex_0.xnb</Request>
       <Request>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex_0.xnb</Request>
@@ -119,7 +119,7 @@
       <Time>2012-10-25T13:37:20.7685833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\weapon_0.xml</Key>
-        <Value>2012-10-27T19:17:37.8178784+11:00</Value>
+        <Value>2012-10-29T15:22:46.7990655+11:00</Value>
       </Dependency>
       <Request>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n_0.xnb</Request>
     </Item>
@@ -133,7 +133,7 @@
       <Time>2012-10-25T13:37:20.8655833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\player_0.xml</Key>
-        <Value>2012-10-27T19:17:37.9988965+11:00</Value>
+        <Value>2012-10-29T15:22:46.9860842+11:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -146,9 +146,22 @@
       <Time>2012-10-25T13:37:20.7445833+11:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\Ship_0.xml</Key>
-        <Value>2012-10-27T19:17:38.8859852+11:00</Value>
+        <Value>2012-10-29T15:22:47.8611717+11:00</Value>
       </Dependency>
       <Request>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Heart.FBX</Source>
+      <Name>Models\Heart</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\Heart.xnb</Output>
+      <Time>2012-10-29T14:11:37.2131167+11:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\Heart_0.xml</Key>
+        <Value>2012-10-29T15:22:48.0821938+11:00</Value>
+      </Dependency>
     </Item>
     <Item>
       <Source>Models\dirt2-1\dirt 2-242837c0.bmp</Source>
@@ -277,6 +290,33 @@
       <Time>2012-10-25T13:37:20.7545833+11:00</Time>
     </Item>
     <Item>
+      <Source>particle.png</Source>
+      <Name>particle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle.xnb</Output>
+      <Time>2012-10-28T18:08:23.3704616+11:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ParticleColors.png</Source>
+      <Name>Textures\ParticleColors</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\ParticleColors.xnb</Output>
+      <Time>2012-10-28T18:08:23.3994645+11:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\particle.png</Source>
+      <Name>Textures\particle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\particle.xnb</Output>
+      <Time>2012-10-28T18:08:29.4640709+11:00</Time>
+    </Item>
+    <Item>
       <Source>Effects\effects.fx</Source>
       <Name>Effects\effects</Name>
       <Importer>EffectImporter</Importer>
@@ -293,6 +333,15 @@
       <Options>None</Options>
       <Output>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\effects.xnb</Output>
       <Time>2012-10-25T13:37:28.4005833+11:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\particle.fx</Source>
+      <Name>Effects\particle</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Effects\particle.xnb</Output>
+      <Time>2012-10-29T11:49:21.3285807+11:00</Time>
     </Item>
     <Item>
       <Source>music\background.mp3</Source>
@@ -365,7 +414,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Configuration\Level\Level1.xnb</Output>
-      <Time>2012-10-26T20:46:26.4684639+11:00</Time>
+      <Time>2012-10-29T14:00:46.9200939+11:00</Time>
     </Item>
     <Item>
       <Source>Configuration\Level\Level2.xml</Source>
@@ -633,6 +682,13 @@
       <Output>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse_0.xnb</Output>
       <Time>2012-10-25T13:37:20.7545833+11:00</Time>
     </Item>
+    <Item>
+      <Source>Models\Heart.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\Heart_0.xml</Output>
+      <Time>2012-10-29T14:11:37.2131167+11:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
@@ -671,7 +727,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\GameData\bin\x86\Debug\GameData.dll</Key>
-        <Value>2012-10-27T19:17:31.4052372+11:00</Value>
+        <Value>2012-10-29T15:22:40.8254682+11:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>

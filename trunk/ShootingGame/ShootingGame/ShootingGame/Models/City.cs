@@ -43,6 +43,7 @@ namespace ShootingGame.Models
                     int buildingType = floorPlan[x, z];
                     if (buildingType != 0)
                     {
+                        
                         int buildingHeight = buildingHeights[buildingType]*50;
                         Vector3[] buildingPoints = new Vector3[2];
                         buildingPoints[0] = new Vector3(x*50, 0, -z*50);

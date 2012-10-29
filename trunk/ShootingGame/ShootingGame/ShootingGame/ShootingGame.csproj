@@ -136,6 +136,8 @@
     <Compile Include="Models\BasicModel.cs" />
     <Compile Include="GameComponent\Music.cs" />
     <Compile Include="Models\IModelBase.cs" />
+    <Compile Include="ParticleExplosion.cs" />
+    <Compile Include="ParticleSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

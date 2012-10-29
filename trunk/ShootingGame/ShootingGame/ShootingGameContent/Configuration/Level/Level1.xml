@@ -3,7 +3,7 @@
   <!-- TODO: replace this Asset with your own XML asset data. -->
   
   <Asset Type="GameData.LevelN">
-    <enemySpawnCd>2500</enemySpawnCd>
+    <enemySpawnCd>3500</enemySpawnCd>
       <enemyShootCd>2000</enemyShootCd>
       <enemyBulletSpeed>6</enemyBulletSpeed>
       <enemyMovingSpeed>4</enemyMovingSpeed>

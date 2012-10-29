@@ -38,7 +38,7 @@ namespace ShootingGame
 
 
 
-        public Model LModel(string assetName, out Texture2D[] textures)
+        public Model LModel(Effect effect, string assetName, out Texture2D[] textures)
         {
 
             Model newModel = this.Game.Content.Load<Model>(@assetName);
@@ -50,7 +50,7 @@ namespace ShootingGame
 
             foreach (ModelMesh mesh in newModel.Meshes)
                 foreach (ModelMeshPart meshPart in mesh.MeshParts)
-                    meshPart.Effect = floorEffect.Clone();
+                    meshPart.Effect = effect.Clone();
 
             return newModel;
         }

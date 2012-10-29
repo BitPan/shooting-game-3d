@@ -248,7 +248,7 @@ namespace ShootingGame
 
         public void Update(Player player, Random rnd)
         {
-            if (this.currentState.ToString() == this.tankStaus.Status_wander )
+            if (this.currentState.ToString().Equals(this.tankStaus.Status_wander ))
             {
                 if (enableAutoSearch)
                 {
@@ -257,12 +257,12 @@ namespace ShootingGame
                 }
                 StartMoving(player, rnd);
             }
-            else if (this.currentState.ToString() == this.tankStaus.Status_FOLLOW)
+            else if (this.currentState.ToString().Equals(this.tankStaus.Status_FOLLOW))
             {
                 targetDestination = player.Position;
                 StartMoving(player, rnd);
             }            
-            else if (this.currentState.ToString() == this.tankStaus.Status_STOP)
+            else if (this.currentState.ToString().Equals(this.tankStaus.Status_STOP))
             {
 
             }
@@ -303,9 +303,9 @@ namespace ShootingGame
                     Position = targetDestination;
                     isMoving = false;
                     pathToTargetDestination.Clear();
-                    if (this.currentState == Mode.WANDER)
+                    if (this.currentState.ToString().Equals(tankStaus.Status_wander))
                         EnableAutoSearch();
-                    else if (this.currentState == Mode.FOLLOW)
+                    else if (this.currentState.ToString().Equals(tankStaus.Status_FOLLOW))
                         DeactiveActionMode();
                 }
                 else
