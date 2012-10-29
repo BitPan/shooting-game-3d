@@ -172,6 +172,8 @@ namespace ShootingGame.Core
                         {
                             if (enemyModel[i].CollidesWith(playerBullet[j].Model, playerBullet[j].WorldMatrix))
                             {
+
+                        
                                 modelsToRemove.Add(enemyModel[i].ModelID);
                                 modelsToRemove.Add(playerBullet[j].ModelID);
                                 enemyModel.RemoveAt(i);

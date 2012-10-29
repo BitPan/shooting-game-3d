@@ -9,6 +9,7 @@ Content\Models\tank.xnb
 Content\Models\weapon.xnb
 Content\Models\player.xnb
 Content\Models\Ship.xnb
+Content\Models\Heart.xnb
 Content\Models\dirt2-1\dirt 2-242837c0.xnb
 Content\Models\dirt2-1\dirt 2-26c2d220.xnb
 Content\Models\dirt2-1\dirt 2-4be9a760.xnb
@@ -23,8 +24,12 @@ Content\Models\engine_diff_tex.xnb
 Content\Models\turret_alt_diff_tex.xnb
 Content\texturemap.xnb
 Content\Models\ShipDiffuse.xnb
+Content\particle.xnb
+Content\Textures\ParticleColors.xnb
+Content\Textures\particle.xnb
 Content\Effects\effects.xnb
 Content\effects.xnb
+Content\Effects\particle.xnb
 Content\music\background.xnb
 Content\music\Bomb.xnb
 Content\music\laser.xnb

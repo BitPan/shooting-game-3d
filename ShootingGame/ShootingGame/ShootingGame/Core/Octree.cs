@@ -58,7 +58,7 @@ namespace ShootingGame.Core
         public void TestInitialize(int[] enemyData, TankStatusMode tankstatus,GameTime gametime,PlayerData player )
         {
             AddPlayerModel(new Vector3(player.startPosition_x, 0, player.startPosition_z));
-            float verticalPosition = (float)rnd.NextDouble() * 100 + 500;
+            float verticalPosition = (float)rnd.NextDouble() * 100 + 1000;
             float horizontalPosition = (float)rnd.NextDouble() * 1000 - 100;
             
 
@@ -128,7 +128,7 @@ namespace ShootingGame.Core
                 {
                     sceneManager.IncreasePlayerScore(10);
                     sceneManager.GetMusic().EffectStopPlay();
-                    sceneManager.GetMusic().EffectStopPlay();
+                    sceneManager.GetMusic().EffectPlay();
                 }
                 if (model.GetType().ToString().Equals("ShootingGame.EnemyBullet"))
                 {
@@ -136,6 +136,9 @@ namespace ShootingGame.Core
                     sceneManager.GetMusic().hitSoundPlay();                    
                 }
             }
+
+
+
         }
 
         
@@ -150,7 +153,7 @@ namespace ShootingGame.Core
 
         public void UpdateAndAddEnemy(GameTime gametime,int[] enemyData) {
 
-            timeLastStamp += gametime.ElapsedGameTime.Milliseconds * 10;
+            timeLastStamp += gametime.ElapsedGameTime.Milliseconds*5;
             float verticalPosition = (float)rnd.NextDouble() * 100 + 500;
             float horizontalPosition = (float)rnd.NextDouble() * 1000 - 100;
 
@@ -161,9 +164,7 @@ namespace ShootingGame.Core
             //  Console.WriteLine("timeLastStamp{0},enemyCd{1}", timeLastStamp, enemyCd);
             if (timeLastStamp >= enemyCd)
             {
-
-
-                verticalPosition = (float)rnd.NextDouble() * 100 + 100;
+                verticalPosition = (float)rnd.NextDouble() * 100 + 300;
                 horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
                 position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
                 direction1 = new Vector3(0, 0, 1);
@@ -283,5 +284,16 @@ namespace ShootingGame.Core
         {
             this.controlTankEnabled = false;
         }
+
+        //public void GetEXpolsion(Vector3 posi)
+        //{
+        //    Random randon = new Random();
+        //    this.explosions.Add(new ParticleExplosion(this.GraphicsDevice, posi,
+        //        randon.Next(particleExplosionSettings.minLife, particleExplosionSettings.maxLife),
+        //        randon.Next(particleExplosionSettings.minRoundTime, particleExplosionSettings.maxRoundTime),
+        //        randon.Next(particleExplosionSettings.minParticlesPerRound, particleExplosionSettings.maxParticlesPerRound),
+        //        randon.Next(particleExplosionSettings.minParticles, particleExplosionSettings.maxParticles), explosionColorsTexture,
+        //        particleSettings, explosionEffect));
+        //}
     }
 }

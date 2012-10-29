@@ -32,6 +32,7 @@ namespace ShootingGame.Core
         InputHandler inputHandler;
         TextHandler textHandler;
         GameMenuScreen gameMenu;
+        Texture2D[] skyboxTextures;
 
         BasicEffect effect;
         Effect floorEffect;
@@ -42,7 +43,14 @@ namespace ShootingGame.Core
         Mode[] tankmode;
         TankStatusMode tankStatus;
         WorldMatrix world;
+        Model skyboxModel;
 
+        List<ParticleExplosion> explosions = new List<ParticleExplosion>();
+        ParticleExplosionSettings particleExplosionSettings = new ParticleExplosionSettings();
+        ParticleSettings particleSettings = new ParticleSettings();
+        Texture2D explosionTexture;
+        Texture2D explosionColorsTexture;
+        Effect explosionEffect;
 
         public FirstPersonCamera camera { get; protected set; }
 
@@ -69,6 +77,7 @@ namespace ShootingGame.Core
             levels.Add(level3);
             levels.Add(level4);
             levels.Add(level5);
+          
             player = Game.Content.Load<PlayerData>("Configuration/PlayerData");
             tankmode = Game.Content.Load<Mode[]>(@"Configuration/TankMode");
             world = Game.Content.Load<WorldMatrix>("Configuration/WorldData");
@@ -93,14 +102,16 @@ namespace ShootingGame.Core
         /// </summary>
         public override void Initialize()
         {
-  
+ 
             playerHealth = player.hp;
             playerScore = player.score;
             Game.Components.Add(gameMenu);
             effect = new BasicEffect(Game.GraphicsDevice);
             sceneryTexture = Game.Content.Load<Texture2D>("texturemap");
             floorEffect = Game.Content.Load<Effect>("effects");
+            skyboxModel = background.LModel(floorEffect, "skybox/skybox", out skyboxTextures);
             base.Initialize();
+
         }
 
 
@@ -117,6 +128,7 @@ namespace ShootingGame.Core
             models.Add(Game.Content.Load<Model>("Models\\ammo"));
             models.Add(Game.Content.Load<Model>("Models\\ammo"));
             models.Add(Game.Content.Load<Model>("Models\\tank"));
+            
             octreeWorld.LoadModels(models);
         }
 
@@ -143,12 +155,14 @@ namespace ShootingGame.Core
                 game.IsMouseVisible = false;
                 textHandler.UpdateText(this);
                 city.SetUpCity(Game.GraphicsDevice, sceneryTexture);
+               
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.PLAY)
             {
                 textHandler.UpdateText(this);
                 inputHandler.UpdateWorld(gameTime, camera, this, music);
                 octreeWorld.Update(gameTime, camera,levelHander.GetEmemyData);
+              
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
             {
@@ -167,16 +181,17 @@ namespace ShootingGame.Core
             {
                 octreeWorld.GetOctree().ModelsDrawn = 0;
                 BoundingFrustum cameraFrustrum = new BoundingFrustum(camera.ViewMatrix * camera.ProjectionMatrix);
+                background.DrawSkybox(Game.GraphicsDevice, camera, skyboxModel, skyboxTextures);
                 octreeWorld.GetOctree().Draw(camera.ViewMatrix, camera.ProjectionMatrix, cameraFrustrum);
-                //octreeWorld.GetOctree().DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect); 
-
+                octreeWorld.GetOctree().DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
                 //DataLoader datalo = new DataLoader();
                 //Level level = datalo.LoadLevel(1);
                 //Console.WriteLine("this is {0}", level.EnemyAttackRange);
                 //Game.Window.Title = string.Format("Models drawn: {0}", level.EnemyAttackRange);
                 city.DrawCity(Game.GraphicsDevice, camera, floorEffect,0f, new Vector3(0, 0, 0));
-                //city.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
+                city.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
                 camera.DrawWeapon();
+               
                 textHandler.DrawText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), gameTime, Game.GraphicsDevice);
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
@@ -196,8 +211,29 @@ namespace ShootingGame.Core
         }
 
         public void IncreasePlayerScore(int socre)
+
         {
+           
+
             this.playerScore += socre;
+        }
+
+
+
+
+        protected void UpdateExplosions(GameTime gameTime)
+        {
+            // Loop through and update explosions
+            for (int i = 0; i < explosions.Count; ++i)
+            {
+                explosions[i].Update(gameTime);
+                // If explosion is finished, remove it
+                if (explosions[i].IsDead)
+                {
+                    explosions.RemoveAt(i);
+                    --i;
+                }
+            }
         }
 
         public void DeductPlayerHealth(int health)
@@ -225,5 +261,6 @@ namespace ShootingGame.Core
             return this.octreeWorld;
         }
 
+       
     }
 }

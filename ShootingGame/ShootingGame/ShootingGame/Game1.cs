@@ -26,6 +26,7 @@ namespace ShootingGame
         BasicEffect effect;
         GraphicsDevice device;
         SceneManager sceneManager;
+        
        
 
         public Game1()
@@ -132,5 +133,7 @@ namespace ShootingGame
         {
             return this.Font1;
         }
+
+
     }
 }
