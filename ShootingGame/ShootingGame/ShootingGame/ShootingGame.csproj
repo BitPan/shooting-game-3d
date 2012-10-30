@@ -119,6 +119,7 @@
     <Compile Include="GameComponent\InputHandler.cs" />
     <Compile Include="GameComponent\NewCamera.cs" />
     <Compile Include="GameComponent\GameMenuScreen.cs" />
+    <Compile Include="GameComponent\ExplosionHandler.cs" />
     <Compile Include="GameComponent\TextHandler.cs" />
     <Compile Include="GameUtil\MathUtil.cs" />
     <Compile Include="GameUtil\PathFinder.cs" />
@@ -138,6 +139,13 @@
     <Compile Include="Models\IModelBase.cs" />
     <Compile Include="ParticleExplosion.cs" />
     <Compile Include="ParticleSettings.cs" />
+    <Compile Include="Particle\Explosion.cs" />
+    <Compile Include="Particle\ExplosionParticleSystem.cs" />
+    <Compile Include="Particle\ParticleEmitter.cs" />
+    <Compile Include="Particle\ParticleSettings.cs" />
+    <Compile Include="Particle\ParticleSystem.cs" />
+    <Compile Include="Particle\ParticleVertex.cs" />
+    <Compile Include="Particle\ProjectileTrialParticleSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

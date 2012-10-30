@@ -423,3 +423,11 @@ C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Conte
 C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzonegrass01diffuse.xnb
 C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf.xnb
 C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\font.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\grid.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\checker.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\explosion.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\fire.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\smoke.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\ParticleEffect.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\checker_0.xnb

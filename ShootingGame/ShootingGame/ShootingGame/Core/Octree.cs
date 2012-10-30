@@ -120,11 +120,16 @@ namespace ShootingGame.Core
                     sceneManager.IncreasePlayerScore(((EnemyPlane)model).GetEnemyScore());
                     sceneManager.GetMusic().EffectStopPlay();
                     sceneManager.GetMusic().EffectPlay();
+                    sceneManager.GetExplosionHandler().CreateExplosion(model.Position);
+
                 }
                 if (model.GetType().ToString().Equals("ShootingGame.EnemyBullet"))
                 {
                     sceneManager.DeductPlayerHealth(10);
                     sceneManager.GetMusic().hitSoundPlay();
+                    
+
+                    
                 }
             }
         }

@@ -58,4 +58,12 @@ Content\Models\engine_diff_tex_0.xnb
 Content\Models\turret_alt_diff_tex_0.xnb
 Content\Models\hk_mp5n_0.xnb
 Content\Models\ShipDiffuse_0.xnb
+Content\particle\font.xnb
+Content\particle\grid.xnb
+Content\particle\checker.xnb
+Content\particle\explosion.xnb
+Content\particle\fire.xnb
+Content\particle\smoke.xnb
+Content\particle\ParticleEffect.xnb
+Content\particle\checker_0.xnb
 Content\music\background.wma

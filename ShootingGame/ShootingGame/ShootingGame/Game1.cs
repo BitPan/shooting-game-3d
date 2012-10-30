@@ -26,8 +26,6 @@ namespace ShootingGame
         BasicEffect effect;
         GraphicsDevice device;
         SceneManager sceneManager;
-        
-       
 
         public Game1()
         {
@@ -70,9 +68,6 @@ namespace ShootingGame
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rs;
-     
-          
-       
         }
 
         /// <summary>
@@ -91,8 +86,6 @@ namespace ShootingGame
 
             effect = new BasicEffect(GraphicsDevice);
         }
-
-
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
