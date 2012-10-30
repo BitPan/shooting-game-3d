@@ -52,22 +52,15 @@ namespace ShootingGame.GameComponent
             if (previousKeySate.IsKeyDown(Keys.D3) && kState.IsKeyUp(Keys.D3))
             {
                 if (scene.GetOctreeWorld().IsControlTankEnabled())
-                {
-                    if (scene.GetOctreeWorld().GetTank().IsAttackEnabled())
-                        scene.GetOctreeWorld().GetTank().DisableAttack();
-                    else
-                        scene.GetOctreeWorld().GetTank().EnableAttack();
-                    scene.GetOctreeWorld().DisableControlTank();
-                }
-            }
-
-            if (previousKeySate.IsKeyDown(Keys.D4) && kState.IsKeyUp(Keys.D4))
-            {
-                if (scene.GetOctreeWorld().IsControlTankEnabled())
                     scene.GetOctreeWorld().GetTank().DeactiveActionMode();
                 scene.GetOctreeWorld().DisableControlTank();
             }
 
+            if (previousKeySate.IsKeyDown(Keys.D4) && kState.IsKeyUp(Keys.D4))
+            {
+                scene.DeductPlayerHealth(10);
+            }
+            
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 if (timeSinceLastShoot >= nextShootTime)

@@ -27,9 +27,9 @@ namespace ShootingGame.GameComponent
             if (scene.GetOctreeWorld().IsControlTankEnabled())
             {
                 if(scene.GetOctreeWorld().GetTank().IsAttackEnabled())
-                    tankCommandText = "1. Wander Around\n2. Come Here\n3. Auto Attack Enemy (On)\n4. Stop";
+                    tankCommandText = "1. Wander Around\n2. Come Here\n3. Stop";
                 else
-                    tankCommandText = "1. Wander Around\n2. Come Here\n3. Auto Attack Enemy (Off)\n4. Stop";
+                    tankCommandText = "1. Wander Around\n2. Come Here\n3. Stop";
                 controlTankText = "Press C Again To Close Menu";
             }
             else
@@ -46,11 +46,35 @@ namespace ShootingGame.GameComponent
 
         }
 
-        public void DrawText(SpriteFont font, SpriteBatch spriteBatch, GameTime gameTime, GraphicsDevice device)
+        public void DrawGameFinishText(SpriteFont font, SpriteBatch spriteBatch, GraphicsDevice device, int playerScore)
+        {
+            Vector2 fontPosition1 = new Vector2(device.Viewport.Width * 0.4f, device.Viewport.Height * 0.5f);
+            Vector2 fontPosition2 = new Vector2(device.Viewport.Width * 0.4f, device.Viewport.Height * 0.55f);
+            String messageText = "You are dead now.";
+            String scoreText = "Your final score is: " + playerScore;
+
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
+            // Find the center of the string
+            Vector2 FontOrigin1 = font.MeasureString(scoreText);
+                Vector2 FontOrigin2 = font.MeasureString(scoreText) / 2;
+            // Draw the string
+
+            spriteBatch.DrawString(font, messageText, fontPosition1, Color.Red,
+                0, FontOrigin1, 1f, SpriteEffects.None, 0.5f);
+
+            spriteBatch.DrawString(font, scoreText, fontPosition1, Color.Red,
+                0, FontOrigin2, 1f, SpriteEffects.None, 0.5f);
+            
+            spriteBatch.End();
+
+        }
+
+        public void DrawText(SpriteFont font, SpriteBatch spriteBatch, GraphicsDevice device)
         {
             Vector2 fontPosition1 = new Vector2(device.Viewport.Width * 0.9f, device.Viewport.Height * 0.9f);
             Vector2 fontPosition2 = new Vector2(device.Viewport.Width * 0.08f, device.Viewport.Height * 0.98f);
-            Vector2 fontPosition3 = new Vector2(device.Viewport.Width * 0.08f, device.Viewport.Height * 0.8f);
+            Vector2 fontPosition3 = new Vector2(device.Viewport.Width * 0.08f, device.Viewport.Height * 0.85f);
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
             // Find the center of the string
             Vector2 FontOrigin = font.MeasureString(scoreText) / 2;
@@ -67,17 +91,6 @@ namespace ShootingGame.GameComponent
             spriteBatch.DrawString(font, controlTankText, fontPosition2, Color.Yellow,
                 0, FontOrigin, 0.8f, SpriteEffects.None, 0.5f);
 
-            /*
-            if (levelUpTextTimer > 0)
-            {
-                levelUpTextTimer -= gameTime.ElapsedGameTime.Milliseconds;
-                Vector2 textSize = Font1.MeasureString(levelUpText);
-                spriteBatch.DrawString(Font1, levelUpText,
-                    new Vector2((Window.ClientBounds.Width / 2) - (textSize.X / 2),
-                        (Window.ClientBounds.Height / 5) - (textSize.Y / 2)), Color.Goldenrod);
-            }
-             * 
-             * */
             spriteBatch.End();
         }
 

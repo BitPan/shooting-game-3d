@@ -328,9 +328,9 @@ namespace ShootingGame.Core
 
         public void Draw(Matrix viewMatrix, Matrix projectionMatrix, BoundingFrustum cameraFrustrum)
         {
-           // ContainmentType cameraNodeContainment = cameraFrustrum.Contains(nodeBoundingBox);
-           // if (cameraNodeContainment != ContainmentType.Disjoint)
-           // {
+            //ContainmentType cameraNodeContainment = cameraFrustrum.Contains(nodeBoundingBox);
+            //if (cameraNodeContainment != ContainmentType.Disjoint)
+            //{
                 foreach (DrawableModel dModel in modelList)
                 {
                     dModel.Draw(viewMatrix, projectionMatrix);

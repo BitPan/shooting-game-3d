@@ -23,6 +23,7 @@ namespace ShootingGame.GameComponent
         {
             explosionParticles = new ExplosionParticleSystem(game, game.Content);
             projectTrialParticles = new ProjectileTrailParticleSystem(game, game.Content);
+            explosionParticles.DrawOrder = 2;
             game.Components.Add(explosionParticles);
             game.Components.Add(projectTrialParticles);
         }
@@ -31,7 +32,6 @@ namespace ShootingGame.GameComponent
         {
             explosions.Add(new Explosion(explosionParticles,
                                                projectTrialParticles, position));
-           
         }
 
 

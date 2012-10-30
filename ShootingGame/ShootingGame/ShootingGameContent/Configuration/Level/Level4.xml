@@ -2,15 +2,15 @@
 <XnaContent>
   <!-- TODO: replace this Asset with your own XML asset data. -->
   <Asset Type="GameData.LevelN">
-    <enemySpawnCd>2200</enemySpawnCd>
+    <enemySpawnCd>1900</enemySpawnCd>
     <enemyShootCd>1400</enemyShootCd>
     <enemyBulletSpeed>6</enemyBulletSpeed>
     <enemyMovingSpeed>4</enemyMovingSpeed>
     <enemyAttackDeviationFactor>8</enemyAttackDeviationFactor>
-    <enemyAttackChanceFactor>500</enemyAttackChanceFactor>
+    <enemyAttackChanceFactor>70</enemyAttackChanceFactor>
     <deviationRange>100</deviationRange>
-    <enemyAttackRange>800</enemyAttackRange>
-    <enemyTurnAroundFactor>400</enemyTurnAroundFactor>
+    <enemyAttackRange>1100</enemyAttackRange>
+    <enemyTurnAroundFactor>300</enemyTurnAroundFactor>
     <enemyHealth>40</enemyHealth>
     <enemyScore>30</enemyScore>
   </Asset>

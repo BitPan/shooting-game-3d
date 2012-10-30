@@ -61,9 +61,10 @@ namespace ShootingGame.Core
             tankmode = Game.Content.Load<Mode[]>(@"Configuration/TankMode");
             world = Game.Content.Load<WorldMatrix>("Configuration/WorldData");
             tankStatus = new TankStatusMode(tankmode[0]);
-            background = new BackGround(game);
-            background.InitializeModel(floorEffect);
+            
+            
             city = new City();
+            background = new BackGround(game);
             inputHandler = new InputHandler();
             textHandler = new TextHandler();
             levelHander = new GameLevelHandler(Game.Content);
@@ -71,8 +72,8 @@ namespace ShootingGame.Core
             gameMenu = new GameMenuScreen(game, levelHander);
             worldData = new GameWorldData(world);
             camera = new FirstPersonCamera(game);
-            music = new Music(game);
-            
+            background.InitializeModel(floorEffect);
+
             camera.prepareCamera();
             camera.setWeapon(Game.Content.Load<Model>(@"Models\weapon"));
         }
@@ -83,13 +84,11 @@ namespace ShootingGame.Core
         /// </summary>
         public override void Initialize()
         {
- 
             playerHealth = player.hp;
             playerScore = player.score;
             Game.Components.Add(gameMenu);
             effect = new BasicEffect(Game.GraphicsDevice);
-            sceneryTexture = Game.Content.Load<Texture2D>("texturemap");           
-            
+            sceneryTexture = Game.Content.Load<Texture2D>("texturemap");             
             base.Initialize();
 
         }
@@ -108,6 +107,7 @@ namespace ShootingGame.Core
             models.Add(Game.Content.Load<Model>("Models\\ammo"));
             models.Add(Game.Content.Load<Model>("Models\\ammo"));
             models.Add(Game.Content.Load<Model>("Models\\tank"));
+            models.Add(Game.Content.Load<Model>("Models\\Heart"));
             
             octreeWorld.LoadModels(models);
         }
@@ -120,36 +120,39 @@ namespace ShootingGame.Core
         {
             float time = (float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f;
             MouseState mouseState = Mouse.GetState();
-            KeyboardState keyState = Keyboard.GetState();
-            levelHander.UpdateGameStatus(playerScore);
+            KeyboardState keyState = Keyboard.GetState();            
 
             if (levelHander.GetGameState == GameLevelHandler.GameState.INITIALIZE)
             {
                 octreeWorld = new Octree(game, this, worldData);
                 LoadWorldModels();
-                octreeWorld.Initialize(levelHander.GetEmemyData, tankStatus,gameTime,player);
-                levelHander.SetGameState = GameLevelHandler.GameState.PLAY;
+                octreeWorld.Initialize(levelHander.GetEmemyData, tankStatus,gameTime,player);                
                 game.Components.Remove(gameMenu);
                 game.Components.Add(camera);
-                music.BackGroundPlay();
+                music = new Music(game);                
                 game.IsMouseVisible = false;
                 textHandler.UpdateText(this);
                 city.SetUpCity(Game.GraphicsDevice, sceneryTexture);
+                music.BackGroundPlay();
+                levelHander.SetGameState = GameLevelHandler.GameState.PLAY;
                
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.PLAY)
             {
+                levelHander.UpdateGameStatus(playerScore, playerHealth);
                 textHandler.UpdateText(this);
                 inputHandler.UpdateWorld(gameTime, camera, this, music);
                 octreeWorld.Update(gameTime, camera,levelHander.GetEmemyData);
                 explosionHandler.Update(gameTime);
-
-
-                //particleHandler.Update(gameTime);       
             }
-            else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
+            else if (levelHander.GetGameState == GameLevelHandler.GameState.FINISHING)
             {
-
+                octreeWorld = null;
+                game.Components.Remove(camera);
+                music.BackgroundStop();
+                game.Components.Add(gameMenu);                
+                game.IsMouseVisible = true;
+                levelHander.SetGameState = GameLevelHandler.GameState.END;
             }
         }
 
@@ -167,29 +170,22 @@ namespace ShootingGame.Core
                 //city.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
                 camera.DrawWeapon();
                 
-                textHandler.DrawText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), gameTime, Game.GraphicsDevice);
+                textHandler.DrawText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), Game.GraphicsDevice);
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
             {
-
+                textHandler.DrawGameFinishText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), Game.GraphicsDevice, playerScore);
             }
-            
-
-
             base.Draw(gameTime);
         }
-
-        
+                
         public int GetPlayerScore()
         {
             return this.playerScore;
         }
 
         public void IncreasePlayerScore(int socre)
-
         {
-           
-
             this.playerScore += socre;
         }
 
