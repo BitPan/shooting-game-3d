@@ -10,7 +10,7 @@ using GameData;
 
 namespace ShootingGame.Core
 {
-    public class Octree
+    public class Octree : Microsoft.Xna.Framework.GameComponent
     {
         SceneManager sceneManager;
         Random rnd;
@@ -23,12 +23,12 @@ namespace ShootingGame.Core
         Player player;
         int timeLastStamp;
         TankModel tank;
-        
+
         private int boundryLeft;
         private int boundryRight;
         private int boundryNear;
         private int boundryFar;
-        private bool controlTankEnabled;        
+        private bool controlTankEnabled;
 
         private Model playerModel;
         private Model enemyPlaneModel;
@@ -36,9 +36,17 @@ namespace ShootingGame.Core
         private Model enemyBulletModel;
         private Model tankModel;
 
+        Texture2D explosionTexture;
+        Texture2D explosionColorsTexture;
+        Effect explosionEffect;
+        List<ParticleExplosion> explosions = new List<ParticleExplosion>();
+        ParticleExplosionSettings particleExplosionSettings = new ParticleExplosionSettings();
+        ParticleSettings particleSettings = new ParticleSettings();
 
-        public Octree(SceneManager sceneManager, GameWorldData worldData)
+        public Octree(Game game, SceneManager sceneManager, GameWorldData worldData)
+            : base(game)
         {
+
             this.sceneManager = sceneManager;
             octreeRoot = new OcTreeNode(worldData.OCTREE_WORLD_CENTER1, worldData.OCTREE_WORLD_SIZE1);
             octreeRoot.RootSize = worldData.OCTREE_WORLD_SIZE1;
@@ -53,47 +61,30 @@ namespace ShootingGame.Core
             tankIDs = new List<int>();
             rnd = new Random();
             controlTankEnabled = false;
+            timeLastStamp = 0;
         }
 
-        public void TestInitialize(int[] enemyData, TankStatusMode tankstatus,GameTime gametime,PlayerData player )
+        public void Initialize(int[] enemyData, TankStatusMode tankstatus, GameTime gametime, PlayerData player)
         {
             AddPlayerModel(new Vector3(player.startPosition_x, 0, player.startPosition_z));
-            float verticalPosition = (float)rnd.NextDouble() * 100 + 1000;
-            float horizontalPosition = (float)rnd.NextDouble() * 1000 - 100;
-            
-
-            Vector3 position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
-            Vector3 direction1 = new Vector3(0, 0, 4);
-        
-                            verticalPosition = (float)rnd.NextDouble() * 100 + 3000;
-                            horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
-                            position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
-                            direction1 = new Vector3(0, 0, 1);
-                        AddEnemyModel(position1, direction1, enemyData);
-                        timeLastStamp = 0;
-                    
-            
-            AddTankModel(new Vector3(0,0,0),tankstatus);
-            
+            AddTankModel(new Vector3(0, 0, 0), tankstatus);
         }
 
         public void Update(GameTime gameTime, FirstPersonCamera camera, int[] enemyData)
         {
             List<DrawableModel> models = new List<DrawableModel>();
             UpdateAndAddEnemy(gameTime, enemyData);
-             octreeRoot.GetUpdatedModels(ref models);
+            octreeRoot.GetUpdatedModels(ref models);
             //Update All Models
             foreach (DrawableModel model in models)
             {
                 if (model.GetType().ToString().Equals("ShootingGame.EnemyPlane"))
                 {
-                    
-                        EnemyPlane newModel = UpdateEnemyPlane(gameTime, (EnemyPlane)model, rnd);
+                    EnemyPlane newModel = UpdateEnemyPlane(gameTime, (EnemyPlane)model, rnd);
+                    octreeRoot.Add(newModel);
 
-                        octreeRoot.Add(newModel);
-                    
                 }
-                else if(model.GetType().ToString().Equals("ShootingGame.Player"))
+                else if (model.GetType().ToString().Equals("ShootingGame.Player"))
                 {
                     Player newPlayer = (Player)model;
                     newPlayer.DoTranslation(new Vector3((camera.Position - newPlayer.Position).X, 0, (camera.Position - newPlayer.Position).Z));
@@ -109,7 +100,7 @@ namespace ShootingGame.Core
                     this.tank = newTankModel;
                 }
                 else
-                octreeRoot.Add(model);
+                    octreeRoot.Add(model);
             }
             //Detect Collision
             List<int> modelsToRemove = new List<int>();
@@ -122,26 +113,22 @@ namespace ShootingGame.Core
             }
 
             foreach (int modelID in modelsToRemove)
-            {                
+            {
                 DrawableModel model = octreeRoot.RemoveDrawableModel(modelID);
                 if (model.GetType().ToString().Equals("ShootingGame.EnemyPlane"))
                 {
-                    sceneManager.IncreasePlayerScore(10);
+                    sceneManager.IncreasePlayerScore(((EnemyPlane)model).GetEnemyScore());
                     sceneManager.GetMusic().EffectStopPlay();
                     sceneManager.GetMusic().EffectPlay();
                 }
                 if (model.GetType().ToString().Equals("ShootingGame.EnemyBullet"))
                 {
                     sceneManager.DeductPlayerHealth(10);
-                    sceneManager.GetMusic().hitSoundPlay();                    
+                    sceneManager.GetMusic().hitSoundPlay();
                 }
             }
-
-
-
         }
 
-        
         public void LoadModels(List<Model> models)
         {
             playerModel = models[1];
@@ -151,24 +138,19 @@ namespace ShootingGame.Core
             tankModel = models[4];
         }
 
-        public void UpdateAndAddEnemy(GameTime gametime,int[] enemyData) {
-
-            timeLastStamp += gametime.ElapsedGameTime.Milliseconds*5;
-            float verticalPosition = (float)rnd.NextDouble() * 100 + 500;
-            float horizontalPosition = (float)rnd.NextDouble() * 1000 - 100;
-
-            Vector3 position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
-            Vector3 direction1 = new Vector3(0, 0, 4);
-
+        public void UpdateAndAddEnemy(GameTime gametime, int[] enemyData)
+        {
+            timeLastStamp += gametime.ElapsedGameTime.Milliseconds * 5;
+           
+                        
             int enemyCd = enemyData[0];
-            //  Console.WriteLine("timeLastStamp{0},enemyCd{1}", timeLastStamp, enemyCd);
             if (timeLastStamp >= enemyCd)
             {
-                verticalPosition = (float)rnd.NextDouble() * 100 + 300;
-                horizontalPosition = (float)rnd.NextDouble() * 1000 - 250;
-                position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar + 500);
-                direction1 = new Vector3(0, 0, 1);
+                float verticalPosition = (float)rnd.NextDouble() * 200 + 400;
+                float horizontalPosition = (float)(rnd.NextDouble() * 1500 - 300);
 
+                Vector3 position1 = new Vector3(horizontalPosition, verticalPosition, boundryFar - 1000);
+                Vector3 direction1 = new Vector3(0, 0, 1);
                 AddEnemyModel(position1, direction1, enemyData);
                 timeLastStamp = 0;
             }
@@ -176,9 +158,9 @@ namespace ShootingGame.Core
 
 
 
-        public void AddTankModel(Vector3 position,TankStatusMode tankStatus)
+        public void AddTankModel(Vector3 position, TankStatusMode tankStatus)
         {
-            TankModel newDModel = new TankModel(tankStatus,tankModel, Matrix.CreateScale(0.09f) * Matrix.CreateTranslation(position.X, position.Y, position.Z), new Vector3(0, 1, 0), sceneManager.GetCity().GetCityMap());
+            TankModel newDModel = new TankModel(tankStatus, tankModel, Matrix.CreateScale(0.08f) * Matrix.CreateTranslation(position.X, position.Y, position.Z), new Vector3(0, 1, 0), sceneManager.GetCity().GetCityMap());
             int id = octreeRoot.Add(newDModel);
             tankIDs.Add(id);
             tank = newDModel;
@@ -186,7 +168,7 @@ namespace ShootingGame.Core
 
         public void AddPlayerModel(Vector3 position)
         {
-            Player newDModel = new Player(playerModel, Matrix.CreateScale(0.01f) * Matrix.CreateTranslation(position.X, position.Y + 20f, position.Z), Vector3.Zero);
+            Player newDModel = new Player(playerModel, Matrix.CreateScale(0.02f) * Matrix.CreateTranslation(position.X, position.Y + 20f, position.Z), Vector3.Zero);
             int id = octreeRoot.Add(newDModel);
             playerIDs.Add(id);
             player = newDModel;
@@ -285,15 +267,31 @@ namespace ShootingGame.Core
             this.controlTankEnabled = false;
         }
 
-        //public void GetEXpolsion(Vector3 posi)
-        //{
-        //    Random randon = new Random();
-        //    this.explosions.Add(new ParticleExplosion(this.GraphicsDevice, posi,
-        //        randon.Next(particleExplosionSettings.minLife, particleExplosionSettings.maxLife),
-        //        randon.Next(particleExplosionSettings.minRoundTime, particleExplosionSettings.maxRoundTime),
-        //        randon.Next(particleExplosionSettings.minParticlesPerRound, particleExplosionSettings.maxParticlesPerRound),
-        //        randon.Next(particleExplosionSettings.minParticles, particleExplosionSettings.maxParticles), explosionColorsTexture,
-        //        particleSettings, explosionEffect));
-        //}
+
+        protected void UpdateExplosions(GameTime gameTime)
+        {
+            // Loop through and update explosions
+            for (int i = 0; i < explosions.Count; ++i)
+            {
+                explosions[i].Update(gameTime);
+                // If explosion is finished, remove it
+                if (explosions[i].IsDead)
+                {
+                    explosions.RemoveAt(i);
+                    --i;
+                }
+            }
+        }
+
+        public void GetEXpolsion(Vector3 posi)
+        {
+            Random randon = new Random();
+            this.explosions.Add(new ParticleExplosion(Game.GraphicsDevice, posi,
+                randon.Next(particleExplosionSettings.minLife, particleExplosionSettings.maxLife),
+                randon.Next(particleExplosionSettings.minRoundTime, particleExplosionSettings.maxRoundTime),
+                randon.Next(particleExplosionSettings.minParticlesPerRound, particleExplosionSettings.maxParticlesPerRound),
+                randon.Next(particleExplosionSettings.minParticles, particleExplosionSettings.maxParticles), explosionColorsTexture,
+                particleSettings, explosionEffect));
+        }
     }
 }

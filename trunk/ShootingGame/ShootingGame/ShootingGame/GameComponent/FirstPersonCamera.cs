@@ -18,8 +18,6 @@ namespace ShootingGame
 
         public enum Actions
         {
-            Crouch,
-            Jump,
             MoveForwards,
             MoveBackwards,
             StrafeRight,
@@ -30,9 +28,7 @@ namespace ShootingGame
         public enum Posture
         {
             Standing,
-            Crouching,
             Rising,
-            Jumping
         };
 
         public const float DEFAULT_FOVX = 90.0f;
@@ -102,8 +98,8 @@ namespace ShootingGame
         private Matrix weaponWorldMatrix;
 
         private const float WEAPON_SCALE = 0.03f;
-        private const float WEAPON_X_OFFSET = 0.45f;
-        private const float WEAPON_Y_OFFSET = -0.75f;
+        private const float WEAPON_X_OFFSET = 0.25f;
+        private const float WEAPON_Y_OFFSET = -0.65f;
         private const float WEAPON_Z_OFFSET = 1.65f;
 
 
@@ -151,8 +147,6 @@ namespace ShootingGame
 
             // Setup default action key bindings.
             actionKeys = new Dictionary<Actions, Keys>();
-            actionKeys.Add(Actions.Crouch, Keys.LeftControl);
-            actionKeys.Add(Actions.Jump, Keys.Space);
             actionKeys.Add(Actions.MoveForwards, Keys.W);
             actionKeys.Add(Actions.MoveBackwards, Keys.S);
             actionKeys.Add(Actions.StrafeRight, Keys.D);
@@ -564,39 +558,8 @@ namespace ShootingGame
                 strafeLeftPressed = false;
             }
 
-            if (currentKeyboardState.IsKeyDown(actionKeys[Actions.Crouch]))
-            {
                 switch (posture)
                 {
-                    case Posture.Standing:
-                        posture = Posture.Crouching;
-                        direction.Y -= 1.0f;
-                        currentVelocity.Y = 0.0f;
-                        break;
-
-                    case Posture.Crouching:
-                        direction.Y -= 1.0f;
-                        break;
-
-                    case Posture.Rising:
-                        // Finish rising before allowing another crouch.
-                        direction.Y += 1.0f;
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                switch (posture)
-                {
-                    case Posture.Crouching:
-                        posture = Posture.Rising;
-                        direction.Y += 1.0f;
-                        currentVelocity.Y = 0.0f;
-                        break;
-
                     case Posture.Rising:
                         direction.Y += 1.0f;
                         break;
@@ -604,32 +567,6 @@ namespace ShootingGame
                     default:
                         break;
                 }
-            }
-
-            if (currentKeyboardState.IsKeyDown(actionKeys[Actions.Jump]) &&
-                previousKeyboardState.IsKeyUp(actionKeys[Actions.Jump]))
-            {
-                switch (posture)
-                {
-                    case Posture.Standing:
-                        posture = Posture.Jumping;
-                        currentVelocity.Y = velocity.Y;
-                        direction.Y += 1.0f;
-                        break;
-
-                    case Posture.Jumping:
-                        direction.Y += 1.0f;
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                if (posture == Posture.Jumping)
-                    direction.Y += 1.0f;
-            }
         }
 
         /// <summary>
@@ -796,11 +733,6 @@ namespace ShootingGame
                     case Posture.Standing:
                         break;
 
-                    case Posture.Crouching:
-                        if (eye.Y < eyeHeightCrouching)
-                            eye.Y = eyeHeightCrouching;
-                        break;
-
                     case Posture.Rising:
                         if (eye.Y > eyeHeightStanding)
                         {
@@ -810,14 +742,6 @@ namespace ShootingGame
                         }
                         break;
 
-                    case Posture.Jumping:
-                        if (eye.Y < eyeHeightStanding)
-                        {
-                            eye.Y = eyeHeightStanding;
-                            posture = Posture.Standing;
-                            currentVelocity.Y = 0.0f;
-                        }
-                        break;
                 }
             }
 
@@ -867,40 +791,21 @@ namespace ShootingGame
                 }
             }
 
-            if (direction.Y != 0.0f)
+
+            // Camera is no longer moving along the y axis.
+            // Linearly decelerate back to stationary state.
+
+            if (currentVelocity.Y > 0.0f)
             {
-                // Camera is moving along the y axis. There are two cases here:
-                // jumping and crouching. When jumping we're always applying a
-                // negative acceleration to simulate the force of gravity.
-                // However when crouching we apply a positive acceleration and
-                // rely more on the direction.
-
-                if (posture == Posture.Jumping)
-                    currentVelocity.Y += direction.Y * -acceleration.Y * elapsedTimeSec;
-                else
-                    currentVelocity.Y += direction.Y * acceleration.Y * elapsedTimeSec;
-
-                if (currentVelocity.Y > velocity.Y)
-                    currentVelocity.Y = velocity.Y;
-                else if (currentVelocity.Y < -velocity.Y)
-                    currentVelocity.Y = -velocity.Y;
+                if ((currentVelocity.Y -= acceleration.Y * elapsedTimeSec) < 0.0f)
+                    currentVelocity.Y = 0.0f;
             }
             else
             {
-                // Camera is no longer moving along the y axis.
-                // Linearly decelerate back to stationary state.
-
-                if (currentVelocity.Y > 0.0f)
-                {
-                    if ((currentVelocity.Y -= acceleration.Y * elapsedTimeSec) < 0.0f)
-                        currentVelocity.Y = 0.0f;
-                }
-                else
-                {
-                    if ((currentVelocity.Y += acceleration.Y * elapsedTimeSec) > 0.0f)
-                        currentVelocity.Y = 0.0f;
-                }
+                if ((currentVelocity.Y += acceleration.Y * elapsedTimeSec) > 0.0f)
+                    currentVelocity.Y = 0.0f;
             }
+
 
             if (direction.Z != 0.0f)
             {

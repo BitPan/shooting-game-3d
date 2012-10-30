@@ -271,6 +271,8 @@ namespace ShootingGame
             {
                 UpdateCannonRotation();
                 TurretRotation += 0.02f;
+                if (TurretRotation > Math.PI * 2)
+                    TurretRotation -= (float)Math.PI * 2;
             }
         }
 
@@ -329,14 +331,14 @@ namespace ShootingGame
                             {
                                 if (currentTurnedAngle > angleToTurn)
                                 {
-                                    SteerRotation -= (float)Math.PI / 360f;
+                                    SteerRotation -= (float)Math.PI / 500f;
                                     yawRotate(-(float)Math.PI / 360f);
                                     currentTurnedAngle -= Math.PI / 360;
 
                                 }
                                 else
                                 {
-                                    SteerRotation += (float)Math.PI / 360f;
+                                    SteerRotation += (float)Math.PI / 500f;
                                     yawRotate((float)Math.PI / 360f);
                                     currentTurnedAngle += Math.PI / 360;
 

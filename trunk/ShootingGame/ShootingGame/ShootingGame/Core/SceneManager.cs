@@ -32,25 +32,18 @@ namespace ShootingGame.Core
         InputHandler inputHandler;
         TextHandler textHandler;
         GameMenuScreen gameMenu;
-        Texture2D[] skyboxTextures;
+        
 
         BasicEffect effect;
         Effect floorEffect;
         Texture2D sceneryTexture;
-        LevelN level1, level2, level3, level4, level5;
-        List<LevelN> levels;
         PlayerData player;
         Mode[] tankmode;
         TankStatusMode tankStatus;
         WorldMatrix world;
-        Model skyboxModel;
 
-        List<ParticleExplosion> explosions = new List<ParticleExplosion>();
-        ParticleExplosionSettings particleExplosionSettings = new ParticleExplosionSettings();
-        ParticleSettings particleSettings = new ParticleSettings();
-        Texture2D explosionTexture;
-        Texture2D explosionColorsTexture;
-        Effect explosionEffect;
+       
+       
 
         public FirstPersonCamera camera { get; protected set; }
 
@@ -66,32 +59,24 @@ namespace ShootingGame.Core
         {
 
             this.game = game;
-            levels = new List<LevelN>();
-            level1 = Game.Content.Load<LevelN>("Configuration/Level/Level1");
-            level2 = Game.Content.Load<LevelN>("Configuration/Level/Level2");
-            level3 = Game.Content.Load<LevelN>("Configuration/Level/Level3");
-            level4 = Game.Content.Load<LevelN>("Configuration/Level/Level4");
-            level5 = Game.Content.Load<LevelN>("Configuration/Level/Level5");
-            levels.Add(level1);
-            levels.Add(level2);
-            levels.Add(level3);
-            levels.Add(level4);
-            levels.Add(level5);
-          
+
+            floorEffect = Game.Content.Load<Effect>("effects");
             player = Game.Content.Load<PlayerData>("Configuration/PlayerData");
             tankmode = Game.Content.Load<Mode[]>(@"Configuration/TankMode");
             world = Game.Content.Load<WorldMatrix>("Configuration/WorldData");
             tankStatus = new TankStatusMode(tankmode[0]);
-            string path = "Map.txt";
-            city = new City(path);
+            background = new BackGround(game);
+            background.InitializeModel(floorEffect);
+            city = new City();
             inputHandler = new InputHandler();
             textHandler = new TextHandler();
-            levelHander = new GameLevelHandler(levels);
+            levelHander = new GameLevelHandler(Game.Content);
             gameMenu = new GameMenuScreen(game, levelHander);
             worldData = new GameWorldData(world);
             camera = new FirstPersonCamera(game);
             music = new Music(game);
-            background = new BackGround(game);
+            
+            
             camera.prepareCamera();
             camera.setWeapon(Game.Content.Load<Model>(@"Models\weapon"));
         }
@@ -108,8 +93,8 @@ namespace ShootingGame.Core
             Game.Components.Add(gameMenu);
             effect = new BasicEffect(Game.GraphicsDevice);
             sceneryTexture = Game.Content.Load<Texture2D>("texturemap");
-            floorEffect = Game.Content.Load<Effect>("effects");
-            skyboxModel = background.LModel(floorEffect, "skybox/skybox", out skyboxTextures);
+            
+            
             base.Initialize();
 
         }
@@ -145,9 +130,9 @@ namespace ShootingGame.Core
 
             if (levelHander.GetGameState == GameLevelHandler.GameState.INITIALIZE)
             {
-                octreeWorld = new Octree(this, worldData);
+                octreeWorld = new Octree(game, this, worldData);
                 LoadWorldModels();
-                octreeWorld.TestInitialize(levelHander.GetEmemyData, tankStatus,gameTime,player);
+                octreeWorld.Initialize(levelHander.GetEmemyData, tankStatus,gameTime,player);
                 levelHander.SetGameState = GameLevelHandler.GameState.PLAY;
                 Game.Components.Remove(gameMenu);
                 game.Components.Add(camera);
@@ -161,18 +146,12 @@ namespace ShootingGame.Core
             {
                 textHandler.UpdateText(this);
                 inputHandler.UpdateWorld(gameTime, camera, this, music);
-                octreeWorld.Update(gameTime, camera,levelHander.GetEmemyData);
-              
+                octreeWorld.Update(gameTime, camera,levelHander.GetEmemyData);              
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
             {
 
             }
-        }
-
-        public void TriggerGameState(GameLevelHandler.GameState gameState)
-        {
-
         }
 
         public override void Draw(GameTime gameTime)
@@ -181,17 +160,12 @@ namespace ShootingGame.Core
             {
                 octreeWorld.GetOctree().ModelsDrawn = 0;
                 BoundingFrustum cameraFrustrum = new BoundingFrustum(camera.ViewMatrix * camera.ProjectionMatrix);
-                background.DrawSkybox(Game.GraphicsDevice, camera, skyboxModel, skyboxTextures);
+                background.Draw(Game.GraphicsDevice, camera);
                 octreeWorld.GetOctree().Draw(camera.ViewMatrix, camera.ProjectionMatrix, cameraFrustrum);
-                octreeWorld.GetOctree().DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
-                //DataLoader datalo = new DataLoader();
-                //Level level = datalo.LoadLevel(1);
-                //Console.WriteLine("this is {0}", level.EnemyAttackRange);
-                //Game.Window.Title = string.Format("Models drawn: {0}", level.EnemyAttackRange);
                 city.DrawCity(Game.GraphicsDevice, camera, floorEffect,0f, new Vector3(0, 0, 0));
+                octreeWorld.GetOctree().DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
                 city.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
                 camera.DrawWeapon();
-               
                 textHandler.DrawText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), gameTime, Game.GraphicsDevice);
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
@@ -216,24 +190,6 @@ namespace ShootingGame.Core
            
 
             this.playerScore += socre;
-        }
-
-
-
-
-        protected void UpdateExplosions(GameTime gameTime)
-        {
-            // Loop through and update explosions
-            for (int i = 0; i < explosions.Count; ++i)
-            {
-                explosions[i].Update(gameTime);
-                // If explosion is finished, remove it
-                if (explosions[i].IsDead)
-                {
-                    explosions.RemoveAt(i);
-                    --i;
-                }
-            }
         }
 
         public void DeductPlayerHealth(int health)

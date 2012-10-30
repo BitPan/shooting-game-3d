@@ -19,7 +19,7 @@ namespace ShootingGame
             foreach (var level in levels)
             {
                 levelData.Add(iniLevelData(level.enemySpawnCd, level.enemyShootCd, level.enemyBulletSpeed, level.enemyMovingSpeed, level.enemyAttackDeviationFactor
-                    , level.enemyAttackChanceFactor, level.deviationRange, level.enemyAttackRange, level.enemyTurnAroundFactor));
+                    , level.enemyAttackChanceFactor, level.deviationRange, level.enemyAttackRange, level.enemyTurnAroundFactor, level.enemyHealth, level.enemyScore));
             }
         }
 
@@ -49,9 +49,11 @@ namespace ShootingGame
             int enemyAttackChanceFactor,
             int deviationRange,
             int enemyAttackRange,
-            int enemyTurnAroundFactor)
+            int enemyTurnAroundFactor,
+            int enemyHealth,
+            int enemyScore)
         {
-            int[] level = { enemySpawnCd, enemyShootCd, enemyBulletSpeed, enemyMovingSpeed, enemyAttackDeviationFactor, enemyAttackChanceFactor, deviationRange, enemyAttackRange, enemyTurnAroundFactor };
+            int[] level = { enemySpawnCd, enemyShootCd, enemyBulletSpeed, enemyMovingSpeed, enemyAttackDeviationFactor, enemyAttackChanceFactor, deviationRange, enemyAttackRange, enemyTurnAroundFactor, enemyHealth, enemyScore };
             return level;
         }
 

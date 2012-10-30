@@ -17,5 +17,7 @@ namespace GameData
         public int deviationRange;
         public int enemyAttackRange;
         public int enemyTurnAroundFactor;
+        public int enemyHealth;
+        public int enemyScore;
     }
 }

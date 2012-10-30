@@ -11,5 +11,7 @@
     <deviationRange>100</deviationRange>
     <enemyAttackRange>800</enemyAttackRange>
     <enemyTurnAroundFactor>400</enemyTurnAroundFactor>
+    <enemyHealth>40</enemyHealth>
+    <enemyScore>30</enemyScore>
   </Asset>
 </XnaContent>

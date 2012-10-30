@@ -10,17 +10,18 @@ namespace ShootingGame
 {
     public class EnemyPlane : DrawableModel
     {
-        private static int enemySpawnCd = 0;
-        private static int enemyShootCd = 0;
-        private static int enemyAttackRange = 0;
-        private static int enemyBulletSpeed = 0;
-        private static int enemyMovingSpeed = 0;
-        private static int enemyAttackDeviationFactor = 0;
-        private static int enemyTurnAroundFactor = 0;
-        private static int deviationRange = 0;
-        private static int enemyAttackChanceFactor = 0;
-
-
+        private int enemySpawnCd = 0;
+        private int enemyShootCd = 0;
+        private int enemyAttackRange = 0;
+        private int enemyBulletSpeed = 0;
+        private int enemyMovingSpeed = 0;
+        private int enemyAttackDeviationFactor = 0;
+        private int enemyTurnAroundFactor = 0;
+        private int deviationRange = 0;
+        private int enemyAttackChanceFactor = 0;
+        private int health;
+        private int enemyScore;
+        private float scale;
 
         float originalSpeed = 0;
         Vector3 originalPosition;
@@ -38,8 +39,15 @@ namespace ShootingGame
             timeSinceLastShoot = 0;
             loadEnemyData(enemyData);
             doTurnAround = false;
-            //this.rotation = Matrix.CreateFromYawPitchRoll((float)Math.PI / 2,0,0);
+            health = enemyData[9];
+            enemyScore = enemyData[10];
+            this.rotation = Matrix.CreateFromYawPitchRoll((float)Math.PI,0,0);
             //yawRotate((float)Math.PI/2);
+        }
+
+        public int GetEnemyScore()
+        {
+            return this.enemyScore;
         }
 
         public void DoTranslation(Vector3 translation)
@@ -179,10 +187,10 @@ namespace ShootingGame
                 speedToReduce = 0;
                 speedX = 0;
                 ChangeDoTurnAround();
-                //yawRotate((float)Math.PI);
+                this.rotation *= Matrix.CreateFromYawPitchRoll((float)Math.PI, 0, 0);
                 SetOriginalPosition(Position);
             }
-            //float speedX = (enemies[i].GetDirection().X < 4) ? (enemies[i].GetOriginalSpeed() - 0) / 10 : -(enemies[i].GetOriginalSpeed()) / 10;
+            
             float enemySpeedAfterChange = direction.X + speedX;
             float enemyZPositionAfterMoving = (Position.Z + direction.Z - speedToReduce);
 
@@ -192,6 +200,16 @@ namespace ShootingGame
 
             Vector3 flyDirection = new Vector3(xDifference, 0, zDifference);
             setDirection(flyDirection);
+        }
+
+        public int GetHealth()
+        {
+            return this.health;
+        }
+
+        public void DeductHealth()
+        {
+            this.health -= 10;
         }
 
         public void CalculateEnemyTurnAround(Random rnd)
@@ -234,6 +252,22 @@ namespace ShootingGame
             return attackDirection;
         }
 
+        public override void Draw(Matrix viewMatrix, Matrix projectionMatrix)
+        {
+            model.CopyAbsoluteBoneTransformsTo(modelTransforms);
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.EnableDefaultLighting();
+                    effect.World = rotation * modelTransforms[mesh.ParentBone.Index] * worldMatrix;
+                    effect.View = viewMatrix;
+                    effect.Projection = projectionMatrix;
+                }
+                mesh.Draw();
+            }
+        }
+
         private float getAttackDevaition(Random rnd)
         {
             int rndNo = rnd.Next(enemyAttackDeviationFactor);
@@ -262,7 +296,5 @@ namespace ShootingGame
             }
             return false;
         }
-
-       
     }
 }

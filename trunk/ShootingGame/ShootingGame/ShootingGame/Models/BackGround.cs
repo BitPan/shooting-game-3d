@@ -17,11 +17,15 @@ namespace ShootingGame
     /// </summary>
     public class BackGround : Microsoft.Xna.Framework.GameComponent
     {
-        Effect floorEffect;
+        Model skyboxModel;
+        Model ground;
+        Texture2D[] skyboxTextures;
+        Texture2D[] groundTextures;
 
         public BackGround(Game game)
             : base(game)
         {
+           // Initialize();
             // TODO: Construct any child components here
         }
 
@@ -31,17 +35,20 @@ namespace ShootingGame
         /// </summary>
         public override void Initialize()
         {
-            // TODO: Add your initialization code here
-            floorEffect = Game.Content.Load<Effect>("effects");
             base.Initialize();
         }
 
 
+        public void InitializeModel(Effect effect)
+        {
+            skyboxModel = LModel(effect, "skybox/skybox", out skyboxTextures);
+            ground = LModel(effect, "ground\\Ground", out groundTextures);
+        }
 
         public Model LModel(Effect effect, string assetName, out Texture2D[] textures)
         {
 
-            Model newModel = this.Game.Content.Load<Model>(@assetName);
+            Model newModel = Game.Content.Load<Model>(@assetName);
             textures = new Texture2D[newModel.Meshes.Count];
             int i = 0;
             foreach (ModelMesh mesh in newModel.Meshes)
@@ -55,7 +62,14 @@ namespace ShootingGame
             return newModel;
         }
 
-        public void DrawGround(GraphicsDevice device, FirstPersonCamera camera, Model ground, Texture2D[] groundTextures)
+        public void Draw(GraphicsDevice device, FirstPersonCamera camera)
+        {
+           // 
+            DrawSkybox(device, camera);
+            DrawGround(device, camera);
+        }
+
+        public void DrawGround(GraphicsDevice device, FirstPersonCamera camera)
         {
             SamplerState ss = new SamplerState();
             ss.AddressU = TextureAddressMode.Clamp;
@@ -73,7 +87,7 @@ namespace ShootingGame
             {
                 foreach (Effect currentEffect in mesh.Effects)
                 {
-                    Matrix worldMatrix = groundTransforms[mesh.ParentBone.Index] * Matrix.CreateTranslation(new Vector3(0, 0, 0));
+                    Matrix worldMatrix = groundTransforms[mesh.ParentBone.Index] * Matrix.CreateTranslation(new Vector3(camera.Position.X, 0, camera.Position.Z));
                     currentEffect.CurrentTechnique = currentEffect.Techniques["Textured"];
                     currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currentEffect.Parameters["xView"].SetValue(camera.ViewMatrix);
@@ -88,9 +102,9 @@ namespace ShootingGame
             device.DepthStencilState = dss;
         }
 
-        
 
-        public void DrawSkybox(GraphicsDevice device, FirstPersonCamera camera, Model skyboxModel, Texture2D[] skyboxTextures)
+
+        public void DrawSkybox(GraphicsDevice device, FirstPersonCamera camera)
         {
             SamplerState ss = new SamplerState();
             ss.AddressU = TextureAddressMode.Clamp;
@@ -107,7 +121,7 @@ namespace ShootingGame
             {
                 foreach (Effect currentEffect in mesh.Effects)
                 {
-                    Matrix worldMatrix = Matrix.CreateScale(200) * skyboxTransforms[mesh.ParentBone.Index] * Matrix.CreateTranslation(camera.Position - (new Vector3(0, 50, 0)));
+                    Matrix worldMatrix = Matrix.CreateScale(50) * skyboxTransforms[mesh.ParentBone.Index] * Matrix.CreateTranslation(new Vector3(camera.Position.X, 0, camera.Position.Z));
                     currentEffect.CurrentTechnique = currentEffect.Techniques["Textured"];
                     currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currentEffect.Parameters["xView"].SetValue(camera.ViewMatrix);
