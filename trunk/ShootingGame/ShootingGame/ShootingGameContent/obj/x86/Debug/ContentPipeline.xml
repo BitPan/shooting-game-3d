@@ -762,6 +762,97 @@
       <Output>obj\x86\Debug\Models\Heart_0.xml</Output>
       <Time>2012-10-30T12:57:42.4484222+11:00</Time>
     </Item>
+    <Item>
+      <Source>particle\font.spritefont</Source>
+      <Name>particle\font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\font.xnb</Output>
+      <Time>2012-10-30T21:45:03.6733694+11:00</Time>
+    </Item>
+    <Item>
+      <Source>particle\grid.x</Source>
+      <Name>particle\grid</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\grid.xnb</Output>
+      <Time>2012-10-30T21:45:03.701371+11:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\particle\grid_0.xml</Key>
+        <Value>2012-10-30T21:45:51.537107+11:00</Value>
+      </Dependency>
+      <Request>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\checker_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>particle\checker.bmp</Source>
+      <Name>particle\checker</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\checker.xnb</Output>
+      <Time>2012-10-30T21:45:03.6343672+11:00</Time>
+    </Item>
+    <Item>
+      <Source>particle\explosion.png</Source>
+      <Name>particle\explosion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\explosion.xnb</Output>
+      <Time>2012-10-30T21:45:03.666369+11:00</Time>
+    </Item>
+    <Item>
+      <Source>particle\fire.png</Source>
+      <Name>particle\fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\fire.xnb</Output>
+      <Time>2012-10-30T21:45:03.6703692+11:00</Time>
+    </Item>
+    <Item>
+      <Source>particle\smoke.png</Source>
+      <Name>particle\smoke</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\smoke.xnb</Output>
+      <Time>2012-10-30T21:45:03.7353729+11:00</Time>
+    </Item>
+    <Item>
+      <Source>particle\ParticleEffect.fx</Source>
+      <Name>particle\ParticleEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\ParticleEffect.xnb</Output>
+      <Time>2012-10-30T21:45:03.7323728+11:00</Time>
+    </Item>
+    <Item>
+      <Source>particle\grid.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\particle\grid_0.xml</Output>
+      <Time>2012-10-30T21:45:03.701371+11:00</Time>
+    </Item>
+    <Item>
+      <Source>particle\checker.bmp</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle\checker_0.xnb</Output>
+      <Time>2012-10-30T21:45:03.6343672+11:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

@@ -1,17 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using ShootingGame.Models;
 using ShootingGame.Data;
 using ShootingGame.GameComponent;
 using GameData;
+using ShootingGame.Particle;
 
 
 namespace ShootingGame.Core
@@ -41,7 +36,8 @@ namespace ShootingGame.Core
         Mode[] tankmode;
         TankStatusMode tankStatus;
         WorldMatrix world;
-
+        ExplosionHandler explosionHandler;
+       
        
        
 
@@ -71,11 +67,11 @@ namespace ShootingGame.Core
             inputHandler = new InputHandler();
             textHandler = new TextHandler();
             levelHander = new GameLevelHandler(Game.Content);
+            explosionHandler = new ExplosionHandler(game);
             gameMenu = new GameMenuScreen(game, levelHander);
             worldData = new GameWorldData(world);
             camera = new FirstPersonCamera(game);
             music = new Music(game);
-            
             
             camera.prepareCamera();
             camera.setWeapon(Game.Content.Load<Model>(@"Models\weapon"));
@@ -92,8 +88,7 @@ namespace ShootingGame.Core
             playerScore = player.score;
             Game.Components.Add(gameMenu);
             effect = new BasicEffect(Game.GraphicsDevice);
-            sceneryTexture = Game.Content.Load<Texture2D>("texturemap");
-            
+            sceneryTexture = Game.Content.Load<Texture2D>("texturemap");           
             
             base.Initialize();
 
@@ -134,7 +129,7 @@ namespace ShootingGame.Core
                 LoadWorldModels();
                 octreeWorld.Initialize(levelHander.GetEmemyData, tankStatus,gameTime,player);
                 levelHander.SetGameState = GameLevelHandler.GameState.PLAY;
-                Game.Components.Remove(gameMenu);
+                game.Components.Remove(gameMenu);
                 game.Components.Add(camera);
                 music.BackGroundPlay();
                 game.IsMouseVisible = false;
@@ -146,7 +141,11 @@ namespace ShootingGame.Core
             {
                 textHandler.UpdateText(this);
                 inputHandler.UpdateWorld(gameTime, camera, this, music);
-                octreeWorld.Update(gameTime, camera,levelHander.GetEmemyData);              
+                octreeWorld.Update(gameTime, camera,levelHander.GetEmemyData);
+                explosionHandler.Update(gameTime);
+
+
+                //particleHandler.Update(gameTime);       
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
             {
@@ -159,13 +158,15 @@ namespace ShootingGame.Core
             if (levelHander.GetGameState == GameLevelHandler.GameState.PLAY)
             {
                 octreeWorld.GetOctree().ModelsDrawn = 0;
+                explosionHandler.Draw(gameTime, camera);
                 BoundingFrustum cameraFrustrum = new BoundingFrustum(camera.ViewMatrix * camera.ProjectionMatrix);
                 background.Draw(Game.GraphicsDevice, camera);
                 octreeWorld.GetOctree().Draw(camera.ViewMatrix, camera.ProjectionMatrix, cameraFrustrum);
                 city.DrawCity(Game.GraphicsDevice, camera, floorEffect,0f, new Vector3(0, 0, 0));
-                octreeWorld.GetOctree().DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
-                city.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
+                //octreeWorld.GetOctree().DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
+                //city.DrawBoxLines(camera.ViewMatrix, camera.ProjectionMatrix, Game.GraphicsDevice, effect);
                 camera.DrawWeapon();
+                
                 textHandler.DrawText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), gameTime, Game.GraphicsDevice);
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
@@ -217,6 +218,11 @@ namespace ShootingGame.Core
             return this.octreeWorld;
         }
 
-       
+        public ExplosionHandler GetExplosionHandler()
+        {
+            return this.explosionHandler;
+        }
+
+               
     }
 }
