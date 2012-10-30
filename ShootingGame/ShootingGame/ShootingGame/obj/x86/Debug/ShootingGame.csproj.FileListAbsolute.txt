@@ -354,3 +354,72 @@ C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\Sho
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\particle.xnb
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Effects\particle.xnb
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\Heart.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\text\SpriteFont1.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ammo.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\spaceship.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\skybox.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\junctioned.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\viper test.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\map.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\tank.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\weapon.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\player.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\Ship.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\Heart.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-242837c0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-26c2d220.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\floortexture.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\texturemap.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\particle.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\ParticleColors.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Textures\particle.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Effects\effects.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\effects.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Effects\particle.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\Bomb.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\laser.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\hit.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Configuration\TankMode.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Configuration\PlayerData.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Configuration\WorldData.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Configuration\Level\Level1.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Configuration\Level\Level2.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Configuration\Level\Level3.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Configuration\Level\Level4.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Configuration\Level\Level5.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_top_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_right_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_left_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_front_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\skybox\clear_back_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\dirt2-1\dirt 2-4be9a760_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\engine_diff_tex_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\turret_alt_diff_tex_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\hk_mp5n_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\Models\ShipDiffuse_0.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\music\background.wma
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\ShootingGame.exe
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\ShootingGame.pdb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\GameData.dll
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\GameData.pdb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\obj\x86\Debug\ShootingGame.exe
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\obj\x86\Debug\ShootingGame.pdb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ground.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\Ak4c.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\greytiles.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\mapzonegrass01diffuse.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf.xnb
+C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGame\bin\x86\Debug\Content\ground\sanddf_0.xnb

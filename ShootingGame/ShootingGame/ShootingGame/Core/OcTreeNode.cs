@@ -104,7 +104,7 @@ namespace ShootingGame.Core
 
             if (null != dModel)
                 modelList.Remove(dModel);
-            
+
             while ((dModel == null) && (child < childList.Count))
             {
                 dModel = childList[child++].RemoveDrawableModel(modelID);
@@ -142,9 +142,8 @@ namespace ShootingGame.Core
                 }
             }
 
-            if (enemyModel.Count > 0 && playerBullet.Count > 0)
+            if (enemyBullet.Count > 0)
             {
-
                 for (int i = 0; i < enemyBullet.Count; i++)
                 {
                     if (city.CollideWithBullet(enemyBullet[i].Model, enemyBullet[i].WorldMatrix))
@@ -154,6 +153,10 @@ namespace ShootingGame.Core
                         i = i > 0 ? i - 1 : 0;
                     }
                 }
+            }
+
+            if (playerBullet.Count > 0)
+            {
                 for (int j = 0; j < playerBullet.Count; j++)
                 {
                     if (city.CollideWithBullet(playerBullet[j].Model, playerBullet[j].WorldMatrix))
@@ -163,50 +166,53 @@ namespace ShootingGame.Core
                         j = j > 0 ? j - 1 : 0;
                     }
                 }
-
-                if (enemyModel.Count > 0 && playerBullet.Count > 0)
-                {
-                    for (int i = 0; i < enemyModel.Count; i++)
-                    {
-                        for (int j = 0; j < playerBullet.Count; j++)
-                        {
-                            if (enemyModel[i].CollidesWith(playerBullet[j].Model, playerBullet[j].WorldMatrix))
-                            {
-
-                        
-                                modelsToRemove.Add(enemyModel[i].ModelID);
-                                modelsToRemove.Add(playerBullet[j].ModelID);
-                                enemyModel.RemoveAt(i);
-                                playerBullet.RemoveAt(j);
-                                i = i > 0 ? i - 1 : 0;
-                                j = j > 0 ? j - 1 : 0;
-
-                            }
-                        }
-                    }
-                    enemyModel.Clear();
-                    playerBullet.Clear();
-                }
-
-                if (enemyBullet.Count > 0 && player.Count > 0)
-                {
-                    for (int i = 0; i < enemyBullet.Count; i++)
-                    {
-                        for (int j = 0; j < player.Count; j++)
-                        {
-                            if (enemyBullet[i].CollidesWithPlayer(player[j].Position))
-                            //if (enemyBullet[i].CollidesWith(player[j].Model, player[j].WorldMatrix))
-                            {
-                                modelsToRemove.Add(enemyBullet[i].ModelID);
-                                enemyBullet.RemoveAt(i);
-                                i = i > 0 ? i - 1 : 0;
-                            }
-                        }
-                    }
-                    enemyBullet.Clear();
-                    player.Clear();
-                }
             }
+
+            if (enemyModel.Count > 0 && playerBullet.Count > 0)
+            {
+                for (int i = 0; i < enemyModel.Count; i++)
+                {
+                    for (int j = 0; j < playerBullet.Count; j++)
+                    {
+                        if (enemyModel[i].CollidesWith(playerBullet[j].Model, playerBullet[j].WorldMatrix))
+                        {
+                            enemyModel[i].DeductHealth();
+                            modelsToRemove.Add(playerBullet[j].ModelID);
+                            playerBullet.RemoveAt(j);
+                            j = j > 0 ? j - 1 : 0;
+                            
+                            if (enemyModel[i].GetHealth() <= 0)
+                            {
+                                modelsToRemove.Add(enemyModel[i].ModelID);
+                                enemyModel.RemoveAt(i);
+                                i = i > 0 ? i - 1 : 0;
+                            }
+
+                        }
+                    }
+                }
+                enemyModel.Clear();
+                playerBullet.Clear();
+            }
+
+            if (enemyBullet.Count > 0 && player.Count > 0)
+            {
+                for (int i = 0; i < enemyBullet.Count; i++)
+                {
+                    for (int j = 0; j < player.Count; j++)
+                    {
+                        if (enemyBullet[i].CollidesWithPlayer(player[j].Position))
+                        {
+                            modelsToRemove.Add(enemyBullet[i].ModelID);
+                            enemyBullet.RemoveAt(i);
+                            i = i > 0 ? i - 1 : 0;
+                        }
+                    }
+                }
+                enemyBullet.Clear();
+                player.Clear();
+            }
+
         }
 
         private bool IsModelOutOfOctree(DrawableModel dModel)
@@ -215,7 +221,7 @@ namespace ShootingGame.Core
                 Math.Abs(dModel.Position.Y - center.Y) > rootSize ||
                 Math.Abs(dModel.Position.Z - center.Z) > rootSize;
         }
-        
+
         private void AddDrawableModel(DrawableModel dModel)
         {
             if (childList.Count == 0)
@@ -265,7 +271,7 @@ namespace ShootingGame.Core
             float sizeOver2 = size / 2.0f;
             float sizeOver4 = size / 4.0f;
 
-            nodeUFR = new OcTreeNode(center + new Vector3(sizeOver4, sizeOver4, -sizeOver4), sizeOver2);            
+            nodeUFR = new OcTreeNode(center + new Vector3(sizeOver4, sizeOver4, -sizeOver4), sizeOver2);
             nodeUFL = new OcTreeNode(center + new Vector3(-sizeOver4, sizeOver4, -sizeOver4), sizeOver2);
             nodeUBR = new OcTreeNode(center + new Vector3(sizeOver4, sizeOver4, sizeOver4), sizeOver2);
             nodeUBL = new OcTreeNode(center + new Vector3(-sizeOver4, sizeOver4, sizeOver4), sizeOver2);
@@ -322,9 +328,9 @@ namespace ShootingGame.Core
 
         public void Draw(Matrix viewMatrix, Matrix projectionMatrix, BoundingFrustum cameraFrustrum)
         {
-            ContainmentType cameraNodeContainment = cameraFrustrum.Contains(nodeBoundingBox);
-            if (cameraNodeContainment != ContainmentType.Disjoint)
-            {
+           // ContainmentType cameraNodeContainment = cameraFrustrum.Contains(nodeBoundingBox);
+           // if (cameraNodeContainment != ContainmentType.Disjoint)
+           // {
                 foreach (DrawableModel dModel in modelList)
                 {
                     dModel.Draw(viewMatrix, projectionMatrix);
@@ -333,7 +339,7 @@ namespace ShootingGame.Core
 
                 foreach (OcTreeNode childNode in childList)
                     childNode.Draw(viewMatrix, projectionMatrix, cameraFrustrum);
-            }
+          //  }
         }
 
         public void DrawBoxLines(Matrix viewMatrix, Matrix projectionMatrix, GraphicsDevice device, BasicEffect basicEffect)

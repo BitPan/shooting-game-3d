@@ -20,13 +20,15 @@ namespace ShootingGame
 
         private Song song;
         private SoundEffectInstance se;
+        SoundEffect explisionEffect;
         SoundEffect shootingEffect;
         SoundEffectInstance shootingEffectInstance;
         SoundEffectInstance hitSound;
         public Music(Game game)
             : base(game)
         {
-            this.se = this.Game.Content.Load<SoundEffect>("music/Bomb").CreateInstance();
+            explisionEffect = this.Game.Content.Load<SoundEffect>("music/Bomb");
+            this.se = explisionEffect.CreateInstance();
             this.song = this.Game.Content.Load<Song>("music/background");
             this.shootingEffect = this.Game.Content.Load<SoundEffect>("music/laser");
 
@@ -48,7 +50,8 @@ namespace ShootingGame
         }
 
         public void EffectPlay(){
-            this.se.Volume = 1f;
+            
+            this.se = explisionEffect.CreateInstance();
             this.se.Play();
         
         }
@@ -59,7 +62,9 @@ namespace ShootingGame
         
         }
         public void EffectStopPlay() {
-            this.se.Stop();
+            //this.se.Stop();
+            this.se.Dispose();
+            //
         }
 
         public void PlayShootingEffect() { 

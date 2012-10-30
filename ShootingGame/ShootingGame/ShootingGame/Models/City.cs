@@ -23,8 +23,9 @@ namespace ShootingGame.Models
         BoundingBox completeCityBox;
         float cityScale;
         DataLoader dataloader;
+        string path = "Map.txt";
 
-        public City(string path)
+        public City()
         {
             cityScale = 50f;
             
