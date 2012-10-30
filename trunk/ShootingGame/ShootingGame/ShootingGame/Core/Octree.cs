@@ -35,13 +35,7 @@ namespace ShootingGame.Core
         private Model playerBulletModel;
         private Model enemyBulletModel;
         private Model tankModel;
-
-        Texture2D explosionTexture;
-        Texture2D explosionColorsTexture;
-        Effect explosionEffect;
-        List<ParticleExplosion> explosions = new List<ParticleExplosion>();
-        ParticleExplosionSettings particleExplosionSettings = new ParticleExplosionSettings();
-        ParticleSettings particleSettings = new ParticleSettings();
+        private Model potionModel;
 
         public Octree(Game game, SceneManager sceneManager, GameWorldData worldData)
             : base(game)
@@ -121,15 +115,11 @@ namespace ShootingGame.Core
                     sceneManager.GetMusic().EffectStopPlay();
                     sceneManager.GetMusic().EffectPlay();
                     sceneManager.GetExplosionHandler().CreateExplosion(model.Position);
-
                 }
                 if (model.GetType().ToString().Equals("ShootingGame.EnemyBullet"))
                 {
                     sceneManager.DeductPlayerHealth(10);
                     sceneManager.GetMusic().hitSoundPlay();
-                    
-
-                    
                 }
             }
         }
@@ -141,15 +131,14 @@ namespace ShootingGame.Core
             playerBulletModel = models[2];
             enemyBulletModel = models[3];
             tankModel = models[4];
+            potionModel = models[5];
         }
 
         public void UpdateAndAddEnemy(GameTime gametime, int[] enemyData)
         {
-            timeLastStamp += gametime.ElapsedGameTime.Milliseconds * 5;
-           
-                        
-            int enemyCd = enemyData[0];
-            if (timeLastStamp >= enemyCd)
+            timeLastStamp += gametime.ElapsedGameTime.Milliseconds;
+                                   
+            if (timeLastStamp >= enemyData[0])
             {
                 float verticalPosition = (float)rnd.NextDouble() * 200 + 400;
                 float horizontalPosition = (float)(rnd.NextDouble() * 1500 - 300);
@@ -161,13 +150,17 @@ namespace ShootingGame.Core
             }
         }
 
-
+        public void AddPotionModel(Vector3 position)
+        {
+            HealthPotion newDModel = new HealthPotion(potionModel, Matrix.CreateScale(0.2f) * Matrix.CreateTranslation(position.X, position.Y, position.Z), new Vector3(0, -1, 0));
+            int id = octreeRoot.Add(newDModel);
+            tankIDs.Add(id);
+        }
 
         public void AddTankModel(Vector3 position, TankStatusMode tankStatus)
         {
             TankModel newDModel = new TankModel(tankStatus, tankModel, Matrix.CreateScale(0.08f) * Matrix.CreateTranslation(position.X, position.Y, position.Z), new Vector3(0, 1, 0), sceneManager.GetCity().GetCityMap());
-            int id = octreeRoot.Add(newDModel);
-            tankIDs.Add(id);
+            octreeRoot.Add(newDModel);
             tank = newDModel;
         }
 
@@ -175,42 +168,29 @@ namespace ShootingGame.Core
         {
             Player newDModel = new Player(playerModel, Matrix.CreateScale(0.02f) * Matrix.CreateTranslation(position.X, position.Y + 20f, position.Z), Vector3.Zero);
             int id = octreeRoot.Add(newDModel);
-            playerIDs.Add(id);
             player = newDModel;
         }
 
         public void AddEnemyModel(Vector3 position, Vector3 direction, int[] enemyData)
         {
             DrawableModel newDModel = new EnemyPlane(enemyPlaneModel, Matrix.CreateTranslation(position.X, position.Y, position.Z), direction, enemyData);
-            int id = octreeRoot.Add(newDModel);
-            enemyIDs.Add(id);
+            octreeRoot.Add(newDModel);
         }
 
         public void AddEnemyBulletModel(Vector3 position, Vector3 direction)
         {
             Vector3 bulletPosition = new Vector3(position.X + direction.X * 3, position.Y + direction.Y * 3, position.Z + direction.Z * 3);
             DrawableModel newDModel = new EnemyBullet(enemyBulletModel, Matrix.CreateTranslation(bulletPosition.X, bulletPosition.Y, bulletPosition.Z), direction);
-            int id = octreeRoot.Add(newDModel);
-
-            enemyIDs.Add(id);
+            octreeRoot.Add(newDModel);
         }
 
         public void AddPlayerBulletModel(Vector3 position, Vector3 direction)
         {
             Vector3 bulletPosition = position + direction;
             DrawableModel newDModel = new Bullet(playerBulletModel, Matrix.CreateTranslation(position.X, position.Y, position.Z), direction * 20);
-            int id = octreeRoot.Add(newDModel);
-            playerBulletIDs.Add(id);
+            octreeRoot.Add(newDModel);
         }
-
-        private TankModel UpdateTankModel(GameTime gameTime, TankModel tank, Random rnd)
-        {
-            TankModel newTank = tank;
-
-
-            return newTank;
-        }
-
+        
         private EnemyPlane UpdateEnemyPlane(GameTime gameTime, EnemyPlane enemy, Random rnd)
         {
             EnemyPlane newPlane = enemy;
@@ -270,33 +250,6 @@ namespace ShootingGame.Core
         public void DisableControlTank()
         {
             this.controlTankEnabled = false;
-        }
-
-
-        protected void UpdateExplosions(GameTime gameTime)
-        {
-            // Loop through and update explosions
-            for (int i = 0; i < explosions.Count; ++i)
-            {
-                explosions[i].Update(gameTime);
-                // If explosion is finished, remove it
-                if (explosions[i].IsDead)
-                {
-                    explosions.RemoveAt(i);
-                    --i;
-                }
-            }
-        }
-
-        public void GetEXpolsion(Vector3 posi)
-        {
-            Random randon = new Random();
-            this.explosions.Add(new ParticleExplosion(Game.GraphicsDevice, posi,
-                randon.Next(particleExplosionSettings.minLife, particleExplosionSettings.maxLife),
-                randon.Next(particleExplosionSettings.minRoundTime, particleExplosionSettings.maxRoundTime),
-                randon.Next(particleExplosionSettings.minParticlesPerRound, particleExplosionSettings.maxParticlesPerRound),
-                randon.Next(particleExplosionSettings.minParticles, particleExplosionSettings.maxParticles), explosionColorsTexture,
-                particleSettings, explosionEffect));
         }
     }
 }

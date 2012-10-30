@@ -10,7 +10,7 @@ namespace ShootingGame.GameComponent
     public class GameLevelHandler
     {
         private int[] enemyData;
-        public enum GameState { START,INITIALIZE, PLAY, END };
+        public enum GameState { START,INITIALIZE, PLAY, FINISHING ,END };
         public enum GameLevel { Level1, Level2, Level3, Level4, Level5 };
         
 
@@ -37,20 +37,25 @@ namespace ShootingGame.GameComponent
             currentGameLevel = GameLevel.Level1;
         }
         
-        public void UpdateGameStatus(int playerScore)
+        public void UpdateGameStatus(int playerScore, int playerHealth)
         {
-            if (playerScore < 100)
-                currentGameLevel = GameLevel.Level1;
-            else if (playerScore >= 100 && playerScore < 200)
-                currentGameLevel = GameLevel.Level2;
-            else if (playerScore >= 200 && playerScore < 350)
-                currentGameLevel = GameLevel.Level3;
-            else if (playerScore >= 350 && playerScore < 550)
-                currentGameLevel = GameLevel.Level4;
-            else if (playerScore >= 550 )
-                currentGameLevel = GameLevel.Level5;
+            if (playerHealth <= 0)
+                currentGameState = GameState.FINISHING;
+            else
+            {
+                if (playerScore < 100)
+                    currentGameLevel = GameLevel.Level1;
+                else if (playerScore >= 100 && playerScore < 250)
+                    currentGameLevel = GameLevel.Level2;
+                else if (playerScore >= 250 && playerScore < 450)
+                    currentGameLevel = GameLevel.Level3;
+                else if (playerScore >= 450 && playerScore < 750)
+                    currentGameLevel = GameLevel.Level4;
+                else if (playerScore >= 750)
+                    currentGameLevel = GameLevel.Level5;
 
-            enemyData = levelData.loadLevelData(currentGameLevel);
+                enemyData = levelData.loadLevelData(currentGameLevel);
+            }
         }
     }
 }

@@ -22,6 +22,7 @@ namespace ShootingGame
         private int health;
         private int enemyScore;
         private float scale;
+        private bool carryPotion;
 
         float originalSpeed = 0;
         Vector3 originalPosition;
@@ -42,7 +43,13 @@ namespace ShootingGame
             health = enemyData[9];
             enemyScore = enemyData[10];
             this.rotation = Matrix.CreateFromYawPitchRoll((float)Math.PI,0,0);
+            carryPotion = true;
             //yawRotate((float)Math.PI/2);
+        }
+
+        public bool DoCarryPotion()
+        {
+            return carryPotion;
         }
 
         public int GetEnemyScore()

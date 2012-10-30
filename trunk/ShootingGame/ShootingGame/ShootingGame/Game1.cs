@@ -48,10 +48,6 @@ namespace ShootingGame
             Components.Add(sceneManager);
             base.Initialize();
             InitializeGameComponents();
-            //DataLoader datalo = new DataLoader();
-            //Level level = datalo.LoadLevel(1);
-            //Console.WriteLine("", level.EnemyBulletSpeed);
-            // TODO: Add your initialization logic here
         }
 
         /// <summary>
@@ -81,9 +77,6 @@ namespace ShootingGame
 
         public void InitializeGameComponents()
         {
-           // gameMenuList = new List<GameMenu>();
-           // music.BackGroundPlay();
-
             effect = new BasicEffect(GraphicsDevice);
         }
 
@@ -108,7 +101,6 @@ namespace ShootingGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             base.Draw(gameTime);
         }
 

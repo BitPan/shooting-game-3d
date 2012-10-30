@@ -3,15 +3,15 @@
   <!-- TODO: replace this Asset with your own XML asset data. -->
   <Asset Type="GameData.LevelN">
  
-      <enemySpawnCd>2300</enemySpawnCd>
+      <enemySpawnCd>2100</enemySpawnCd>
       <enemyShootCd>1450</enemyShootCd>
       <enemyBulletSpeed>6</enemyBulletSpeed>
       <enemyMovingSpeed>4</enemyMovingSpeed>
       <enemyAttackDeviationFactor>8</enemyAttackDeviationFactor>
-      <enemyAttackChanceFactor>500</enemyAttackChanceFactor>
+      <enemyAttackChanceFactor>90</enemyAttackChanceFactor>
       <deviationRange>100</deviationRange>
-      <enemyAttackRange>800</enemyAttackRange>
-      <enemyTurnAroundFactor>400</enemyTurnAroundFactor>
+      <enemyAttackRange>1000</enemyAttackRange>
+      <enemyTurnAroundFactor>300</enemyTurnAroundFactor>
     <enemyHealth>30</enemyHealth>
     <enemyScore>20</enemyScore>
   </Asset>

@@ -20,7 +20,7 @@ namespace ShootingGame.Particle
             const float trailParticlesPerSecond = 200;
             const int numExplosionParticles = 30;
             const int numExplosionSmokeParticles = 50;
-            const float projectileLifespan = 1.5f;
+            const float projectileLifespan = 0f;
             const float sidewaysVelocityRange = 60;
             const float verticalVelocityRange = 40;
             const float gravity = 15;
@@ -33,11 +33,8 @@ namespace ShootingGame.Particle
             ParticleEmitter trailEmitter;
 
             Vector3 position;
-            Vector3 velocity;
             float age;
-
-            Random random = new Random();
-
+        
             #endregion
 
 
@@ -51,14 +48,9 @@ namespace ShootingGame.Particle
 
                 // Start at the origin, firing in a random (but roughly upward) direction.
                 this.position = position;
-
-                //velocity.X = (float)(random.NextDouble() - 0.5) * sidewaysVelocityRange;
-                //velocity.Y = (float)(random.NextDouble() + 0.5) * verticalVelocityRange;
-                //velocity.Z = (float)(random.NextDouble() - 0.5) * sidewaysVelocityRange;
-
                 // Use the particle emitter helper to output our trail particles.
                 trailEmitter = new ParticleEmitter(projectileTrailParticles,
-                                                   trailParticlesPerSecond, position);
+                                                  trailParticlesPerSecond, position);
             }
 
 
@@ -70,8 +62,6 @@ namespace ShootingGame.Particle
                 float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
                 // Simple projectile physics.
-                position += velocity * elapsedTime;
-                velocity.Y -= elapsedTime * gravity;
                 age += elapsedTime;
 
                 // Update the particle emitter, which will create our particle trail.
@@ -87,7 +77,7 @@ namespace ShootingGame.Particle
                         explosionParticles.AddParticle(position, Vector3.Zero);
                     }
                     return false;
-                }
+               }
 
                 return true;
             }

@@ -72,11 +72,10 @@ namespace ShootingGame
         this.shootingEffectInstance.Play();
         
         }
-        public void BackgroundPause() {
-            MediaPlayer.Pause();        
+        public void BackgroundStop() {
+            MediaPlayer.Stop();        
         }
-
-
+        
         public void BackGroundResume() {
 
             MediaPlayer.Resume();
