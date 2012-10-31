@@ -6,7 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
-
+/*
+ Reference: From http://xbox.create.msdn.com/en-US/education/catalog/sample/particle_3d
+ * */
 namespace ShootingGame.Particle
 {
     public abstract class ParticleSystem : DrawableGameComponent

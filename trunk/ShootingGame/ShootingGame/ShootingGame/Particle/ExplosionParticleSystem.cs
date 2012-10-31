@@ -6,6 +6,10 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+
+/*
+ Reference: From http://xbox.create.msdn.com/en-US/education/catalog/sample/particle_3d
+ * */
 namespace ShootingGame.Particle
 {
     /// <summary>

@@ -5,7 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Microsoft.Xna.Framework;
-
+/*
+ Reference: From http://xbox.create.msdn.com/en-US/education/catalog/sample/particle_3d
+ * */
 namespace ShootingGame.Particle
 {
     struct ParticleVertex

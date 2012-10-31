@@ -4,17 +4,14 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
+/*
+ Reference: From http://xbox.create.msdn.com/en-US/education/catalog/sample/particle_3d
+ * */
 namespace ShootingGame.Particle
 {
     class Explosion
     {
-         /// <summary>
-        /// This class demonstrates how to combine several different particle systems
-        /// to build up a more sophisticated composite effect. It implements a rocket
-        /// projectile, which arcs up into the sky using a ParticleEmitter to leave a
-        /// steady stream of trail particles behind it. After a while it explodes,
-        /// creating a sudden burst of explosion and smoke particles.
-        /// </summary>
+      
             #region Constants
 
             const float trailParticlesPerSecond = 200;

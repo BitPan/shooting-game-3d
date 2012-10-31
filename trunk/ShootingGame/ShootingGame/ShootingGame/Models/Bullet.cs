@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ShootingGame.Models;
 
+/*
+ this is the bullet class which implement ing differnet model
+ */
 namespace ShootingGame
 {
     public class Bullet : DrawableModel

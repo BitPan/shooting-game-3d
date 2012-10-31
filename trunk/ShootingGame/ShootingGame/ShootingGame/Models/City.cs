@@ -9,7 +9,11 @@ using System.IO.IsolatedStorage;
 using ShootingGame.GameUtil;
 using System.IO;
 using ShootingGame.Data;
-
+/**
+ 
+ handling all the building the logic of the city
+ * 
+ */
 namespace ShootingGame.Models
 {
     public class City
@@ -31,7 +35,9 @@ namespace ShootingGame.Models
             
             LoadFloorPlan(path);
         }
-
+        /*
+         Method to set upt the boundingbox to detect the collsion
+         */
         private void SetUpBoundingBoxes()
         {
             int cityWidth = floorPlan.GetLength(0);
@@ -61,6 +67,9 @@ namespace ShootingGame.Models
             boundaryPoints[1] = new Vector3(cityWidth, 20, -cityLength);
             completeCityBox = BoundingBox.CreateFromPoints(boundaryPoints);
         }
+        /*
+         Setting up the city
+         */
 
         public void SetUpCity(GraphicsDevice device, Texture2D sceneryTexture)
         {
@@ -136,6 +145,9 @@ namespace ShootingGame.Models
         {
            
         }
+        /*
+         Drawing the city;
+         */
 
         public void DrawCity(GraphicsDevice device, FirstPersonCamera camera, Effect effect,float rotation, Vector3 position)
         {
@@ -172,34 +184,6 @@ namespace ShootingGame.Models
 
         private void LoadFloorPlan(string path)
         {
-            //int[,] a = new int[20,15];
-            //String numbers = "";
-
-            //int lineNum = 0;
-            //using (StreamReader sr = new StreamReader("Map.txt"))
-            //{
-            //    while (sr.Peek() >= 0)
-            //    {
-            //        numbers = sr.ReadLine().Replace(" ", "");
-
-            //        //int index = 0;
-
-            //        for (int i = 0; i < 15; i++)
-            //        {
-            //            a[lineNum, i] = int.Parse("" + numbers[i]);
-            //        }
-            //        lineNum++;
-            //    }
-            //}
-
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    for (int j = 0; j < 15; j++)
-            //    {
-            //        Console.Write(a[i, j]);
-            //    }
-            //    Console.WriteLine();
-            //}
             dataloader = new DataLoader();
 
             floorPlan = dataloader.loadMap(path);
