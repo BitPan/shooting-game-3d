@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>tank_geo</Name>
     <Identity>
-      <SourceFilename>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\Models\tank.FBX</SourceFilename>
+      <SourceFilename>C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\Models\tank.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -236,7 +236,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>engine_phong</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\Models\tank.FBX</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\Models\tank.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -258,7 +258,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>turret_phong</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\Models\tank.FBX</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\Models\tank.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

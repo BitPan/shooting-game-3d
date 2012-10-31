@@ -7,6 +7,7 @@ using ShootingGame.Data;
 using ShootingGame.GameComponent;
 using GameData;
 using ShootingGame.Particle;
+using System;
 
 
 namespace ShootingGame.Core
@@ -120,15 +121,19 @@ namespace ShootingGame.Core
         {
             float time = (float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f;
             MouseState mouseState = Mouse.GetState();
-            KeyboardState keyState = Keyboard.GetState();            
+            KeyboardState keyState = Keyboard.GetState();
+
+            //Console.WriteLine(levelHander.GetGameState.ToString());
 
             if (levelHander.GetGameState == GameLevelHandler.GameState.INITIALIZE)
             {
+                playerHealth = player.hp;
+                playerScore = player.score;
                 octreeWorld = new Octree(game, this, worldData);
                 LoadWorldModels();
-                octreeWorld.Initialize(levelHander.GetEmemyData, tankStatus,gameTime,player);                
-                game.Components.Remove(gameMenu);
-                game.Components.Add(camera);
+                octreeWorld.Initialize(levelHander.GetEmemyData, tankStatus,gameTime,player);
+                Game.Components.Remove(gameMenu);
+                Game.Components.Add(camera);
                 music = new Music(game);                
                 game.IsMouseVisible = false;
                 textHandler.UpdateText(this);
@@ -147,11 +152,14 @@ namespace ShootingGame.Core
             }
             else if (levelHander.GetGameState == GameLevelHandler.GameState.FINISHING)
             {
+                Game.Components.Remove(camera);
                 octreeWorld = null;
-                game.Components.Remove(camera);
-                music.BackgroundStop();
-                game.Components.Add(gameMenu);                
-                game.IsMouseVisible = true;
+                music.BackgroundStop();             
+                game.IsMouseVisible = true;                
+                levelHander = new GameLevelHandler(Game.Content);
+                gameMenu = new GameMenuScreen(game, levelHander);
+                Game.Components.Add(gameMenu);
+                levelHander.SetFinalScore(playerScore);
                 levelHander.SetGameState = GameLevelHandler.GameState.END;
             }
         }
@@ -172,10 +180,6 @@ namespace ShootingGame.Core
                 
                 textHandler.DrawText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), Game.GraphicsDevice);
             }
-            else if (levelHander.GetGameState == GameLevelHandler.GameState.END)
-            {
-                textHandler.DrawGameFinishText(((Game1)Game).GetSpriteFont(), ((Game1)Game).GetSpriteBatch(), Game.GraphicsDevice, playerScore);
-            }
             base.Draw(gameTime);
         }
                 
@@ -192,6 +196,11 @@ namespace ShootingGame.Core
         public void DeductPlayerHealth(int health)
         {
             this.playerHealth -= health;
+        }
+
+        public void RecoverPlayerHealth(int health)
+        {
+            this.playerHealth = playerHealth < 100 ? playerHealth + 10 : 100;
         }
 
         public GameLevelHandler.GameLevel GetGameLevel()

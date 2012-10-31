@@ -80,6 +80,25 @@ namespace ShootingGame.Core
             spriteBatch.Begin();
             Game.GraphicsDevice.Clear(Color.Black);
 
+            if (levelHandler.GetGameState == GameLevelHandler.GameState.END)
+            {
+                int score = levelHandler.GetFinalScore();
+                String messageText = "You are dead!";
+                String scoreText = "Your final score is: " + score;
+
+                Vector2 fontPosition1 = new Vector2(Game.GraphicsDevice.Viewport.Width * 0.5f, Game.GraphicsDevice.Viewport.Height * 0.13f);
+                Vector2 fontPosition2 = new Vector2(Game.GraphicsDevice.Viewport.Width * 0.5f, Game.GraphicsDevice.Viewport.Height * 0.25f);
+                Vector2 FontOrigin1 = ((Game1)Game).GetSpriteFont().MeasureString(messageText) / 2;
+                Vector2 FontOrigin2 = ((Game1)Game).GetSpriteFont().MeasureString(scoreText) / 2;
+                
+
+                spriteBatch.DrawString(((Game1)Game).GetSpriteFont(), messageText, fontPosition1, Color.Red,
+                0, FontOrigin1, 2f, SpriteEffects.None, 0.5f);
+
+                spriteBatch.DrawString(((Game1)Game).GetSpriteFont(), scoreText, fontPosition2, Color.Red,
+                    0, FontOrigin2, 1f, SpriteEffects.None, 0.5f);
+            }
+
             foreach (GameMenu menu in gameMenuList)
             {
                 menu.Draw(spriteBatch, ((Game1)Game).GetSpriteFont());

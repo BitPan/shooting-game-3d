@@ -26,10 +26,8 @@ namespace ShootingGame.GameComponent
             scoreText = "Health: " + scene.GetPlayerHealth + "\nScore:" + scene.GetPlayerScore() +"\n" + scene.GetGameLevel();
             if (scene.GetOctreeWorld().IsControlTankEnabled())
             {
-                if(scene.GetOctreeWorld().GetTank().IsAttackEnabled())
-                    tankCommandText = "1. Wander Around\n2. Come Here\n3. Stop";
-                else
-                    tankCommandText = "1. Wander Around\n2. Come Here\n3. Stop";
+                tankCommandText = "1. Wander Around\n2. Come Here\n3. Need Health Globe ( " + scene.GetOctreeWorld().GetTankHealthGlobe() +
+                " Left)\n4. Stop";
                 controlTankText = "Press C Again To Close Menu";
             }
             else
@@ -53,8 +51,7 @@ namespace ShootingGame.GameComponent
             String messageText = "You are dead now.";
             String scoreText = "Your final score is: " + playerScore;
 
-
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
+            spriteBatch.Begin();
             // Find the center of the string
             Vector2 FontOrigin1 = font.MeasureString(scoreText);
                 Vector2 FontOrigin2 = font.MeasureString(scoreText) / 2;
@@ -74,7 +71,7 @@ namespace ShootingGame.GameComponent
         {
             Vector2 fontPosition1 = new Vector2(device.Viewport.Width * 0.9f, device.Viewport.Height * 0.9f);
             Vector2 fontPosition2 = new Vector2(device.Viewport.Width * 0.08f, device.Viewport.Height * 0.98f);
-            Vector2 fontPosition3 = new Vector2(device.Viewport.Width * 0.08f, device.Viewport.Height * 0.85f);
+            Vector2 fontPosition3 = new Vector2(device.Viewport.Width * 0.08f, device.Viewport.Height * 0.8f);
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
             // Find the center of the string
             Vector2 FontOrigin = font.MeasureString(scoreText) / 2;

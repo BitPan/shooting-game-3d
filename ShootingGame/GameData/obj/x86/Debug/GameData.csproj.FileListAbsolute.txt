@@ -10,3 +10,9 @@ C:\Users\ste706\Desktop\New folder\GameData\obj\x86\Debug\ResolveAssemblyReferen
 C:\Users\ste706\Desktop\New folder\GameData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\ste706\Desktop\New folder\GameData\obj\x86\Debug\GameData.dll
 C:\Users\ste706\Desktop\New folder\GameData\obj\x86\Debug\GameData.pdb
+C:\Users\ste706\Desktop\ShootingGame\GameData\bin\x86\Debug\GameData.dll
+C:\Users\ste706\Desktop\ShootingGame\GameData\bin\x86\Debug\GameData.pdb
+C:\Users\ste706\Desktop\ShootingGame\GameData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ste706\Desktop\ShootingGame\GameData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\ste706\Desktop\ShootingGame\GameData\obj\x86\Debug\GameData.dll
+C:\Users\ste706\Desktop\ShootingGame\GameData\obj\x86\Debug\GameData.pdb

@@ -89,7 +89,7 @@ namespace ShootingGame.Core
                 else if (model.GetType().ToString().Equals("ShootingGame.TankModel"))
                 {
                     TankModel newTankModel = (TankModel)model;
-                    newTankModel.Update(player, rnd);
+                    newTankModel.Update(gameTime, player, rnd);
                     octreeRoot.Add(newTankModel);
                     this.tank = newTankModel;
                 }
@@ -116,11 +116,13 @@ namespace ShootingGame.Core
                     sceneManager.GetMusic().EffectPlay();
                     sceneManager.GetExplosionHandler().CreateExplosion(model.Position);
                 }
-                if (model.GetType().ToString().Equals("ShootingGame.EnemyBullet"))
+                else if (model.GetType().ToString().Equals("ShootingGame.EnemyBullet"))
                 {
                     sceneManager.DeductPlayerHealth(10);
                     sceneManager.GetMusic().hitSoundPlay();
                 }
+                else if (model.GetType().ToString().Equals("ShootingGame.HealthGlobe"))
+                    sceneManager.RecoverPlayerHealth(10);
             }
         }
 
@@ -150,13 +152,12 @@ namespace ShootingGame.Core
             }
         }
 
-        public void AddPotionModel(Vector3 position)
+        private void AddHealthGlobeModel(Vector3 position)
         {
-            HealthPotion newDModel = new HealthPotion(potionModel, Matrix.CreateScale(0.2f) * Matrix.CreateTranslation(position.X, position.Y, position.Z), new Vector3(0, -1, 0));
-            int id = octreeRoot.Add(newDModel);
-            tankIDs.Add(id);
+            HealthGlobe newDModel = new HealthGlobe(potionModel, Matrix.CreateScale(0.3f) * Matrix.CreateTranslation(position.X, 8f, position.Z), Vector3.Zero);
+            octreeRoot.Add(newDModel);
         }
-
+        
         public void AddTankModel(Vector3 position, TankStatusMode tankStatus)
         {
             TankModel newDModel = new TankModel(tankStatus, tankModel, Matrix.CreateScale(0.08f) * Matrix.CreateTranslation(position.X, position.Y, position.Z), new Vector3(0, 1, 0), sceneManager.GetCity().GetCityMap());
@@ -205,6 +206,15 @@ namespace ShootingGame.Core
             return newPlane;
         }
 
+        public void UseHealthGlobe()
+        {
+            if (tank.GetHealthGlobe() >= 1)
+            {
+                tank.DeductHealthGlobe();
+                AddHealthGlobeModel(tank.Position);
+            }
+        }
+
         private bool isFlyingOutOfBoundry(DrawableModel model)
         {
             int FLYING_OUT_ZONE = 500;
@@ -225,6 +235,11 @@ namespace ShootingGame.Core
         public TankModel GetTank()
         {
             return this.tank;
+        }
+
+        public int GetTankHealthGlobe()
+        {
+            return tank.GetHealthGlobe();
         }
 
         public OcTreeNode GetOctree()

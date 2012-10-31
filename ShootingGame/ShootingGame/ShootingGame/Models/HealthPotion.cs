@@ -8,10 +8,10 @@ using ShootingGame.Models;
 
 namespace ShootingGame
 {
-    public class HealthPotion : DrawableModel
+    public class HealthGlobe : DrawableModel
     {
 
-        public HealthPotion(Model inModel, Matrix inWorldMatrix, Vector3 newDirection)
+        public HealthGlobe(Model inModel, Matrix inWorldMatrix, Vector3 newDirection)
             : base(inModel, inWorldMatrix, newDirection)
         {
             worldMatrix = inWorldMatrix;
@@ -30,12 +30,23 @@ namespace ShootingGame
 
         public override void Update()
         {
-            this.WorldMatrix = worldMatrix * Matrix.CreateTranslation(direction);
         }
 
         public Vector3 GetDirection()
         {
             return direction;
+        }
+
+        public bool CollidesWithPlayer(Vector3 playerPosition)
+        {
+            BoundingSphere playerSphere = new BoundingSphere(playerPosition, 10f);
+
+            foreach (ModelMesh myModelMeshes in model.Meshes)
+            {
+                if (playerSphere.Contains(myModelMeshes.BoundingSphere.Transform(worldMatrix)) != ContainmentType.Disjoint)
+                    return true;
+            }
+            return false;
         }
     }
 }

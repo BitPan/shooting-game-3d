@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>Fbx_Root</Name>
     <Identity>
-      <SourceFilename>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\Models\Heart.FBX</SourceFilename>
+      <SourceFilename>C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\Models\Heart.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 6.123234E-17 -1 0 0 1 6.123234E-17 0 0 0 0 1</Transform>

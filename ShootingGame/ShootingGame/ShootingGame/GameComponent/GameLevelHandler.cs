@@ -10,6 +10,7 @@ namespace ShootingGame.GameComponent
     public class GameLevelHandler
     {
         private int[] enemyData;
+        private int finalScore;
         public enum GameState { START,INITIALIZE, PLAY, FINISHING ,END };
         public enum GameLevel { Level1, Level2, Level3, Level4, Level5 };
         
@@ -35,6 +36,7 @@ namespace ShootingGame.GameComponent
             levelData = new LevelData(levels);
             currentGameState = GameState.START;
             currentGameLevel = GameLevel.Level1;
+            enemyData = levelData.loadLevelData(currentGameLevel);
         }
         
         public void UpdateGameStatus(int playerScore, int playerHealth)
@@ -56,6 +58,17 @@ namespace ShootingGame.GameComponent
 
                 enemyData = levelData.loadLevelData(currentGameLevel);
             }
+        }
+
+        public void SetFinalScore(int finalScore)
+        {
+            this.finalScore = finalScore;
+
+        }
+
+        public int GetFinalScore()
+        {
+            return this.finalScore;
         }
     }
 }
