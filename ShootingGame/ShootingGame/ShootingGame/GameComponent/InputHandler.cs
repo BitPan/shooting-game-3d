@@ -63,7 +63,7 @@ namespace ShootingGame.GameComponent
                 scene.GetOctreeWorld().DisableControlTank();
             }
 
-            if (previousKeySate.IsKeyDown(Keys.D5) && kState.IsKeyUp(Keys.D5))
+            if (previousKeySate.IsKeyDown(Keys.D9) && kState.IsKeyUp(Keys.D9))
             {
                 scene.DeductPlayerHealth(10);
             }

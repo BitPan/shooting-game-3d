@@ -37,10 +37,7 @@ namespace ShootingGame.Core
         Mode[] tankmode;
         TankStatusMode tankStatus;
         WorldMatrix world;
-        ExplosionHandler explosionHandler;
-       
-       
-       
+        ExplosionHandler explosionHandler;      
 
         public FirstPersonCamera camera { get; protected set; }
 
@@ -153,7 +150,7 @@ namespace ShootingGame.Core
             else if (levelHander.GetGameState == GameLevelHandler.GameState.FINISHING)
             {
                 Game.Components.Remove(camera);
-                octreeWorld = null;
+                
                 music.BackgroundStop();             
                 game.IsMouseVisible = true;                
                 levelHander = new GameLevelHandler(Game.Content);
