@@ -6,3 +6,4 @@ C:\Users\10820520\Desktop\jack\ShootingGame\ShootingGame\ShootingGameContent\obj
 C:\Users\ste706\Desktop\game programing new\ShootingGame\ShootingGameContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\10820520\Desktop\shooting-game-assignment\ShootingGame\ShootingGame\ShootingGameContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\obj\x86\Debug\ResolveAssemblyReference.cache

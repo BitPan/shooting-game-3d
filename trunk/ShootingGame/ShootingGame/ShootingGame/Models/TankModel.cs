@@ -27,6 +27,9 @@ namespace ShootingGame
         private bool cannonMovingUp;
         private bool enableAttack;
         public TankStatusMode tankStaus;
+        private static int healthGlobe;
+        private float produceHealthGlobeCD;
+        private float timeSinceLastHealthGlobeProduced;
 
         public enum Mode{
             WANDER,
@@ -171,10 +174,17 @@ namespace ShootingGame
             ActivateWanderMode();
             cannonMovingUp = true;
             enableAttack = false;
-            
+
+            produceHealthGlobeCD = 30000;
+            timeSinceLastHealthGlobeProduced = 0;
+            healthGlobe = 1;
 
         }
-   
+
+        public void DeductHealthGlobe()
+        {
+            healthGlobe = healthGlobe > 1 ? healthGlobe - 1 : 0;
+        }
 
         public void EnableAttack()
         {
@@ -246,8 +256,28 @@ namespace ShootingGame
             return new Vector2(0,0);
         }
 
-        public void Update(Player player, Random rnd)
+
+        public int GetHealthGlobe()
         {
+            return healthGlobe;
+        }
+
+        public void Update(GameTime gameTime, Player player, Random rnd)
+        {
+
+
+            if (healthGlobe <= 3)
+            {
+                timeSinceLastHealthGlobeProduced += gameTime.ElapsedGameTime.Milliseconds;
+                {
+                    if (timeSinceLastHealthGlobeProduced >= produceHealthGlobeCD)
+                    {
+                        timeSinceLastHealthGlobeProduced = 0;
+                        healthGlobe++;
+                    }
+                }
+            }
+
             if (this.currentState.ToString().Equals(this.tankStaus.Status_wander ))
             {
                 if (enableAutoSearch)

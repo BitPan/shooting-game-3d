@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Box001</Name>
     <Identity>
-      <SourceFilename>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\Models\player.FBX</SourceFilename>
+      <SourceFilename>C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\Models\player.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <OpaqueData>

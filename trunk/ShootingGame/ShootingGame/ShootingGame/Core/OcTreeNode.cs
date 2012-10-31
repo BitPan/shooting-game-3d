@@ -119,6 +119,7 @@ namespace ShootingGame.Core
             List<Bullet> playerBullet = new List<Bullet>();
             List<EnemyBullet> enemyBullet = new List<EnemyBullet>();
             List<Player> player = new List<Player>();
+            List<HealthGlobe> healthGlobes = new List<HealthGlobe>();
 
             if (modelList.Count > 0)
             {
@@ -132,6 +133,8 @@ namespace ShootingGame.Core
                         enemyBullet.Add((EnemyBullet)model);
                     else if (model.GetType().ToString().Equals("ShootingGame.Player"))
                         player.Add((Player)model);
+                    else if (model.GetType().ToString().Equals("ShootingGame.HealthGlobe"))
+                        healthGlobes.Add((HealthGlobe)model);
                 }
             }
             else
@@ -211,6 +214,23 @@ namespace ShootingGame.Core
                 }
                 enemyBullet.Clear();
                 player.Clear();
+            }
+
+            if (healthGlobes.Count > 0 && player.Count > 0)
+            {
+                for (int i = 0; i < healthGlobes.Count; i++)
+                {
+                    for (int j = 0; j < player.Count; j++)
+                    {
+                        if (healthGlobes[i].CollidesWithPlayer(player[j].Position))
+                        {
+                            modelsToRemove.Add(healthGlobes[i].ModelID);
+                            healthGlobes.RemoveAt(i);
+                            i = i > 0 ? i - 1 : 0;
+                        }
+                    }
+                }
+                healthGlobes.Clear();
             }
 
         }

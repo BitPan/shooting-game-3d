@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>RootNode</Name>
     <Identity>
-      <SourceFilename>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
+      <SourceFilename>C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -81,7 +81,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>DiRT 2-26c2d220.rgb</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -104,7 +104,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>DiRT 2-242837c0.rgb</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -126,7 +126,7 @@
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Name>DiRT 2-4be9a760.rgb</Name>
       <Identity>
-        <SourceFilename>C:\Users\ste706\Desktop\New folder\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
+        <SourceFilename>C:\Users\ste706\Desktop\ShootingGame\ShootingGame\ShootingGameContent\Models\map.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
