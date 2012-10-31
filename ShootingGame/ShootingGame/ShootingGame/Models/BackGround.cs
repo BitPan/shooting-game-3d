@@ -9,9 +9,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
+/*
+     This is the class which is handling background information
+     
+    */
 namespace ShootingGame
 {
+   
     /// <summary>
     /// This is a game component that implements IUpdateable.
     /// </summary>

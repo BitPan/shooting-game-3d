@@ -7,7 +7,9 @@ using ShootingGame.Models;
 using Microsoft.Xna.Framework.Graphics;
 using ShootingGame.Data;
 using GameData;
-
+/*
+ Class control the 
+ */
 namespace ShootingGame.Core
 {
     public class Octree : Microsoft.Xna.Framework.GameComponent

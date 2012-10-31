@@ -6,6 +6,12 @@ using ShootingGame.Particle;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
+
+/*
+ **
+ Reference: From http://xbox.create.msdn.com/en-US/education/catalog/sample/particle_3d
+ * 
+ */
 namespace ShootingGame.GameComponent
 {
     public class ExplosionHandler : Microsoft.Xna.Framework.GameComponent
