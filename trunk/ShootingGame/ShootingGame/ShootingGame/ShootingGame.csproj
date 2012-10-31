@@ -135,8 +135,6 @@
     <Compile Include="Data\LevelData.cs" />
     <Compile Include="GameComponent\Music.cs" />
     <Compile Include="Models\IModelBase.cs" />
-    <Compile Include="ParticleExplosion.cs" />
-    <Compile Include="ParticleSettings.cs" />
     <Compile Include="Particle\Explosion.cs" />
     <Compile Include="Particle\ExplosionParticleSystem.cs" />
     <Compile Include="Particle\ParticleEmitter.cs" />

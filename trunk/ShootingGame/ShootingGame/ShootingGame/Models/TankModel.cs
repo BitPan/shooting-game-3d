@@ -177,7 +177,7 @@ namespace ShootingGame
 
             produceHealthGlobeCD = 30000;
             timeSinceLastHealthGlobeProduced = 0;
-            healthGlobe = 1;
+            healthGlobe = 0;
 
         }
 
