@@ -1,0 +1,6 @@
+# shooting-game-3d
+Opps somehow found my first 3D game...
+
+I don't think it will compile and run easily. 
+
+Here is the [youtube](https://www.youtube.com/watch?v=ltSJV4udNz4) link if any guy is really curious about how it looks...
